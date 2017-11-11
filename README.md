@@ -40,26 +40,31 @@ Configured features
 # Generell Applikations struktur & info.
 Har har försökt sätta upp en grund / exempel componentet så snarlik som jag brukar göra det som möjligt. - Följer alla "best practices" inom React communityt som jag känner till.
 
-Folder Struktur:
-Routes -> Routes
-constants -> Konstanter främst för CSS, fonts, färger etc för att underlätta att alla använder samma fonter, färg schema etc
-elements -> Specifik för styled-components projekt. Innehåller komponenter som endast håller styles för ett specifikt html element (se mapp för exempel)
+## Folder Struktur
 
-components, containers och pages -> Ska försöka förklara detta på ett bra sätt. Börja med att kolla: https://reactjs.org/docs/thinking-in-react.html pages är hela sidor som användes i routes. Dessa kan vara antingen class components eller stateless components. containers innehåller i normala fall class components som ligger lägre i hirarkin än pages. men eftersom vi ev. kommer behöva lägg till redux så tror jag det bliv enklast om vi bara kör pages som class components - så container ligger endast med som exempel. components innehåller endast stateless components, varje sub-folder har en index fil som är stateless component medans resterande filed är styled-components som är specifika för index.
+*Routes ->* Routes
 
-Struktur i filer:
+*constants ->* Konstanter främst för CSS, fonts, färger etc för att underlätta att alla använder samma fonter, färg schema etc
+*elements ->* Specifik för styled-components projekt. Innehåller komponenter som endast håller styles för ett specifikt html element (se mapp för exempel)
 
-PropTypes -> Defineras som ett object ovanför komponenten för att göra det enkelt att se typer i stora komponenter. Sedan setts propTypes längst ner i filen precis innan export (se LoginForm för exempel)
+*components, containers och pages ->* Ska försöka förklara detta på ett bra sätt. Börja med att kolla: https://reactjs.org/docs/thinking-in-react.html pages är hela sidor som användes i routes. Dessa kan vara antingen class components eller stateless components. containers innehåller i normala fall class components som ligger lägre i hirarkin än pages. men eftersom vi ev. kommer behöva lägg till redux så tror jag det bliv enklast om vi bara kör pages som class components - så container ligger endast med som exempel. components innehåller endast stateless components, varje sub-folder har en index fil som är stateless component medans resterande filed är styled-components som är specifika för index.
 
-Object destructuring används för props, för att jag dem mer lätt använda (se SubmitButton för exempel)
+## Struktur i filer
 
-Arrow functions används för att slippa binda this i class componets (se LoginPage)
+*PropTypes ->* Defineras som ett object ovanför komponenten för att göra det enkelt att se typer i stora komponenter. Sedan setts propTypes längst ner i filen precis innan export (se LoginForm för exempel)
 
-ES7 class properties används för att slippa constructor (se LoginPage)
 
-.jsx extensions används för att tydligt visa vilka filer som är komponenter och vilka som är vanilla js.
+*Object destructuring ->* används för props, för att jag dem mer lätt använda (se SubmitButton för exempel)
 
-Exempel
+
+*Arrow functions ->* används för att slippa binda this i class componets (se LoginPage)
+
+*ES7 class properties ->* används för att slippa constructor (se LoginPage)
+
+*.jsx extensions ->* används för att tydligt visa vilka filer som är komponenter och vilka som är vanilla js.
+
+## Exempel
 
 Hur man förlänger en annan komponent med styled components -> se MenuItem
+
 Hur man använder props i styled components -> se Text
