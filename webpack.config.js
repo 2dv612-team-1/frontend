@@ -19,7 +19,10 @@ module.exports = {
       template: path.join(paths.SRC, 'index.html'),
     }),
   ],
-
+  devServer: {
+    port: 8080,
+    historyApiFallback: true,
+  },
   module: {
 
     // apply loaders to files that meet given conditions
