@@ -1,0 +1,12 @@
+{
+  "extends": "airbnb",
+  "rules": {
+        "jsx-a11y/anchor-is-valid": [ "error", {
+            "components": []
+          }]
+    },
+  "env":{
+    "browser": true,
+    "node": true
+    }
+}
