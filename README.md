@@ -45,6 +45,7 @@ Har har försökt sätta upp en grund / exempel componentet så snarlik som jag 
 **Routes ->** Routes
 
 **constants ->** Konstanter främst för CSS/styled components, fonts, färger etc för att underlätta att alla använder samma fonter, färg schema etc
+
 **elements ->** Specifik för styled-components projekt. Innehåller komponenter som endast håller styles för ett specifikt html element (se mapp för exempel)
 
 **components, containers och pages ->** Ska försöka förklara detta på ett bra sätt. Börja med att kolla: https://reactjs.org/docs/thinking-in-react.html pages är hela sidor som användes i routes. Dessa kan vara antingen class components eller stateless components. containers innehåller i normala fall class components som ligger lägre i hirarkin än pages. men eftersom vi ev. kommer behöva lägg till redux så tror jag det bliv enklast om vi bara kör pages som class components - så container ligger endast med som exempel. components innehåller endast stateless components, varje sub-folder har en index fil som är stateless component medans resterande filed är styled-components som är specifika för index.
