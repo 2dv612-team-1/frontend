@@ -8,5 +8,5 @@ render(
       <p>Hello World</p>
     </Router>
   ),
-  document.getElementById('react-app'),
+  document.getElementById('app'),
 );
