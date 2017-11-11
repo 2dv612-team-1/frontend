@@ -1,6 +1,8 @@
 # Up and running
 Installera dependencies: `npm install`
+
 Starta dev server: `ǹpm start`
+
 Lyssna efter förändringar för att automatisk bygga en bundle: `npm run bundle`
 
 
@@ -55,7 +57,7 @@ Arrow functions används för att slippa binda this i class componets (se LoginP
 
 ES7 class properties används för att slippa constructor (se LoginPage)
 
-.jsx extensions används för att tydligt visa vilka filer som är komponenter och vilka som är vanilla js. 
+.jsx extensions används för att tydligt visa vilka filer som är komponenter och vilka som är vanilla js.
 
 Exempel
 
