@@ -8,6 +8,7 @@ const NavBar = () => (
     <MenuItem to="/">Home</MenuItem>
     <MenuItem to="/login">Login</MenuItem>
     <MenuItem to="/register">Register</MenuItem>
+      <MenuItem to="/companies">Companies</MenuItem>
   </Container>
 );
 
