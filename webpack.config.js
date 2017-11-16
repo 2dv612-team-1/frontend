@@ -14,6 +14,7 @@ module.exports = {
     path: path.join(paths.DIST, 'js'),
     filename: 'app.js',
   },
+  devtool: 'source-map',
   plugins: [
     new HtmlWebpackPlugin({
       template: path.join(paths.SRC, 'index.html'),
