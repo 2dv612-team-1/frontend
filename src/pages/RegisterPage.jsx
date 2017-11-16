@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import Text from '../elements/Text';
 import Modal from '../components/Modal';
-import LoginForm from '../components/LoginForm';
+// import LoginForm from '../components/LoginForm';
+import Client from '../libs/Client';
 
 class RegisterPage extends Component {
   state = {
@@ -9,6 +11,7 @@ class RegisterPage extends Component {
       username: '',
       password: '',
     },
+    redirect: false,
   }
 
   onChange = (event) => {
@@ -17,13 +20,26 @@ class RegisterPage extends Component {
     this.setState({ fields });
   }
 
-  onSubmit = (event) => {
+  registerAdmin = () => {
+    const url = 'https://nanotu.be/admins';
+    Client.POST(url)
+      .then(() => { this.setState({ redirect: true }); })
+      .catch((error) => { console.log(error); });
+  }
+
+  handleSubmit = (event) => {
     event.preventDefault();
+    switch (event.target.name) {
+      case 'admin':
+        this.registerAdmin();
+        break;
+      default:
+    }
+    // Reset state
     const fields = {
       username: '',
       password: '',
     };
-
     this.setState({ fields });
   }
 
@@ -31,10 +47,17 @@ class RegisterPage extends Component {
     return (
       <Modal>
         <Text center>Här kan du registrera dig...</Text>
-        <LoginForm fields={this.state.fields} onChange={this.onChange} onSubmit={this.onSubmit} />
+        <button name="admin" onClick={this.handleSubmit}>Registrera</button>
+        {
+          this.state.redirect
+          ? <Redirect to="/login" />
+          : null
+        }
       </Modal>
     );
   }
 }
+
+// <LoginForm fields={this.state.fields} onChange={this.onChange} onSubmit={this.onSubmit} />
 
 export default RegisterPage;
