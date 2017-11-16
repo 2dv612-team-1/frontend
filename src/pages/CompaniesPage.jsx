@@ -6,6 +6,7 @@ import PageTitle from '../elements/PageTitle';
 import List from '../components/List';
 import SubmitButton from '../components/SubmitButton';
 import ErrorMessage from '../components/ErrorMessage';
+import Client from '../libs/Client';
 
 
 class CompaniesPage extends Component {
@@ -17,18 +18,9 @@ class CompaniesPage extends Component {
 
     componentDidMount() {
       const url = 'https://jsonplaceholder.typicode.com/users'; // TODO: change to the actual url
-      fetch(url)
-        .then((response) => {
-          if (!response.ok) {
-            throw Error('Request failed');
-          }
-          return response.json();
-        })
-        .then((json) => {
-          this.setState({ data: json });
-        }, () => {
-          this.setState({ error: 'The data failed to load' });
-        });
+      Client.GET(url)
+        .then((data) => { this.setState({ data }); })
+        .catch(() => { this.setState({ error: 'Could not load data' }); });
     }
 
     render() {
@@ -44,7 +36,6 @@ class CompaniesPage extends Component {
             ? <List list={this.state.data} />
             : <Text>Loading...</Text>
             }
-          <p>Loading...</p>
           <ErrorMessage>{this.state.error}</ErrorMessage>
         </Modal>
       );
