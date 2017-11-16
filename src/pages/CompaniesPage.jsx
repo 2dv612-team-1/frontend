@@ -9,7 +9,10 @@ import ErrorMessage from '../components/ErrorMessage';
 
 
 class CompaniesPage extends Component {
-    state = { error: '' };
+    state = {
+      error: '',
+      data: '',
+    };
 
 
     componentDidMount() {
@@ -29,19 +32,6 @@ class CompaniesPage extends Component {
     }
 
     render() {
-      if (!this.state.data) {
-        return (
-          <Modal>
-            <PageTitle>Companies</PageTitle>
-            <Text>Bla bla bla</Text>
-            <Link to="/register">
-              <SubmitButton>Create New Company</SubmitButton>
-            </Link>
-            <p>Loading...</p>
-            <ErrorMessage>{this.state.error}</ErrorMessage>
-          </Modal>
-        );
-      }
       return (
         <Modal>
           <PageTitle>Companies</PageTitle>
@@ -49,7 +39,12 @@ class CompaniesPage extends Component {
           <Link to="/register">
             <SubmitButton>Create New Company</SubmitButton>
           </Link>
-          <List list={this.state.data} />
+          {
+            this.state.data
+            ? <List list={this.state.data} />
+            : <Text>Loading...</Text>
+            }
+          <p>Loading...</p>
           <ErrorMessage>{this.state.error}</ErrorMessage>
         </Modal>
       );
