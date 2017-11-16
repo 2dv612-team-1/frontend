@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import Text from '../elements/Text';
 import Modal from '../components/Modal';
 import PageTitle from '../elements/PageTitle';
 import List from '../components/List';
+import CreateNewButton from '../components/CreateNewButton';
+
 
 class CompaniesPage extends Component {
   constructor(props) {
@@ -30,6 +33,9 @@ class CompaniesPage extends Component {
     if (this.state.requestFailed) {
       return (
         <Modal>
+          <PageTitle>Companies</PageTitle>
+          <Text>Bla bla bla</Text>
+          <CreateNewButton to="/register">Create new company</CreateNewButton>
           <p>Failed!</p>
         </Modal>
       );
@@ -37,6 +43,9 @@ class CompaniesPage extends Component {
     if (!this.state.data) {
       return (
         <Modal>
+          <PageTitle>Companies</PageTitle>
+          <Text>Bla bla bla</Text>
+          <CreateNewButton to="/register">Create new company</CreateNewButton>
           <p>Loading...</p>
         </Modal>
       );
@@ -45,6 +54,7 @@ class CompaniesPage extends Component {
       <Modal>
         <PageTitle>Companies</PageTitle>
         <Text>Bla bla bla</Text>
+        <CreateNewButton to="/register" >Create new company</CreateNewButton>
         <List list={this.state.data} />
       </Modal>
     );
