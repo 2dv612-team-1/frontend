@@ -5,10 +5,11 @@ import Modal from '../components/Modal';
 import PageTitle from '../elements/PageTitle';
 import List from '../components/List';
 import SubmitButton from '../components/SubmitButton';
+import ErrorMessage from '../components/ErrorMessage';
 
 
 class CompaniesPage extends Component {
-    state = { requestFailed: false };
+    state = { error: '' };
 
 
     componentDidMount() {
@@ -23,23 +24,11 @@ class CompaniesPage extends Component {
         .then((json) => {
           this.setState({ data: json });
         }, () => {
-          this.setState({ requestFailed: true });
+          this.setState({ error: 'The data failed to load' });
         });
     }
 
     render() {
-      if (this.state.requestFailed) {
-        return (
-          <Modal>
-            <PageTitle>Companies</PageTitle>
-            <Text>Bla bla bla</Text>
-            <Link to="/register">
-              <SubmitButton>Create New Company</SubmitButton>
-            </Link>
-            <p>Failed!</p>
-          </Modal>
-        );
-      }
       if (!this.state.data) {
         return (
           <Modal>
@@ -49,6 +38,7 @@ class CompaniesPage extends Component {
               <SubmitButton>Create New Company</SubmitButton>
             </Link>
             <p>Loading...</p>
+            <ErrorMessage>{this.state.error}</ErrorMessage>
           </Modal>
         );
       }
@@ -60,6 +50,7 @@ class CompaniesPage extends Component {
             <SubmitButton>Create New Company</SubmitButton>
           </Link>
           <List list={this.state.data} />
+          <ErrorMessage>{this.state.error}</ErrorMessage>
         </Modal>
       );
     }
