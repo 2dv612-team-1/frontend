@@ -4,6 +4,7 @@ import HomePage from '../pages/HomePage';
 import RegisterPage from '../pages/RegisterPage';
 import LoginPage from '../pages/LoginPage';
 import CompaniesPage from '../pages/CompaniesPage';
+import RepresentativesPage from '../pages/RepresentativesPage';
 
 const Routes = () => (
   <div>
@@ -11,6 +12,7 @@ const Routes = () => (
     <Route path="/login" component={LoginPage} />
     <Route path="/register" component={RegisterPage} />
     <Route path="/companies" component={CompaniesPage} />
+    <Route path="/representatives" component={RepresentativesPage} />
   </div>
 );
 

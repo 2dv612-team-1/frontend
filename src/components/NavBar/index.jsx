@@ -9,6 +9,7 @@ const NavBar = () => (
     <MenuItem to="/login">Login</MenuItem>
     <MenuItem to="/register">Register</MenuItem>
     <MenuItem to="/companies">Companies</MenuItem>
+    <MenuItem to="/representatives">Representatives</MenuItem>
   </Container>
 );
 
