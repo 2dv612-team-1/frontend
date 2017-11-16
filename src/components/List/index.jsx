@@ -1,14 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+const defaultProps = {
+  list: [],
+};
 
 const propTypes = {
   list: PropTypes.arrayOf(PropTypes.shape({
     usarname: PropTypes.string.isRequired,
     /* id: PropTypes.number.isRequired, */
-  }).isRequired).isRequired,
+  }).isRequired),
 };
-
 
 const List = ({ list }) => (
   <ol>
@@ -17,6 +19,7 @@ const List = ({ list }) => (
   </ol>
 );
 
+List.defaultProps = defaultProps;
 List.propTypes = propTypes;
 
 export default List;
