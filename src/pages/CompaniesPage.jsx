@@ -12,15 +12,15 @@ import Client from '../libs/Client';
 class CompaniesPage extends Component {
     state = {
       error: '',
-      data: '',
+      data: [],
     };
 
 
     componentDidMount() {
-      const url = 'https://jsonplaceholder.typicode.com/users'; // TODO: change to the actual url
+      /* const url = 'https://jsonplaceholder.typicode.com/users'; // TODO: change to the actual url
       Client.GET(url)
         .then((data) => { this.setState({ data }); })
-        .catch(() => { this.setState({ error: 'Could not load data' }); });
+        .catch(() => { this.setState({ error: 'Could not load data' }); }); */
     }
 
     render() {
