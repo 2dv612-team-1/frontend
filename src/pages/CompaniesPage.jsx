@@ -4,7 +4,7 @@ import Text from '../elements/Text';
 import Modal from '../components/Modal';
 import PageTitle from '../elements/PageTitle';
 import List from '../components/List';
-import CreateNewButton from '../components/CreateNewButton';
+import SubmitButton from '../components/SubmitButton';
 
 
 class CompaniesPage extends Component {
@@ -35,7 +35,9 @@ class CompaniesPage extends Component {
         <Modal>
           <PageTitle>Companies</PageTitle>
           <Text>Bla bla bla</Text>
-          <CreateNewButton to="/register">Create new company</CreateNewButton>
+          <Link to="/register">
+            <SubmitButton>Create New Company</SubmitButton>
+          </Link>
           <p>Failed!</p>
         </Modal>
       );
@@ -45,7 +47,9 @@ class CompaniesPage extends Component {
         <Modal>
           <PageTitle>Companies</PageTitle>
           <Text>Bla bla bla</Text>
-          <CreateNewButton to="/register">Create new company</CreateNewButton>
+          <Link to="/register">
+            <SubmitButton>Create New Company</SubmitButton>
+          </Link>
           <p>Loading...</p>
         </Modal>
       );
@@ -54,7 +58,9 @@ class CompaniesPage extends Component {
       <Modal>
         <PageTitle>Companies</PageTitle>
         <Text>Bla bla bla</Text>
-        <CreateNewButton to="/register" >Create new company</CreateNewButton>
+        <Link to="/register">
+          <SubmitButton>Create New Company</SubmitButton>
+        </Link>
         <List list={this.state.data} />
       </Modal>
     );
