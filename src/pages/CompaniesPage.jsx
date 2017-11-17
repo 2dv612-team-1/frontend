@@ -17,17 +17,17 @@ class CompaniesPage extends Component {
 
 
     componentDidMount() {
-      /* const url = 'https://jsonplaceholder.typicode.com/users'; // TODO: change to the actual url
+      const url = 'https://nanotu.be/companies';
       Client.GET(url)
         .then((data) => { this.setState({ data }); })
-        .catch(() => { this.setState({ error: 'Could not load data' }); }); */
+        .catch(() => { this.setState({ error: 'Could not load data' }); });
     }
 
     render() {
       return (
         <Modal>
           <PageTitle>Companies</PageTitle>
-          <Text>Bla bla bla</Text>
+          <Text>companies...</Text>
           <Link to="/register/company">
             <SubmitButton>Create New Company</SubmitButton>
           </Link>

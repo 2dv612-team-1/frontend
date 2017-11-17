@@ -5,63 +5,36 @@ import Modal from '../components/Modal';
 import PageTitle from '../elements/PageTitle';
 import List from '../components/List';
 import SubmitButton from '../components/SubmitButton';
-
+import ErrorMessage from '../components/ErrorMessage';
+import Client from '../libs/Client';
 
 class RepresentativesPage extends Component {
-  constructor(props) {
-    super(props);
-    this.url = 'https://jsonplaceholder.typicode.com/users'; // TODO: change to the actual url
-    this.state = { requestFailed: false };
-  }
+  state = {
+    error: '',
+    data: [],
+  };
 
   componentDidMount() {
-    /* fetch(this.url)
-      .then((response) => {
-        if (!response.ok) {
-          throw Error('Request failed');
-        }
-        return response.json();
-      })
-      .then((json) => {
-        this.setState({ data: json });
-      }, () => {
-        this.setState({ requestFailed: true, data: [] });
-      }); */
+    const url = 'https://nanotu.be/representatives?token=';
+    Client.GET(url)
+      .then((data) => { this.setState({ data }); })
+      .catch(() => { this.setState({ error: 'Could not load data' }); });
   }
 
   render() {
-    if (this.state.requestFailed) {
-      return (
-        <Modal>
-          <PageTitle>Representatives</PageTitle>
-          <Text>Bla bla bla</Text>
-          <Link to="/register/representative">
-            <SubmitButton>Create New Representative</SubmitButton>
-          </Link>
-          <p>Failed!</p>
-        </Modal>
-      );
-    }
-    if (!this.state.data) {
-      return (
-        <Modal>
-          <PageTitle>Representatives</PageTitle>
-          <Text>Bla bla bla</Text>
-          <Link to="/register/representative">
-            <SubmitButton>Create New Representative</SubmitButton>
-          </Link>
-          <p>Loading...</p>
-        </Modal>
-      );
-    }
     return (
       <Modal>
-        <PageTitle>Representatives</PageTitle>
-        <Text>Bla bla bla</Text>
+        <PageTitle>Representative</PageTitle>
+        <Text>representatives...</Text>
         <Link to="/register/representative">
           <SubmitButton>Create New Representative</SubmitButton>
         </Link>
-        <List list={this.state.data} />
+        {
+          this.state.data
+            ? <List list={this.state.data} />
+            : <Text>Loading...</Text>
+        }
+        <ErrorMessage>{this.state.error}</ErrorMessage>
       </Modal>
     );
   }
