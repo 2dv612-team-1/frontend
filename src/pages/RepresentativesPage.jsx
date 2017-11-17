@@ -15,7 +15,7 @@ class RepresentativesPage extends Component {
   }
 
   componentDidMount() {
-    fetch(this.url)
+    /* fetch(this.url)
       .then((response) => {
         if (!response.ok) {
           throw Error('Request failed');
@@ -25,8 +25,8 @@ class RepresentativesPage extends Component {
       .then((json) => {
         this.setState({ data: json });
       }, () => {
-        this.setState({ requestFailed: true });
-      });
+        this.setState({ requestFailed: true, data: [] });
+      }); */
   }
 
   render() {
@@ -35,7 +35,7 @@ class RepresentativesPage extends Component {
         <Modal>
           <PageTitle>Representatives</PageTitle>
           <Text>Bla bla bla</Text>
-          <Link to="/register">
+          <Link to="/register/representative">
             <SubmitButton>Create New Representative</SubmitButton>
           </Link>
           <p>Failed!</p>
@@ -47,7 +47,7 @@ class RepresentativesPage extends Component {
         <Modal>
           <PageTitle>Representatives</PageTitle>
           <Text>Bla bla bla</Text>
-          <Link to="/register">
+          <Link to="/register/representative">
             <SubmitButton>Create New Representative</SubmitButton>
           </Link>
           <p>Loading...</p>
@@ -58,7 +58,7 @@ class RepresentativesPage extends Component {
       <Modal>
         <PageTitle>Representatives</PageTitle>
         <Text>Bla bla bla</Text>
-        <Link to="/register">
+        <Link to="/register/representative">
           <SubmitButton>Create New Representative</SubmitButton>
         </Link>
         <List list={this.state.data} />
