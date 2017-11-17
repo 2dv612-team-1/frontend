@@ -16,6 +16,7 @@
     "url": "git+https://github.com/2dv612-team-1/frontend.git"
   },
   "license": "ISC",
+  "engines": {},
   "bugs": {
     "url": "https://github.com/2dv612-team-1/frontend/issues"
   },
