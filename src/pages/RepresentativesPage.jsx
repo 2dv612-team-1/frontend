@@ -17,7 +17,7 @@ class RepresentativesPage extends Component {
   componentDidMount() {
     const url = 'https://nanotu.be/representatives?token=';
     Client.GET(url)
-      .then((data) => { this.setState({ data }); })
+      .then((data) => { this.setState({ data: data.representatives }); })
       .catch(() => { this.setState({ error: 'Could not load data' }); });
   }
 

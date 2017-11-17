@@ -45,7 +45,9 @@ class Client {
       headers,
     };
 
-    return fetch(uri, options)
+    const url = uri.includes('token') ? (`${uri}${Auth.getToken()}`) : uri;
+
+    return fetch(url, options)
       .then(response => response.json())
       .catch((err) => { console.log(err); });
   }
