@@ -39,6 +39,17 @@ Så slipper ni krångla med stil-varningar.
 - Styled Components
 - React Router
 
+# Nuvarande Test stack
+- Jest
+- Enzyme
+
+# Nuvarande Config stack
+- Babel
+- ESLint
+- Prettier
+- WebPack
+- WebPack Dev Server
+
 Note: React router har genomgått ganska stora förändringar senaste tiden så om ni undrar nått om det så kan ni fråga mig eller googla "react router version 4".
 (finns mycket information på google om gamla versioner, så lätt man läser om fel)
 
