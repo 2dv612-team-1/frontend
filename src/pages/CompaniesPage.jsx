@@ -19,7 +19,7 @@ class CompaniesPage extends Component {
     componentDidMount() {
       const url = 'https://nanotu.be/companies';
       Client.GET(url)
-        .then((data) => { this.setState({ data }); })
+        .then((data) => { this.setState({ data: data.companies }); })
         .catch(() => { this.setState({ error: 'Could not load data' }); });
     }
 
