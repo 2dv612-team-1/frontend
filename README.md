@@ -5,6 +5,13 @@ Starta dev server: `ǹpm start`
 
 Lyssna efter förändringar för att automatisk bygga en bundle: `npm run bundle`
 
+För att köra tester `npm run test`
+
+för att köra tester med test coverage `npm run test coverage`
+
+för att köra tester med test coverage i watch mode på endast förändrade filer sedan senaste commit `npma run test converage watch`
+
+för att köra tester i watch mode på endast förändrade filer sedan senaste commit `npm run test watch`
 
 # Eslint
 Har lagt till en eslint config som bygger på airbnb config. Airbnb's style guide
