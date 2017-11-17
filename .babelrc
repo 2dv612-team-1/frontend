@@ -1,0 +1,8 @@
+{
+  "presets": [
+     "react",
+     "es2015",
+     "react-app"
+  ],
+  "plugins": ["babel-plugin-transform-class-properties"],
+}
