@@ -22,6 +22,17 @@ Lintern tvingar singleqiote (') så ni kan kolla om den fungerar genom att lägg
 ett dubblequote (") någonstans och se om den reagerar på det, gör den inte det så
 kan det hända att ni måste installera ett ESlint plugin till er IDE.
 
+# Prettier
+
+ESLint använder sig av prettier. Installera Prettier för er IDE, och kolla hur instruktionerna för hur man gör för att automatiskt formatera kod.
+Så slipper ni krångla med stil-varningar.
+
+[Prettier for WebStorm](https://prettier.io/docs/en/webstorm.html)
+
+[Prettier for SubLime Text](https://packagecontrol.io/packages/JsPrettier)
+
+[Prettier for Atom](https://github.com/prettier/prettier-atom)
+
 # Nuvarande React stack
 - React
 - ReactDom
