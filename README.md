@@ -69,3 +69,11 @@ Har har försökt sätta upp en grund / exempel componentet så snarlik som jag 
 Hur man förlänger en annan komponent med styled components -> se MenuItem
 
 Hur man använder props i styled components -> se Text
+
+# Auth och API
+- libs/Client används för API
+- libs/Auth används för Auth.
+
+- Exempel för hur man skickar POST utan data finns i pages/RegisterPage
+- Exempel för hur man skickar POST med data finns i pages/LoginPage
+- Exempel för hur man skickar GET finns i pages/CompaniesPage 
