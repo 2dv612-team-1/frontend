@@ -28,7 +28,7 @@ class CompaniesPage extends Component {
         <Modal>
           <PageTitle>Companies</PageTitle>
           <Text>Bla bla bla</Text>
-          <Link to="/register">
+          <Link to="/register/company">
             <SubmitButton>Create New Company</SubmitButton>
           </Link>
           {
