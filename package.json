@@ -7,7 +7,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
+    "test coverage": "jest --coverage",
+    "test coverage watch": "jest --coverage --watch",
+    "test watch": "jest --watch",
     "bundle": "webpack",
     "start": "webpack-dev-server --hot --inline"
   },
