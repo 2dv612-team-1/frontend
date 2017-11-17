@@ -1,5 +1,6 @@
 {
   "name": "frontend",
+  "author": "JohanG2012, oc777, isabelberg",
   "keywords": ["React", "styled-components", "react-routes-dom", "jest", "enzyme", "webpack"],
   "version": "1.0.0",
   "description": "",
