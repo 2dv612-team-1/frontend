@@ -1,7 +1,6 @@
-import React from 'react';
-import MenuItem from './MenuItem';
-import Container from './Container';
-
+import React from "react";
+import MenuItem from "./MenuItem";
+import Container from "./Container";
 
 const NavBar = () => (
   <Container>

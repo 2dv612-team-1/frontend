@@ -1,24 +1,28 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import Text from '../elements/Text';
-import Modal from '../components/Modal';
-import PageTitle from '../elements/PageTitle';
-import List from '../components/List';
-import SubmitButton from '../components/SubmitButton';
-import ErrorMessage from '../components/ErrorMessage';
-import Client from '../libs/Client';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import Text from "../elements/Text";
+import Modal from "../components/Modal";
+import PageTitle from "../elements/PageTitle";
+import List from "../components/List";
+import SubmitButton from "../components/SubmitButton";
+import ErrorMessage from "../components/ErrorMessage";
+import Client from "../libs/Client";
 
 class RepresentativesPage extends Component {
   state = {
-    error: '',
-    data: [],
+    error: "",
+    data: []
   };
 
   componentDidMount() {
-    const url = 'https://nanotu.be/representatives?token=';
+    const url = "https://nanotu.be/representatives?token=";
     Client.GET(url)
-      .then((data) => { this.setState({ data: data.representatives }); })
-      .catch(() => { this.setState({ error: 'Could not load data' }); });
+      .then(data => {
+        this.setState({ data: data.representatives });
+      })
+      .catch(() => {
+        this.setState({ error: "Could not load data" });
+      });
   }
 
   render() {
@@ -29,11 +33,11 @@ class RepresentativesPage extends Component {
         <Link to="/register/representative">
           <SubmitButton>Create New Representative</SubmitButton>
         </Link>
-        {
-          this.state.data
-            ? <List list={this.state.data} />
-            : <Text>Loading...</Text>
-        }
+        {this.state.data ? (
+          <List list={this.state.data} />
+        ) : (
+          <Text>Loading...</Text>
+        )}
         <ErrorMessage>{this.state.error}</ErrorMessage>
       </Modal>
     );
