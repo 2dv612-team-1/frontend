@@ -9,7 +9,7 @@ För att köra tester `npm run test`
 
 för att köra tester med test coverage `npm run coverage`
 
-för att köra tester med test coverage i watch mode på endast förändrade filer sedan senaste commit `npma run converage-watch`
+för att köra tester med test coverage i watch mode på endast förändrade filer sedan senaste commit `npm run converage-watch`
 
 för att köra tester i watch mode på endast förändrade filer sedan senaste commit `npm run test-watch`
 
