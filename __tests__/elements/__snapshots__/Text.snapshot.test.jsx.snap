@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Text when props are defined Should match snapshot 1`] = `
+.c0 {
+  font-size: 16px;
+  color: black;
+  text-align: center;
+}
+
+<p
+  className="c0"
+>
+  Text
+</p>
+`;
+
+exports[`Text when props are undefined Should match snapshot 1`] = `
+.c0 {
+  font-size: 16px;
+  color: black;
+  text-align: left;
+}
+
+<p
+  className="c0"
+/>
+`;
