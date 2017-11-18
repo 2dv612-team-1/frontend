@@ -28,9 +28,9 @@ describe("SubmitButton", () => {
   });
 
   it("should set props.children as value", () => {
-    props.children = "Text"
+    props.children = "Text";
     const input = Wrapper().find("input");
     const inputType = input.props().value;
     expect(inputType).toBe(props.children);
-  })
+  });
 });
