@@ -116,6 +116,7 @@ Hur man använder props i styled components -> se Text
 
 # Vad är snapshot testing?
 [Jest - Snapshot testing](https://facebook.github.io/jest/docs/en/snapshot-testing.html)
+
 [Jest - Snapshot testing React components with enzyme](https://www.jstwister.com/post/jest-snapshot-testing-with-enzyme/)
 
 # Test CheckList (Unit Tests/Semi integration tests)
@@ -143,10 +144,10 @@ Se: Modal, ErrorMessage/Text
 Se: ErrorMessage, List, SubmitButton
 
 ## Tester som testar links och routes
-NavBar, Routes
+Se: NavBar, Routes
 
 ## Tester för props baserade styles
-Text, PageTitle, NavBar/Container, NavBar/MenuItem
+Se: Text, PageTitle, NavBar/Container, NavBar/MenuItem
 
 ## Tester som använder mocks för funktioner. onChange, onClick, onSubmit etc
-TextInput, LoginForm, RegisterForm
+Se: TextInput, LoginForm, RegisterForm
