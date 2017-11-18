@@ -123,6 +123,7 @@ Hur man använder props i styled components -> se Text
 - Testa user interactions (klick etc)
 - Testa så att metoder som skickas till komponenten via prop fungerar som de ska.
 - Testa så att lifecycle metoder gör det dom ska (componentDidMount etc)
+- Testa så att child components renderar (integration test)
 -
 - 100% Test Coverage? Långt ifrån? Nära nog? Sikta på minst 80%
 
