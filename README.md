@@ -42,6 +42,7 @@ Så slipper ni krångla med stil-varningar.
 # Nuvarande Test stack
 - Jest
 - Enzyme
+- Jest Styled Components
 
 # Nuvarande Config stack
 - Babel
