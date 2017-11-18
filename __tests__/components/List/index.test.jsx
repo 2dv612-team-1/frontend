@@ -39,10 +39,10 @@ describe("List", () => {
     it("should render a list", () => {
       props.list = [
         { username: "karl" },
-        { username: "karl" },
-        { username: "karl" },
-        { username: "karl" },
-        { username: "karl" }
+        { username: "john" },
+        { username: "doe" },
+        { username: "liz" },
+        { username: "hindi" }
       ];
 
       const listItems = Wrapper()
