@@ -15,15 +15,11 @@ describe("Modal", () => {
 
   // Reset Component and Props before each test.
   beforeEach(() => {
-    props = {
-      onChange: undefined,
-      onSubmit: undefined,
-      fields: {}
-    };
+    props = undefined;
     wrapper = undefined;
   });
 
   it("should render", () => {});
-    const div = Wrapper().find("div");
-    expect(div.length).toBe(1)
+  const div = Wrapper().find("div");
+  expect(div.length).toBe(1);
 });
