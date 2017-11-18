@@ -63,7 +63,9 @@ describe("RegisterForm", () => {
     expect(input.props().value).toBe(props.fields.username);
   });
 
-  describe("User fillouts the form ", () => {
+
+
+  describe("Company/Representative fillouts the form ", () => {
     it("should call onChange method on username form", () => {
       props.onChange = jest.fn();
       const input = Wrapper()
@@ -84,7 +86,7 @@ describe("RegisterForm", () => {
       expect(props.onChange).toHaveBeenCalled();
     });
 
-    describe("User submits the form ", () => {
+    describe("Company/Representative submits the form ", () => {
       it("should call onSubmit", () => {
         props.onSubmit = jest.fn();
         const form = Wrapper().find("form");
