@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import Text from "../elements/Text";
 import Modal from "../components/Modal";
 import Client from "../libs/Client";
-import Register from "../components/Register";
+import RegisterForm from "../components/RegisterForm";
 import Auth from "../libs/Auth";
 
 const defaultProps = {
@@ -88,7 +88,7 @@ class RegisterPage extends Component {
         {this.state.redirect ? (
           <Redirect to="/login" />
         ) : (
-          <Register
+          <RegisterForm
             onSubmit={this.handleSubmit}
             role={this.props.match.params.role}
             onChange={this.onChange}
