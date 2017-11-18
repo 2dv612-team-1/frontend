@@ -133,7 +133,7 @@ Hur man använder props i styled components -> se Text
 Se: Modal, ErrorMessage/Text
 
 ## Tester som testar Props
-Se: ErrorMessage, List
+Se: ErrorMessage, List, SubmitButton
 
 ## Tester som testar links och routes
 NavBar
