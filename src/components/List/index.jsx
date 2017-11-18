@@ -8,8 +8,8 @@ const defaultProps = {
 const propTypes = {
   list: PropTypes.arrayOf(
     PropTypes.shape({
-      usarname: PropTypes.string.isRequired
-    }).isRequired
+      usarname: PropTypes.string
+    })
   )
 };
 
