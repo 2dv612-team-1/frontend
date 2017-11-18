@@ -136,6 +136,6 @@ Se: Modal, ErrorMessage/Text
 Se: ErrorMessage, List, SubmitButton
 
 ## Tester som testar links och routes
-NavBar
+NavBar, Routes
 
 Mer exempel kommer...
