@@ -6,5 +6,6 @@ module.exports = {
   moduleFileExtensions: ["js", "jsx"],
   moduleNameMapper: {
     "^.+\\.(css|less)$": "identity-obj-proxy"
-  }
+  },
+  snapshotSerializers: ["enzyme-to-json/serializer"]
 };
