@@ -106,3 +106,29 @@ Hur man använder props i styled components -> se Text
 - Exempel för hur man skickar POST utan data finns i pages/RegisterPage
 - Exempel för hur man skickar POST med data finns i pages/LoginPage
 - Exempel för hur man skickar GET finns i pages/CompaniesPage
+
+# Komma igång med tester
+[How to Test React Components Using Jest](https://www.sitepoint.com/test-react-components-jest/)
+
+# Att skriva bra tester för react
+[The Right Way to Test React Components](https://medium.freecodecamp.org/the-right-way-to-test-react-components-548a4736ab22)
+
+# Test CheckList (Unit Tests)
+
+- Testa så att komponenten är definerad/renderad
+- Renderar komponenten olika saker, beronde på olika faktorer (if/ternary) - Test det
+- Testa så att komponenten skriver ut props där den ska
+- Testa så att komponenten uppdaterar state när den ska
+- Testa så att komponenten skriver ut state där den ska
+- Testa user interactions (klick etc)
+- Testa så att metoder som skickas till komponenten via prop fungerar som de ska.
+- Testa så att lifecycle metoder gör det dom ska (componentDidMount etc)
+-
+- 100% Test Coverage? Långt ifrån? Nära nog? Sikta på minst 80%
+
+# Exempel på tester
+
+## Testa Props
+Se: ErrorMessage, List
+
+Mer exempel kommer...
