@@ -113,7 +113,10 @@ Hur man använder props i styled components -> se Text
 # Att skriva bra tester för react
 [The Right Way to Test React Components](https://medium.freecodecamp.org/the-right-way-to-test-react-components-548a4736ab22)
 
-# Test CheckList (Unit Tests)
+# Vad är snapshot testing?
+[Jest - Snapshot testing](https://facebook.github.io/jest/docs/en/snapshot-testing.html)
+
+# Test CheckList (Unit Tests/Semi integration tests)
 
 - Testa så att komponenten är definerad/renderad
 - Renderar komponenten olika saker, beronde på olika faktorer (if/ternary) - Test det
@@ -123,7 +126,9 @@ Hur man använder props i styled components -> se Text
 - Testa user interactions (klick etc)
 - Testa så att metoder som skickas till komponenten via prop fungerar som de ska.
 - Testa så att lifecycle metoder gör det dom ska (componentDidMount etc)
-- Testa så att child components renderar (integration test)
+- Testa så att child components får rätt props (integration test)
+- Testa så att child components finns med i komponentent (integration test)
+- Testa props baserade styles i styled components
 -
 - 100% Test Coverage? Långt ifrån? Nära nog? Sikta på minst 80%
 
@@ -137,5 +142,8 @@ Se: ErrorMessage, List, SubmitButton
 
 ## Tester som testar links och routes
 NavBar, Routes
+
+## Tester för props baserade styles
+Text, PageTitle, NavBar/Container, NavBar/MenuItem
 
 Mer exempel kommer...
