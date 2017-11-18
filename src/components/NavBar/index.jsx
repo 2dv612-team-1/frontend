@@ -4,11 +4,11 @@ import Container from "./Container";
 
 const NavBar = () => (
   <Container>
-    <MenuItem to="/">Home</MenuItem>
-    <MenuItem to="/login">Login</MenuItem>
-    <MenuItem to="/register">Register</MenuItem>
-    <MenuItem to="/companies">Companies</MenuItem>
-    <MenuItem to="/representatives">Representatives</MenuItem>
+    <MenuItem to="/">home</MenuItem>
+    <MenuItem to="/login">login</MenuItem>
+    <MenuItem to="/register">register</MenuItem>
+    <MenuItem to="/companies">companies</MenuItem>
+    <MenuItem to="/representatives">representatives</MenuItem>
   </Container>
 );
 

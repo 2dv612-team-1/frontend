@@ -7,6 +7,7 @@ const MenuItem = styled(Link)`
   font-size: 18px;
   color: ${colors.secondary};
   text-decoration: none;
+  text-transform: capitalize;
 
   &:hover {
     text-decoration: underline;
