@@ -130,9 +130,12 @@ Hur man använder props i styled components -> se Text
 # Exempel på tester
 
 ## Tester som testar render
-Se: Modal 
+Se: Modal, ErrorMessage/Text
 
 ## Tester som testar Props
 Se: ErrorMessage, List
+
+## Tester som testar links och routes
+NavBar
 
 Mer exempel kommer...
