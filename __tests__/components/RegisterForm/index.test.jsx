@@ -63,7 +63,29 @@ describe("RegisterForm", () => {
     expect(input.props().value).toBe(props.fields.username);
   });
 
+  describe("A admin is browsing the page", () => {
+    it("should not show input fields", () => {
+      props.role = "admin";
+      const input = Wrapper().find(TextInput);
+      expect(input.length).toBe(0);
+    })
+  })
 
+  describe("A company is browsing the page", () => {
+    it("should not show input fields", () => {
+      props.role = "company";
+      const input = Wrapper().find(TextInput);
+      expect(input.length).toBeGreaterThan(0);
+    })
+  })
+
+  describe("A representative is browsing the page", () => {
+    it("should not show input fields", () => {
+      props.role = "representative";
+      const input = Wrapper().find(TextInput);
+      expect(input.length).toBeGreaterThan(0);
+    })
+  })
 
   describe("Company/Representative fillouts the form ", () => {
     it("should call onChange method on username form", () => {
