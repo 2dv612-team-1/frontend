@@ -14,6 +14,11 @@ class Auth {
   static getToken() {
     return localStorage.getItem("token");
   }
+
+  // Temporär lösning för role
+  static getRole() {
+    return localStorage.getItem("role");
+  }
 }
 
 export default Auth;

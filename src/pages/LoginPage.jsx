@@ -10,7 +10,8 @@ class LoginPage extends Component {
   state = {
     fields: {
       username: "",
-      password: ""
+      password: "",
+      role: "admin"
     },
     redirect: false
   };
@@ -23,12 +24,16 @@ class LoginPage extends Component {
 
   onSubmit = event => {
     event.preventDefault();
-    const fields = {
-      username: "",
-      password: ""
-    };
 
-    const url = "https://nanotu.be/admins/auth";
+    // Temp lösning för login
+    let url = "https://nanotu.be/admins/auth";
+    if (this.state.fields.role === "representative") {
+      url = "http://nanotu.be/representatives/auth";
+    }
+    if (this.state.fields.role === "company") {
+      url = "http://nanotu.be/companies/auth";
+    }
+
     Client.POST(url, this.state.fields)
       .then(data => {
         Auth.authenticateUser(data.token);
@@ -38,6 +43,15 @@ class LoginPage extends Component {
         console.log(err);
       });
 
+    // Temp lösning för role
+    localStorage.setItem("role", this.state.fields.role);
+    location.reload();
+
+    // Reset state
+    const fields = {
+      username: "",
+      password: ""
+    };
     this.setState({ fields });
   };
 
