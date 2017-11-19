@@ -20,8 +20,9 @@ class RepresentativesPage extends Component {
       .then(data => {
         this.setState({ data: data.representatives });
       })
-      .catch(() => {
+      .catch((err) => {
         this.setState({ error: "Could not load data" });
+        console.log(err);
       });
   }
 
