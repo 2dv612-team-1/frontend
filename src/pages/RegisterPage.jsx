@@ -28,10 +28,18 @@ class RegisterPage extends Component {
     fields: {
       username: "",
       password: "",
-      jwt: Auth.getToken()
+      jwt: ""
     },
     redirect: false
   };
+
+  componentWillMount() {
+    const fields = {
+      jwt: Auth.getToken()
+    };
+
+    this.setState({ fields });
+  }
 
   onChange = event => {
     const fields = Object.assign({}, this.state.fields);
