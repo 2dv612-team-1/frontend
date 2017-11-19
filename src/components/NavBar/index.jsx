@@ -6,7 +6,7 @@ const NavBar = () => (
   <Container>
     <MenuItem to="/">home</MenuItem>
     <MenuItem to="/login">login</MenuItem>
-    <MenuItem to="/register">register</MenuItem>
+    <MenuItem to="/register/admin">register</MenuItem>
     <MenuItem to="/companies">companies</MenuItem>
     <MenuItem to="/representatives">representatives</MenuItem>
   </Container>
