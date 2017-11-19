@@ -50,7 +50,7 @@ describe("NavBar", () => {
 
   it("should have link to register", () => {
     const text = "register";
-    const route = "/register";
+    const route = "/register/admin";
     const link = Wrapper()
       .find(MenuItem)
       .at(2);
