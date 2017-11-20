@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Text from "../elements/Text";
 import Modal from "../components/Modal";
-import PageTitle from "../elements/PageTitle";
+import PageTitle from "../components/PageTitle";
 import List from "../components/List";
 import SubmitButton from "../components/SubmitButton";
 import ErrorMessage from "../components/ErrorMessage";
