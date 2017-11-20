@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Input from "./Input";
-import Label from "./Label";
+import Input from "../../elements/Input";
+import Label from "../../elements/Label";
 
 const propTypes = {
   label: PropTypes.string.isRequired,
