@@ -35,6 +35,6 @@ const NavBar = ({ role }) => (
 );
 
 NavBar.defaultProps = defaultProps;
-NavBar.propTyps = propTypes;
+NavBar.propTypes = propTypes;
 
 export default NavBar;
