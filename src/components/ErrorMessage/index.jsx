@@ -10,7 +10,7 @@ const defaultProps = {
   children: ""
 };
 
-const ErrorMessage = ({ children }) => <Text>{children}</Text>;
+const ErrorMessage = ({ children }) => <Text error>{children}</Text>;
 
 ErrorMessage.defaultProps = defaultProps;
 ErrorMessage.propTypes = propTypes;
