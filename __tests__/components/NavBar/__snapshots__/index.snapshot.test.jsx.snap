@@ -40,6 +40,11 @@ exports[`NavBar When loggedin as company should render correctly 1`] = `
     >
       login
     </Styled(Link)>
+    <Styled(Link)
+      to="/register/customer"
+    >
+      register
+    </Styled(Link)>
   </div>
   <div>
     <Styled(Link)
@@ -69,6 +74,11 @@ exports[`NavBar When loggedin as representative should render correctly 1`] = `
     >
       login
     </Styled(Link)>
+    <Styled(Link)
+      to="/register/customer"
+    >
+      register
+    </Styled(Link)>
   </div>
 </styled.div>
 `;
@@ -85,6 +95,11 @@ exports[`NavBar When not loggedin should render correctly 1`] = `
       to="/login"
     >
       login
+    </Styled(Link)>
+    <Styled(Link)
+      to="/register/customer"
+    >
+      register
     </Styled(Link)>
   </div>
 </styled.div>
