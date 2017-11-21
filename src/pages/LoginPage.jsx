@@ -33,6 +33,10 @@ class LoginPage extends Component {
     if (this.state.fields.role === "company") {
       url = "http://nanotu.be/companies/auth";
     }
+    if (this.state.fields.role === "customer") {
+      url = "http://nanotu.be/auth";
+    }
+
 
     Client.POST(url, this.state.fields)
       .then(data => {

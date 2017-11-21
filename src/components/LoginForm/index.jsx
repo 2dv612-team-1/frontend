@@ -32,6 +32,7 @@ const LoginForm = ({ onChange, onSubmit, fields }) => (
       <option value="admin">admin</option>
       <option value="representative">representative</option>
       <option value="company">company</option>
+      <option value="customer">customer</option>
     </select>
     <SubmitButton>Login</SubmitButton>
   </form>
