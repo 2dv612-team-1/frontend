@@ -1,6 +1,7 @@
 import React from "react";
 import { shallow } from "enzyme";
 import HomePage from "../../src/pages/HomePage";
+import Modal from "../../src/components/Modal";
 
 describe("HomePage", () => {
   let props;
@@ -20,7 +21,7 @@ describe("HomePage", () => {
   });
 
   it("should render", () => {
-    const homePage = Wrapper().find("div");
+    const homePage = Wrapper().find(Modal);
     expect(homePage.length).toBeGreaterThan(0);
   });
 });
