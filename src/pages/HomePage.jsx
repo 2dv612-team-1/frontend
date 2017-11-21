@@ -1,10 +1,11 @@
 import React from "react";
-import Text from "../elements/Text";
+import PageTitle from "../components/PageTitle";
+import Modal from "../components/Modal";
 
 const HomePage = () => (
-  <div>
-    <Text>Welcome</Text>
-  </div>
+  <Modal>
+    <PageTitle>Welcome</PageTitle>
+  </Modal>
 );
 
 export default HomePage;
