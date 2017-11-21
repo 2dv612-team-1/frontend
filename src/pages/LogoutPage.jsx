@@ -7,15 +7,13 @@ class LogoutPage extends Component {
     redirect: false
   };
 
-  componentDidMount() {
+  componentWillMount() {
     Auth.removeRole();
     this.setState({ redirect: true });
   }
 
   render() {
-    return (
-      this.state.redirect ? <Redirect to="/" /> : null
-    );
+    return this.state.redirect ? <Redirect to="/" /> : null;
   }
 }
 
