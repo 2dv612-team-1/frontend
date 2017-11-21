@@ -1,0 +1,91 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavBar When loggedin as admin should render correctly 1`] = `
+<styled.div>
+  <Styled(Link)
+    to="/"
+  >
+    home
+  </Styled(Link)>
+  <div>
+    <Styled(Link)
+      to="/register/company"
+    >
+      register
+    </Styled(Link)>
+    <Styled(Link)
+      to="/companies"
+    >
+      companies
+    </Styled(Link)>
+    <Styled(Link)
+      to="/logout"
+    >
+      logout
+    </Styled(Link)>
+  </div>
+</styled.div>
+`;
+
+exports[`NavBar When loggedin as company should render correctly 1`] = `
+<styled.div>
+  <Styled(Link)
+    to="/"
+  >
+    home
+  </Styled(Link)>
+  <div>
+    <Styled(Link)
+      to="/login"
+    >
+      login
+    </Styled(Link)>
+  </div>
+  <div>
+    <Styled(Link)
+      to="/register/representative"
+    >
+      register
+    </Styled(Link)>
+    <Styled(Link)
+      to="/representatives"
+    >
+      representatives
+    </Styled(Link)>
+  </div>
+</styled.div>
+`;
+
+exports[`NavBar When loggedin as representative should render correctly 1`] = `
+<styled.div>
+  <Styled(Link)
+    to="/"
+  >
+    home
+  </Styled(Link)>
+  <div>
+    <Styled(Link)
+      to="/login"
+    >
+      login
+    </Styled(Link)>
+  </div>
+</styled.div>
+`;
+
+exports[`NavBar When not loggedin should render correctly 1`] = `
+<styled.div>
+  <Styled(Link)
+    to="/"
+  >
+    home
+  </Styled(Link)>
+  <div>
+    <Styled(Link)
+      to="/login"
+    >
+      login
+    </Styled(Link)>
+  </div>
+</styled.div>
+`;
