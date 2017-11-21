@@ -26,15 +26,15 @@ class LoginPage extends Component {
     event.preventDefault();
 
     // Temp lösning för login
-    let url = "https://nanotu.be/admins/auth";
+    let url = "https://nanotu.be/auth";
     if (this.state.fields.role === "representative") {
-      url = "http://nanotu.be/representatives/auth";
+      url = "https://nanotu.be/auth";
     }
     if (this.state.fields.role === "company") {
-      url = "http://nanotu.be/companies/auth";
+      url = "https://nanotu.be/auth";
     }
     if (this.state.fields.role === "customer") {
-      url = "http://nanotu.be/auth";
+      url = "https://nanotu.be/auth";
     }
 
 
