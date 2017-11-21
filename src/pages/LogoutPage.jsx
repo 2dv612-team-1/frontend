@@ -9,6 +9,7 @@ class LogoutPage extends Component {
 
   componentWillMount() {
     Auth.removeRole();
+    Auth.deauthenticateUser()
     this.setState({ redirect: true });
   }
 
