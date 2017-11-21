@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Routes should render correctly 1`] = `
+<div>
+  <Route
+    component={[Function]}
+    exact={true}
+    path="/"
+  />
+  <Route
+    component={[Function]}
+    path="/login"
+  />
+  <Route
+    component={[Function]}
+    path="/logout"
+  />
+  <Route
+    component={[Function]}
+    path="/register/:role"
+  />
+  <AuthRoute
+    access="admin"
+  >
+    <Route
+      component={[Function]}
+      path="/companies"
+    />
+  </AuthRoute>
+  <AuthRoute
+    access="company"
+  >
+    <Route
+      component={[Function]}
+      path="/representatives"
+    />
+  </AuthRoute>
+</div>
+`;
