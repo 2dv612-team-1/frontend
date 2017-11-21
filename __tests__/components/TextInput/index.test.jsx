@@ -1,8 +1,8 @@
 import React from "react";
 import { shallow } from "enzyme";
 import TextInput from "../../../src/components/TextInput/";
-import Input from "../../../src/components/TextInput/Input";
-import Label from "../../../src/components/TextInput/Label";
+import Input from "../../../src/elements/Input";
+import Label from "../../../src/elements/Label";
 
 describe("TextInput", () => {
   let props;
