@@ -80,7 +80,7 @@ class RegisterPage extends Component {
         this.register("https://nanotu.be/companies");
         break;
       case "customer":
-        this.register("http://nanotu.be/consumers");
+        this.register("https://nanotu.be/consumers");
         break;
       default:
     }
