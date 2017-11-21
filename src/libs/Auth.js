@@ -20,6 +20,7 @@ class Auth {
     return localStorage.getItem("role");
   }
 
+  // Temporär lösning för role
   static removeRole() {
     return localStorage.removeItem("role");
   }
