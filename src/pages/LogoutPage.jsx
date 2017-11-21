@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
-import Modal from "../components/Modal";
 import Auth from "../libs/Auth";
 
 class LogoutPage extends Component {
