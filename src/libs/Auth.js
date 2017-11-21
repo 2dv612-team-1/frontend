@@ -19,6 +19,10 @@ class Auth {
   static getRole() {
     return localStorage.getItem("role");
   }
+
+  static removeRole() {
+    return localStorage.removeItem("role");
+  }
 }
 
 export default Auth;

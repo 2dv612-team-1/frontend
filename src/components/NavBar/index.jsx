@@ -14,13 +14,17 @@ const propTypes = {
 const NavBar = ({ role }) => (
   <Container>
     <MenuItem to="/">home</MenuItem>
-    <MenuItem to="/login">login</MenuItem>
     {role === "admin" ? (
       <div>
         <MenuItem to="/register/company">register</MenuItem>
         <MenuItem to="/companies">companies</MenuItem>
+        <MenuItem to="/logout">logout</MenuItem>
       </div>
-    ) : null}
+    ) : (
+      <div>
+        <MenuItem to="/login">login</MenuItem>
+      </div>
+    )}
     {role === "company" ? (
       <div>
         <MenuItem to="/register/representative">register</MenuItem>
