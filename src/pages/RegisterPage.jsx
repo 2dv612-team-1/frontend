@@ -79,6 +79,9 @@ class RegisterPage extends Component {
       case "company":
         this.register("https://nanotu.be/companies");
         break;
+      case "customer":
+        this.register("http://nanotu.be/consumers");
+        break;
       default:
     }
     // Reset state
