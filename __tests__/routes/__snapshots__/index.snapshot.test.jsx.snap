@@ -21,6 +21,7 @@ exports[`Routes should render correctly 1`] = `
   />
   <AuthRoute
     access="admin"
+    role={null}
   >
     <Route
       component={[Function]}
@@ -29,6 +30,7 @@ exports[`Routes should render correctly 1`] = `
   </AuthRoute>
   <AuthRoute
     access="company"
+    role={null}
   >
     <Route
       component={[Function]}
