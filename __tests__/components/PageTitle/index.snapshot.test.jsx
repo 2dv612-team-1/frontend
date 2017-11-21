@@ -2,8 +2,8 @@ import React from "react";
 import { shallow } from "enzyme";
 import toJson from "enzyme-to-json";
 import "jest-styled-components";
-import PageTitle from "../../src/elements/PageTitle";
-import colors from "../../src/constants/colors";
+import PageTitle from "../../../src/components/PageTitle";
+import colors from "../../../src/constants/colors";
 
 describe("PageTitle", () => {
   let props;
