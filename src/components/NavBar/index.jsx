@@ -23,6 +23,7 @@ const NavBar = ({ role }) => (
     ) : (
       <div>
         <MenuItem to="/login">login</MenuItem>
+        <MenuItem to="/register/customer">register</MenuItem>
       </div>
     )}
     {role === "company" ? (
