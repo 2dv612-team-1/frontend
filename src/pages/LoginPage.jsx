@@ -37,7 +37,6 @@ class LoginPage extends Component {
       url = "https://nanotu.be/auth";
     }
 
-
     Client.POST(url, this.state.fields)
       .then(data => {
         Auth.authenticateUser(data.token);
