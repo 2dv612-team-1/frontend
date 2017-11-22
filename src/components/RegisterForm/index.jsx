@@ -33,7 +33,7 @@ const RegisterForm = ({ role, onChange, onSubmit, fields }) => (
         />
       </div>
     )}
-    <Button form>Register</Button>
+    <Button>Register</Button>
   </Form>
 );
 

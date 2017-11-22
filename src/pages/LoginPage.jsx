@@ -1,17 +1,25 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
-import Text from "../elements/Text";
+import PropTypes from "prop-types";
 import Modal from "../components/Modal";
 import LoginForm from "../components/LoginForm";
 import Client from "../libs/Client";
 import Auth from "../libs/Auth";
+import PageTitle from "../components/PageTitle";
+
+const defaultProps = {
+  admin: ""
+};
+
+const propTypes = {
+  admin: PropTypes.string
+};
 
 class LoginPage extends Component {
   state = {
     fields: {
       username: "",
-      password: "",
-      role: "admin"
+      password: ""
     },
     redirect: false
   };
@@ -24,21 +32,16 @@ class LoginPage extends Component {
 
   onSubmit = event => {
     event.preventDefault();
+    // this.setState({ admin: this.props.route });
+    const url =
+      this.props.admin === "true"
+        ? "https://nanotu.be/admins/auth"
+        : "https://nanotu.be/auth";
 
-    // Temp lösning för login
-    let url = "https://nanotu.be/auth";
-    if (this.state.fields.role === "representative") {
-      url = "https://nanotu.be/auth";
-    }
-    if (this.state.fields.role === "company") {
-      url = "https://nanotu.be/auth";
-    }
-    if (this.state.fields.role === "customer") {
-      url = "https://nanotu.be/auth";
-    }
-
+    console.log(url);
     Client.POST(url, this.state.fields)
       .then(data => {
+        // console.log(data.token);
         Auth.authenticateUser(data.token);
         this.setState({ redirect: true });
       })
@@ -47,8 +50,8 @@ class LoginPage extends Component {
       });
 
     // Temp lösning för role
-    localStorage.setItem("role", this.state.fields.role);
-    location.reload();
+    // localStorage.setItem("role", this.state.fields.role);
+    // location.reload();
 
     // Reset state
     const fields = {
@@ -61,16 +64,18 @@ class LoginPage extends Component {
   render() {
     return (
       <Modal>
-        <Text center>Här kan du logga in...</Text>
+        <PageTitle>Login</PageTitle>
         <LoginForm
           fields={this.state.fields}
           onChange={this.onChange}
           onSubmit={this.onSubmit}
         />
-        {this.state.redirect ? <Redirect to="/companies" /> : null}
+        {this.state.redirect ? <Redirect to="/" /> : null}
       </Modal>
     );
   }
 }
 
+LoginPage.defaultProps = defaultProps;
+LoginPage.propTypes = propTypes;
 export default LoginPage;

@@ -1,22 +1,19 @@
 import React from "react";
 import PropTypes from "prop-types";
 import TextInput from "../TextInput";
-import DropDown from "../Select";
 import Button from "../Button";
-import Form from "../../elements/Form";
 
 const propTypes = {
   onChange: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
   fields: PropTypes.shape({
     username: "",
-    password: "",
-    role: ""
+    password: ""
   }).isRequired
 };
 
 const LoginForm = ({ onChange, onSubmit, fields }) => (
-  <Form onSubmit={onSubmit}>
+  <form onSubmit={onSubmit}>
     <TextInput
       label="username"
       onChange={onChange}
@@ -29,9 +26,8 @@ const LoginForm = ({ onChange, onSubmit, fields }) => (
       name="password"
       value={fields.password}
     />
-    <DropDown onChange={onChange} />
     <Button form>Login</Button>
-  </Form>
+  </form>
 );
 
 LoginForm.propTypes = propTypes;
