@@ -4,20 +4,20 @@ import OrdinaryButton from "./OrdinaryButton";
 import SubmitButton from "./SubmitButton";
 
 const defaultProps = {
-	children: "submit",
-	form: false
+  children: "submit",
+  form: false
 };
 
 const propTypes = {
-	children: PropTypes.string,
-	form: PropTypes.bool
+  children: PropTypes.string,
+  form: PropTypes.bool
 };
 
 const Button = ({ children, form }) => {
-	if (form) {
-		return <SubmitButton type="submit" value={children} />;
-	}
-	return <OrdinaryButton>{children}</OrdinaryButton>;
+  if (form) {
+    return <SubmitButton type="submit" value={children} />;
+  }
+  return <OrdinaryButton>{children}</OrdinaryButton>;
 };
 
 Button.defaultProps = defaultProps;
