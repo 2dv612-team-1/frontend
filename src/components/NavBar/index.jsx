@@ -35,6 +35,11 @@ const NavBar = ({ role }) => (
         <MenuItem to="/logout">Logout</MenuItem>
       </div>
     ) : null}
+    {role === "representative" ? (
+      <div>
+        <MenuItem to="/logout">Logout</MenuItem>
+      </div>
+    ) : null}
     {role === "consumer" ? (
       <div>
         <MenuItem to="/logout">Logout</MenuItem>
