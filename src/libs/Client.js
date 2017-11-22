@@ -19,10 +19,8 @@ class Client {
     const httpHeaders = {
       "Content-Type": "application/x-www-form-urlencoded"
     };
-
     const headers = new Headers(httpHeaders);
     const body = this.serialize(obj);
-
     const options = {
       method: "post",
       headers,

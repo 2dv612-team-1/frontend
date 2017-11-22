@@ -7,6 +7,8 @@ import List from "../components/List";
 import SubmitButton from "../components/SubmitButton";
 import ErrorMessage from "../components/ErrorMessage";
 import Client from "../libs/Client";
+import Auth from "../libs/Auth";
+import Jwt from "../libs/Jwt";
 
 class RepresentativesPage extends Component {
   state = {
@@ -15,7 +17,9 @@ class RepresentativesPage extends Component {
   };
 
   componentDidMount() {
-    const url = "https://nanotu.be/representatives?token=";
+    // https://nanotu.be/companies/{company-name}/representatives
+    const company = Jwt.getUsername(Auth.getToken());
+    const url = `https://nanotu.be/companies/${company}/representatives`;
     Client.GET(url)
       .then(data => {
         this.setState({ data: data.representatives });

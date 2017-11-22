@@ -9,7 +9,6 @@ const propTypes = {
   fields: PropTypes.shape({
     username: "",
     password: "",
-    role: ""
   }).isRequired
 };
 
@@ -27,13 +26,6 @@ const LoginForm = ({ onChange, onSubmit, fields }) => (
       name="password"
       value={fields.password}
     />
-    {/* Temporär lösning för login */}
-    <select onChange={onChange} name="role">
-      <option value="admin">admin</option>
-      <option value="representative">representative</option>
-      <option value="company">company</option>
-      <option value="customer">customer</option>
-    </select>
     <SubmitButton>Login</SubmitButton>
   </form>
 );

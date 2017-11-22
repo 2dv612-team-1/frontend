@@ -6,6 +6,7 @@ import Modal from "../components/Modal";
 import Client from "../libs/Client";
 import RegisterForm from "../components/RegisterForm";
 import Auth from "../libs/Auth";
+import Jwt from "../libs/Jwt";
 
 const defaultProps = {
   match: {
@@ -74,7 +75,8 @@ class RegisterPage extends Component {
         this.register("https://nanotu.be/admins");
         break;
       case "representative":
-        this.register("https://nanotu.be/representatives");
+        const company = Jwt.getUsername(Auth.getToken());
+        this.register(`https://nanotu.be/companies/${company}/representatives`);
         break;
       case "company":
         this.register("https://nanotu.be/companies");
