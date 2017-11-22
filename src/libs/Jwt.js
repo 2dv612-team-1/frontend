@@ -6,6 +6,9 @@ class Jwt {
     console.log(decoded);
     return decoded;
   }
+  static getUsername(token) {
+    return this.decode(token).username;
+  }
 }
 
 export default Jwt;

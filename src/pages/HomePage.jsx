@@ -14,16 +14,12 @@ const propTypes = {
 };
 
 class HomePage extends Component {
-  getName() {
-    const nameD = Jwt.decode(Auth.getToken());
-    console.log(nameD.username);
-    return nameD.username;
-  }
-
   render() {
     return (
       <Modal>
-        <PageTitle>Welcome {this.props.auth ? this.getName() : null}</PageTitle>
+        <PageTitle>
+          Welcome {this.props.auth ? Jwt.getUsername(Auth.getToken()) : null}
+        </PageTitle>
       </Modal>
     );
   }
