@@ -29,7 +29,7 @@ const LoginForm = ({ onChange, onSubmit, fields }) => (
       name="password"
       value={fields.password}
     />
-    <DropDown />
+    <DropDown onChange={onChange} />
     <Button>Login</Button>
   </Form>
 );
