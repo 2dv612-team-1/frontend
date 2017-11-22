@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import fonts from "../constants/fonts";
+import fonts from "../../constants/fonts";
 
 const Select = styled.select`
 	display: block;

@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import TextInput from "../TextInput";
-import Select from "../../elements/Select";
+import DropDown from "../Select";
 import Button from "../Button";
 
 const propTypes = {
@@ -28,13 +28,7 @@ const LoginForm = ({ onChange, onSubmit, fields }) => (
       name="password"
       value={fields.password}
     />
-    {/* Temporär lösning för login */}
-    <select onChange={onChange} name="role">
-      <option value="admin">admin</option>
-      <option value="representative">representative</option>
-      <option value="company">company</option>
-      <option value="customer">customer</option>
-    </select>
+    <DropDown />
     <Button>Login</Button>
   </form>
 );
