@@ -4,7 +4,6 @@ import Text from "../elements/Text";
 import Modal from "../components/Modal";
 import PageTitle from "../components/PageTitle";
 import List from "../components/List";
-import SubmitButton from "../components/SubmitButton";
 import ErrorMessage from "../components/ErrorMessage";
 import Client from "../libs/Client";
 import Button from "../components/Button";
