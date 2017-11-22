@@ -10,8 +10,7 @@ class LoginPage extends Component {
   state = {
     fields: {
       username: "",
-      password: "",
-      role: "admin"
+      password: ""
     },
     redirect: false
   };
@@ -24,21 +23,11 @@ class LoginPage extends Component {
 
   onSubmit = event => {
     event.preventDefault();
-
-    // Temp lösning för login
-    let url = "https://nanotu.be/auth";
-    if (this.state.fields.role === "representative") {
-      url = "https://nanotu.be/auth";
-    }
-    if (this.state.fields.role === "company") {
-      url = "https://nanotu.be/auth";
-    }
-    if (this.state.fields.role === "customer") {
-      url = "https://nanotu.be/auth";
-    }
+    const url = "https://nanotu.be/auth";
 
     Client.POST(url, this.state.fields)
       .then(data => {
+        // console.log(data.token);
         Auth.authenticateUser(data.token);
         this.setState({ redirect: true });
       })
@@ -47,8 +36,8 @@ class LoginPage extends Component {
       });
 
     // Temp lösning för role
-    localStorage.setItem("role", this.state.fields.role);
-    location.reload();
+    // localStorage.setItem("role", this.state.fields.role);
+    // location.reload();
 
     // Reset state
     const fields = {
@@ -67,7 +56,7 @@ class LoginPage extends Component {
           onChange={this.onChange}
           onSubmit={this.onSubmit}
         />
-        {this.state.redirect ? <Redirect to="/companies" /> : null}
+        {this.state.redirect ? <Redirect to="/" /> : null}
       </Modal>
     );
   }
