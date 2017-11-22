@@ -1,10 +1,19 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
+import PropTypes from "prop-types";
 import Text from "../elements/Text";
 import Modal from "../components/Modal";
 import LoginForm from "../components/LoginForm";
 import Client from "../libs/Client";
 import Auth from "../libs/Auth";
+
+const defaultProps = {
+  admin: ""
+};
+
+const propTypes = {
+  admin: PropTypes.string
+};
 
 class LoginPage extends Component {
   state = {
@@ -23,8 +32,13 @@ class LoginPage extends Component {
 
   onSubmit = event => {
     event.preventDefault();
-    const url = "https://nanotu.be/auth";
+    // this.setState({ admin: this.props.route });
+    const url =
+      this.props.admin === "true"
+        ? "https://nanotu.be/admins/auth"
+        : "https://nanotu.be/auth";
 
+    console.log(url);
     Client.POST(url, this.state.fields)
       .then(data => {
         // console.log(data.token);
@@ -62,4 +76,6 @@ class LoginPage extends Component {
   }
 }
 
+LoginPage.defaultProps = defaultProps;
+LoginPage.propTypes = propTypes;
 export default LoginPage;

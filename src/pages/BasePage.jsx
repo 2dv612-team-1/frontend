@@ -2,10 +2,11 @@ import React, { Component } from "react";
 import Routes from "../routes/";
 import NavBar from "../components/NavBar";
 import Auth from "../libs/Auth";
+import Jwt from "../libs/Jwt";
 
 class BasePage extends Component {
   state = {
-    role: Auth.getRole()
+    role: Auth.isUserAuthenticated() ? Jwt.getRole(Auth.getToken()) : ""
   };
 
   render() {

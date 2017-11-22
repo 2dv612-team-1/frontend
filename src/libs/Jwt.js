@@ -9,6 +9,9 @@ class Jwt {
   static getUsername(token) {
     return this.decode(token).username;
   }
+  static getRole(token) {
+    return this.decode(token).role;
+  }
 }
 
 export default Jwt;
