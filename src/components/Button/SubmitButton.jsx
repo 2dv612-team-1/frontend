@@ -7,7 +7,7 @@ const SubmitButton = styled.input`
   color: ${colors.primary};
   background: none;
   border: solid 2px ${colors.primary};
-  text-transform: uppercase;
+  text-transform: capitalize;
   width: 300px;
   border-radius: 5px;
   font-size: 18px;

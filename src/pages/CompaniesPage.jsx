@@ -31,7 +31,7 @@ class CompaniesPage extends Component {
       <Modal>
         <PageTitle>Companies</PageTitle>
         <Link to="/register/company">
-          <Button>REgister Company</Button>
+          <Button>Register Company</Button>
         </Link>
         <Text>All companies:</Text>
         {this.state.data ? (
