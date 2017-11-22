@@ -14,7 +14,6 @@ const SubmitButton = styled.input`
   padding: 0;
   height: 40px;
   cursor: pointer;
-  )}
   &:focus {
     outline: none;
   }

@@ -14,7 +14,6 @@ const OrdinaryButton = styled.button`
   padding: 0;
   height: 40px;
   cursor: pointer;
-  )}
   &:focus {
     outline: none;
   }
