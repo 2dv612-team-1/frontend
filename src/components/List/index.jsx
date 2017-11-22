@@ -3,21 +3,21 @@ import PropTypes from "prop-types";
 import OList from "./List";
 
 const defaultProps = {
-	list: []
+  list: []
 };
 
 const propTypes = {
-	list: PropTypes.arrayOf(
-		PropTypes.shape({
-			usarname: PropTypes.string
-		})
-	)
+  list: PropTypes.arrayOf(
+    PropTypes.shape({
+      usarname: PropTypes.string
+    })
+  )
 };
 
 const List = ({ list }) => (
-	<OList>
-		{list.map(item => <li key={item.username}>{item.username}</li>)}
-	</OList>
+  <OList>
+    {list.map(item => <li key={item.username}>{item.username}</li>)}
+  </OList>
 );
 
 List.defaultProps = defaultProps;
