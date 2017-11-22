@@ -7,12 +7,12 @@ const propTypes = {
 };
 
 const DropDown = ({ onChange }) => (
-	<select onChange={onChange} name="role">
+	<Select onChange={onChange} name="role">
 		<option value="admin">admin</option>
 		<option value="representative">representative</option>
 		<option value="company">company</option>
 		<option value="customer">customer</option>
-	</select>
+	</Select>
 );
 
 DropDown.propTypes = propTypes;

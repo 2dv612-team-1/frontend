@@ -5,13 +5,15 @@ import fonts from "../../constants/fonts";
 const OrdinaryButton = styled.button`
   font-family: ${fonts.primary};
   color: ${colors.primary};
-  background-color: ${colors.secondary};
+  background: none;
+  border: solid 2px ${colors.primary};
   text-transform: uppercase;
-  width: 150px;
+  width: 300px;
   border-radius: 5px;
   font-size: 18px;
   padding: 0;
   height: 40px;
+  cursor: pointer;
   )}
   &:focus {
     outline: none;

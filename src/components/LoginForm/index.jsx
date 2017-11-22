@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import TextInput from "../TextInput";
 import DropDown from "../Select";
 import Button from "../Button";
+import Form from "../../elements/Form";
 
 const propTypes = {
   onChange: PropTypes.func.isRequired,
@@ -15,7 +16,7 @@ const propTypes = {
 };
 
 const LoginForm = ({ onChange, onSubmit, fields }) => (
-  <form onSubmit={onSubmit}>
+  <Form onSubmit={onSubmit}>
     <TextInput
       label="username"
       onChange={onChange}
@@ -30,7 +31,7 @@ const LoginForm = ({ onChange, onSubmit, fields }) => (
     />
     <DropDown />
     <Button>Login</Button>
-  </form>
+  </Form>
 );
 
 LoginForm.propTypes = propTypes;

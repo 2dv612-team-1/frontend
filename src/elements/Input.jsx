@@ -10,6 +10,8 @@ const Input = styled.input`
 	font-family: ${fonts.secondary};
 	letter-spacing: 0.1em;
 	font-size: 1em;
+	margin-top: 5px;
+	margin-bottom: 20px;
 `;
 
 export default Input;
