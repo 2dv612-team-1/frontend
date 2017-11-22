@@ -4,11 +4,11 @@ import Text from "../elements/Text";
 import Modal from "../components/Modal";
 import PageTitle from "../components/PageTitle";
 import List from "../components/List";
-import SubmitButton from "../components/SubmitButton";
 import ErrorMessage from "../components/ErrorMessage";
 import Client from "../libs/Client";
 import Auth from "../libs/Auth";
 import Jwt from "../libs/Jwt";
+import Button from "../components/Button";
 
 class RepresentativesPage extends Component {
   state = {
@@ -36,7 +36,7 @@ class RepresentativesPage extends Component {
         <PageTitle>Representative</PageTitle>
         <Text>representatives...</Text>
         <Link to="/register/representative">
-          <SubmitButton>Create New Representative</SubmitButton>
+          <Button>Create New Representative</Button>
         </Link>
         {this.state.data ? (
           <List list={this.state.data} />

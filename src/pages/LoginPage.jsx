@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import PropTypes from "prop-types";
-import Text from "../elements/Text";
 import Modal from "../components/Modal";
 import LoginForm from "../components/LoginForm";
 import Client from "../libs/Client";
 import Auth from "../libs/Auth";
+import PageTitle from "../components/PageTitle";
 
 const defaultProps = {
   admin: ""
@@ -64,7 +64,7 @@ class LoginPage extends Component {
   render() {
     return (
       <Modal>
-        <Text center>Här kan du logga in...</Text>
+        <PageTitle>Login</PageTitle>
         <LoginForm
           fields={this.state.fields}
           onChange={this.onChange}

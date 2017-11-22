@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import OList from "./List";
 
 const defaultProps = {
   list: []
@@ -14,7 +15,9 @@ const propTypes = {
 };
 
 const List = ({ list }) => (
-  <ol>{list.map(item => <li key={item.username}>{item.username}</li>)}</ol>
+  <OList>
+    {list.map(item => <li key={item.username}>{item.username}</li>)}
+  </OList>
 );
 
 List.defaultProps = defaultProps;

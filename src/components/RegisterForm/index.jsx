@@ -1,7 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import TextInput from "../TextInput";
-import SubmitButton from "../SubmitButton";
+import Button from "../Button";
+import Form from "../../elements/Form";
 
 const propTypes = {
   onChange: PropTypes.func.isRequired,
@@ -15,7 +16,7 @@ const propTypes = {
 };
 
 const RegisterForm = ({ role, onChange, onSubmit, fields }) => (
-  <form onSubmit={onSubmit}>
+  <Form onSubmit={onSubmit}>
     {role === "admin" ? null : (
       <div>
         <TextInput
@@ -32,8 +33,8 @@ const RegisterForm = ({ role, onChange, onSubmit, fields }) => (
         />
       </div>
     )}
-    <SubmitButton>Register</SubmitButton>
-  </form>
+    <Button>Register</Button>
+  </Form>
 );
 
 RegisterForm.propTypes = propTypes;

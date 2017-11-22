@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const Modal = styled.div`
   width: 700px;
-  background: #ede7f6;
+  background: #e7e7e9;
   padding: 35px;
   border-radius: 3px;
   margin: 20px auto;
