@@ -13,6 +13,10 @@ class LogoutPage extends Component {
     this.setState({ redirect: true });
   }
 
+  componentDidMount() {
+    location.reload();
+  }
+
   render() {
     return this.state.redirect ? <Redirect to="/" /> : null;
   }
