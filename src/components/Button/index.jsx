@@ -17,7 +17,7 @@ const Button = ({ children, form }) => {
 	if (form) {
 		return <SubmitButton type="submit" value={children} />;
 	}
-	return <OrdinaryButton>${children}</OrdinaryButton>;
+	return <OrdinaryButton>{children}</OrdinaryButton>;
 };
 
 Button.defaultProps = defaultProps;

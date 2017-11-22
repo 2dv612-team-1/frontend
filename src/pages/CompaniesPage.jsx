@@ -7,6 +7,7 @@ import List from "../components/List";
 import SubmitButton from "../components/SubmitButton";
 import ErrorMessage from "../components/ErrorMessage";
 import Client from "../libs/Client";
+import Button from "../components/Button";
 
 class CompaniesPage extends Component {
   state = {
@@ -29,10 +30,10 @@ class CompaniesPage extends Component {
     return (
       <Modal>
         <PageTitle>Companies</PageTitle>
-        <Text>companies...</Text>
         <Link to="/register/company">
-          <SubmitButton>Create New Company</SubmitButton>
+          <Button>REgister Company</Button>
         </Link>
+        <Text>All companies:</Text>
         {this.state.data ? (
           <List list={this.state.data} />
         ) : (

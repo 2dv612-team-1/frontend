@@ -6,7 +6,6 @@ const Select = styled.select`
 	width: 300px;
 	height: 40px;
 	margin: 0 auto;
-	font-family: ${fonts.secondary};
 	font-size: 1em;
 	text-transform: capitalize;
 	margin-bottom: 20px;
