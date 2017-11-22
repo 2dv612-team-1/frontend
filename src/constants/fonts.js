@@ -1,4 +1,4 @@
 export default {
-	primary: "Tahoma",
-	secondary: "Verdana"
+  primary: "Tahoma",
+  secondary: "Verdana"
 };
