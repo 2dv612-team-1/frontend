@@ -2,7 +2,7 @@ import styled from "styled-components";
 import colors from "../../constants/colors";
 import fonts from "../../constants/fonts";
 
-const OrdinaryButton = styled.input`
+const OrdinaryButton = styled.button`
   font-family: ${fonts.primary};
   color: ${colors.primary};
   background-color: ${colors.secondary};
