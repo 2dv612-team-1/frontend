@@ -1,15 +1,14 @@
 import styled from "styled-components";
 import fonts from "../constants/fonts";
 
-const Input = styled.input`
+const Select = styled.select`
 	display: block;
-	margin: 0 auto;
-	width: 300px;
+	width: 200px;
 	height: 40px;
-	text-align: center;
 	font-family: ${fonts.secondary};
 	letter-spacing: 0.1em;
 	font-size: 1em;
+	text-transform: capitalize;
 `;
 
-export default Input;
+export default Select;

@@ -1,7 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import TextInput from "../TextInput";
-import SubmitButton from "../SubmitButton";
+import Select from "../../elements/Select";
+import Button from "../Button";
 
 const propTypes = {
   onChange: PropTypes.func.isRequired,
@@ -34,7 +35,7 @@ const LoginForm = ({ onChange, onSubmit, fields }) => (
       <option value="company">company</option>
       <option value="customer">customer</option>
     </select>
-    <SubmitButton>Login</SubmitButton>
+    <Button>Login</Button>
   </form>
 );
 
