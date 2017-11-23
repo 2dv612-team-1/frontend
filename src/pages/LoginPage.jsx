@@ -41,8 +41,10 @@ class LoginPage extends Component {
     console.log(url);
     Client.POST(url, this.state.fields)
       .then(data => {
-        // console.log(data.token);
-        Auth.authenticateUser(data.token);
+        // Auth.authenticateUser(data.token);
+        data.token !== undefined
+          ? Auth.authenticateUser(data.token)
+          : console.log("shit happens");
         this.setState({ redirect: true });
       })
       .catch(err => {
