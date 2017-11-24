@@ -41,7 +41,6 @@ class LoginPage extends Component {
         ? "https://nanotu.be/admins/auth"
         : "https://nanotu.be/auth";
 
-    console.log(url);
     Client.POST(url, this.state.fields)
       .then(data => {
         // Auth.authenticateUser(data.token);
