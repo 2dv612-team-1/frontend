@@ -6,13 +6,16 @@ import LoginForm from "../components/LoginForm";
 import Client from "../libs/Client";
 import Auth from "../libs/Auth";
 import PageTitle from "../components/PageTitle";
+import ErrorMessage from "../components/ErrorMessage";
 
 const defaultProps = {
-  admin: ""
+  admin: "",
+  error: ""
 };
 
 const propTypes = {
-  admin: PropTypes.string
+  admin: PropTypes.string,
+  error: PropTypes.string
 };
 
 class LoginPage extends Component {
@@ -43,9 +46,9 @@ class LoginPage extends Component {
       .then(data => {
         // Auth.authenticateUser(data.token);
         data.token !== undefined
-          ? Auth.authenticateUser(data.token)
-          : console.log("shit happens");
-        this.setState({ redirect: true });
+          ? (Auth.authenticateUser(data.token),
+            this.setState({ redirect: true }))
+          : this.setState({ error: "Wrong credentials" });
       })
       .catch(err => {
         console.log(err);
@@ -73,6 +76,7 @@ class LoginPage extends Component {
           onSubmit={this.onSubmit}
         />
         {this.state.redirect ? <Redirect to="/" /> : null}
+        <ErrorMessage>{this.state.error}</ErrorMessage>
       </Modal>
     );
   }
