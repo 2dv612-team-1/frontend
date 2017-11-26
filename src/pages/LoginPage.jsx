@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { performLogin } from "../actions/session";
 import Modal from "../components/Modal";
 import LoginForm from "../components/LoginForm";
-import Client from "../libs/Client";
-import Auth from "../libs/Auth";
 import PageTitle from "../components/PageTitle";
 
 const defaultProps = {
@@ -12,7 +12,9 @@ const defaultProps = {
 };
 
 const propTypes = {
-  admin: PropTypes.string
+  admin: PropTypes.string,
+  isLogedIn: PropTypes.shape({}).isRequired,
+  performLogin: PropTypes.func.isRequired
 };
 
 class LoginPage extends Component {
@@ -20,8 +22,7 @@ class LoginPage extends Component {
     fields: {
       username: "",
       password: ""
-    },
-    redirect: false
+    }
   };
 
   onChange = event => {
@@ -32,26 +33,13 @@ class LoginPage extends Component {
 
   onSubmit = event => {
     event.preventDefault();
-    // this.setState({ admin: this.props.route });
-    const url =
-      this.props.admin === "true"
-        ? "https://nanotu.be/admins/auth"
-        : "https://nanotu.be/auth";
 
-    console.log(url);
-    Client.POST(url, this.state.fields)
-      .then(data => {
-        // console.log(data.token);
-        Auth.authenticateUser(data.token);
-        this.setState({ redirect: true });
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    let url = "https://nanotu.be/auth";
+    if (this.props.admin === "true") {
+      url = "https://nanotu.be/admins/auth";
+    }
 
-    // Temp lösning för role
-    // localStorage.setItem("role", this.state.fields.role);
-    // location.reload();
+    this.props.performLogin(url, this.state.fields);
 
     // Reset state
     const fields = {
@@ -70,12 +58,22 @@ class LoginPage extends Component {
           onChange={this.onChange}
           onSubmit={this.onSubmit}
         />
-        {this.state.redirect ? <Redirect to="/" /> : null}
+        {this.props.isLogedIn ? <Redirect to="/" /> : null}
       </Modal>
     );
   }
 }
 
+const mapStateToProps = state => ({
+  isLogedIn: state.isLogedIn,
+  hasError: state.loginHasError,
+  isLoading: state.loginIsLoading
+});
+
+const mapDispatchToProps = dispatch => ({
+  performLogin: url => dispatch(performLogin(url))
+});
+
 LoginPage.defaultProps = defaultProps;
 LoginPage.propTypes = propTypes;
-export default LoginPage;
+export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);
