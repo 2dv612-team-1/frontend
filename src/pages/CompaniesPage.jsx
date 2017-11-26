@@ -1,28 +1,25 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { companiesFetchData } from "../actions/companies";
 import Text from "../elements/Text";
 import Modal from "../components/Modal";
 import PageTitle from "../components/PageTitle";
 import List from "../components/List";
 import ErrorMessage from "../components/ErrorMessage";
-import Client from "../libs/Client";
 import Button from "../components/Button";
 
-class CompaniesPage extends Component {
-  state = {
-    error: "",
-    data: []
-  };
+const propTypes = {
+  fetchData: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool.isRequired,
+  hasError: PropTypes.bool.isRequired,
+  companies: PropTypes.arrayOf(PropTypes.shape({})).isRequired
+};
 
+class CompaniesPage extends Component {
   componentDidMount() {
-    const url = "https://nanotu.be/companies";
-    Client.GET(url)
-      .then(data => {
-        this.setState({ data: data.companies });
-      })
-      .catch(() => {
-        this.setState({ error: "Could not load data" });
-      });
+    this.props.fetchData("https://nanotu.be/companies");
   }
 
   render() {
@@ -33,15 +30,25 @@ class CompaniesPage extends Component {
           <Button>Register Company</Button>
         </Link>
         <Text>All companies:</Text>
-        {this.state.data ? (
-          <List list={this.state.data} />
-        ) : (
-          <Text>Loading...</Text>
-        )}
-        <ErrorMessage>{this.state.error}</ErrorMessage>
+        {this.props.companies ? <List list={this.props.companies} /> : null}
+        {this.props.isLoading ? <Text>Loading...</Text> : null}
+        {this.props.hasError ? (
+          <ErrorMessage>Could not load data</ErrorMessage>
+        ) : null}
       </Modal>
     );
   }
 }
 
-export default CompaniesPage;
+const mapStateToProps = state => ({
+  companies: state.companies,
+  hasError: state.companiesHasError,
+  isLoading: state.companiesIsLoading
+});
+
+const mapDispatchToProps = dispatch => ({
+  fetchData: url => dispatch(companiesFetchData(url))
+});
+
+CompaniesPage.propTypes = propTypes;
+export default connect(mapStateToProps, mapDispatchToProps)(CompaniesPage);
