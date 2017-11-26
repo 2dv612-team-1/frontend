@@ -16,7 +16,7 @@ const Routes = () => (
     <Route path="/register/:role" component={RegisterPage} />
     <Route
       path="/adm"
-      render={(props) => <LoginPage admin="true" {...props} />}
+      render={props => <LoginPage admin="true" {...props} />}
     />
     <AuthRoute access="admin">
       <Route path="/companies" component={CompaniesPage} />
