@@ -40,7 +40,7 @@ export function performLogin(url, fields) {
         dispatch(isLogedIn(true, username, role));
       })
       .catch(err => {
-        dispatch(loginHasError(true, err));
+        dispatch(loginHasError(true, err.message));
       });
   };
 }
