@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 import { companies, companiesHasError, companiesIsLoading } from "./companies";
-import { loginIsLoading, loginHasError, isLogedIn } from "./session";
+import { loginIsLoading, loginHasError, logedInAs } from "./session";
 
 export default combineReducers({
   companies,
@@ -8,5 +8,5 @@ export default combineReducers({
   companiesIsLoading,
   loginIsLoading,
   loginHasError,
-  isLogedIn
+  logedInAs
 });
