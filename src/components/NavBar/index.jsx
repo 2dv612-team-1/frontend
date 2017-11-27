@@ -50,7 +50,7 @@ const NavBar = ({ role }) => (
 );
 
 const mapStateToProps = state => ({
-  role: state.logedInAs.role
+  role: state.loggedInAs.role
 });
 
 NavBar.defaultProps = defaultProps;
