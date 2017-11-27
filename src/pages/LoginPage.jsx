@@ -59,7 +59,7 @@ class LoginPage extends Component {
           onChange={this.onChange}
           onSubmit={this.onSubmit}
         />
-        {this.props.isLogedIn ? <Redirect to="/" /> : null}
+        {this.props.isLoggedIn ? <Redirect to="/" /> : null}
         {this.props.hasError.errorMessage ? (
           <Text error>`${this.props.hasError.errorMessage}`</Text>
         ) : null}
@@ -69,7 +69,7 @@ class LoginPage extends Component {
 }
 
 const mapStateToProps = state => ({
-  isLogedIn: state.isLogedIn,
+  isLoggedIn: state.logedInAs.isLoggedIn,
   hasError: state.loginHasError,
   isLoading: state.loginIsLoading
 });
