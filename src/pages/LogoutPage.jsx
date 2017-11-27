@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import Auth from "../libs/Auth";
+import { connect } from "react-redux";
+import { performLogout } from "../actions/session";
 
 class LogoutPage extends Component {
   state = {
@@ -8,13 +10,7 @@ class LogoutPage extends Component {
   };
 
   componentWillMount() {
-    Auth.removeRole();
-    Auth.deauthenticateUser();
-    this.setState({ redirect: true });
-  }
-
-  componentDidMount() {
-    location.reload();
+    this.props.performLogout();
   }
 
   render() {
@@ -22,4 +18,7 @@ class LogoutPage extends Component {
   }
 }
 
-export default LogoutPage;
+const mapDispatchToProps = dispatch => ({
+  performLogout: () => dispatch(performLogout())
+});
+export default connect(null, mapDispatchToProps)(LogoutPage);
