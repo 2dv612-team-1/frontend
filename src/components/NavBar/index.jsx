@@ -49,7 +49,10 @@ const NavBar = ({ role }) => (
   </Container>
 );
 
+const mapStateToProps = state => ({
+  role: state.logedInAs.role
+});
+
 NavBar.defaultProps = defaultProps;
 NavBar.propTypes = propTypes;
-
-export default NavBar;
+export default connect(mapStateToProps)(NavBar);
