@@ -16,6 +16,7 @@ class Client {
   }
 
   static POST(uri, obj = {}) {
+    
     const httpHeaders = {
       "Content-Type": "application/x-www-form-urlencoded"
     };
