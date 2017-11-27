@@ -41,9 +41,9 @@ class CompaniesPage extends Component {
 }
 
 const mapStateToProps = state => ({
-  companies: state.companies,
-  hasError: state.companiesHasError,
-  isLoading: state.companiesIsLoading
+  companies: state.companiesReducer.companies,
+  hasError: state.companiesReducer.companiesHasError,
+  isLoading: state.companiesReducer.companiesIsLoading
 });
 
 const mapDispatchToProps = dispatch => ({

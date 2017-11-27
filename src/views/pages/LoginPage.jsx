@@ -71,9 +71,9 @@ class LoginPage extends Component {
 }
 
 const mapStateToProps = state => ({
-  isLoggedIn: state.loggedInAs.isLoggedIn,
-  hasError: state.loginHasError,
-  isLoading: state.loginIsLoading
+  isLoggedIn: state.sessionReducer.loggedInAs.isLoggedIn,
+  hasError: state.sessionReducer.loginHasError,
+  isLoading: state.sessionReducer.loginIsLoading
 });
 
 const mapDispatchToProps = dispatch => ({
