@@ -48,3 +48,11 @@ export function performLogin(url, fields) {
       });
   };
 }
+
+export function performLogout() {
+  return dispatch => {
+    Auth.removeRole();
+    Auth.deauthenticateUser();
+    dispatch(isLogedIn(false));
+  };
+}
