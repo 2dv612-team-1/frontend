@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
-import Auth from "../libs/Auth";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { performLogout } from "../actions/session";
