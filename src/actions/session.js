@@ -29,6 +29,7 @@ export function isLogedIn(bool, username, role) {
 export function performLogin(url, fields) {
   return dispatch => {
     dispatch(loginIsLoading(true));
+
     Client.POST(url, fields)
       .then(data => {
         Auth.authenticateUser(data.token);
