@@ -32,6 +32,9 @@ export function performLogin(url, fields) {
 
     Client.POST(url, fields)
       .then(data => {
+        if (data.status !== 200) {
+          dispatch(loginHasError(true, data.message));
+        }
         Auth.authenticateUser(data.token);
         dispatch(loginIsLoading(false));
 
