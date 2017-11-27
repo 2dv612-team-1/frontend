@@ -9,13 +9,15 @@ import PageTitle from "../components/PageTitle";
 import Text from "../elements/Text";
 
 const defaultProps = {
-  admin: ""
+  admin: "",
+  hasError: ""
 };
 
 const propTypes = {
   admin: PropTypes.string,
-  isLogedIn: PropTypes.shape({}).isRequired,
-  performLogin: PropTypes.func.isRequired
+  isLoggedIn: PropTypes.bool.isRequired,
+  performLogin: PropTypes.func.isRequired,
+  hasError: PropTypes.string
 };
 
 class LoginPage extends Component {
