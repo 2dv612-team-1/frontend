@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { companiesFetchData } from "../actions/companies";
+import { companiesFetchData } from "../../state/companies/actions";
 import Text from "../elements/Text";
 import Modal from "../components/Modal";
 import PageTitle from "../components/PageTitle";

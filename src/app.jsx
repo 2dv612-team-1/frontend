@@ -5,8 +5,8 @@ import { Provider } from "react-redux";
 import "core-js/es6/map";
 import "core-js/es6/set";
 import "raf/polyfill";
-import BasePage from "./pages/BasePage";
-import configureStore from "./store/configureStore";
+import BasePage from "./views/pages/BasePage";
+import configureStore from "./state/store";
 
 const store = configureStore();
 

@@ -1,8 +1,8 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
 import PropTypes from "prop-types";
-import Auth from "../libs/Auth";
-import Jwt from "../libs/Jwt";
+import Auth from "../../libs/Auth";
+import Jwt from "../../libs/Jwt";
 
 const defaultProps = {
   role: Auth.isUserAuthenticated() ? Jwt.getRole(Auth.getToken()) : ""

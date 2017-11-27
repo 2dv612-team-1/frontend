@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { performLogin } from "../actions/session";
+import { performLogin } from "../../state/session/actions";
 import Modal from "../components/Modal";
 import LoginForm from "../components/LoginForm";
 import PageTitle from "../components/PageTitle";

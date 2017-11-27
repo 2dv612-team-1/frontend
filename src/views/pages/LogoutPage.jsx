@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { performLogout } from "../actions/session";
+import { performLogout } from "../../state/session/actions";
 
 const propTypes = {
   performLogout: PropTypes.func.isRequired
