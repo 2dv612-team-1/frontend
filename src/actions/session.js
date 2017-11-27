@@ -17,7 +17,7 @@ export function loginHasError(bool, error) {
   };
 }
 
-export function isLogedIn(bool, username, role) {
+export function isLogedIn(bool, username = "", role = "") {
   return {
     type: "LOGEDIN_AS",
     isLoggedIn: bool,
