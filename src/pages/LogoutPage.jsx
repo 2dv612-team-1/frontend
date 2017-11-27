@@ -14,7 +14,7 @@ class LogoutPage extends Component {
   }
 
   render() {
-    return this.state.redirect ? <Redirect to="/" /> : null;
+    return <Redirect to="/" />;
   }
 }
 
