@@ -18,7 +18,7 @@ export function loginHasError(state = false, action) {
   }
 }
 
-export function isLogedIn(state = {}, action) {
+export function logedInAs(state = { isLoggedIn: false, role: "" }, action) {
   switch (action.type) {
     case "LOGEDIN_AS":
       return Object.assign({}, state, {
