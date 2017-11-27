@@ -1,26 +1,22 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { connect } from "react-redux";
 import PageTitle from "../components/PageTitle";
 import Modal from "../components/Modal";
-import Auth from "../libs/Auth";
-import Jwt from "../libs/Jwt";
-
-const defaultProps = {
-  auth: Auth.isUserAuthenticated()
-};
 
 const propTypes = {
-  auth: PropTypes.bool
+  loggedInAs: PropTypes.string.isRequired
 };
 
-const HomePage = ({ auth }) => (
+const HomePage = ({ loggedInAs }) => (
   <Modal>
-    <PageTitle>
-      Welcome {auth ? Jwt.getUsername(Auth.getToken()) : null}
-    </PageTitle>
+    <PageTitle>Welcome {loggedInAs}</PageTitle>
   </Modal>
 );
 
-HomePage.defaultProps = defaultProps;
+const mapStateToProps = state => ({
+  loggedInAs: state.loggedInAs.role
+});
+
 HomePage.propTypes = propTypes;
-export default HomePage;
+export default connect(mapStateToProps)(HomePage);
