@@ -6,6 +6,7 @@ import { performLogin } from "../actions/session";
 import Modal from "../components/Modal";
 import LoginForm from "../components/LoginForm";
 import PageTitle from "../components/PageTitle";
+import Text from "../elements/Text";
 
 const defaultProps = {
   admin: ""
@@ -59,6 +60,9 @@ class LoginPage extends Component {
           onSubmit={this.onSubmit}
         />
         {this.props.isLogedIn ? <Redirect to="/" /> : null}
+        {this.props.hasError.errorMessage ? (
+          <Text error>`${this.props.hasError.errorMessage}`</Text>
+        ) : null}
       </Modal>
     );
   }
