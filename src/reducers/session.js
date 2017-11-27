@@ -11,7 +11,7 @@ export function loginIsLoading(state = false, action) {
 export function loginHasError(state = false, action) {
   switch (action.type) {
     case "LOGIN_HAS_ERROR":
-      return action.isLoading;
+      return action.errorMessage;
 
     default:
       return state;
@@ -20,9 +20,9 @@ export function loginHasError(state = false, action) {
 
 export function isLogedIn(state = {}, action) {
   switch (action.type) {
-    case "IS_LOGEDIN":
+    case "LOGEDIN_AS":
       return Object.assign({}, state, {
-        isLogedIn: action.isLogedIn,
+        isLoggedIn: action.isLoggedIn,
         username: action.username,
         role: action.role
       });
