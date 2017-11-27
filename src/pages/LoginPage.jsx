@@ -75,7 +75,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  performLogin: url => dispatch(performLogin(url))
+  performLogin: (url, obj) => dispatch(performLogin(url, obj))
 });
 
 LoginPage.defaultProps = defaultProps;
