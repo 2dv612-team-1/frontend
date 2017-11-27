@@ -13,14 +13,14 @@ export function loginHasError(bool, error) {
   return {
     type: "LOGIN_HAS_ERROR",
     hasError: bool,
-    Errormessage: error
+    errorMessage: error
   };
 }
 
 export function isLogedIn(bool, username, role) {
   return {
-    type: "IS_LOGEDIN",
-    isLogedIn: bool,
+    type: "LOGEDIN_AS",
+    isLoggedIn: bool,
     username,
     role
   };
