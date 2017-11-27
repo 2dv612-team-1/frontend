@@ -4,14 +4,11 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { performLogout } from "../actions/session";
 
-class LogoutPage extends Component {
-  state = {
-    redirect: false
-  };
 const propTypes = {
   performLogout: PropTypes.func.isRequired
 };
 
+class LogoutPage extends Component {
   componentWillMount() {
     this.props.performLogout();
   }
