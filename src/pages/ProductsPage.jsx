@@ -6,7 +6,6 @@ import PageTitle from "../components/PageTitle";
 import List from "../components/List";
 import ErrorMessage from "../components/ErrorMessage";
 import Client from "../libs/Client";
-import Button from "../components/Button";
 
 class ProductsPage extends Component {
   state = {
