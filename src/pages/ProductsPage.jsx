@@ -29,9 +29,6 @@ class ProductsPage extends Component {
     return (
       <Modal>
         <PageTitle>Products</PageTitle>
-        <Link to="/register/product">
-          <Button>Add Product</Button>
-        </Link>
         <Text>All products:</Text>
         {this.state.data ? (
           <List list={this.state.data} />
