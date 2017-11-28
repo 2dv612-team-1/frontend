@@ -4,21 +4,21 @@ import UnorderedList from "./UnorderedList";
 import OrderedList from "./OrderedList";
 
 const defaultProps = {
-	list: []
+  list: []
 };
 
 const propTypes = {
-	list: PropTypes.arrayOf(
-		PropTypes.shape({
-			usarname: PropTypes.string
-		})
-	)
+  list: PropTypes.arrayOf(
+    PropTypes.shape({
+      usarname: PropTypes.string
+    })
+  )
 };
 
 const List = ({ list }) => (
-	<OrderedList>
-		{list.map(item => <li key={item.username}>{item.username}</li>)}
-	</OrderedList>
+  <OrderedList>
+    {list.map(item => <li key={item.username}>{item.username}</li>)}
+  </OrderedList>
 );
 
 List.defaultProps = defaultProps;
