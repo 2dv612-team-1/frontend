@@ -1,8 +1,7 @@
-import React, { Component } from "react";
+import React from "react";
 import { Redirect } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { performLogin } from "../../state/session/actions";
 import Modal from "../components/Modal";
 import LoginForm from "../components/LoginForm";
 import PageTitle from "../components/PageTitle";
@@ -10,76 +9,30 @@ import Text from "../elements/Text";
 
 const defaultProps = {
   admin: "",
-  hasError: ""
+  errorMessage: ""
 };
 
 const propTypes = {
   admin: PropTypes.string,
   isLoggedIn: PropTypes.bool.isRequired,
-  performLogin: PropTypes.func.isRequired,
-  hasError: PropTypes.string
+  errorMessage: PropTypes.string
 };
 
-class LoginPage extends Component {
-  state = {
-    fields: {
-      username: "",
-      password: ""
-    }
-  };
-
-  onChange = event => {
-    const fields = Object.assign({}, this.state.fields);
-    fields[event.target.name] = event.target.value;
-    this.setState({ fields });
-  };
-
-  onSubmit = event => {
-    event.preventDefault();
-
-    let url = "https://nanotu.be/auth";
-    if (this.props.admin === "true") {
-      url = "https://nanotu.be/admins/auth";
-    }
-
-    this.props.performLogin(url, this.state.fields);
-
-    // Reset state
-    const fields = {
-      username: "",
-      password: ""
-    };
-    this.setState({ fields });
-  };
-
-  render() {
-    return (
-      <Modal>
-        <PageTitle>Login</PageTitle>
-        <LoginForm
-          fields={this.state.fields}
-          onChange={this.onChange}
-          onSubmit={this.onSubmit}
-        />
-        {this.props.isLoggedIn ? <Redirect to="/" /> : null}
-        {this.props.hasError.errorMessage ? (
-          <Text error>`${this.props.hasError.errorMessage}`</Text>
-        ) : null}
-      </Modal>
-    );
-  }
-}
+const LoginPage = ({ admin, isLoggedIn, errorMessage }) => (
+  <Modal>
+    <PageTitle center>Login</PageTitle>
+    <LoginForm admin={admin} />
+    {isLoggedIn ? <Redirect to="/" /> : null}
+    {errorMessage ? <Text error>`${errorMessage}`</Text> : null}
+  </Modal>
+);
 
 const mapStateToProps = state => ({
-  isLoggedIn: state.sessionReducer.loggedInAs.isLoggedIn,
-  hasError: state.sessionReducer.loginHasError,
-  isLoading: state.sessionReducer.loginIsLoading
-});
-
-const mapDispatchToProps = dispatch => ({
-  performLogin: (url, obj) => dispatch(performLogin(url, obj))
+  isLoggedIn: state.session.loggedInAs.isLoggedIn,
+  errorMessage: state.session.loginHasError.errorMessage,
+  isLoading: state.session.loginIsLoading
 });
 
 LoginPage.defaultProps = defaultProps;
 LoginPage.propTypes = propTypes;
-export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);
+export default connect(mapStateToProps)(LoginPage);
