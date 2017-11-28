@@ -1,6 +1,6 @@
 import React from "react";
 import Routes from "../routes/";
-import NavBar from "../components/NavBar";
+import NavBar from "../containers/NavBar";
 
 const BasePage = () => (
   <div>

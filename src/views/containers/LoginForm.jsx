@@ -2,10 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import { reduxForm } from "redux-form";
 import { connect } from "react-redux";
-import { performLogin } from "../../../state/session/actions";
-import Button from "../Button";
-import Form from "../../elements/Form";
-import Field from "../../components/Field";
+import { performLogin } from "../../state/session/actions";
+import Button from "../components/Button";
+import Form from "../elements/Form";
+import Field from "../components/Field";
 
 const propTypes = {
   handleSubmit: PropTypes.func.isRequired,

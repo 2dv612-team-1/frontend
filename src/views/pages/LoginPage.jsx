@@ -3,7 +3,7 @@ import { Redirect } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Modal from "../components/Modal";
-import LoginForm from "../components/LoginForm";
+import LoginForm from "../containers/LoginForm";
 import PageTitle from "../components/PageTitle";
 import Text from "../elements/Text";
 
