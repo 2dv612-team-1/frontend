@@ -13,7 +13,7 @@ const propTypes = {
 };
 
 const NavBar = ({ role }) => (
-  <Container>
+  <FlexBox>
     <MenuItem to="/">home</MenuItem>
     {role === "" ? (
       <div>
@@ -46,7 +46,7 @@ const NavBar = ({ role }) => (
         <MenuItem to="/logout">Logout</MenuItem>
       </div>
     ) : null}
-  </Container>
+  </FlexBox>
 );
 
 const mapStateToProps = state => ({
