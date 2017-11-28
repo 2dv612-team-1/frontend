@@ -30,5 +30,3 @@ const List = ({ list }) => {
 };
 List.defaultProps = defaultProps;
 List.propTypes = propTypes;
-
-export default List;
