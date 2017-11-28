@@ -11,9 +11,12 @@ const history = createHistory();
 const Router = routerMiddleware(history);
 
 const composeEnhancers = composeWithDevTools({});
-const rootReducer = combineReducers({ companiesReducer, sessionReducer });
+const rootReducer = combineReducers({
+  companies: companiesReducer,
+  session: sessionReducer,
   form,
   router
+});
 
 export default function configureStore(initialState) {
   return createStore(

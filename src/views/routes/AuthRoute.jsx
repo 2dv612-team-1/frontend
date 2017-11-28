@@ -17,7 +17,7 @@ const AuthRoute = ({ access, children, role }) => {
 };
 
 const mapStateToProps = state => ({
-  role: state.sessionReducer.loggedInAs.role
+  role: state.session.loggedInAs.role
 });
 
 AuthRoute.propTypes = propTypes;

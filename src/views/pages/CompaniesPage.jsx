@@ -35,9 +35,9 @@ const CompaniesPage = ({ fetchData, companies, isLoading, hasError }) => {
 };
 
 const mapStateToProps = state => ({
-  companies: state.companiesReducer.companies,
-  hasError: state.companiesReducer.companiesHasError,
-  isLoading: state.companiesReducer.companiesIsLoading
+  companies: state.companies.companies,
+  hasError: state.companies.companiesHasError,
+  isLoading: state.companies.companiesIsLoading
 });
 
 const mapDispatchToProps = dispatch => ({
