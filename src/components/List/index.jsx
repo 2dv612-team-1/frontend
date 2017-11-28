@@ -4,10 +4,11 @@ import UnorderedList from "./UnorderedList";
 import OrderedList from "./OrderedList";
 
 const defaultProps = {
-	list: []
+  list: []
 };
 
 const propTypes = {
+<<<<<<< HEAD
 	OrderedList: PropTypes.arrayOf(
 		PropTypes.shape({
 			usarname: PropTypes.string
@@ -18,6 +19,13 @@ const propTypes = {
 			usarname: PropTypes.string
 		})
 	)
+=======
+  list: PropTypes.arrayOf(
+    PropTypes.shape({
+      usarname: PropTypes.string
+    })
+  )
+>>>>>>> b7b56c8d67830a69c2898f2952f0bae9c58f5b96
 };
 const List = ({ OrderedList }) => {
 	if (OrderedList) {
@@ -39,5 +47,3 @@ const List = ({ OrderedList }) => {
 };
 List.defaultProps = defaultProps;
 List.propTypes = propTypes;
-
-export default List;
