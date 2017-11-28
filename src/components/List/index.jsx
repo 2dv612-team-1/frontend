@@ -23,7 +23,5 @@ const List = ({ list }) => (
 
 List.defaultProps = defaultProps;
 List.propTypes = propTypes;
-OrderedList.defaultProps = defaultProps;
-OrderedList.propTypes = propTypes;
 
 export default List;
