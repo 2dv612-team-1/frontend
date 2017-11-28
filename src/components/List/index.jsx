@@ -14,13 +14,20 @@ const propTypes = {
 		})
 	)
 };
-
-const List = ({ list }) => (
-	<OrderedList>
-		{list.map(item => <li key={item.username}>{item.username}</li>)}
-	</OrderedList>
-);
-
+const List = ({ list }) => {
+	if (OrderedList) {
+		return (
+			<OrderedList>
+				{list.map(item => <li key={item.username}>{item.username}</li>)}
+			</OrderedList>
+		);
+	}
+	return (
+		<UnorderedList>
+			{list.map(item => <li key={item.username}>{item.username}</li>)}
+		</UnorderedList>
+	);
+};
 List.defaultProps = defaultProps;
 List.propTypes = propTypes;
 
