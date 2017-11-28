@@ -8,23 +8,32 @@ const defaultProps = {
 };
 
 const propTypes = {
-	list: PropTypes.arrayOf(
+	OrderedList: PropTypes.arrayOf(
+		PropTypes.shape({
+			usarname: PropTypes.string
+		})
+	),
+	UnorderedList: PropTypes.arrayOf(
 		PropTypes.shape({
 			usarname: PropTypes.string
 		})
 	)
 };
-const List = ({ list }) => {
+const List = ({ OrderedList }) => {
 	if (OrderedList) {
 		return (
 			<OrderedList>
-				{list.map(item => <li key={item.username}>{item.username}</li>)}
+				{OrderedList.map(item => (
+					<li key={item.username}>{item.username}</li>
+				))}
 			</OrderedList>
 		);
 	}
 	return (
 		<UnorderedList>
-			{list.map(item => <li key={item.username}>{item.username}</li>)}
+			{UnorderedList.map(item => (
+				<li key={item.username}>{item.username}</li>
+			))}
 		</UnorderedList>
 	);
 };
