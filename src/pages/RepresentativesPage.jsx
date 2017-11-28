@@ -34,10 +34,10 @@ class RepresentativesPage extends Component {
     return (
       <Modal>
         <PageTitle>Representative</PageTitle>
-        <Text>representatives...</Text>
         <Link to="/register/representative">
           <Button>Create New Representative</Button>
         </Link>
+        <Text>All representatives:</Text>
         {this.state.data ? (
           <List list={this.state.data} />
         ) : (
