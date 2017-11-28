@@ -4,15 +4,24 @@ import TextInput from "../TextInput";
 import Button from "../Button";
 import Form from "../../elements/Form";
 
+const defaultProps = {
+  role: "",
+  fields: PropTypes.shape({
+    username: "",
+    password: "",
+    jwt: ""
+  })
+};
+
 const propTypes = {
   onChange: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
-  role: PropTypes.string.isRequired,
+  role: PropTypes.string,
   fields: PropTypes.shape({
-    username: PropTypes.string.isRequired,
-    password: PropTypes.string.isRequired,
-    jwt: PropTypes.string.isRequired
-  }).isRequired
+    username: PropTypes.string,
+    password: PropTypes.string,
+    jwt: PropTypes.string
+  })
 };
 
 const RegisterForm = ({ role, onChange, onSubmit, fields }) => (
@@ -37,6 +46,6 @@ const RegisterForm = ({ role, onChange, onSubmit, fields }) => (
   </Form>
 );
 
+RegisterForm.defaultProps = defaultProps;
 RegisterForm.propTypes = propTypes;
-
 export default RegisterForm;

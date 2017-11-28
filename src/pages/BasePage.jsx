@@ -6,9 +6,14 @@ import Jwt from "../libs/Jwt";
 
 class BasePage extends Component {
   state = {
-    role: Auth.isUserAuthenticated() ? Jwt.getRole(Auth.getToken()) : ""
+    role: ""
   };
 
+  componentWillMount() {
+    this.setState({
+      role: Auth.isUserAuthenticated() ? Jwt.getRole(Auth.getToken()) : ""
+    });
+  }
   render() {
     return (
       <div>
