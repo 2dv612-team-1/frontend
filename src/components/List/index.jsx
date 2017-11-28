@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import List from "./List";
 import OrderedList from "./OrderedList";
 
 const defaultProps = {
@@ -22,5 +23,7 @@ const List = ({ list }) => (
 
 List.defaultProps = defaultProps;
 List.propTypes = propTypes;
+OrderedList.defaultProps = defaultProps;
+OrderedList.propTypes = propTypes;
 
 export default List;
