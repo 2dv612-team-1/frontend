@@ -10,7 +10,7 @@ const propTypes = {
 
 const HomePage = ({ loggedInAs }) => (
   <Modal>
-    <PageTitle>Welcome {loggedInAs}</PageTitle>
+    <PageTitle center>Welcome {loggedInAs}</PageTitle>
   </Modal>
 );
 
