@@ -97,7 +97,7 @@ class RegisterPage extends Component {
   render() {
     return (
       <Modal>
-        <PageTitle>Register</PageTitle>
+        <PageTitle center>Register</PageTitle>
         {this.state.redirect ? (
           <Redirect to="/login" />
         ) : (
