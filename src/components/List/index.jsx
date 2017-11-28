@@ -4,7 +4,8 @@ import UnorderedList from "./UnorderedList";
 import OrderedList from "./OrderedList";
 
 const defaultProps = {
-  list: []
+  OrderedList: [],
+  UnorderedList: []
 };
 
 const propTypes = {
