@@ -19,7 +19,7 @@
     "coverage-watch": "jest --env=jsdom --coverage --watch",
     "test-watch": "jest --env=jsdom --watch",
     "bundle": "webpack",
-    "start": "webpack-dev-server --hot --inline"
+    "start": "webpack-dev-server --hot --inline --open"
   },
   "repository": {
     "type": "git",
