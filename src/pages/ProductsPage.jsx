@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Text from "../elements/Text";
 import Modal from "../components/Modal";
 import PageTitle from "../components/PageTitle";
-import List from "../components/List";
+import OrderedList from "../components/OrderedList";
 import ErrorMessage from "../components/ErrorMessage";
 import Client from "../libs/Client";
 
@@ -30,7 +30,7 @@ class ProductsPage extends Component {
         <PageTitle>Products</PageTitle>
         <Text>All products:</Text>
         {this.state.data ? (
-          <List list={this.state.data} />
+          <OrderedList list={this.state.data} />
         ) : (
           <Text>Loading...</Text>
         )}
