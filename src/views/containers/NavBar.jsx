@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import MenuItem from "./MenuItem";
-import Container from "./Container";
+import MenuItem from "../components/MenuItem";
+import FlexBox from "../components/FlexBox";
 
 const defaultProps = {
   role: ""
