@@ -24,7 +24,6 @@ const Routes = () => (
     <AuthRoute access="company">
       <Route path="/representatives" component={RepresentativesPage} />
     </AuthRoute>
-    <Route path="/products" component={ProductsPage} />
   </div>
 );
 
