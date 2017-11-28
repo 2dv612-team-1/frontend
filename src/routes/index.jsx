@@ -6,6 +6,7 @@ import LoginPage from "../pages/LoginPage";
 import CompaniesPage from "../pages/CompaniesPage";
 import RepresentativesPage from "../pages/RepresentativesPage";
 import LogoutPage from "../pages/LogoutPage";
+import ProductsPage from "../pages/ProductsPage";
 import AuthRoute from "./AuthRoute";
 
 const Routes = () => (
@@ -24,6 +25,7 @@ const Routes = () => (
     <AuthRoute access="company">
       <Route path="/representatives" component={RepresentativesPage} />
     </AuthRoute>
+    <Route path="/products" component={ProductsPage} />
   </div>
 );
 

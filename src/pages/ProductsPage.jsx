@@ -44,4 +44,4 @@ class ProductsPage extends Component {
   }
 }
 
-export default CompaniesPage;
+export default ProductsPage;
