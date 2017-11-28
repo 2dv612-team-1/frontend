@@ -20,9 +20,9 @@ const propTypes = {
 const CompaniesPage = ({ fetchData, companies, isLoading, hasError }) => {
   fetchData("https://nanotu.be/companies");
 
-        <PageTitle>Companies</PageTitle>
   return (
     <Modal>
+      <PageTitle center>Companies</PageTitle>
       <Link to="/register/company">
         <Button>Register Company</Button>
       </Link>
