@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Text from "../elements/Text";
 import Modal from "../components/Modal";
 import PageTitle from "../components/PageTitle";
-import OrderedList from "../components/List";
+import List from "../components/List";
 import ErrorMessage from "../components/ErrorMessage";
 import Client from "../libs/Client";
 
