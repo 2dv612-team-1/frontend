@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import PropTypes from "prop-types";
 import Modal from "../components/Modal";
-import Client from "../libs/Client";
+import Client from "../../libs/Client";
 import RegisterForm from "../components/RegisterForm";
-import Auth from "../libs/Auth";
-import Jwt from "../libs/Jwt";
+import Auth from "../../libs/Auth";
+import Jwt from "../../libs/Jwt";
 import PageTitle from "../components/PageTitle";
 
 const defaultProps = {
@@ -97,7 +97,7 @@ class RegisterPage extends Component {
   render() {
     return (
       <Modal>
-        <PageTitle>Register</PageTitle>
+        <PageTitle center>Register</PageTitle>
         {this.state.redirect ? (
           <Redirect to="/login" />
         ) : (

@@ -1,5 +1,5 @@
 import React from "react";
-import { Route } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import HomePage from "../pages/HomePage";
 import RegisterPage from "../pages/RegisterPage";
 import LoginPage from "../pages/LoginPage";
@@ -9,14 +9,14 @@ import LogoutPage from "../pages/LogoutPage";
 import AuthRoute from "./AuthRoute";
 
 const Routes = () => (
-  <div>
+  <Switch>
     <Route exact path="/" component={HomePage} />
     <Route path="/login" component={LoginPage} />
     <Route path="/logout" component={LogoutPage} />
     <Route path="/register/:role" component={RegisterPage} />
     <Route
       path="/adm"
-      render={(props) => <LoginPage admin="true" {...props} />}
+      render={props => <LoginPage admin="true" {...props} />}
     />
     <AuthRoute access="admin">
       <Route path="/companies" component={CompaniesPage} />
@@ -24,7 +24,7 @@ const Routes = () => (
     <AuthRoute access="company">
       <Route path="/representatives" component={RepresentativesPage} />
     </AuthRoute>
-  </div>
+  </Switch>
 );
 
 export default Routes;

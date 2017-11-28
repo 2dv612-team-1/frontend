@@ -1,17 +1,12 @@
 import React from "react";
+import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import PropTypes from "prop-types";
-import Auth from "../libs/Auth";
-import Jwt from "../libs/Jwt";
-
-const defaultProps = {
-  role: Auth.isUserAuthenticated() ? Jwt.getRole(Auth.getToken()) : ""
-};
 
 const propTypes = {
   children: PropTypes.element.isRequired,
   access: PropTypes.string.isRequired,
-  role: PropTypes.string
+  role: PropTypes.string.isRequired
 };
 
 const AuthRoute = ({ access, children, role }) => {
@@ -21,6 +16,9 @@ const AuthRoute = ({ access, children, role }) => {
   return <Redirect to="/" />;
 };
 
-AuthRoute.defaultProps = defaultProps;
+const mapStateToProps = state => ({
+  role: state.session.loggedInAs.role
+});
+
 AuthRoute.propTypes = propTypes;
-export default AuthRoute;
+export default connect(mapStateToProps)(AuthRoute);

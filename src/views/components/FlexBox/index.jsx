@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import colors from "../../constants/colors";
 
-const Container = styled.div`
+const FlexBox = styled.div`
   width: 100%;
   height: 50px;
   background: ${colors.primary};
@@ -10,4 +10,4 @@ const Container = styled.div`
   padding: 0 20px 0 20px;
 `;
 
-export default Container;
+export default FlexBox;

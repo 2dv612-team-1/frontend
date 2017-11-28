@@ -1,7 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-import MenuItem from "./MenuItem";
-import Container from "./Container";
+import { connect } from "react-redux";
+import MenuItem from "../components/MenuItem";
+import FlexBox from "../components/FlexBox";
 
 const defaultProps = {
   role: ""
@@ -12,7 +13,7 @@ const propTypes = {
 };
 
 const NavBar = ({ role }) => (
-  <Container>
+  <FlexBox>
     <MenuItem to="/">home</MenuItem>
     {role === "" ? (
       <div>
@@ -45,10 +46,13 @@ const NavBar = ({ role }) => (
         <MenuItem to="/logout">Logout</MenuItem>
       </div>
     ) : null}
-  </Container>
+  </FlexBox>
 );
+
+const mapStateToProps = state => ({
+  role: state.session.loggedInAs.role
+});
 
 NavBar.defaultProps = defaultProps;
 NavBar.propTypes = propTypes;
-
-export default NavBar;
+export default connect(mapStateToProps)(NavBar);

@@ -16,6 +16,7 @@ class Client {
   }
 
   static POST(uri, obj = {}) {
+    
     const httpHeaders = {
       "Content-Type": "application/x-www-form-urlencoded"
     };
@@ -30,7 +31,12 @@ class Client {
     return fetch(uri, options).then(response =>
       response
         .json()
-        .then(data => Object.assign({ status: response.status }, data))
+        .then(data =>
+          Object.assign(
+            { status: response.status, message: response.message },
+            data
+          )
+        )
     );
   }
 

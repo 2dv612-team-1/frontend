@@ -5,9 +5,9 @@ import Modal from "../components/Modal";
 import PageTitle from "../components/PageTitle";
 import List from "../components/List";
 import ErrorMessage from "../components/ErrorMessage";
-import Client from "../libs/Client";
-import Auth from "../libs/Auth";
-import Jwt from "../libs/Jwt";
+import Client from "../../libs/Client";
+import Auth from "../../libs/Auth";
+import Jwt from "../../libs/Jwt";
 import Button from "../components/Button";
 
 class RepresentativesPage extends Component {
