@@ -8,6 +8,7 @@ const PageTitle = styled.h1`
   color: ${colors.primary};
   font-family: ${fonts.secondary};
   text-align: ${props => (props.center ? "center" : "left")};
+  text-transform: capitalize;
 `;
 
 export default PageTitle;
