@@ -20,14 +20,10 @@ const propTypes = {
 };
 
 const RepresentativesPage = ({ fetchData, representatives, isLoading, hasError }) => {
-  // componentDidMount() {
-  // https://nanotu.be/companies/{company-name}/representatives
   const company = Jwt.getUsername(Auth.getToken());
   const url = `https://nanotu.be/companies/${company}/representatives`;
   fetchData(url);
-  // }
 
-  // render() {
   return (
     <Modal>
       <PageTitle>Representative</PageTitle>
@@ -40,13 +36,12 @@ const RepresentativesPage = ({ fetchData, representatives, isLoading, hasError }
       {hasError ? <ErrorMessage>Could not load data</ErrorMessage> : null}
     </Modal>
   );
-  // }
 };
 
 const mapStateToProps = state => ({
   representatives: state.representatives.representatives,
   hasError: state.representatives.representativesHasError,
-  isLoading: state.representatives.companiesIsLoading
+  isLoading: state.representatives.representativesIsLoading
 });
 
 const mapDispatchToProps = dispatch => ({
