@@ -1,12 +1,11 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import PropTypes from "prop-types";
-import Modal from "../components/Modal";
 import Client from "../../libs/Client";
 import RegisterForm from "../components/RegisterForm";
 import Auth from "../../libs/Auth";
 import Jwt from "../../libs/Jwt";
-import PageTitle from "../components/PageTitle";
+import PageContainer from "../components/PageContainer";
 
 const defaultProps = {
   match: {
@@ -96,8 +95,7 @@ class RegisterPage extends Component {
 
   render() {
     return (
-      <Modal>
-        <PageTitle center>Register</PageTitle>
+      <PageContainer title="register">
         {this.state.redirect ? (
           <Redirect to="/login" />
         ) : (
@@ -108,7 +106,7 @@ class RegisterPage extends Component {
             fields={this.state.fields}
           />
         )}
-      </Modal>
+      </PageContainer>
     );
   }
 }

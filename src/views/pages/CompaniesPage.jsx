@@ -4,11 +4,10 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { companiesFetchData } from "../../state/companies/actions";
 import Text from "../elements/Text";
-import Modal from "../components/Modal";
-import PageTitle from "../components/PageTitle";
 import List from "../components/List";
 import ErrorMessage from "../components/ErrorMessage";
 import Button from "../components/Button";
+import PageContainer from "../components/PageContainer";
 
 const propTypes = {
   fetchData: PropTypes.func.isRequired,
@@ -24,8 +23,7 @@ class CompaniesPage extends Component {
 
   render() {
     return (
-      <Modal>
-        <PageTitle center>Companies</PageTitle>
+      <PageContainer title="companies">
         <Link to="/register/company">
           <Button>Register Company</Button>
         </Link>
@@ -35,7 +33,7 @@ class CompaniesPage extends Component {
         {this.props.hasError ? (
           <ErrorMessage>Could not load data</ErrorMessage>
         ) : null}
-      </Modal>
+      </PageContainer>
     );
   }
 }

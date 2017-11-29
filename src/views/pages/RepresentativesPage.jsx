@@ -1,14 +1,13 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Text from "../elements/Text";
-import Modal from "../components/Modal";
-import PageTitle from "../components/PageTitle";
 import List from "../components/List";
 import ErrorMessage from "../components/ErrorMessage";
 import Client from "../../libs/Client";
 import Auth from "../../libs/Auth";
 import Jwt from "../../libs/Jwt";
 import Button from "../components/Button";
+import PageContainer from "../components/PageContainer";
 
 class RepresentativesPage extends Component {
   state = {
@@ -32,8 +31,7 @@ class RepresentativesPage extends Component {
 
   render() {
     return (
-      <Modal>
-        <PageTitle>Representative</PageTitle>
+      <PageContainer title="representatives">
         <Text>representatives...</Text>
         <Link to="/register/representative">
           <Button>Create New Representative</Button>
@@ -44,7 +42,7 @@ class RepresentativesPage extends Component {
           <Text>Loading...</Text>
         )}
         <ErrorMessage>{this.state.error}</ErrorMessage>
-      </Modal>
+      </PageContainer>
     );
   }
 }

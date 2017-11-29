@@ -1,17 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import PageTitle from "../components/PageTitle";
-import Modal from "../components/Modal";
+import PageContainer from "../components/PageContainer";
 
 const propTypes = {
   loggedInAs: PropTypes.string.isRequired
 };
 
 const HomePage = ({ loggedInAs }) => (
-  <Modal>
-    <PageTitle center>Welcome {loggedInAs}</PageTitle>
-  </Modal>
+  <PageContainer title={`welcome ${loggedInAs}`} />
 );
 
 const mapStateToProps = state => ({
