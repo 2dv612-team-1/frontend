@@ -10,12 +10,12 @@ const propTypes = {
 
 const HomePage = ({ loggedInAs }) => (
   <Modal>
-    <PageTitle>Welcome {loggedInAs}</PageTitle>
+    <PageTitle center>Welcome {loggedInAs}</PageTitle>
   </Modal>
 );
 
 const mapStateToProps = state => ({
-  loggedInAs: state.sessionReducer.loggedInAs.role
+  loggedInAs: state.session.loggedInAs.role
 });
 
 HomePage.propTypes = propTypes;

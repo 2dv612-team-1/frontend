@@ -1,25 +1,21 @@
-import React, { Component } from "react";
+import React from "react";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { performLogout } from "../../state/session/actions";
 
 const propTypes = {
-  performLogout: PropTypes.func.isRequired
+  logout: PropTypes.func.isRequired
 };
 
-class LogoutPage extends Component {
-  componentWillMount() {
-    this.props.performLogout();
-  }
+const LogoutPage = ({ logout }) => {
+  logout();
 
-  render() {
-    return <Redirect to="/" />;
-  }
-}
+  return <Redirect to="/" />;
+};
 
 const mapDispatchToProps = dispatch => ({
-  performLogout: () => dispatch(performLogout())
+  logout: () => dispatch(performLogout())
 });
 
 LogoutPage.propTypes = propTypes;

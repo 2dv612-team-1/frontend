@@ -15,7 +15,10 @@ const loginIsLoading = (state = false, action) => {
 const loginHasError = (state = false, action) => {
   switch (action.type) {
     case types.LOGIN_HAS_ERROR:
-      return action.errorMessage;
+      return {
+        hasError: action.hasError,
+        errorMessage: action.errorMessage
+      };
 
     default:
       return state;
