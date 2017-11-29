@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
@@ -8,7 +8,6 @@ import Modal from "../components/Modal";
 import PageTitle from "../components/PageTitle";
 import List from "../components/List";
 import ErrorMessage from "../components/ErrorMessage";
-import Client from "../../libs/Client";
 import Auth from "../../libs/Auth";
 import Jwt from "../../libs/Jwt";
 import Button from "../components/Button";
@@ -20,38 +19,34 @@ const propTypes = {
   representatives: PropTypes.arrayOf(PropTypes.shape({})).isRequired
 };
 
-class RepresentativesPage extends Component {
-  componentDidMount() {
-    // https://nanotu.be/companies/{company-name}/representatives
-    const company = Jwt.getUsername(Auth.getToken());
-    const url = `https://nanotu.be/companies/${company}/representatives`;
-    this.props.fetchData(url);
-  }
+const RepresentativesPage = ({ fetchData, representatives, isLoading, hasError }) => {
+  // componentDidMount() {
+  // https://nanotu.be/companies/{company-name}/representatives
+  const company = Jwt.getUsername(Auth.getToken());
+  const url = `https://nanotu.be/companies/${company}/representatives`;
+  fetchData(url);
+  // }
 
-  render() {
-    return (
-      <Modal>
-        <PageTitle>Representative</PageTitle>
-        <Link to="/register/representative">
-          <Button>Create New Representative</Button>
-        </Link>
-        <Text>All representatives:</Text>
-        {this.props.representatives ? (
-          <List list={this.props.representatives} />
-        ) : null}
-        {this.props.isLoading ? <Text>Loading...</Text> : null}
-        {this.props.hasError ? (
-          <ErrorMessage>Could not load data</ErrorMessage>
-        ) : null}
-      </Modal>
-    );
-  }
-}
+  // render() {
+  return (
+    <Modal>
+      <PageTitle>Representative</PageTitle>
+      <Link to="/register/representative">
+        <Button>Create New Representative</Button>
+      </Link>
+      <Text>All representatives:</Text>
+      {representatives ? <List list={representatives} /> : null}
+      {isLoading ? <Text>Loading...</Text> : null}
+      {hasError ? <ErrorMessage>Could not load data</ErrorMessage> : null}
+    </Modal>
+  );
+  // }
+};
 
 const mapStateToProps = state => ({
-  representatives: state.representativesReducer.representatives,
-  hasError: state.representativesReducer.representativesHasError,
-  isLoading: state.representativesReducer.companiesIsLoading
+  representatives: state.representatives.representatives,
+  hasError: state.representatives.representativesHasError,
+  isLoading: state.representatives.companiesIsLoading
 });
 
 const mapDispatchToProps = dispatch => ({
