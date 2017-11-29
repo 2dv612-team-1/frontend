@@ -9,22 +9,28 @@ import LogoutPage from "../pages/LogoutPage";
 import AuthRoute from "./AuthRoute";
 
 const Routes = () => (
-  <Switch>
-    <Route exact path="/" component={HomePage} />
-    <Route path="/login" component={LoginPage} />
-    <Route path="/logout" component={LogoutPage} />
-    <Route path="/register/:role" component={RegisterPage} />
-    <Route
-      path="/adm"
-      render={props => <LoginPage admin="true" {...props} />}
-    />
-    <AuthRoute access="admin">
-      <Route path="/companies" component={CompaniesPage} />
-    </AuthRoute>
-    <AuthRoute access="company">
-      <Route path="/representatives" component={RepresentativesPage} />
-    </AuthRoute>
-  </Switch>
+  <div>
+    <Switch>
+      <Route exact path="/" component={HomePage} />
+      <Route path="/login" component={LoginPage} />
+      <Route path="/logout" component={LogoutPage} />
+      <Route path="/register/:role" component={RegisterPage} />
+      <Route
+        path="/adm"
+        render={props => <LoginPage admin="true" {...props} />}
+      />
+    </Switch>
+    <Switch>
+      <AuthRoute access="admin">
+        <Route path="/companies" component={CompaniesPage} />
+      </AuthRoute>
+    </Switch>
+    <Switch>
+      <AuthRoute access="company">
+        <Route path="/representatives" component={RepresentativesPage} />
+      </AuthRoute>
+    </Switch>
+  </div>
 );
 
 export default Routes;
