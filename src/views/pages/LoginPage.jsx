@@ -23,7 +23,7 @@ const LoginPage = ({ admin, isLoggedIn, errorMessage }) => (
     <PageTitle center>Login</PageTitle>
     <LoginForm admin={admin} />
     {isLoggedIn ? <Redirect to="/" /> : null}
-    {errorMessage ? <Text error>`${errorMessage}`</Text> : null}
+    {errorMessage ? <Text center error>`${errorMessage}`</Text> : null}
   </Modal>
 );
 
