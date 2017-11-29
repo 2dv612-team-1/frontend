@@ -21,6 +21,7 @@ export const companiesFetchData = url => dispatch => {
   Client.GET(url)
     .then(data => {
       dispatch(companiesFetchDataSucces(data.companies));
+      dispatch(companiesIsLoading(false));
     })
     .catch(() => {
       dispatch(companiesIsLoading(false));

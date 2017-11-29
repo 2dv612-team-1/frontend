@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
@@ -17,22 +17,28 @@ const propTypes = {
   companies: PropTypes.arrayOf(PropTypes.shape({})).isRequired
 };
 
-const CompaniesPage = ({ fetchData, companies, isLoading, hasError }) => {
-  fetchData("https://nanotu.be/companies");
+class CompaniesPage extends Component {
+  componentDidMount() {
+    this.props.fetchData("https://nanotu.be/companies");
+  }
 
-  return (
-    <Modal>
-      <PageTitle center>Companies</PageTitle>
-      <Link to="/register/company">
-        <Button>Register Company</Button>
-      </Link>
-      <Text>All companies:</Text>
-      {companies ? <List list={companies} /> : null}
-      {isLoading ? <Text>Loading...</Text> : null}
-      {hasError ? <ErrorMessage>Could not load data</ErrorMessage> : null}
-    </Modal>
-  );
-};
+  render() {
+    return (
+      <Modal>
+        <PageTitle center>Companies</PageTitle>
+        <Link to="/register/company">
+          <Button>Register Company</Button>
+        </Link>
+        <Text>All companies:</Text>
+        {this.props.companies ? <List list={this.props.companies} /> : null}
+        {this.props.isLoading ? <Text>Loading...</Text> : null}
+        {this.props.hasError ? (
+          <ErrorMessage>Could not load data</ErrorMessage>
+        ) : null}
+      </Modal>
+    );
+  }
+}
 
 const mapStateToProps = state => ({
   companies: state.companies.companies,
