@@ -4,12 +4,13 @@ import Modal from "../Modal";
 import PageTitle from "../PageTitle";
 
 const defaultProps = {
-  title: "Title"
+  title: "Title",
+  children: []
 };
 
 const propTypes = {
   title: PropTypes.string,
-  children: PropTypes.element.isRequired
+  children: PropTypes.arrayOf
 };
 
 const PageContainer = ({ title, children }) => (
