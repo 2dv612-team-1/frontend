@@ -1,11 +1,10 @@
-import React from "react";
+import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { representativesFetchData } from "../../state/representatives/actions";
 import Text from "../elements/Text";
 import List from "../components/List";
-import ErrorMessage from "../components/ErrorMessage";
 import Auth from "../../libs/Auth";
 import Jwt from "../../libs/Jwt";
 import Button from "../components/Button";
@@ -15,32 +14,39 @@ const propTypes = {
   fetchData: PropTypes.func.isRequired,
   isLoading: PropTypes.bool.isRequired,
   hasError: PropTypes.bool.isRequired,
-  representatives: PropTypes.arrayOf(PropTypes.shape({})).isRequired
+  representatives: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  loggedInAs: PropTypes.string.isRequired
 };
 
-const RepresentativesPage = ({ fetchData, representatives, isLoading, hasError }) => {
-  const company = Jwt.getUsername(Auth.getToken());
-  const url = `https://nanotu.be/companies/${company}/representatives`;
-  fetchData(url);
+class RepresentativesPage extends Component {
+  componentDidMount() {
+    // const company = Jwt.getUsername(Auth.getToken());
+    const company = this.props.loggedInAs.username;
+    const url = `https://nanotu.be/companies/${company}/representatives`;
+    console.log(url);
+    this.props.fetchData(url);
+  }
 
-  return (
-    <Modal>
-      <PageTitle>Representative</PageTitle>
-      <Link to="/register/representative">
-        <Button>Create New Representative</Button>
-      </Link>
-      <Text>All representatives:</Text>
-      {representatives ? <List list={representatives} /> : null}
-      {isLoading ? <Text>Loading...</Text> : null}
-      {hasError ? <ErrorMessage>Could not load data</ErrorMessage> : null}
-    </Modal>
-  );
-};
+  render() {
+    return (
+      <PageContainer title="Representative">
+        <Link to="/register/representative">
+          <Button>Register Representative</Button>
+        </Link>
+        <Text>All representatives:</Text>
+        {this.props.representatives ? <List list={this.props.representatives} /> : null}
+        {this.props.isLoading ? <Text>Loading...</Text> : null}
+        {this.props.hasError ? <Text error>Could not load data</Text> : null}
+      </PageContainer>
+    );
+  }
+}
 
 const mapStateToProps = state => ({
   representatives: state.representatives.representatives,
   hasError: state.representatives.representativesHasError,
-  isLoading: state.representatives.representativesIsLoading
+  isLoading: state.representatives.representativesIsLoading,
+  loggedInAs: state.session.loggedInAs.role
 });
 
 const mapDispatchToProps = dispatch => ({

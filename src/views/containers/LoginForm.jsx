@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { reduxForm, reset } from "redux-form";
+import { reduxForm } from "redux-form";
 import { connect } from "react-redux";
 import { performLogin } from "../../state/session/actions";
 import Button from "../components/Button";
