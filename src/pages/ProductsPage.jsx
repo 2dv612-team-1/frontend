@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import { productsFetchData } from "../../state/products/actions";
 import Text from "../elements/Text";
 import Modal from "../components/Modal";
 import PageTitle from "../components/PageTitle";
