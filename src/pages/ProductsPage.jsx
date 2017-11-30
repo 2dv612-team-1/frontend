@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 import Text from "../elements/Text";
 import Modal from "../components/Modal";
 import PageTitle from "../components/PageTitle";
