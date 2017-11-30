@@ -17,6 +17,10 @@ const OrdinaryButton = styled.button`
   &:focus {
     outline: none;
   }
+  &:hover {
+    color: #fff;
+    background: ${colors.primary};
+  }
 `;
 
 export default OrdinaryButton;

@@ -1,27 +1,20 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { productsFetchData } from "../../state/products/actions";
 import Text from "../elements/Text";
+import Modal from "../components/Modal";
+import PageTitle from "../components/PageTitle";
 import List from "../components/List";
-import Button from "../components/Button";
 import ErrorMessage from "../components/ErrorMessage";
-import PageContainer from "../components/PageContainer";
-
-const propTypes = {
-  fetchData: PropTypes.func.isRequired,
-  isLoading: PropTypes.bool.isRequired,
-  hasError: PropTypes.bool.isRequired,
-  products: PropTypes.arrayOf(PropTypes.shape({})).isRequired
-};
+import Client from "../libs/Client";
 
 class ProductsPage extends Component {
   state = {
     error: "",
     data: []
   };
-  /*
+
   componentDidMount() {
     const url = "https://nanotu.be/products";
     Client.GET(url)
@@ -31,22 +24,20 @@ class ProductsPage extends Component {
       .catch(() => {
         this.setState({ error: "Could not load data" });
       });
-  }*/
+  }
 
   render() {
     return (
-      <PageContainer title="products">
-        <Link to="/products/create">
-          <Button>Create Product</Button>
-        </Link>
+      <Modal>
+        <PageTitle>Products</PageTitle>
         <Text>All products:</Text>
         {this.state.data ? (
-          <List list={this.state.data} />
+          <OrderedList list={this.state.data} />
         ) : (
           <Text>Loading...</Text>
         )}
         <ErrorMessage>{this.state.error}</ErrorMessage>
-      </PageContainer>
+      </Modal>
     );
   }
 }
