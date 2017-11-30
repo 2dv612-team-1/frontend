@@ -37,7 +37,7 @@ class ProductsPage extends Component {
   render() {
     return (
       <PageContainer title="products">
-        {loggedInAs === "representative" ? (
+        {this.props.loggedInAs === "representative" ? (
           <Link to="/products/create">
             <Button>Create Product</Button>
           </Link>
