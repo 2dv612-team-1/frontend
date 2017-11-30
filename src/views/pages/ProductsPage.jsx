@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { productsFetchData } from "../../state/products/actions";
@@ -11,7 +12,7 @@ const propTypes = {
   fetchData: PropTypes.func.isRequired,
   isLoading: PropTypes.bool.isRequired,
   hasError: PropTypes.bool.isRequired,
-  companies: PropTypes.arrayOf(PropTypes.shape({})).isRequired
+  products: PropTypes.arrayOf(PropTypes.shape({})).isRequired
 };
 
 class ProductsPage extends Component {
@@ -19,7 +20,7 @@ class ProductsPage extends Component {
     error: "",
     data: []
   };
-/*
+  /*
   componentDidMount() {
     const url = "https://nanotu.be/products";
     Client.GET(url)

@@ -5,8 +5,6 @@ import { connect } from "react-redux";
 import { representativesFetchData } from "../../state/representatives/actions";
 import Text from "../elements/Text";
 import List from "../components/List";
-import Auth from "../../libs/Auth";
-import Jwt from "../../libs/Jwt";
 import Button from "../components/Button";
 import PageContainer from "../components/PageContainer";
 
