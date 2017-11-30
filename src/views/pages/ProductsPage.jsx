@@ -13,7 +13,8 @@ const propTypes = {
   fetchData: PropTypes.func.isRequired,
   isLoading: PropTypes.bool.isRequired,
   hasError: PropTypes.bool.isRequired,
-  products: PropTypes.arrayOf(PropTypes.shape({})).isRequired
+  products: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  loggedInAs: PropTypes.string.isRequired
 };
 
 class ProductsPage extends Component {
@@ -36,9 +37,11 @@ class ProductsPage extends Component {
   render() {
     return (
       <PageContainer title="products">
-        <Link to="/products/create">
-          <Button>Create Product</Button>
-        </Link>
+        {this.props.loggedInAs === "representative" ? (
+          <Link to="/products/create">
+            <Button>Create Product</Button>
+          </Link>
+        ) : null}
         <Text>All products:</Text>
         {this.state.data ? (
           <List list={this.state.data} />
@@ -53,7 +56,8 @@ class ProductsPage extends Component {
 const mapStateToProps = state => ({
   products: state.products.products,
   hasError: state.products.productsHasError,
-  isLoading: state.products.productsIsLoading
+  isLoading: state.products.productsIsLoading,
+  loggedInAs: state.session.loggedInAs.role
 });
 
 const mapDispatchToProps = dispatch => ({
