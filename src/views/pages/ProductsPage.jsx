@@ -9,6 +9,13 @@ import List from "../components/List";
 import ErrorMessage from "../components/ErrorMessage";
 import Client from "../libs/Client";
 
+const propTypes = {
+  fetchData: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool.isRequired,
+  hasError: PropTypes.bool.isRequired,
+  companies: PropTypes.arrayOf(PropTypes.shape({})).isRequired
+};
+
 class ProductsPage extends Component {
   state = {
     error: "",
