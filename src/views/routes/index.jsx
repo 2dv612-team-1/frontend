@@ -6,6 +6,7 @@ import LoginPage from "../pages/LoginPage";
 import CompaniesPage from "../pages/CompaniesPage";
 import RepresentativesPage from "../pages/RepresentativesPage";
 import ProductsPage from "../pages/ProductsPage";
+import CreateProductsPage from "../pages/CreateProductPage";
 import LogoutPage from "../pages/LogoutPage";
 import AuthRoute from "./AuthRoute";
 
@@ -33,7 +34,8 @@ const Routes = () => (
     </Switch>
     <Switch>
       <AuthRoute access="representative">
-        <Route path="/products" component={ProductsPage} />
+        <Route exact path="/products" component={ProductsPage} />
+        <Route path="/products/create" component={CreateProductsPage} />
       </AuthRoute>
     </Switch>
     <Switch>
