@@ -28,20 +28,6 @@ const List = ({ list, ordered }) => {
       {list.map(item => <li key={item.username}>{item.username}</li>)}
     </UnorderedList>
   );
-  /*
-  if (ordered) {
-    return (
-      <OrderedList>
-        {list.map(item => <li key={item.listItem}>{item.listItem}</li>)}
-      </OrderedList>
-    );
-  }
-  return (
-    <UnorderedList>
-      {list.map(item => <li key={item.listItem}>{item.listItem}</li>)}
-    </UnorderedList>
-  );
-  */
 };
 
 List.propTypes = propTypes;
