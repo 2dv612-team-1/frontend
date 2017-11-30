@@ -3,18 +3,16 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { productsFetchData } from "../../state/products/actions";
 import Text from "../elements/Text";
-import Modal from "../components/Modal";
-import PageTitle from "../components/PageTitle";
 import List from "../components/List";
 import ErrorMessage from "../components/ErrorMessage";
-import Client from "../libs/Client";
+import PageContainer from "../components/PageContainer";
 
 class ProductsPage extends Component {
   state = {
     error: "",
     data: []
   };
-
+/*
   componentDidMount() {
     const url = "https://nanotu.be/products";
     Client.GET(url)
@@ -24,20 +22,19 @@ class ProductsPage extends Component {
       .catch(() => {
         this.setState({ error: "Could not load data" });
       });
-  }
+  }*/
 
   render() {
     return (
-      <Modal>
-        <PageTitle>Products</PageTitle>
+      <PageContainer tilte="products">
         <Text>All products:</Text>
         {this.state.data ? (
-          <OrderedList list={this.state.data} />
+          <List list={this.state.data} />
         ) : (
           <Text>Loading...</Text>
         )}
         <ErrorMessage>{this.state.error}</ErrorMessage>
-      </Modal>
+      </PageContainer>
     );
   }
 }
