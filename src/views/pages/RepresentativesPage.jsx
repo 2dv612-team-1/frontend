@@ -46,7 +46,7 @@ const mapStateToProps = state => ({
   representatives: state.representatives.representatives,
   hasError: state.representatives.representativesHasError,
   isLoading: state.representatives.representativesIsLoading,
-  loggedInAs: state.session.loggedInAs.role
+  loggedInAs: state.session.loggedInAs
 });
 
 const mapDispatchToProps = dispatch => ({

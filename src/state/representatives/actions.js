@@ -21,6 +21,7 @@ export const representativesFetchData = url => dispatch => {
   Client.GET(url)
     .then(data => {
       dispatch(representativesFetchDataSuccess(data.representatives));
+      dispatch(representativesIsLoading(false));
     })
     .catch(() => {
       dispatch(representativesIsLoading(false));

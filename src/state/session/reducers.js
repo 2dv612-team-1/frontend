@@ -25,13 +25,14 @@ const loginHasError = (state = false, action) => {
   }
 };
 
-const loggedInAs = (state = { isLoggedIn: false, role: "" }, action) => {
+const loggedInAs = (state = { isLoggedIn: false, role: "", jwt: "" }, action) => {
   switch (action.type) {
     case types.LOGEDIN_AS:
       return Object.assign({}, state, {
         isLoggedIn: action.isLoggedIn,
         username: action.username,
-        role: action.role
+        role: action.role,
+        jwt: action.jwt
       });
 
     default:

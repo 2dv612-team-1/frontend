@@ -5,36 +5,32 @@ import { connect } from "react-redux";
 import { registerPostData } from "../../state/register/actions";
 import Button from "../components/Button";
 import Form from "../elements/Form";
-import Auth from "../../libs/Auth";
-import Jwt from "../../libs/Jwt";
 import Field from "../components/Field";
 
 const propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   register: PropTypes.func.isRequired,
-  role: PropTypes.string.isRequired
+  role: PropTypes.string.isRequired,
+  loggedInAs: PropTypes.string.isRequired
 };
 
-let RegisterForm = ({ handleSubmit, register, role }) => {
+let RegisterForm = ({ loggedInAs, handleSubmit, register, role }) => {
   const onSubmit = values => {
-    let url = "";
+    let json = values;
+    loggedInAs.jwt !== undefined ? (json.jwt = loggedInAs.jwt) : null;
+    let url = "https://nanotu.be/consumers";
     switch (role) {
-      case "admin":
-        url = "https://nanotu.be/admins";
-        break;
-      case "representative":
-        const company = Jwt.getUsername(Auth.getToken());
+      case "company":
+        const company = loggedInAs.username;
         url = `https://nanotu.be/companies/${company}/representatives`;
         break;
-      case "company":
+      case "admin":
         url = "https://nanotu.be/companies";
         break;
       case "customer":
         url = "https://nanotu.be/consumers";
         break;
       default:
-        url = "https://nanotu.be/consumers";
-        break;
     }
     register(url, values);
   };
@@ -48,6 +44,10 @@ let RegisterForm = ({ handleSubmit, register, role }) => {
   );
 };
 
+const mapStateToProps = state => ({
+  loggedInAs: state.session.loggedInAs
+});
+
 RegisterForm.propTypes = propTypes;
 
 RegisterForm = reduxForm({
@@ -58,4 +58,4 @@ const mapDispatchToProps = dispatch => ({
   register: (url, obj) => dispatch(registerPostData(url, obj))
 });
 
-export default connect(null, mapDispatchToProps)(RegisterForm);
+export default connect(mapStateToProps, mapDispatchToProps)(RegisterForm);
