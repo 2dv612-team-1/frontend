@@ -28,7 +28,7 @@ class CompaniesPage extends Component {
           <Button>Register Company</Button>
         </Link>
         <Text>All companies:</Text>
-        {this.props.companies ? <List list={this.props.companies} ordered={true} /> : null}
+        {this.props.companies ? <List list={this.props.companies} ordered type="userList" /> : null}
         {this.props.isLoading ? <Text>Loading...</Text> : null}
         {this.props.hasError ? (
           <ErrorMessage>Could not load data</ErrorMessage>
