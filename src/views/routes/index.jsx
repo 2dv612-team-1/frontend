@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 import HomePage from "../pages/HomePage";
-import RegisterPage from "../pages/RegisterPage";
+import RegisterPage from "../pages/RegisterPageOld";
 import LoginPage from "../pages/LoginPage";
 import CompaniesPage from "../pages/CompaniesPage";
 import RepresentativesPage from "../pages/RepresentativesPage";

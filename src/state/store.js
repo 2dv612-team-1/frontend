@@ -6,6 +6,7 @@ import createHistory from "history/createBrowserHistory";
 import { routerReducer as router, routerMiddleware } from "react-router-redux";
 import companiesReducer from "./companies";
 import representativesReducer from "./representatives";
+import registerReducer from "./register";
 import sessionReducer from "./session";
 
 const history = createHistory();
@@ -16,6 +17,7 @@ const rootReducer = combineReducers({
   companies: companiesReducer,
   representatives: representativesReducer,
   session: sessionReducer,
+  register: registerReducer,
   form,
   router
 });
