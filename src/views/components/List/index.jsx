@@ -3,29 +3,47 @@ import PropTypes from "prop-types";
 import UnorderedList from "./UnorderedList";
 import OrderedList from "./OrderedList";
 
-const propTypes = {
-	list: PropTypes.arrayOf(
-		PropTypes.shape({
-			listItem: PropTypes.string
-		}),
-		PropTypes.bool.isRequired
-	)
+const defaultProps = {
+  list: [],
+  ordered: false
 };
-const List = ({ list }) => {
-	if (OrderedList) {
-		return (
-			<OrderedList>
-				{list.map(item => <li key={item.listItem}>{item.listItem}</li>)}
-			</OrderedList>
-		);
-	}
-	return (
-		<UnorderedList>
-			{list.map(item => <li key={item.listItem}>{item.listItem}</li>)}
-		</UnorderedList>
-	);
+
+const propTypes = {
+  list: PropTypes.arrayOf(
+    PropTypes.shape({
+      username: PropTypes.string
+    }),
+    PropTypes.bool.isRequired
+  ),
+  ordered: PropTypes.bool
+};
+
+const List = ({ list, ordered }) => {
+  return ordered ? (
+    <OrderedList>
+      {list.map(item => <li key={item.username}>{item.username}</li>)}
+    </OrderedList>
+  ) : (
+    <UnorderedList>
+      {list.map(item => <li key={item.username}>{item.username}</li>)}
+    </UnorderedList>
+  );
+  /*
+  if (ordered) {
+    return (
+      <OrderedList>
+        {list.map(item => <li key={item.listItem}>{item.listItem}</li>)}
+      </OrderedList>
+    );
+  }
+  return (
+    <UnorderedList>
+      {list.map(item => <li key={item.listItem}>{item.listItem}</li>)}
+    </UnorderedList>
+  );
+  */
 };
 
 List.propTypes = propTypes;
-
+List.defaultProps = defaultProps;
 export default List;
