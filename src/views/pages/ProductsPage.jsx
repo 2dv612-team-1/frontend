@@ -35,7 +35,9 @@ class ProductsPage extends Component {
   render() {
     return (
       <PageContainer tilte="products">
-        <Link to="/products/create">Create Product</Link>
+        <Link to="/products/create">
+          <Button>Create Product</Button>
+        </Link>
         <Text>All products:</Text>
         {this.state.data ? (
           <List list={this.state.data} />
