@@ -19,7 +19,6 @@ const propTypes = {
 
 const RegisterPage = ({ role, errorMessage, successMessage }) => (
   <PageContainer title="register">
-    <Text success>{role}</Text>
     <RegisterForm role={role} />
     {errorMessage ? <Text error>{errorMessage}</Text> : null}
     {successMessage ? <Text success>{successMessage}</Text> : null}

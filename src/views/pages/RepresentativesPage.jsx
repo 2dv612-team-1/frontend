@@ -23,7 +23,7 @@ class RepresentativesPage extends Component {
     // const company = Jwt.getUsername(Auth.getToken());
     const company = this.props.loggedInAs.username;
     const url = `https://nanotu.be/companies/${company}/representatives`;
-    console.log(url);
+    // console.log(url);
     this.props.fetchData(url);
   }
 
