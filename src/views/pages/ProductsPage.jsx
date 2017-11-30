@@ -35,7 +35,7 @@ class ProductsPage extends Component {
 
   render() {
     return (
-      <PageContainer tilte="products">
+      <PageContainer title="products">
         <Link to="/products/create">
           <Button>Create Product</Button>
         </Link>
