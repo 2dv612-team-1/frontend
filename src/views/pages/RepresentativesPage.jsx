@@ -5,8 +5,6 @@ import { connect } from "react-redux";
 import { representativesFetchData } from "../../state/representatives/actions";
 import Text from "../elements/Text";
 import List from "../components/List";
-import Auth from "../../libs/Auth";
-import Jwt from "../../libs/Jwt";
 import Button from "../components/Button";
 import PageContainer from "../components/PageContainer";
 
@@ -20,10 +18,8 @@ const propTypes = {
 
 class RepresentativesPage extends Component {
   componentDidMount() {
-    // const company = Jwt.getUsername(Auth.getToken());
     const company = this.props.loggedInAs.username;
     const url = `https://nanotu.be/companies/${company}/representatives`;
-    // console.log(url);
     this.props.fetchData(url);
   }
 
