@@ -29,6 +29,15 @@ export const productsFetchData = url => dispatch => {
     });
 };
 
+export const createData = (url, obj) => dispatch => {
+  Client.POST(url, obj)
+    .then(data => {
+    })
+    .catch(() => {
+      //dispatch(productUploadHasError(true));
+    });
+};
+
 export default {
   productsHasError,
   productsIsLoading,
