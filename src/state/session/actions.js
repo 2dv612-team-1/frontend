@@ -14,14 +14,16 @@ export const loginHasError = (bool, error) => ({
   errorMessage: error
 });
 
-export const isLogedIn = (bool, username = "", role = "") => ({
+export const isLogedIn = (bool, username = "", role = "", jwt = "") => ({
   type: types.LOGEDIN_AS,
   isLoggedIn: bool,
   username,
-  role
+  role,
+  jwt
 });
 
 export const performLogin = (url, fields) => dispatch => {
+  dispatch(loginHasError(false, ""));
   dispatch(loginIsLoading(true));
 
   Client.POST(url, fields)
@@ -34,8 +36,9 @@ export const performLogin = (url, fields) => dispatch => {
 
       const username = Jwt.getUsername(data.token);
       const role = Jwt.getRole(data.token);
+      const jwt = data.token;
 
-      dispatch(isLogedIn(true, username, role));
+      dispatch(isLogedIn(true, username, role, jwt));
     })
     .catch(err => {
       dispatch(loginHasError(true, err.message));
