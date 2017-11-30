@@ -25,8 +25,7 @@ const List = ({ list }) => {
 		</UnorderedList>
 	);
 };
-List.OrderedList = OrderedList;
-List.UnorderedList = UnorderedList;
+
 List.propTypes = propTypes;
 
 export default List;
