@@ -151,3 +151,19 @@ Se: Text, PageTitle, NavBar/Container, NavBar/MenuItem
 
 ## Tester som använder mocks för funktioner. onChange, onClick, onSubmit etc
 Se: TextInput, LoginForm, RegisterForm
+
+# Redux
+
+Fullstack React With Friends - s. 450 - s. 488 (Skickad på slack)
+
+[Skaparen av Redux - Redux kurs](https://egghead.io/courses/getting-started-with-redux)
+
+[Wes Bos - Redux kurs](https://www.learnredux.com/)
+
+[Redux med redux-thunk](https://codepen.io/stowball/post/a-dummy-s-guide-to-redux-and-thunk-in-react)
+
+[Redux Ducks](https://github.com/erikras/ducks-modular-redux)
+
+[Redux re-ducks](https://github.com/alexnm/re-ducks)
+
+[Re-ducks in practice](https://medium.freecodecamp.org/scaling-your-redux-app-with-ducks-6115955638be)
