@@ -4,13 +4,12 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { representativesFetchData } from "../../state/representatives/actions";
 import Text from "../elements/Text";
-import Modal from "../components/Modal";
-import PageTitle from "../components/PageTitle";
 import List from "../components/List";
 import ErrorMessage from "../components/ErrorMessage";
 import Auth from "../../libs/Auth";
 import Jwt from "../../libs/Jwt";
 import Button from "../components/Button";
+import PageContainer from "../components/PageContainer";
 
 const propTypes = {
   fetchData: PropTypes.func.isRequired,

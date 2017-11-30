@@ -25,7 +25,12 @@ let LoginForm = ({ handleSubmit, login, admin }) => {
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
       <Field label="username" name="username" component="input" type="text" />
-      <Field label="password" name="password" component="input" type="text" />
+      <Field
+        label="password"
+        name="password"
+        component="input"
+        type="password"
+      />
       <Button form>Login</Button>
     </Form>
   );

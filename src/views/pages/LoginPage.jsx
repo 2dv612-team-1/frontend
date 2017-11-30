@@ -2,10 +2,9 @@ import React from "react";
 import { Redirect } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import Modal from "../components/Modal";
 import LoginForm from "../containers/LoginForm";
-import PageTitle from "../components/PageTitle";
 import Text from "../elements/Text";
+import PageContainer from "../components/PageContainer";
 
 const defaultProps = {
   admin: "",
@@ -19,12 +18,15 @@ const propTypes = {
 };
 
 const LoginPage = ({ admin, isLoggedIn, errorMessage }) => (
-  <Modal>
-    <PageTitle center>Login</PageTitle>
+  <PageContainer title="login">
     <LoginForm admin={admin} />
     {isLoggedIn ? <Redirect to="/" /> : null}
-    {errorMessage ? <Text error>`${errorMessage}`</Text> : null}
-  </Modal>
+    {errorMessage ? (
+      <Text center error>
+        {errorMessage}
+      </Text>
+    ) : null}
+  </PageContainer>
 );
 
 const mapStateToProps = state => ({
