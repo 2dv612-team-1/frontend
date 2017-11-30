@@ -1,5 +1,6 @@
 import types from "./types";
 import Client from "../../libs/Client";
+import Auth from "../../libs/Auth";
 
 export const productsHasError = bool => ({
   type: types.PRODUCTS_HAS_ERROR,
@@ -29,13 +30,29 @@ export const productsFetchData = url => dispatch => {
     });
 };
 
-export const createData = (url, obj) => dispatch => {
-  Client.POST(url, obj)
-    .then(data => {
-    })
+export const uploadCreatedProduct = (url, obj) => dispatch => {
+  const toUpload = Object.assign({}, obj);
+  toUpload.jwt = Auth.getToken();
+
+  const body = new FormData();
+  Object.keys(toUpload).forEach(key => {
+    body.append(key, toUpload[key]);
+  });
+
+  console.info("POST", body, toUpload);
+  console.info("This is expected to fail:");
+  fetch(url, {
+    method: "POST",
+    body: body
+  })
+    .then(res => res.json())
+    .then(res => console.log(res))
+    .catch(err => console.error(err));
+  /*Client.POST(url, toUpload)
+    //  .then(data => {})
     .catch(() => {
-      //dispatch(productUploadHasError(true));
-    });
+      //  dispatch(productUploadHasError(true));
+    });*/
 };
 
 export default {
