@@ -31,11 +31,17 @@ class RepresentativesPage extends Component {
 
   render() {
     return (
+<<<<<<< HEAD:src/views/pages/RepresentativesPage.jsx
       <PageContainer title="representatives">
         <Text>representatives...</Text>
+=======
+      <Modal>
+        <PageTitle>Representative</PageTitle>
+>>>>>>> product:src/pages/RepresentativesPage.jsx
         <Link to="/register/representative">
           <Button>Create New Representative</Button>
         </Link>
+        <Text>All representatives:</Text>
         {this.state.data ? (
           <List list={this.state.data} />
         ) : (

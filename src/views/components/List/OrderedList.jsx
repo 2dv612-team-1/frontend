@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import fonts from "../../constants/fonts";
 
-const OList = styled.ol`
+const OrderedList = styled.ol`
   font-size: 16px;
   text-transform: capitalize;
   font-family: ${fonts.secondary};
@@ -9,4 +9,4 @@ const OList = styled.ol`
   padding: 0;
 `;
 
-export default OList;
+export default OrderedList;

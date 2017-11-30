@@ -1,26 +1,31 @@
 import React from "react";
 import PropTypes from "prop-types";
-import OList from "./List";
-
-const defaultProps = {
-  list: []
-};
+import UnorderedList from "./UnorderedList";
+import OrderedList from "./OrderedList";
 
 const propTypes = {
-  list: PropTypes.arrayOf(
-    PropTypes.shape({
-      usarname: PropTypes.string
-    })
-  )
+	list: PropTypes.arrayOf(
+		PropTypes.shape({
+			listItem: PropTypes.string
+		}),
+		PropTypes.bool.isRequired
+	)
+};
+const List = ({ list }) => {
+	if (OrderedList) {
+		return (
+			<OrderedList>
+				{list.map(item => <li key={item.listItem}>{item.listItem}</li>)}
+			</OrderedList>
+		);
+	}
+	return (
+		<UnorderedList>
+			{list.map(item => <li key={item.listItem}>{item.listItem}</li>)}
+		</UnorderedList>
+	);
 };
 
-const List = ({ list }) => (
-  <OList>
-    {list.map(item => <li key={item.username}>{item.username}</li>)}
-  </OList>
-);
-
-List.defaultProps = defaultProps;
 List.propTypes = propTypes;
 
 export default List;
