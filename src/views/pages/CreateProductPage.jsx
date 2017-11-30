@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import { reduxForm } from 'redux-form';
+import { reduxForm } from "redux-form";
 import Field from "../components/Field";
+import SelectField from "../components/SelectField";
 import Button from "../components/Button";
 import PageContainer from "../components/PageContainer";
 
@@ -9,11 +10,11 @@ class CreateProductPage extends Component {
     return (
       <PageContainer title="create product">
         <form>
-          <Field
+          <SelectField
             label="category"
             name="category"
-            component="input"
             type="text"
+            options={["test1", "test2", "test3"]}
           />
           <Field label="title" name="title" component="input" type="text" />
           <Field
