@@ -1,6 +1,4 @@
 import Client from "../../libs/Client";
-import Auth from "../../libs/Auth";
-import Jwt from "../../libs/Jwt";
 import types from "./types";
 
 export const registerIsLoading = bool => ({
@@ -21,9 +19,12 @@ export const registerPostDataSuccess = (bool, message) => ({
 });
 
 export const registerPostData = (url, fields) => dispatch => {
+  dispatch(registerIsLoading(true));
+  console.log(url);
   Client.POST(url, fields)
     .then(data => {
-      if (data.status !== 200) {
+      console.log(data);
+      if (data.status !== 201) {
         dispatch(registerHasError(true, data.message));
       }
       dispatch(registerIsLoading(false));

@@ -2,12 +2,12 @@ import React from "react";
 import PropTypes from "prop-types";
 import { reduxForm } from "redux-form";
 import { connect } from "react-redux";
-import { performRegister } from "../../state/session/actions";
-import Button from "../Button";
-import Form from "../../elements/Form";
-import Auth from "../../../libs/Auth";
-import Jwt from "../../../libs/Jwt";
-import Field from "../../components/Field";
+import { registerPostData } from "../../state/register/actions";
+import Button from "../components/Button";
+import Form from "../elements/Form";
+import Auth from "../../libs/Auth";
+import Jwt from "../../libs/Jwt";
+import Field from "../components/Field";
 
 const propTypes = {
   handleSubmit: PropTypes.func.isRequired,
@@ -33,6 +33,8 @@ let RegisterForm = ({ handleSubmit, register, role }) => {
         url = "https://nanotu.be/consumers";
         break;
       default:
+        url = "https://nanotu.be/consumers";
+        break;
     }
     register(url, values);
   };
@@ -53,7 +55,7 @@ RegisterForm = reduxForm({
 })(RegisterForm);
 
 const mapDispatchToProps = dispatch => ({
-  register: (url, obj) => dispatch(performRegister(url, obj))
+  register: (url, obj) => dispatch(registerPostData(url, obj))
 });
 
 export default connect(null, mapDispatchToProps)(RegisterForm);
