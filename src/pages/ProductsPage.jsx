@@ -41,5 +41,15 @@ class ProductsPage extends Component {
     );
   }
 }
+const mapStateToProps = state => ({
+  products: state.products.products,
+  hasError: state.products.productsHasError,
+  isLoading: state.products.productsIsLoading
+});
 
-export default ProductsPage;
+const mapDispatchToProps = dispatch => ({
+  fetchData: url => dispatch(productsFetchData(url))
+});
+
+ProductsPage.propTypes = propTypes;
+export default connect(mapStateToProps, mapDispatchToProps)(ProductsPage);
