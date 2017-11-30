@@ -10,7 +10,7 @@ const defaultProps = {
 
 const propTypes = {
   title: PropTypes.string,
-  children: PropTypes.arrayOf
+  children: PropTypes.arrayOf(PropTypes.element)
 };
 
 const PageContainer = ({ title, children }) => (
