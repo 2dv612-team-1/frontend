@@ -12,7 +12,7 @@ const HomePage = ({ loggedInAs }) => (
 );
 
 const mapStateToProps = state => ({
-  loggedInAs: state.session.loggedInAs.username
+  loggedInAs: state.session.loggedInAs.role
 });
 
 HomePage.propTypes = propTypes;

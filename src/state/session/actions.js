@@ -22,6 +22,7 @@ export const isLogedIn = (bool, username = "", role = "") => ({
 });
 
 export const performLogin = (url, fields) => dispatch => {
+  dispatch(loginHasError(false, ""));
   dispatch(loginIsLoading(true));
 
   Client.POST(url, fields)

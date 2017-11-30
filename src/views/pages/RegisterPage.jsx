@@ -1,9 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import Modal from "../components/Modal";
+import PageContainer from "../components/PageContainer";
 import RegisterForm from "../containers/RegisterForm";
-import PageTitle from "../components/PageTitle";
 import Text from "../elements/Text";
 
 const defaultProps = {
@@ -19,12 +18,11 @@ const propTypes = {
 };
 
 const RegisterPage = ({ role, errorMessage, successMessage }) => (
-  <Modal>
-    <PageTitle center>Register</PageTitle>
+  <PageContainer title="register">
     <RegisterForm role={role} />
     {errorMessage ? <Text error>{errorMessage}</Text> : null}
     {successMessage ? <Text success>{successMessage}</Text> : null}
-  </Modal>
+  </PageContainer>
 );
 
 const mapStateToProps = state => ({
