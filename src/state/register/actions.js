@@ -29,6 +29,7 @@ export const registerPostData = (url, fields) => dispatch => {
       }
       dispatch(registerIsLoading(false));
       dispatch(registerPostDataSuccess(true, data.message));
+      dispatch(registerHasError(false, ""));
     })
     .catch(err => {
       dispatch(registerHasError(true, err.message));

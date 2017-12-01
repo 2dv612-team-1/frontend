@@ -5,23 +5,34 @@ import OrderedList from "./OrderedList";
 
 const defaultProps = {
   list: [],
-  ordered: false
+  ordered: false,
+  type: ""
 };
+
+const userShape = PropTypes.shape({
+  username: PropTypes.string
+});
+
+const categoryShape = PropTypes.shape({
+  category: PropTypes.string
+});
+
+const productShape = PropTypes.shape({
+  name: PropTypes.string
+});
 
 const propTypes = {
   list: PropTypes.arrayOf(
-    PropTypes.shape({
-      username: PropTypes.string
-    }),
-    PropTypes.bool.isRequired
+    PropTypes.oneOfType([userShape, categoryShape, productShape])
   ),
-  ordered: PropTypes.bool
+  ordered: PropTypes.bool,
+  type: PropTypes.string
 };
 
-const List = ({ list, ordered }) => {
+const List = ({ list, ordered, type }) => {
   return ordered ? (
     <OrderedList>
-      {list.map(item => <li key={item.username}>{item.username}</li>)}
+      {list.map(item => <li key={item[type]}>{item[type]}</li>)}
     </OrderedList>
   ) : (
     <UnorderedList>
