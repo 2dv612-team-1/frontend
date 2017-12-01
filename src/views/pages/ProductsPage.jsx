@@ -32,7 +32,7 @@ class ProductsPage extends Component {
           </Link>
         ) : null}
         <Text>All products:</Text>
-      {this.props.products ? (
+        {this.props.products ? (
           <List list={this.props.companies} />
         ) : (
           <Text>Loading...</Text>

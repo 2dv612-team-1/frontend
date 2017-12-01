@@ -21,10 +21,10 @@ export const productsFetchData = url => dispatch => {
   dispatch(productsIsLoading(true));
   Client.GET(url)
     .then(data => {
-      dispatch(productsFetchDataSucces(data.products));
+      dispatch(productsFetchDataSucces(data.data.products));
       dispatch(productsIsLoading(false));
     })
-    .catch((err) => {
+    .catch(err => {
       console.log(err);
       dispatch(productsIsLoading(false));
       dispatch(productsHasError(true));
@@ -49,11 +49,11 @@ export const uploadCreatedProduct = (url, obj) => dispatch => {
     .then(res => res.json())
     .then(res => console.log(res))
     .catch(err => console.error(err));
-  /*Client.POST(url, toUpload)
+  /*  Client.POST(url, toUpload)
     //  .then(data => {})
     .catch(() => {
       //  dispatch(productUploadHasError(true));
-    });*/
+    }); */
 };
 
 export default {
