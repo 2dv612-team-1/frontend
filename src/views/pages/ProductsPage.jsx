@@ -33,7 +33,12 @@ class ProductsPage extends Component {
         ) : null}
         <Text>All products:</Text>
         {this.props.products ? (
-          <List list={this.props.companies} />
+          this.props.products.map(product => (
+            <div>
+              <Link to={`/products/${product._id}`}>{product.name}</Link>
+              <br />
+            </div>
+          ))
         ) : (
           <Text>Loading...</Text>
         )}
