@@ -28,7 +28,7 @@ const Routes = () => (
     <Switch>
       <AuthRoute access="admin">
         <Route path="/companies" component={CompaniesPage} />
-        <Route path="/categories" component={CategoriesPage} />
+        <Route exact path="/categories" component={CategoriesPage} />
         <Route path="/categories/new" component={CreateCategoryPage} />
       </AuthRoute>
     </Switch>
