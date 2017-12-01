@@ -41,13 +41,13 @@ const Routes = () => (
       <AuthRoute access="representative">
         <Route exact path="/products" component={ProductsPage} />
         <Route path="/products/create" component={CreateProductsPage} />
-        <Route path="/products/:id" component={ProductPage} />
+        <Route path="/product/:id" component={ProductPage} />
       </AuthRoute>
     </Switch>
     <Switch>
       <AuthRoute access="consumer">
         <Route path="/products" component={ProductsPage} />
-        <Route path="/products/:id" component={ProductPage} />
+        <Route path="/product/:id" component={ProductPage} />
       </AuthRoute>
     </Switch>
   </div>

@@ -35,7 +35,7 @@ class ProductsPage extends Component {
         {this.props.products ? (
           this.props.products.map(product => (
             <div>
-              <Link to={`/products/${product._id}`}>{product.name}</Link>
+              <Link to={`/product/${product._id}`}>{product.name}</Link>
               <br />
             </div>
           ))
