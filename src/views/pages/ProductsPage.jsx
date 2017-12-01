@@ -22,17 +22,11 @@ class ProductsPage extends Component {
     error: "",
     data: []
   };
-  /*
+
   componentDidMount() {
     const url = "https://nanotu.be/products";
-    Client.GET(url)
-      .then(data => {
-        this.setState({ data: data.products });
-      })
-      .catch(() => {
-        this.setState({ error: "Could not load data" });
-      });
-  }*/
+    this.props.fetchData(url);
+  }
 
   render() {
     return (
