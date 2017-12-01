@@ -24,7 +24,8 @@ export const productsFetchData = url => dispatch => {
       dispatch(productsFetchDataSucces(data.products));
       dispatch(productsIsLoading(false));
     })
-    .catch(() => {
+    .catch((err) => {
+      console.log(err);
       dispatch(productsIsLoading(false));
       dispatch(productsHasError(true));
     });

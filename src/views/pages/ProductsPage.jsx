@@ -18,11 +18,6 @@ const propTypes = {
 };
 
 class ProductsPage extends Component {
-  state = {
-    error: "",
-    data: []
-  };
-
   componentDidMount() {
     const url = "https://nanotu.be/products";
     this.props.fetchData(url);
@@ -37,12 +32,12 @@ class ProductsPage extends Component {
           </Link>
         ) : null}
         <Text>All products:</Text>
-        {this.state.data ? (
-          <List list={this.state.data} />
+      {this.props.products ? (
+          <List list={this.props.companies} />
         ) : (
           <Text>Loading...</Text>
         )}
-        <ErrorMessage>{this.state.error}</ErrorMessage>
+        <ErrorMessage>{this.props.hasError}</ErrorMessage>
       </PageContainer>
     );
   }
