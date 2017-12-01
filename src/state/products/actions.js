@@ -12,16 +12,22 @@ export const productsIsLoading = bool => ({
   isLoading: bool
 });
 
-export const productsFetchDataSucces = products => ({
+export const productsFetchDataSuccess = products => ({
   type: types.PRODUCTS_FETCH_DATA_SUCCESS,
   products
+});
+
+export const productsPostDataSuccess = (bool, message) => ({
+  type: types.PRODUCTS_POST_DATA_SUCCESS,
+  isSuccess: bool,
+  successMessage: message
 });
 
 export const productsFetchData = url => dispatch => {
   dispatch(productsIsLoading(true));
   Client.GET(url)
     .then(data => {
-      dispatch(productsFetchDataSucces(data.data.products));
+      dispatch(productsFetchDataSuccess(data.data.products));
       dispatch(productsIsLoading(false));
     })
     .catch(err => {
@@ -59,6 +65,7 @@ export const uploadCreatedProduct = (url, obj) => dispatch => {
 export default {
   productsHasError,
   productsIsLoading,
-  productsFetchDataSucces,
+  productsFetchDataSuccess,
+  productsPostDataSuccess,
   productsFetchData
 };

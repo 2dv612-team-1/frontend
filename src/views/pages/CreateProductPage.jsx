@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { reduxForm } from "redux-form";
 import { connect } from "react-redux";
+import Text from "../elements/Text";
 import Field from "../components/Field";
 import SelectField from "../components/SelectField";
 import Button from "../components/Button";
@@ -50,6 +51,9 @@ class CreateProductPage extends Component {
           />
           <Field name="files" component={DropZoneField} />
           <Button submit>create</Button>
+          {this.props.isLoading ? <Text>Loading...</Text> : null}
+          {this.props.successMessage ? <Text success>Product was created</Text> : null}
+          {this.props.hasError ? <Text error>Could not load data</Text> : null}
         </form>
       </PageContainer>
     );
@@ -61,7 +65,10 @@ CreateProductPage = reduxForm({
 })(CreateProductPage);
 
 const mapStateToProps = state => ({
-  categories: state.categories.categories
+  categories: state.categories.categories,
+  isLoading: state.products.isLoading,
+  errorMessage: state.products.productsHasError.errorMessage,
+  successMessage: state.products.productsPostDataSuccess.successMessage
 });
 
 const mapDispatchToProps = dispatch => ({
