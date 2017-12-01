@@ -8,8 +8,9 @@ const propTypes = {
   products: PropTypes.arrayOf(PropTypes.shape({})).isRequired
 };
 
-const ProductPage = ({ id, products }) => {
-  const product = products.filter(product => product._id === id);
+const ProductPage = ({ id, products, location }) => {
+  let product = products.filter(product => product._id === location.slice(-24));
+  product = product[0];
 
   return (
     <PageContainer title={product.name}>
@@ -26,7 +27,8 @@ const ProductPage = ({ id, products }) => {
 };
 
 const mapStateToProps = state => ({
-  products: state.products.products
+  products: state.products.products,
+  location: state.router.location.pathname
 });
 
 ProductPage.propTypes = propTypes;
