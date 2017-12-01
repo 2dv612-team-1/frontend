@@ -9,6 +9,8 @@ import ProductsPage from "../pages/ProductsPage";
 import ProductPage from "../pages/ProductPage";
 import CreateProductsPage from "../pages/CreateProductPage";
 import LogoutPage from "../pages/LogoutPage";
+import CategoriesPage from "../pages/CategoriesPage";
+import CreateCategoryPage from "../pages/CreateCategoryPage";
 import AuthRoute from "./AuthRoute";
 
 const Routes = () => (
@@ -26,6 +28,8 @@ const Routes = () => (
     <Switch>
       <AuthRoute access="admin">
         <Route path="/companies" component={CompaniesPage} />
+        <Route path="/categories" component={CategoriesPage} />
+        <Route path="/categories/new" component={CreateCategoryPage} />
       </AuthRoute>
     </Switch>
     <Switch>

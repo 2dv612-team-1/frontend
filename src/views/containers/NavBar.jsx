@@ -24,8 +24,10 @@ const NavBar = ({ role }) => (
     ) : null}
     {role === "admin" ? (
       <div>
-        <MenuItem to="/register/company">Register</MenuItem>
+        <MenuItem to="/categories">Categories</MenuItem>
+        <MenuItem to="/categories/new">New Category</MenuItem>
         <MenuItem to="/companies">Companies</MenuItem>
+        <MenuItem to="/register/company">New Company</MenuItem>
         <MenuItem to="/logout">Logout</MenuItem>
       </div>
     ) : null}
