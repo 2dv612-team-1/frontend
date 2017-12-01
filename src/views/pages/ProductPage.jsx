@@ -19,9 +19,10 @@ const ProductPage = ({ id, products, location }) => {
       <p>Created By: {product.createdBy}</p>
       <p>Description: {product.description}</p>
       <p>Producer: {product.producer}</p>
-      <p>Serial No: {product.serialNo}</p>
       <p>Files:</p>
-      {/*product.files.map(file => <a href="https://nanotu.be{file}">{file}</a>)*/}
+      <div>
+      {/*product.files.map(file => <a href={`https://nanotu.be${file}`}>{file}</a>)*/}
+      </div>
     </PageContainer>
   );
 };
