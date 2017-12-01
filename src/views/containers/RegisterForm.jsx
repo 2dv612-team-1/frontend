@@ -11,11 +11,13 @@ const propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   register: PropTypes.func.isRequired,
   role: PropTypes.string.isRequired,
-  loggedInAs: PropTypes.string.isRequired
+  loggedInAs: PropTypes.string.isRequired,
 };
 
 let RegisterForm = ({ loggedInAs, handleSubmit, register, role }) => {
   const onSubmit = values => {
+    console.log("role");
+    console.log(role);
     let json = values;
     loggedInAs.jwt !== undefined ? (json.jwt = loggedInAs.jwt) : null;
     let url = "https://nanotu.be/consumers";
@@ -30,12 +32,20 @@ let RegisterForm = ({ loggedInAs, handleSubmit, register, role }) => {
       case "customer":
         url = "https://nanotu.be/consumers";
         break;
+      case "category":
+        url = "https://nanotu.be/categories";
+        break;
       default:
     }
-    register(url, values);
+    register(url, json);
   };
 
-  return (
+  return role === "category" ? (
+    <Form onSubmit={handleSubmit(onSubmit)}>
+      <Field label="name" name="name" component="input" type="text" />
+      <Button form>Create</Button>
+    </Form>
+  ) : (
     <Form onSubmit={handleSubmit(onSubmit)}>
       <Field label="username" name="username" component="input" type="text" />
       <Field label="password" name="password" component="input" type="text" />

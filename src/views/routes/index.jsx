@@ -7,6 +7,7 @@ import CompaniesPage from "../pages/CompaniesPage";
 import RepresentativesPage from "../pages/RepresentativesPage";
 import LogoutPage from "../pages/LogoutPage";
 import CategoriesPage from "../pages/CategoriesPage";
+import CreateCategoryPage from "../pages/CreateCategoryPage";
 import AuthRoute from "./AuthRoute";
 
 const Routes = () => (
@@ -25,6 +26,7 @@ const Routes = () => (
       <AuthRoute access="admin">
         <Route path="/companies" component={CompaniesPage} />
         <Route path="/categories" component={CategoriesPage} />
+        <Route path="/categories/new" component={CreateCategoryPage} />
       </AuthRoute>
     </Switch>
     <Switch>

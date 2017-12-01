@@ -32,11 +32,11 @@ const propTypes = {
 const List = ({ list, ordered, type }) => {
   return ordered ? (
     <OrderedList>
-      {list.map(item => <li key={item.username}>{item.username}</li>)}
+      {list.map(item => <li key={item[type]}>{item[type]}</li>)}
     </OrderedList>
   ) : (
     <UnorderedList>
-      {list.map(item => <li key={item.username}>{item.username}</li>)}
+      {list.map(item => <li key={item[type]}>{item[type]}</li>)}
     </UnorderedList>
   );
 };

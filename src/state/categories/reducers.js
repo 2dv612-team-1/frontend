@@ -32,10 +32,23 @@ const categories = (state = [], action) => {
   }
 };
 
+const categoriesPostDataSuccess = (state = false, action) => {
+  switch (action.type) {
+    case types.CATEGORIES_POST_DATA_SUCCESS:
+      return {
+        isSuccess: action.isSuccess,
+        successMessage: action.successMessage
+      };
+    default:
+      return state;
+  }
+};
+
 const categoriesReducer = combineReducers({
   categoriesHasError,
   categoriesIsLoading,
-  categories
+  categories,
+  categoriesPostDataSuccess
 });
 
 export default categoriesReducer;

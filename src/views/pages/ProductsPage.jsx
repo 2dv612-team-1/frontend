@@ -39,7 +39,7 @@ class ProductsPage extends Component {
         <PageTitle>Products</PageTitle>
         <Text>All products:</Text>
         {this.state.data ? (
-          <OrderedList list={this.state.data} />
+          <List list={this.state.data} type="product" />
         ) : (
           <Text>Loading...</Text>
         )}

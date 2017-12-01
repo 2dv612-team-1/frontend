@@ -23,11 +23,11 @@ class CategoriesPage extends Component {
   render() {
     return (
       <PageContainer title="Categories">
-        <Link to="/register/category">
+        <Link to="/categories/new">
           <Button>Create new Category</Button>
         </Link>
         <Text>All categories:</Text>
-        {this.props.categories ? <List list={this.props.categories} /> : null}
+        {this.props.categories ? <List list={this.props.categories} ordered type="category" /> : null}
         {this.props.isLoading ? <Text>Loading...</Text> : null}
         {this.props.hasError ? <Text error>Could not load data</Text> : null}
       </PageContainer>

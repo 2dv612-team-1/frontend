@@ -16,6 +16,12 @@ export const categoriesFetchDataSuccess = categories => ({
   categories
 });
 
+export const categoriesPostDataSuccess = (bool, message) => ({
+  type: types.CATEGORIES_POST_DATA_SUCCESS,
+  isSuccess: bool,
+  successMessage: message
+});
+
 export const categoriesFetchData = url => dispatch => {
   dispatch(categoriesIsLoading(true));
   Client.GET(url)
@@ -30,9 +36,29 @@ export const categoriesFetchData = url => dispatch => {
     });
 };
 
+export const categoriesPostData = (url, fields) => dispatch => {
+  dispatch(categoriesIsLoading(true));
+  console.log(url);
+  Client.POST(url, fields)
+    .then(data => {
+      console.log(data);
+      if (data.status !== 201) {
+        dispatch(categoriesHasError(true, data.message));
+      }
+      dispatch(categoriesIsLoading(false));
+      dispatch(categoriesPostDataSuccess(true, data.message));
+      dispatch(categoriesHasError(false, null));
+    })
+    .catch(err => {
+      dispatch(categoriesHasError(true, err.message));
+    });
+};
+
 export default {
   categoriesHasError,
   categoriesIsLoading,
   categoriesFetchDataSuccess,
-  categoriesFetchData
+  categoriesPostDataSuccess,
+  categoriesFetchData,
+  categoriesPostData
 };
