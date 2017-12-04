@@ -1,57 +1,64 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { productsFetchData } from "../../state/products/actions";
 import Text from "../elements/Text";
-import Modal from "../components/Modal";
-import PageTitle from "../components/PageTitle";
-import List from "../components/List";
+import Button from "../components/Button";
 import ErrorMessage from "../components/ErrorMessage";
-import Client from "../libs/Client";
+import PageContainer from "../components/PageContainer";
 
 const propTypes = {
   fetchData: PropTypes.func.isRequired,
   isLoading: PropTypes.bool.isRequired,
   hasError: PropTypes.bool.isRequired,
-  companies: PropTypes.arrayOf(PropTypes.shape({})).isRequired
+  products: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  loggedInAs: PropTypes.string.isRequired
 };
 
 class ProductsPage extends Component {
-  state = {
-    error: "",
-    data: []
-  };
-
   componentDidMount() {
-    const url = "https://nanotu.be/products";
-    Client.GET(url)
-      .then(data => {
-        this.setState({ data: data.products });
-      })
-      .catch(() => {
-        this.setState({ error: "Could not load data" });
-      });
+    // firstly, it has to be fixed in Backend - rep jwt token
+    const company =
+      this.props.loggedInAs.role === "representative"
+        ? this.props.loggedInAs.company
+        : "";
+    const url =
+      this.props.loggedInAs.role === "representative"
+        ? `https://nanotu.be/companies/${company}/products`
+        : "https://nanotu.be/products";
+    this.props.fetchData(url);
   }
 
   render() {
     return (
-      <Modal>
-        <PageTitle>Products</PageTitle>
+      <PageContainer title="products">
+        {this.props.loggedInAs === "representative" ? (
+          <Link to="/products/create">
+            <Button>Create Product</Button>
+          </Link>
+        ) : null}
         <Text>All products:</Text>
-        {this.state.data ? (
-          <List list={this.state.data} type="product" />
+        {this.props.products ? (
+          this.props.products.map(product => (
+            <div>
+              <Link to={`/product/${product._id}`}>{product.name}</Link>
+              <br />
+            </div>
+          ))
         ) : (
           <Text>Loading...</Text>
         )}
-        <ErrorMessage>{this.state.error}</ErrorMessage>
-      </Modal>
+        <ErrorMessage>{this.props.hasError}</ErrorMessage>
+      </PageContainer>
     );
   }
 }
 const mapStateToProps = state => ({
   products: state.products.products,
   hasError: state.products.productsHasError,
-  isLoading: state.products.productsIsLoading
+  isLoading: state.products.productsIsLoading,
+  loggedInAs: state.session.loggedInAs
 });
 
 const mapDispatchToProps = dispatch => ({
