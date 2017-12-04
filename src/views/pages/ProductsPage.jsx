@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import { API_HOST } from "../../libs/API_CONFIG";
 import { productsFetchData } from "../../state/products/actions";
 import Text from "../elements/Text";
 import List from "../components/List";
@@ -19,7 +20,7 @@ const propTypes = {
 
 class ProductsPage extends Component {
   componentDidMount() {
-    const url = "https://nanotu.be/products";
+    const url = `{API_HOST}/products`;
     this.props.fetchData(url);
   }
 
