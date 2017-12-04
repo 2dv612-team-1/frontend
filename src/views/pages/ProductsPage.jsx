@@ -20,7 +20,7 @@ const propTypes = {
 
 class ProductsPage extends Component {
   componentDidMount() {
-    const url = `{API_HOST}/products`;
+    const url = `${API_HOST}/products`;
     this.props.fetchData(url);
   }
 
