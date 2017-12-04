@@ -17,6 +17,10 @@ const SubmitButton = styled.input`
   &:focus {
     outline: none;
   }
+  &:hover {
+    color: #fff;
+    background: ${colors.primary};
+  }
 `;
 
 export default SubmitButton;

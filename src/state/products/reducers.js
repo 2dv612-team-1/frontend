@@ -26,7 +26,18 @@ const products = (state = [], action) => {
   switch (action.type) {
     case types.PRODUCTS_FETCH_DATA_SUCCESS:
       return action.products;
+    default:
+      return state;
+  }
+};
 
+const productsPostDataSuccess = (state = false, action) => {
+  switch (action.type) {
+    case types.PRODUCTS_POST_DATA_SUCCESS:
+      return {
+        isSuccess: action.isSuccess,
+        successMessage: action.successMessage
+      };
     default:
       return state;
   }
@@ -35,7 +46,8 @@ const products = (state = [], action) => {
 const productsReducer = combineReducers({
   productsHasError,
   productsIsLoading,
-  products
+  products,
+  productsPostDataSuccess
 });
 
 export default productsReducer;

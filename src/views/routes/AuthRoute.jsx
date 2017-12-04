@@ -13,8 +13,6 @@ const AuthRoute = ({ access, children, role }) => {
   if (role === access) {
     return children;
   }
-  console.log(role);
-  console.log(access);
   return <Redirect to="/" />;
 };
 

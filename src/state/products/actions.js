@@ -1,5 +1,6 @@
 import types from "./types";
 import Client from "../../libs/Client";
+import Auth from "../../libs/Auth";
 
 export const productsHasError = bool => ({
   type: types.PRODUCTS_HAS_ERROR,
@@ -11,27 +12,60 @@ export const productsIsLoading = bool => ({
   isLoading: bool
 });
 
-export const productsFetchDataSucces = products => ({
+export const productsFetchDataSuccess = products => ({
   type: types.PRODUCTS_FETCH_DATA_SUCCESS,
   products
+});
+
+export const productsPostDataSuccess = (bool, message) => ({
+  type: types.PRODUCTS_POST_DATA_SUCCESS,
+  isSuccess: bool,
+  successMessage: message
 });
 
 export const productsFetchData = url => dispatch => {
   dispatch(productsIsLoading(true));
   Client.GET(url)
     .then(data => {
-      dispatch(productsFetchDataSucces(data.products));
+      dispatch(productsFetchDataSuccess(data.data.products));
       dispatch(productsIsLoading(false));
     })
-    .catch(() => {
+    .catch(err => {
+      console.log(err);
       dispatch(productsIsLoading(false));
       dispatch(productsHasError(true));
     });
 };
 
+export const uploadCreatedProduct = (url, obj) => dispatch => {
+  const toUpload = Object.assign({}, obj);
+  toUpload.jwt = Auth.getToken();
+
+  const body = new FormData();
+  Object.keys(toUpload).forEach(key => {
+    body.append(key, toUpload[key]);
+  });
+
+  console.info("POST", body, toUpload);
+  console.info("This is expected to fail:");
+  fetch(url, {
+    method: "POST",
+    body: body
+  })
+    .then(res => res.json())
+    .then(res => console.log(res))
+    .catch(err => console.error(err));
+  /*  Client.POST(url, toUpload)
+    //  .then(data => {})
+    .catch(() => {
+      //  dispatch(productUploadHasError(true));
+    }); */
+};
+
 export default {
   productsHasError,
   productsIsLoading,
-  productsFetchDataSucces,
+  productsFetchDataSuccess,
+  productsPostDataSuccess,
   productsFetchData
 };

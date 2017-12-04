@@ -30,7 +30,9 @@ class RepresentativesPage extends Component {
           <Button>Register Representative</Button>
         </Link>
         <Text>All representatives:</Text>
-        {this.props.representatives ? <List list={this.props.representatives} /> : null}
+        {this.props.representatives ? (
+          <List list={this.props.representatives} />
+        ) : null}
         {this.props.isLoading ? <Text>Loading...</Text> : null}
         {this.props.hasError ? <Text error>Could not load data</Text> : null}
       </PageContainer>
