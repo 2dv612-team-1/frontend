@@ -6,14 +6,20 @@ import { categoriesPostData } from "../../state/categories/actions";
 import Button from "../components/Button";
 import Form from "../elements/Form";
 import Field from "../components/Field";
+import SelectField from "../components/SelectField";
+
+const defaultProps = {
+  parents: []
+};
 
 const propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   register: PropTypes.func.isRequired,
-  loggedInAs: PropTypes.string.isRequired
+  loggedInAs: PropTypes.shape({}).isRequired,
+  parents: PropTypes.arrayOf(PropTypes.string)
 };
 
-let CategoryForm = ({ loggedInAs, handleSubmit, register }) => {
+let CategoryForm = ({ loggedInAs, handleSubmit, register, parents }) => {
   const onSubmit = values => {
     const data = values;
     data.jwt = loggedInAs.jwt;
@@ -23,6 +29,7 @@ let CategoryForm = ({ loggedInAs, handleSubmit, register }) => {
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
+      <SelectField label="parent" name="parent" type="text" options={parents} />
       <Field label="name" name="category" component="input" type="text" />
       <Button form>Create</Button>
     </Form>
@@ -31,9 +38,11 @@ let CategoryForm = ({ loggedInAs, handleSubmit, register }) => {
 
 const mapStateToProps = state => ({
   loggedInAs: state.session.loggedInAs
+  // categories: state.categories.categories
 });
 
 CategoryForm.propTypes = propTypes;
+CategoryForm.defaultProps = defaultProps;
 
 CategoryForm = reduxForm({
   form: "category"

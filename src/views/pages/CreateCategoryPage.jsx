@@ -1,37 +1,67 @@
-import React from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import PageContainer from "../components/PageContainer";
 import CategoryForm from "../containers/CategoryForm";
 import Text from "../elements/Text";
+import { categoriesFetchData } from "../../state/categories/actions";
 
 const defaultProps = {
-  role: "",
+  loggedInAs: [],
   errorMessage: "",
-  successMessage: ""
+  successMessage: "",
+  categories: []
 };
 
 const propTypes = {
-  role: PropTypes.string,
+  loggedInAs: PropTypes.shape({}),
   errorMessage: PropTypes.string,
-  successMessage: PropTypes.string
+  successMessage: PropTypes.string,
+  categories: PropTypes.arrayOf(PropTypes.shape({})),
+  fetchData: PropTypes.func.isRequired
 };
 
-const CreateCategoryPage = ({ role, errorMessage, successMessage }) => (
+class CreateCategoryPage extends Component {
+  componentDidMount() {
+    this.props.fetchData("https://nanotu.be/categories");
+  }
+
+  render() {
+    const parents = this.props.categories.map(parent => parent.category);
+    parents.splice(0, 0, "main category");
+    console.log(parents);
+    return (
+      <PageContainer title="new category">
+        <CategoryForm auth={this.props.loggedInAs} parents={parents} />
+        {this.props.errorMessage ? <Text error>{this.props.errorMessage}</Text> : null}
+        {this.props.successMessage ? <Text success>{this.props.successMessage}</Text> : null}
+      </PageContainer>
+    );
+  }
+}
+
+/*
+const CreateCategoryPage = ({ role, errorMessage, successMessage, categories }) => (
   <PageContainer title="new category">
-    <CategoryForm role={role} />
+    <CategoryForm role={role} parents={categories} />
     {errorMessage ? <Text error>{errorMessage}</Text> : null}
     {successMessage ? <Text success>{successMessage}</Text> : null}
   </PageContainer>
 );
+*/
 
 const mapStateToProps = state => ({
-  role: state.session.loggedInAs.role,
+  loggedInAs: state.session.loggedInAs,
   errorMessage: state.register.registerHasError.errorMessage,
   successMessage: state.register.registerPostDataSuccess.successMessage,
-  isLoading: state.register.registerIsLoading
+  isLoading: state.register.registerIsLoading,
+  categories: state.categories.categories
+});
+
+const mapDispatchToProps = dispatch => ({
+  fetchData: url => dispatch(categoriesFetchData(url))
 });
 
 CreateCategoryPage.defaultProps = defaultProps;
 CreateCategoryPage.propTypes = propTypes;
-export default connect(mapStateToProps)(CreateCategoryPage);
+export default connect(mapStateToProps, mapDispatchToProps)(CreateCategoryPage);
