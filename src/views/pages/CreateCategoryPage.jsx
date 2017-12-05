@@ -28,7 +28,7 @@ class CreateCategoryPage extends Component {
 
   render() {
     const parents = this.props.categories.map(parent => parent.category);
-    parents.splice(0, 0, "main category");
+    parents.splice(0, 0, "Choose parent category");
     console.log(parents);
     return (
       <PageContainer title="new category">
