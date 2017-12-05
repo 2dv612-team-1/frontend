@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import Rating from "react-rating";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { API_HOST } from "../../libs/API_CONFIG";
