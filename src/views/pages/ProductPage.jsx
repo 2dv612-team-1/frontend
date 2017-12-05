@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { API_HOST } from "../../libs/API_CONFIG";
 import PageContainer from "../components/PageContainer";
+import RatingWidget from "../components/Rating";
 
 const propTypes = {
   id: PropTypes.string.isRequired,
@@ -21,8 +23,9 @@ const ProductPage = ({ id, products, location }) => {
       <p>Producer: {product.producer}</p>
       <p>Files:</p>
       <div>
-      {/*product.files.map(file => <a href={`https://nanotu.be${file}`}>{file}</a>)*/}
+        {/*product.files.map(file => <a href={`${API_HOST}/${file}`}>{file}</a>)*/}
       </div>
+      <RatingWidget />
     </PageContainer>
   );
 };

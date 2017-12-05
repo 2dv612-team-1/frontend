@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import Rating from "react-rating";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import { API_HOST } from "../../libs/API_CONFIG";
 import { productsFetchData } from "../../state/products/actions";
 import Text from "../elements/Text";
 import Button from "../components/Button";
@@ -25,8 +27,8 @@ class ProductsPage extends Component {
         : "";
     const url =
       this.props.loggedInAs.role === "representative"
-        ? `https://nanotu.be/companies/${company}/products`
-        : "https://nanotu.be/products";
+        ? `${API_HOST}/companies/${company}/products`
+        : `${API_HOST}/products`;
     this.props.fetchData(url);
   }
 

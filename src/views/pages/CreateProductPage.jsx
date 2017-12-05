@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { reduxForm } from "redux-form";
 import { connect } from "react-redux";
+import { API_HOST } from "../../libs/API_CONFIG";
 import Text from "../elements/Text";
 import Field from "../components/Field";
 import SelectField from "../components/SelectField";
@@ -12,11 +13,11 @@ import { categoriesFetchData } from "../../state/categories/actions";
 
 class CreateProductPage extends Component {
   componentDidMount() {
-    this.props.fetchData("https://nanotu.be/categories");
+    this.props.fetchData(`${API_HOST}/categories`);
   }
 
   onSubmit = values => {
-    const url = "https://nanotu.be/products";
+    const url = `${API_HOST}/products`;
     this.props.createProduct(url, values);
   };
 

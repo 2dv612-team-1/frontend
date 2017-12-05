@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { API_HOST } from "../../libs/API_CONFIG";
 import { categoriesFetchData } from "../../state/categories/actions";
 import Text from "../elements/Text";
 import List from "../components/List";
@@ -17,7 +18,7 @@ const propTypes = {
 
 class CategoriesPage extends Component {
   componentDidMount() {
-    this.props.fetchData("https://nanotu.be/categories");
+    this.props.fetchData(`${API_HOST}/categories`);
   }
 
   render() {

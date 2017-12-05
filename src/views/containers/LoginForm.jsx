@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { reduxForm } from "redux-form";
 import { connect } from "react-redux";
+import { API_HOST } from "../../libs/API_CONFIG";
 import { performLogin } from "../../state/session/actions";
 import Button from "../components/Button";
 import Form from "../elements/Form";
@@ -15,9 +16,9 @@ const propTypes = {
 
 let LoginForm = ({ handleSubmit, login, admin }) => {
   const onSubmit = values => {
-    let url = "https://nanotu.be/auth";
+    let url = `${API_HOST}/auth`;
     if (admin === "true") {
-      url = "https://nanotu.be/admins/auth";
+      url = `${API_HOST}/admins/auth`;
     }
     login(url, values);
   };

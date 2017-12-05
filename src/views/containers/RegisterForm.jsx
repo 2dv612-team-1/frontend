@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { reduxForm } from "redux-form";
 import { connect } from "react-redux";
+import { API_HOST } from "../../libs/API_CONFIG";
 import { registerPostData } from "../../state/register/actions";
 import Button from "../components/Button";
 import Form from "../elements/Form";
@@ -20,20 +21,20 @@ let RegisterForm = ({ loggedInAs, handleSubmit, register, role }) => {
     console.log(role);
     let json = values;
     loggedInAs.jwt !== undefined ? (json.jwt = loggedInAs.jwt) : null;
-    let url = "https://nanotu.be/consumers";
+    let url = `${API_HOST}/consumers`;
     switch (role) {
       case "company":
         const company = loggedInAs.username;
-        url = `https://nanotu.be/companies/${company}/representatives`;
+        url = `${API_HOST}/companies/${company}/representatives`;
         break;
       case "admin":
-        url = "https://nanotu.be/companies";
+        url = `${API_HOST}/companies`;
         break;
       case "customer":
-        url = "https://nanotu.be/consumers";
+        url = `${API_HOST}/consumers`;
         break;
       case "category":
-        url = "https://nanotu.be/categories";
+        url = `${API_HOST}/categories`;
         break;
       default:
     }
