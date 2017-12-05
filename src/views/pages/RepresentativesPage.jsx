@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { API_HOST } from "../../libs/API_CONFIG";
 import { representativesFetchData } from "../../state/representatives/actions";
 import Text from "../elements/Text";
 import List from "../components/List";
@@ -19,7 +20,7 @@ const propTypes = {
 class RepresentativesPage extends Component {
   componentDidMount() {
     const company = this.props.loggedInAs.username;
-    const url = `https://nanotu.be/companies/${company}/representatives`;
+    const url = `${API_HOST}/companies/${company}/representatives`;
     this.props.fetchData(url);
   }
 

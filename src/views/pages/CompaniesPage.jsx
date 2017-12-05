@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import { API_HOST } from "../../libs/API_CONFIG";
 import { companiesFetchData } from "../../state/companies/actions";
 import Text from "../elements/Text";
 import List from "../components/List";
@@ -18,7 +19,7 @@ const propTypes = {
 
 class CompaniesPage extends Component {
   componentDidMount() {
-    this.props.fetchData("https://nanotu.be/companies");
+    this.props.fetchData(`${API_HOST}/companies`);
   }
 
   render() {

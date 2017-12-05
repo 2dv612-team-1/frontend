@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { reduxForm } from "redux-form";
 import { connect } from "react-redux";
+import { API_HOST } from "../../libs/API_CONFIG"
 import { categoriesPostData } from "../../state/categories/actions";
 import Button from "../components/Button";
 import Form from "../elements/Form";
@@ -18,7 +19,7 @@ let CategoryForm = ({ loggedInAs, handleSubmit, register }) => {
     const data = values;
     data.jwt = loggedInAs.jwt;
     console.log(data);
-    register("https://nanotu.be/categories", data);
+    register(`${API_HOST}/categories`, data);
   };
 
   return (

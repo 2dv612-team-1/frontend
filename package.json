@@ -19,7 +19,8 @@
     "coverage-watch": "jest --env=jsdom --coverage --watch",
     "test-watch": "jest --env=jsdom --watch",
     "bundle": "webpack",
-    "start": "webpack-dev-server --hot --inline --open"
+    "start": "webpack-dev-server --hot --inline --open",
+    "localDev": "webpack-dev-server --define process.env.API_HOST='\"local\"' --hot --inline --open"
   },
   "repository": {
     "type": "git",
