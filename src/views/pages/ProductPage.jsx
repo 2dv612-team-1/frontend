@@ -28,7 +28,7 @@ class ProductPage extends Component {
   product.files.push("testprodukt 2");*/
 
   handleChange(rate, event) {
-    const fileName = event.target.filesname; // Denna funkar inte, ska hamta filnamn fr rating widget
+    const fileName = event.target.materialName; // Denna funkar inte, ska hamta filnamn fr rating widget
 
     console.log(fileName);
     const url = `https://nanotu.be/products/${this.props.location.slice(
@@ -51,7 +51,7 @@ class ProductPage extends Component {
               <a href={`${API_HOST}/${file}`}>{file}</a>
               <RatingWidget
                 ratingFor={file}
-                onChange={this.handleChange}
+                onClick={name => onClick(name)}
                 currentRating={file.rating}
               />
             </div>
