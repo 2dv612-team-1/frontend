@@ -22,10 +22,22 @@ const productsIsLoading = (state = false, action) => {
   }
 };
 
-const products = (state = [], action) => {
+const initState = [
+  {
+    _id: "dfGKJGhhgddddddddddddddd",
+    category: "Demo",
+    createdBy: "Demo",
+    description: "Demo",
+    name: "Demo",
+    producer: "Demo",
+    files: ["DemoFile1", "DemoFile2", "DemoFile3"]
+  }
+];
+
+const products = (state = initState, action) => {
   switch (action.type) {
     case types.PRODUCTS_FETCH_DATA_SUCCESS:
-      return action.products;
+      return [].concat(state, action.products);
     default:
       return state;
   }

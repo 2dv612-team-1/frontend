@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { API_HOST } from "../../libs/API_CONFIG";
 import PageContainer from "../components/PageContainer";
 import RatingWidget from "../components/Rating";
+import { ratingPostRate } from "../../state/ratings/actions";
 
 const propTypes = {
   id: PropTypes.string.isRequired,
@@ -11,11 +12,16 @@ const propTypes = {
 };
 
 class ProductPage extends Component {
-  state = {};
-  product = this.props.products.filter(
-    product => product._id === this.props.location.slice(-24)
-  );
-  product = this.product[0];
+  componentWillMount() {
+    let product = this.props.products.filter(
+      product => product._id === this.props.location.slice(-24)
+    );
+
+    console.log(product);
+    product = product[0];
+    console.log(product);
+    this.setState({ product });
+  }
   /* Tillfallig losning
   product = {files : []};
   product.files.push("testprodukt 1");
@@ -31,15 +37,15 @@ class ProductPage extends Component {
   }
   render() {
     return (
-      <PageContainer title={this.product.name}>
-        <p>Name: {this.product.name}</p>
-        <p>Category: {this.product.category}</p>
-        <p>Created By: {this.product.createdBy}</p>
-        <p>Description: {this.product.description}</p>
-        <p>Producer: {this.product.producer}</p>
+      <PageContainer title={this.state.product.name}>
+        <p>Name: {this.state.product.name}</p>ratingPostRate
+        <p>Category: {this.state.product.category}</p>
+        <p>Created By: {this.state.product.createdBy}</p>
+        <p>Description: {this.state.product.description}</p>
+        <p>Producer: {this.state.product.producer}</p>
         <p>Files:</p>
         <div>
-          {this.product.files.map(file => (
+          {this.state.product.files.map(file => (
             <div>
               <a href={`${API_HOST}/${file}`}>{file}</a>
               <RatingWidget
@@ -70,4 +76,4 @@ const mapDispatchToProps = dispatch => ({
 });
 
 ProductPage.propTypes = propTypes;
-export default connect(mapStateToProps)(ProductPage);
+export default connect(mapStateToProps, mapDispatchToProps)(ProductPage);
