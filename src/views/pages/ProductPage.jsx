@@ -42,18 +42,20 @@ class ProductPage extends Component {
   product.files.push("testprodukt 1");
   product.files.push("testprodukt 2");*/
 
-  handleNoteClick = (event) => {
+  handleNoteClick = event => {
     this.setState({ currentNote: event.target.name, showNote: true });
-  }
+  };
 
   handleChange = (rate, event) => {
-    console.log("yesbox");
+    console.log("rate: " + rate);
     const fileName = event.target; // Denna funkar inte, ska hamta filnamn fr rating widget
+    console.log(fileName);
+
     const url = `https://nanotu.be/products/${this.props.location.slice(
       -24
     )}/materials/${fileName}/rate`;
     this.props.postRate(url, event);
-  }
+  };
   render() {
     return (
       <PageContainer title={this.state.product.name}>
@@ -69,8 +71,9 @@ class ProductPage extends Component {
                 <div>
                   <a href={`${API_HOST}/${file.name}`}>{file.name}</a>
                   <RatingWidget
+                    name={file.name}
                     ratingFor={file.name}
-                    onChange={this.handleChange}
+                    onClick={this.handleChange}
                     currentRating={file.average}
                   />
                   <NotesIcon
