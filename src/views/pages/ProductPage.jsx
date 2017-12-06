@@ -28,8 +28,9 @@ class ProductPage extends Component {
   product.files.push("testprodukt 2");*/
 
   handleChange(rate, event) {
-    console.log("yesbox");
-    const fileName = event.target; // Denna funkar inte, ska hamta filnamn fr rating widget
+    const fileName = event.target.filesname; // Denna funkar inte, ska hamta filnamn fr rating widget
+
+    console.log(fileName);
     const url = `https://nanotu.be/products/${this.props.location.slice(
       -24
     )}/materials/${fileName}/rate`;
