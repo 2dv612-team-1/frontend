@@ -1,10 +1,9 @@
 import { combineReducers } from "redux";
-//  import CONSTANTS from "./constants";
 import types from "./types";
 
-const ratingsHasError = (state = false, action) => {
+const ratingHasError = (state = false, action) => {
   switch (action.type) {
-    case types.RATINGS_HAS_ERROR:
+    case types.RATING_HAS_ERROR:
       return action.hasError;
 
     default:
@@ -12,28 +11,18 @@ const ratingsHasError = (state = false, action) => {
   }
 };
 
-const ratingsIsLoading = (state = false, action) => {
+const ratingFetchDataSuccess = (state = [], action) => {
   switch (action.type) {
-    case types.RATINGS_IS_LOADING:
-      return action.isLoading;
-
+    case types.RATING_FETCH_DATA_SUCCESS:
+      return action.rating;
     default:
       return state;
   }
 };
 
-const ratings = (state = [], action) => {
+const ratingPostDataSuccess = (state = false, action) => {
   switch (action.type) {
-    case types.RATINGS_FETCH_DATA_SUCCESS:
-      return action.ratings;
-    default:
-      return state;
-  }
-};
-
-const ratingsPostDataSuccess = (state = false, action) => {
-  switch (action.type) {
-    case types.RATINGS_POST_DATA_SUCCESS:
+    case types.RATING_POST_DATA_SUCCESS:
       return {
         isSuccess: action.isSuccess,
         successMessage: action.successMessage
@@ -43,11 +32,11 @@ const ratingsPostDataSuccess = (state = false, action) => {
   }
 };
 
-const ratingsReducer = combineReducers({
-  ratingsHasError,
-  ratingsIsLoading,
-  ratings,
-  ratingsPostDataSuccess
+const ratingReducer = combineReducers({
+  ratingHasError,
+  ratingFetchDataSuccess,
+  ratingPostDataSuccess
 });
 
-export default productsReducer;
+export default ratingReducer;
+
