@@ -30,7 +30,35 @@ const initState = [
     description: "Demo",
     name: "Demo",
     producer: "Demo",
-    files: ["DemoFile1", "DemoFile2", "DemoFile3"]
+    files: [
+      {
+        average: 5,
+        note: "Demo note",
+        material_id: "hej-15125582259389868.pdf",
+        name: "DemoFile1",
+        owner: "5a27ce917ae6da0021d97ef4",
+        path:
+          "/materials/242235471/5a27ce917ae6da0021d97ef4/hej-15125582259389868.pdf"
+      },
+      {
+        average: 3,
+        note: "Demo note",
+        material_id: "hej-15125582259389868.pdf",
+        name: "DemoFile2",
+        owner: "5a27ce917ae6da0021d97ef4",
+        path:
+          "/materials/242235471/5a27ce917ae6da0021d97ef4/hej-15125582259389868.pdf"
+      },
+      {
+        average: 2,
+        note: "Demo note",
+        material_id: "hej-15125582259389868.pdf",
+        name: "DemoFile3",
+        owner: "5a27ce917ae6da0021d97ef4",
+        path:
+          "/materials/242235471/5a27ce917ae6da0021d97ef4/hej-15125582259389868.pdf"
+      }
+    ]
   }
 ];
 
