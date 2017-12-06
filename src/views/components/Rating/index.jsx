@@ -1,19 +1,13 @@
 import React from "react";
 import Rating from "react-rating";
-import PropTypes from "prop-types";
 
-const propTypes = {
-  id: PropTypes.string.isRequired
-};
-
-const RatingWidget = ({ id, onChange, ratingFor, currentRating }) => {
+const RatingWidget = ({ fileName, onClick, ratingFor, currentRating }) => {
   return (
     <Rating
       initialRate={currentRating}
+      name={fileName}
       fractions={2}
-      onClick={(rate, event) => {
-        onChange(rate, event);
-      }}
+      onClick={onClick}
       data-materialName={ratingFor}
     />
   );
