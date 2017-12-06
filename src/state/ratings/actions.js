@@ -2,12 +2,12 @@ import types from "./types";
 import Client from "../../libs/Client";
 import Auth from "../../libs/Auth";
 
-export const ratingHasError = products => ({
+export const ratingHasError = rating => ({
   type: types.RATING_HAS_ERROR,
-  rating
+  hasError: bool
 });
 
-export const ratingFetchDataSuccess = products => ({
+export const ratingFetchDataSuccess = rating => ({
   type: types.RATING_FETCH_DATA_SUCCESS,
   rating
 });
