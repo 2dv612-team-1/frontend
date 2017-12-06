@@ -17,7 +17,8 @@ const propTypes = {
 class ProductPage extends Component {
   state = {
     product: {},
-    showNote: false
+    showNote: false,
+    noteContent: ""
   };
   componentDidMount() {
     // Temp fix för hårdkodad produkt med fejk filer i state
@@ -42,9 +43,28 @@ class ProductPage extends Component {
   product.files.push("testprodukt 1");
   product.files.push("testprodukt 2");*/
 
-  handleNoteClick = (event) => {
-    this.setState({ currentNote: event.target.name, showNote: true });
-  }
+  handleNoteClick = event => {
+    event.stopPropagation();
+    let noteContent = this.state.product.files.filter(
+      file => file.material_id === event.target.getAttribute("name")
+    );
+
+    noteContent = noteContent[0];
+    noteContent = noteContent.note;
+
+    this.setState({
+      showNote: true,
+      noteContent
+    });
+  };
+
+  handleNoteChange = event => {
+    this.setState({ noteContent: event.target.value });
+  };
+
+  handleNoteCloseClick = () => {
+    this.setState({ showNote: false });
+  };
 
   handleChange = (rate, event) => {
     console.log("yesbox");
@@ -53,7 +73,7 @@ class ProductPage extends Component {
       -24
     )}/materials/${fileName}/rate`;
     this.props.postRate(url, event);
-  }
+  };
   render() {
     return (
       <PageContainer title={this.state.product.name}>
@@ -81,7 +101,14 @@ class ProductPage extends Component {
               ))
             : null}
         </div>
-        {this.state.showNote ? <Note /> : null}
+        {this.state.showNote ? (
+          <Note
+            onChange={this.handleNoteChange}
+            onClick={this.handleNoteCloseClick}
+          >
+            {this.state.noteContent}
+          </Note>
+        ) : null}
       </PageContainer>
     );
   }
