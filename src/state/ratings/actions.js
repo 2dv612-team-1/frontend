@@ -21,7 +21,7 @@ export const ratingPostDataSuccess = (bool, message) => ({
 export const ratingPostRate = url => dispatch => {
   dispatch(ratingFetchDataSuccess(true));
   Client.POST(url, obj).then(data => {
-    dispatch(productsFetchDataSuccess(data.data.rating));
+    dispatch(ratingFetchDataSuccess(data.data.rating));
   });
 };
 
