@@ -11,7 +11,7 @@ const RatingWidget = ({ id }) => {
     <Rating
       initialRate={2.5}
       fractions={2}
-      onChange={rate => alert("You changed your rating to: " + rate)}
+      onRate={rate => alert("Your rating: " + rate)}
     />
   );
 };
