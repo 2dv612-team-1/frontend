@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import CONSTANTS from "./constants";
+// import CONSTANTS from "./constants";
 import types from "./types";
 
 const productsHasError = (state = false, action) => {
