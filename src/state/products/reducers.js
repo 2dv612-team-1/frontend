@@ -42,8 +42,8 @@ const initState = [
       },
       {
         average: 3,
-        note: "Demo note",
-        material_id: "hej-15125582259389868.pdf",
+        note: "Demo note2",
+        material_id: "hej-125125582259389868.pdf",
         name: "DemoFile2",
         owner: "5a27ce917ae6da0021d97ef4",
         path:
@@ -51,8 +51,8 @@ const initState = [
       },
       {
         average: 2,
-        note: "Demo note",
-        material_id: "hej-15125582259389868.pdf",
+        note: "Demo note3",
+        material_id: "hej-15122225582259389868.pdf",
         name: "DemoFile3",
         owner: "5a27ce917ae6da0021d97ef4",
         path:
