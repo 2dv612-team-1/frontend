@@ -10,6 +10,7 @@ import representativesReducer from "./representatives";
 import registerReducer from "./register";
 import sessionReducer from "./session";
 import categoriesReducer from "./categories";
+import ratingReducer from "./ratings";
 
 const history = createHistory();
 const Router = routerMiddleware(history);
@@ -22,6 +23,7 @@ const rootReducer = combineReducers({
   register: registerReducer,
   products: productsReducer,
   categories: categoriesReducer,
+  ratings: ratingReducer,
   form,
   router
 });

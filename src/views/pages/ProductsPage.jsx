@@ -60,7 +60,7 @@ const mapStateToProps = state => ({
   products: state.products.products,
   hasError: state.products.productsHasError,
   isLoading: state.products.productsIsLoading,
-  loggedInAs: state.session.loggedInAs
+  loggedInAs: state.session.loggedInAs.role
 });
 
 const mapDispatchToProps = dispatch => ({

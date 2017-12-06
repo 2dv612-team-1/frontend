@@ -18,8 +18,11 @@ export const ratingPostDataSuccess = (bool, message) => ({
   successMessage: message
 });
 
-export const ratingPostRate = url => dispatch => {
-  dispatch(ratingFetchDataSuccess(true));
+export const ratingPostRate = (url, rating) => dispatch => {
+  const obj = {
+    jwt: Auth.getToken(),
+    rate: rating
+  };
   Client.POST(url, obj).then(data => {
     dispatch(ratingFetchDataSuccess(data.data.rating));
   });

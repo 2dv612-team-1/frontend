@@ -6,12 +6,15 @@ const propTypes = {
   id: PropTypes.string.isRequired
 };
 
-const RatingWidget = ({ id }) => {
+const RatingWidget = ({ id, onChange, ratingFor, currentRating }) => {
   return (
     <Rating
-      initialRate={2.5}
+      initialRate={currentRating}
       fractions={2}
-      onRate={rate => alert("Your rating: " + rate)}
+      onClick={(rate, event) => {
+        onChange(rate, event);
+      }}
+      data-materialName={ratingFor}
     />
   );
 };
