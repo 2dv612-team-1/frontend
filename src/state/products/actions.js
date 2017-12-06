@@ -43,7 +43,11 @@ export const uploadCreatedProduct = (url, obj) => dispatch => {
 
   const body = new FormData();
   Object.keys(toUpload).forEach(key => {
-    body.append(key, toUpload[key]);
+    if(!Array.isArray(key)) {
+      body.append(key, toUpload[key]);
+    } else {
+      body.append(key, toUpload[key][0]);
+    }
   });
 
   console.info("POST", body, toUpload);

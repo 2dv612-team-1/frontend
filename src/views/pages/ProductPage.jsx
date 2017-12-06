@@ -2,8 +2,11 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { API_HOST } from "../../libs/API_CONFIG";
+import Client from "../../libs/Client";
 import PageContainer from "../components/PageContainer";
 import RatingWidget from "../components/Rating";
+import NotesIcon from "../components/NotesIcon";
+import Note from "../components/Note";
 import { ratingPostRate } from "../../state/ratings/actions";
 
 const propTypes = {
@@ -12,25 +15,47 @@ const propTypes = {
 };
 
 class ProductPage extends Component {
-  componentWillMount() {
-    let product = this.props.products.filter(
-      product => product._id === this.props.location.slice(-24)
-    );
+  state = {
+    product: {},
+    showNote: false
+  };
+  componentDidMount() {
+    // Temp fix för hårdkodad produkt med fejk filer i state
+    const id = this.props.location.slice(-24);
+    const url = `https://nanotu.be/products/${id}`;
 
-    console.log(product);
-    product = product[0];
-    console.log(product);
-    this.setState({ product });
+    if (id !== "dfGKJGhhgddddddddddddddd") {
+      Client.GET(url).then(response => {
+        console.log(response);
+        const product = response.data.product;
+        this.setState({ product });
+      });
+    } else {
+      let product = this.props.products.filter(product => product._id === id);
+
+      product = product[0];
+      this.setState({ product });
+    }
   }
   /* Tillfallig losning
   product = {files : []};
   product.files.push("testprodukt 1");
   product.files.push("testprodukt 2");*/
 
+<<<<<<< HEAD
   handleChange(rate, event) {
     const fileName = event.target.materialName; // Denna funkar inte, ska hamta filnamn fr rating widget
 
     console.log(fileName);
+=======
+  handleNoteClick = (event) => {
+    this.setState({ currentNote: event.target.name, showNote: true });
+  }
+
+  handleChange = (rate, event) => {
+    console.log("yesbox");
+    const fileName = event.target; // Denna funkar inte, ska hamta filnamn fr rating widget
+>>>>>>> notes
     const url = `https://nanotu.be/products/${this.props.location.slice(
       -24
     )}/materials/${fileName}/rate`;
@@ -46,6 +71,7 @@ class ProductPage extends Component {
         <p>Producer: {this.state.product.producer}</p>
         <p>Files:</p>
         <div>
+<<<<<<< HEAD
           {this.state.product.files.map(file => (
             <div>
               <a href={`${API_HOST}/${file}`}>{file}</a>
@@ -56,12 +82,26 @@ class ProductPage extends Component {
               />
             </div>
           ))}
+=======
+          {this.state.product.files
+            ? this.state.product.files.map(file => (
+                <div>
+                  <a href={`${API_HOST}/${file.name}`}>{file.name}</a>
+                  <RatingWidget
+                    ratingFor={file.name}
+                    onChange={this.handleChange}
+                    currentRating={file.average}
+                  />
+                  <NotesIcon
+                    id={file.material_id}
+                    onClick={this.handleNoteClick}
+                  />
+                </div>
+              ))
+            : null}
+>>>>>>> notes
         </div>
-        <RatingWidget
-          ratingFor="test"
-          currentRating="Har ska rating vara"
-          onChange={this.handleChange}
-        />
+        {this.state.showNote ? <Note /> : null}
       </PageContainer>
     );
   }
