@@ -123,7 +123,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  postRate: url => dispatch(ratingPostRate(url))
+  postRate: (url, event) => dispatch(ratingPostRate(url, event))
 });
 
 ProductPage.propTypes = propTypes;
