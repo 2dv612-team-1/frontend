@@ -6,6 +6,7 @@ import { API_HOST } from "../../libs/API_CONFIG";
 import { categoriesFetchData } from "../../state/categories/actions";
 import Text from "../elements/Text";
 import List from "../components/List";
+import ListCategories from "../components/ListCategories";
 import Button from "../components/Button";
 import PageContainer from "../components/PageContainer";
 
@@ -29,7 +30,7 @@ class CategoriesPage extends Component {
           <Button>Create new Category</Button>
         </Link>
         <Text>All categories:</Text>
-        {this.props.categories ? <List list={this.props.categories} ordered type="category" /> : null}
+        {this.props.categories ? <ListCategories items={this.props.categories} /> : null}
         {this.props.isLoading ? <Text>Loading...</Text> : null}
         {this.props.hasError ? <Text error>Could not load data</Text> : null}
       </PageContainer>

@@ -35,21 +35,7 @@ const propTypes = {
 };
 
 const List = ({ list, ordered, type }) => {
-  let nested = subs => (
-    <UnorderedList>
-      {subs.map(sub => <li key={sub.category}>{sub.category}</li>)}
-    </UnorderedList>
-  );
-  return type === "category" ? (
-    <OrderedList>
-      {list.map(item => (
-        <li key={item[type]}>
-          {item[type]}
-          {item.sub !== null ? { nested } : null}
-        </li>
-      ))}
-    </OrderedList>
-  ) : ordered ? (
+  return ordered ? (
     <OrderedList>
       {list.map(item => <li key={item[type]}>{item[type]}</li>)}
     </OrderedList>
@@ -63,3 +49,16 @@ const List = ({ list, ordered, type }) => {
 List.propTypes = propTypes;
 List.defaultProps = defaultProps;
 export default List;
+
+/*
+ type === "category" ? (
+ <OrderedList>
+ {list.map(item => (
+ <li key={item[type]}>
+ {item[type]}
+ {item.sub !== null ? { nested } : null}
+ </li>
+ ))}
+ </OrderedList>
+ ) :
+ */
