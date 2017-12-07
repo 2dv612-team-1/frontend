@@ -1,13 +1,17 @@
 import styled from "styled-components";
 import fonts from "../../constants/fonts";
+import colors from "../../constants/colors";
 
-const OrderedList = styled.ol`
+
+const MyUl = styled.ul`
+  list-style-type: none;
   font-size: 16px;
   text-transform: capitalize;
   font-family: ${fonts.secondary};
+  color: ${colors.sublist};
   list-style-position: inside;
   padding: 0;
-  counter-reset: item;
+  margin-left: 60px;
 `;
 
-export default OrderedList;
+export default MyUl;

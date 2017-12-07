@@ -14,7 +14,12 @@ const userShape = PropTypes.shape({
 });
 
 const categoryShape = PropTypes.shape({
-  category: PropTypes.string
+  category: PropTypes.string,
+  sub: PropTypes.arrayOf(
+    PropTypes.shape({
+      category: PropTypes.string
+    })
+  )
 });
 
 const productShape = PropTypes.shape({

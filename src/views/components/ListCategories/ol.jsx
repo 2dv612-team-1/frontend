@@ -1,13 +1,13 @@
 import styled from "styled-components";
 import fonts from "../../constants/fonts";
 
-const OrderedList = styled.ol`
+const MyOl = styled.ol`
+  list-style-type: none;
   font-size: 16px;
   text-transform: capitalize;
   font-family: ${fonts.secondary};
   list-style-position: inside;
   padding: 0;
-  counter-reset: item;
 `;
 
-export default OrderedList;
+export default MyOl;

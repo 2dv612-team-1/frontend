@@ -29,7 +29,7 @@ class CreateCategoryPage extends Component {
   render() {
     const parents = this.props.categories.map(parent => parent.category);
     parents.splice(0, 0, "Choose parent category");
-    console.log(parents);
+    // console.log(parents);
     return (
       <PageContainer title="new category">
         <CategoryForm auth={this.props.loggedInAs} parents={parents} />
@@ -39,16 +39,6 @@ class CreateCategoryPage extends Component {
     );
   }
 }
-
-/*
-const CreateCategoryPage = ({ role, errorMessage, successMessage, categories }) => (
-  <PageContainer title="new category">
-    <CategoryForm role={role} parents={categories} />
-    {errorMessage ? <Text error>{errorMessage}</Text> : null}
-    {successMessage ? <Text success>{successMessage}</Text> : null}
-  </PageContainer>
-);
-*/
 
 const mapStateToProps = state => ({
   loggedInAs: state.session.loggedInAs,
