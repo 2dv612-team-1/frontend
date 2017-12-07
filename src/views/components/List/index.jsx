@@ -49,16 +49,3 @@ const List = ({ list, ordered, type }) => {
 List.propTypes = propTypes;
 List.defaultProps = defaultProps;
 export default List;
-
-/*
- type === "category" ? (
- <OrderedList>
- {list.map(item => (
- <li key={item[type]}>
- {item[type]}
- {item.sub !== null ? { nested } : null}
- </li>
- ))}
- </OrderedList>
- ) :
- */
