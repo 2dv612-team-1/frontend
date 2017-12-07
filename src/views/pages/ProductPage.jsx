@@ -71,7 +71,7 @@ class ProductPage extends Component {
     const url = `https://nanotu.be/products/${this.props.location.slice(
       -24
     )}/materials/${name}/rate`;
-    this.props.postRate(url, event);
+    this.props.postRate(url, rate);
   };
   render() {
     return (
@@ -123,7 +123,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  postRate: (url, event) => dispatch(ratingPostRate(url, event))
+  postRate: (url, rate) => dispatch(ratingPostRate(url, rate))
 });
 
 ProductPage.propTypes = propTypes;
