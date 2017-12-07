@@ -65,7 +65,7 @@ const initState = [
 const products = (state = initState, action) => {
   switch (action.type) {
     case types.PRODUCTS_FETCH_DATA_SUCCESS:
-      return [].concat(state, action.products);
+      return action.products.reduce((prev, curr) => [...prev, curr], initState);
     default:
       return state;
   }
