@@ -1,38 +1,14 @@
 import React from "react";
+import Rating from "react-rating";
 import Container from "./Container";
-import Rate from "./Rate";
 
-const RatingWidget = ({ ratingFor, onClick, currentRating }) => (
+const RatingWidget = ({ ratingFor, onClick, currentRating, name }) => (
   <Container>
-    <Rate
-      name={ratingFor}
-      onClick={onClick}
-      value="1"
+    <Rating
       initialRate={currentRating}
-    />
-    <Rate
-      name={ratingFor}
-      onClick={onClick}
-      value="2"
-      initialRate={currentRating}
-    />
-    <Rate
-      name={ratingFor}
-      onClick={onClick}
-      value="3"
-      initialRate={currentRating}
-    />
-    <Rate
-      name={ratingFor}
-      onClick={onClick}
-      value="4"
-      initialRate={currentRating}
-    />
-    <Rate
-      name={ratingFor}
-      onClick={onClick}
-      value="5"
-      initialRate={currentRating}
+      name={name}
+      fractions={2}
+      onClick={(rate, event) => onClick(rate, event, name)}
     />
   </Container>
 );
