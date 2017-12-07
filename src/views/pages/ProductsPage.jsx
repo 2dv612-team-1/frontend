@@ -28,7 +28,7 @@ class ProductsPage extends Component {
         : "";
     const url =
       this.props.loggedInAs.role === "representative"
-        ? `${API_HOST}/companies/${company}/products`
+        ? `${API_HOST}/companies/${this.props.loggedInAs.username}/products`
         : `${API_HOST}/products`;
     this.props.fetchData(url);
     console.log(url);
