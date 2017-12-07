@@ -40,16 +40,6 @@ class CreateCategoryPage extends Component {
   }
 }
 
-/*
-const CreateCategoryPage = ({ role, errorMessage, successMessage, categories }) => (
-  <PageContainer title="new category">
-    <CategoryForm role={role} parents={categories} />
-    {errorMessage ? <Text error>{errorMessage}</Text> : null}
-    {successMessage ? <Text success>{successMessage}</Text> : null}
-  </PageContainer>
-);
-*/
-
 const mapStateToProps = state => ({
   loggedInAs: state.session.loggedInAs,
   errorMessage: state.register.registerHasError.errorMessage,

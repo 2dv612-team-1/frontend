@@ -25,7 +25,10 @@ let CategoryForm = ({ loggedInAs, handleSubmit, register, parents }) => {
     const data = values;
     data.jwt = loggedInAs.jwt;
     console.log(data);
-    register(`${API_HOST}/categories`, data);
+    data.parent === undefined
+      ? register(`${API_HOST}/categories`, data)
+      : register(`${API_HOST}/categories/${data.parent}/subcategories`, data);
+    // register(`${API_HOST}/categories`, data);
   };
 
   return (
