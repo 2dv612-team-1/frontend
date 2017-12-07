@@ -22,6 +22,7 @@ class CategoriesPage extends Component {
   }
 
   render() {
+    console.log(this.props.categories);
     return (
       <PageContainer title="Categories">
         <Link to="/categories/new">

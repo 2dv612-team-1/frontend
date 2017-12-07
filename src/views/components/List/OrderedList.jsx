@@ -7,6 +7,7 @@ const OrderedList = styled.ol`
   font-family: ${fonts.secondary};
   list-style-position: inside;
   padding: 0;
+  counter-reset: item;
 `;
 
 export default OrderedList;

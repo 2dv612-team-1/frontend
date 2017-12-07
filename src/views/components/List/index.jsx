@@ -14,7 +14,12 @@ const userShape = PropTypes.shape({
 });
 
 const categoryShape = PropTypes.shape({
-  category: PropTypes.string
+  category: PropTypes.string,
+  sub: PropTypes.arrayOf(
+    PropTypes.shape({
+      category: PropTypes.string
+    })
+  )
 });
 
 const productShape = PropTypes.shape({
@@ -30,7 +35,21 @@ const propTypes = {
 };
 
 const List = ({ list, ordered, type }) => {
-  return ordered ? (
+  let nested = subs => (
+    <UnorderedList>
+      {subs.map(sub => <li key={sub.category}>{sub.category}</li>)}
+    </UnorderedList>
+  );
+  return type === "category" ? (
+    <OrderedList>
+      {list.map(item => (
+        <li key={item[type]}>
+          {item[type]}
+          {item.sub !== null ? { nested } : null}
+        </li>
+      ))}
+    </OrderedList>
+  ) : ordered ? (
     <OrderedList>
       {list.map(item => <li key={item[type]}>{item[type]}</li>)}
     </OrderedList>
