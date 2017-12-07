@@ -8,6 +8,7 @@ import RatingWidget from "../components/Rating";
 import NotesIcon from "../components/NotesIcon";
 import Note from "../components/Note";
 import { ratingPostRate } from "../../state/ratings/actions";
+import FileLink from "../components/FileLink";
 
 const propTypes = {
   id: PropTypes.string.isRequired,
@@ -66,14 +67,10 @@ class ProductPage extends Component {
     this.setState({ showNote: false });
   };
 
-  handleChange = (rate, event) => {
-    console.log("rate: " + rate);
-    const fileName = event.target; // Denna funkar inte, ska hamta filnamn fr rating widget
-    console.log(fileName);
-
+  handleChange = (rate, event, name) => {
     const url = `https://nanotu.be/products/${this.props.location.slice(
       -24
-    )}/materials/${fileName}/rate`;
+    )}/materials/${name}/rate`;
     this.props.postRate(url, event);
   };
   render() {
@@ -88,13 +85,16 @@ class ProductPage extends Component {
         <div>
           {this.state.product.files
             ? this.state.product.files.map(file => (
-                <div>
-                  <a href={`${API_HOST}/${file.name}`}>{file.name}</a>
-                  <RatingWidget
+                <div key={file.name}>
+                  <FileLink
+                    href={`${API_HOST}/${file.name}`}
                     name={file.name}
-                    ratingFor={file.name}
+                  />
+                  <RatingWidget
+                    ratingFor={file.material_id}
                     onClick={this.handleChange}
                     currentRating={file.average}
+                    name={file.name}
                   />
                   <NotesIcon
                     id={file.material_id}
