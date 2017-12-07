@@ -1,16 +1,16 @@
 import React from "react";
 import Rating from "react-rating";
+import Container from "./Container";
 
-const RatingWidget = ({ fileName, onClick, ratingFor, currentRating }) => {
-  return (
+const RatingWidget = ({ ratingFor, onClick, currentRating, name }) => (
+  <Container>
     <Rating
       initialRate={currentRating}
-      name={fileName}
+      name={name}
       fractions={2}
-      onClick={onClick}
-      data-materialName={ratingFor}
+      onClick={(rate, event) => onClick(rate, event, name)}
     />
-  );
-};
+  </Container>
+);
 
 export default RatingWidget;
