@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import PageContainer from "../components/PageContainer";
 import CategoryForm from "../containers/CategoryForm";
 import Text from "../elements/Text";
-import { categoriesFetchData } from "../../state/categories/actions";
+import { categoriesFetchData, categoriesClear } from "../../state/categories/actions";
 
 const defaultProps = {
   loggedInAs: [],
@@ -18,12 +18,23 @@ const propTypes = {
   errorMessage: PropTypes.string,
   successMessage: PropTypes.string,
   categories: PropTypes.arrayOf(PropTypes.shape({})),
-  fetchData: PropTypes.func.isRequired
+  fetchData: PropTypes.func.isRequired,
+  clear: PropTypes.func.isRequired
 };
 
 class CreateCategoryPage extends Component {
+  componentWillMount() {
+    this.props.clear();
+    console.log("clear category");
+  }
+
   componentDidMount() {
     this.props.fetchData("https://nanotu.be/categories");
+  }
+
+  componentWillUnmount() {
+    this.props.clear();
+    console.log("destroy cats");
   }
 
   render() {
@@ -49,7 +60,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchData: url => dispatch(categoriesFetchData(url))
+  fetchData: url => dispatch(categoriesFetchData(url)),
+  clear: () => dispatch(categoriesClear())
 });
 
 CreateCategoryPage.defaultProps = defaultProps;
