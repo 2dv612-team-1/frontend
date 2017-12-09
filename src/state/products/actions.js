@@ -37,28 +37,23 @@ export const productsFetchData = url => dispatch => {
     });
 };
 
-export const uploadCreatedProduct = (url, obj) => dispatch => {
-  const toUpload = Object.assign({}, obj);
-  toUpload.jwt = Auth.getToken();
-
+export const uploadCreatedProduct = (url, obj) => async dispatch => {
+  const toUpload = { ...obj, jwt: Auth.getToken() };
   const body = new FormData();
+
   Object.keys(toUpload).forEach(key => {
-    if(!Array.isArray(key)) {
-      body.append(key, toUpload[key]);
-    } else {
+    if (Array.isArray(toUpload[key])) {
       body.append(key, toUpload[key][0]);
+    } else {
+      body.append(key, toUpload[key]);
     }
   });
 
-  console.info("POST", body, toUpload);
-  console.info("This is expected to fail:");
-  fetch(url, {
+  await fetch(url, {
     method: "POST",
-    body: body
-  })
-    .then(res => res.json())
-    .then(res => console.log(res))
-    .catch(err => console.error(err));
+    body
+  }).catch(e => console.log(e));
+
   /*  Client.POST(url, toUpload)
     //  .then(data => {})
     .catch(() => {
