@@ -23,6 +23,12 @@ export const categoriesPostDataSuccess = (bool, message) => ({
   successMessage: message
 });
 
+export const categoriesClear = () => dispatch => {
+  dispatch(categoriesIsLoading(false));
+  dispatch(categoriesHasError(false, ""));
+  dispatch(categoriesPostDataSuccess(false, ""));
+};
+
 export const categoriesFetchData = url => dispatch => {
   dispatch(categoriesIsLoading(true));
   Client.GET(url)
@@ -37,45 +43,24 @@ export const categoriesFetchData = url => dispatch => {
     });
 };
 
-export const categoriesClear = () => dispatch => {
-  dispatch(categoriesIsLoading(false));
-  dispatch(categoriesHasError(false, ""));
-  dispatch(categoriesPostDataSuccess(false, ""));
-};
-
-/*
-export const clearErr = () => dispatch => {
-  dispatch(categoriesHasError(false, ""));
-};
-
-export const clearSuccess = () => dispatch => {
-  dispatch(categoriesPostDataSuccess(false, ""));
-};
-*/
-
 export const categoriesPostData = (url, fields) => dispatch => {
-  // dispatch(categoriesIsLoading(true));
-  // console.log(url);
+  dispatch(categoriesIsLoading(true));
   dispatch(categoriesClear());
   Client.POST(url, fields)
     .then(data => {
       console.log(data);
       if (data.status !== 201) {
-        console.log("status !== 201");
-        console.log(data.message);
         dispatch(categoriesHasError(true, data.message));
-      }
-      // dispatch(categoriesIsLoading(false));
-      else {
+        dispatch(categoriesIsLoading(false));
+      } else {
         dispatch(categoriesPostDataSuccess(true, data.message));
         dispatch(categoriesHasError(false));
+        dispatch(categoriesIsLoading(false));
       }
-      // dispatch(categoriesHasError(false));
-      // dispatch(categoriesClear());
     })
     .catch(err => {
       dispatch(categoriesHasError(true, err.message));
-      console.log(err);
+      dispatch(categoriesIsLoading(false));
     });
 };
 
@@ -86,7 +71,5 @@ export default {
   categoriesPostDataSuccess,
   categoriesFetchData,
   categoriesPostData,
-  categoriesClear,
-  // clearErr,
-  // clearSuccess
+  categoriesClear
 };

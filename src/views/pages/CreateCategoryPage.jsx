@@ -8,6 +8,7 @@ import { categoriesFetchData, categoriesClear } from "../../state/categories/act
 
 const defaultProps = {
   loggedInAs: [],
+  isLoading: false,
   errorMessage: "",
   successMessage: "",
   categories: []
@@ -15,6 +16,7 @@ const defaultProps = {
 
 const propTypes = {
   loggedInAs: PropTypes.shape({}),
+  isLoading: PropTypes.bool,
   errorMessage: PropTypes.string,
   successMessage: PropTypes.string,
   categories: PropTypes.arrayOf(PropTypes.shape({})),
@@ -48,6 +50,9 @@ class CreateCategoryPage extends Component {
         ) : null}
         {this.props.successMessage ? (
           <Text success>{this.props.successMessage}</Text>
+        ) : null}
+        {this.props.isLoading ? (
+          <Text>Loading...</Text>
         ) : null}
       </PageContainer>
     );
