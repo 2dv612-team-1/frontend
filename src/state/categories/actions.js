@@ -1,9 +1,10 @@
 import types from "./types";
 import Client from "../../libs/Client";
 
-export const categoriesHasError = bool => ({
+export const categoriesHasError = (bool, err) => ({
   type: types.CATEGORIES_HAS_ERROR,
-  hasError: bool
+  hasError: bool,
+  errorMessage: err
 });
 
 export const categoriesIsLoading = bool => ({
@@ -29,34 +30,52 @@ export const categoriesFetchData = url => dispatch => {
       dispatch(categoriesFetchDataSuccess(data.message));
       dispatch(categoriesIsLoading(false));
     })
-    .catch((err) => {
+    .catch(err => {
       console.log(err);
       dispatch(categoriesIsLoading(false));
-      dispatch(categoriesHasError(true));
+      dispatch(categoriesHasError(true, err));
     });
 };
 
 export const categoriesClear = () => dispatch => {
-  dispatch(categoriesHasError(false));
   dispatch(categoriesIsLoading(false));
+  dispatch(categoriesHasError(false, ""));
+  dispatch(categoriesPostDataSuccess(false, ""));
 };
 
+/*
+export const clearErr = () => dispatch => {
+  dispatch(categoriesHasError(false, ""));
+};
+
+export const clearSuccess = () => dispatch => {
+  dispatch(categoriesPostDataSuccess(false, ""));
+};
+*/
+
 export const categoriesPostData = (url, fields) => dispatch => {
-  dispatch(categoriesIsLoading(true));
-  console.log(url);
+  // dispatch(categoriesIsLoading(true));
+  // console.log(url);
+  dispatch(categoriesClear());
   Client.POST(url, fields)
     .then(data => {
       console.log(data);
       if (data.status !== 201) {
+        console.log("status !== 201");
+        console.log(data.message);
         dispatch(categoriesHasError(true, data.message));
       }
       // dispatch(categoriesIsLoading(false));
-      dispatch(categoriesPostDataSuccess(true, data.message));
+      else {
+        dispatch(categoriesPostDataSuccess(true, data.message));
+        dispatch(categoriesHasError(false));
+      }
       // dispatch(categoriesHasError(false));
-      dispatch(categoriesClear());
+      // dispatch(categoriesClear());
     })
     .catch(err => {
       dispatch(categoriesHasError(true, err.message));
+      console.log(err);
     });
 };
 
@@ -67,5 +86,7 @@ export default {
   categoriesPostDataSuccess,
   categoriesFetchData,
   categoriesPostData,
-  categoriesClear
+  categoriesClear,
+  // clearErr,
+  // clearSuccess
 };

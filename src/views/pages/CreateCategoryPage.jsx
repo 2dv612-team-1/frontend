@@ -24,8 +24,8 @@ const propTypes = {
 
 class CreateCategoryPage extends Component {
   componentWillMount() {
-    this.props.clear();
     console.log("clear category");
+    this.props.clear();
   }
 
   componentDidMount() {
@@ -33,19 +33,22 @@ class CreateCategoryPage extends Component {
   }
 
   componentWillUnmount() {
-    this.props.clear();
     console.log("destroy cats");
+    this.props.clear();
   }
 
   render() {
     const parents = this.props.categories.map(parent => parent.category);
     parents.splice(0, 0, "Choose parent category");
-    // console.log(parents);
     return (
       <PageContainer title="new category">
         <CategoryForm auth={this.props.loggedInAs} parents={parents} />
-        {this.props.errorMessage ? <Text error>{this.props.errorMessage}</Text> : null}
-        {this.props.successMessage ? <Text success>{this.props.successMessage}</Text> : null}
+        {this.props.errorMessage ? (
+          <Text error>{this.props.errorMessage}</Text>
+        ) : null}
+        {this.props.successMessage ? (
+          <Text success>{this.props.successMessage}</Text>
+        ) : null}
       </PageContainer>
     );
   }
@@ -53,9 +56,9 @@ class CreateCategoryPage extends Component {
 
 const mapStateToProps = state => ({
   loggedInAs: state.session.loggedInAs,
-  errorMessage: state.register.registerHasError.errorMessage,
-  successMessage: state.register.registerPostDataSuccess.successMessage,
-  isLoading: state.register.registerIsLoading,
+  errorMessage: state.categories.categoriesHasError.errorMessage,
+  successMessage: state.categories.categoriesPostDataSuccess.successMessage,
+  isLoading: state.categories.categoriesIsLoading,
   categories: state.categories.categories
 });
 
