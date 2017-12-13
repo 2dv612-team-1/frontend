@@ -9,6 +9,7 @@ import Text from "../elements/Text";
 import Button from "../components/Button";
 import ErrorMessage from "../components/ErrorMessage";
 import PageContainer from "../components/PageContainer";
+import ProductsSearch from "../containers/ProductsSearch";
 import Jwt from "../../libs/Jwt";
 
 const propTypes = {
@@ -50,7 +51,9 @@ class ProductsPage extends Component {
           <Link to="/products/create">
             <Button>Create Product</Button>
           </Link>
-        ) : null}
+        ) : (
+          <ProductsSearch />
+        )}
         <Text>All products:</Text>
         {this.props.products ? (
           this.props.products.map(product => (
