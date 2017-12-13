@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { API_HOST } from "../../libs/API_CONFIG";
-import { representativesFetchData } from "../../state/representatives/actions";
+import { representativesFetchData, representativesClear } from "../../state/representatives/actions";
 import Text from "../elements/Text";
 import List from "../components/List";
 import Button from "../components/Button";
@@ -22,6 +22,9 @@ class RepresentativesPage extends Component {
     const company = this.props.loggedInAs.username;
     const url = `${API_HOST}/companies/${company}/representatives`;
     this.props.fetchData(url);
+  }
+  componentWillUnmount() {
+    this.props.clear();
   }
 
   render() {
@@ -49,7 +52,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchData: url => dispatch(representativesFetchData(url))
+  fetchData: url => dispatch(representativesFetchData(url)),
+  clear: () => dispatch(representativesClear())
 });
 
 RepresentativesPage.propTypes = propTypes;

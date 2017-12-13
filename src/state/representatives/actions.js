@@ -16,6 +16,12 @@ export const representativesFetchDataSuccess = representatives => ({
   representatives
 });
 
+export const representativesClear = () => dispatch => {
+  dispatch(representativesIsLoading(false));
+  dispatch(representativesHasError(false, ""));
+  dispatch(representativesFetchDataSuccess(false, ""));
+};
+
 export const representativesFetchData = url => dispatch => {
   dispatch(representativesIsLoading(true));
   Client.GET(url)
@@ -33,5 +39,6 @@ export default {
   representativesHasError,
   representativesIsLoading,
   representativesFetchDataSuccess,
-  representativesFetchData
+  representativesFetchData,
+  representativesClear
 };
