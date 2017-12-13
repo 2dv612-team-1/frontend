@@ -31,7 +31,6 @@ const NavBar = ({ role }) => (
     ) : null}
     {role === "company" ? (
       <div>
-        <MenuItem to="/register/representative">Register</MenuItem>
         <MenuItem to="/representatives">Representatives</MenuItem>
         <MenuItem to="/logout">Logout</MenuItem>
       </div>
