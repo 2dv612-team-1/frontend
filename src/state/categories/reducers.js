@@ -5,7 +5,10 @@ import types from "./types";
 const categoriesHasError = (state = false, action) => {
   switch (action.type) {
     case types.CATEGORIES_HAS_ERROR:
-      return action.hasError;
+      return {
+        hasError: action.hasError,
+        errorMessage: action.errorMessage
+      };
 
     default:
       return state;
@@ -43,6 +46,12 @@ const categoriesPostDataSuccess = (state = false, action) => {
       return state;
   }
 };
+
+/*
+const categoriesClear = (state = false, action) => {
+  switch (action.type)
+};
+*/
 
 const categoriesReducer = combineReducers({
   categoriesHasError,

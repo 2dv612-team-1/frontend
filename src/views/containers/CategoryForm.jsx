@@ -24,13 +24,11 @@ let CategoryForm = ({ loggedInAs, handleSubmit, register, parents }) => {
   const onSubmit = values => {
     const data = values;
     data.jwt = loggedInAs.jwt;
-    console.log(data);
     if (data.parent === undefined || data.parent === "Choose parent category") {
       register(`${API_HOST}/categories`, data);
     } else {
       register(`${API_HOST}/categories/${data.parent}/subcategories`, data);
     }
-    // register(`${API_HOST}/categories`, data);
     console.log(data);
   };
 
@@ -45,7 +43,6 @@ let CategoryForm = ({ loggedInAs, handleSubmit, register, parents }) => {
 
 const mapStateToProps = state => ({
   loggedInAs: state.session.loggedInAs
-  // categories: state.categories.categories
 });
 
 CategoryForm.propTypes = propTypes;
