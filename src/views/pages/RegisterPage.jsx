@@ -30,8 +30,20 @@ class RegisterPage extends Component {
   }
 
   render() {
+    let title = "";
+    switch (this.props.role) {
+      case "company":
+        title = "New representative";
+        break;
+      case "admin":
+        title = "New company";
+        break;
+      default:
+        title = "Create new account";
+        break;
+    }
     return (
-      <PageContainer title="register">
+      <PageContainer title={title}>
         <RegisterForm role={this.props.role} />
         {this.props.errorMessage ? <Text error>{this.props.errorMessage}</Text> : null}
         {this.props.successMessage ? <Text success>{this.props.successMessage}</Text> : null}
