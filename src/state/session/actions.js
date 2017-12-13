@@ -51,10 +51,16 @@ export const performLogout = () => dispatch => {
   dispatch(isLogedIn(false));
 };
 
+export const clearForm = () => dispatch => {
+  dispatch(loginHasError(false, ""));
+  dispatch(loginIsLoading(false));
+};
+
 export default {
   loginIsLoading,
   loginHasError,
   isLogedIn,
   performLogin,
-  performLogout
+  performLogout,
+  clearForm
 };
