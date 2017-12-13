@@ -9,13 +9,14 @@ import Text from "../elements/Text";
 import Button from "../components/Button";
 import ErrorMessage from "../components/ErrorMessage";
 import PageContainer from "../components/PageContainer";
+import Jwt from "../../libs/Jwt";
 
 const propTypes = {
   fetchData: PropTypes.func.isRequired,
   isLoading: PropTypes.bool.isRequired,
   hasError: PropTypes.bool.isRequired,
   products: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-  loggedInAs: PropTypes.string.isRequired
+  loggedInAs: PropTypes.shape({}).isRequired,
 };
 
 class ProductsPage extends Component {
@@ -23,19 +24,22 @@ class ProductsPage extends Component {
     // firstly, it has to be fixed in Backend - rep jwt token
     const company =
       this.props.loggedInAs.role === "representative"
-        ? this.props.loggedInAs.company
+        ? Jwt.getOwner(this.props.loggedInAs.jwt)
         : "";
     const url =
       this.props.loggedInAs.role === "representative"
-        ? `${API_HOST}/companies/${company}/products`
+        ? `${API_HOST}/companies/${this.props.loggedInAs.username}/products`
         : `${API_HOST}/products`;
     this.props.fetchData(url);
+    console.log(url);
+    console.log(this.props.loggedInAs.role);
+    console.log(company);
   }
 
   render() {
     return (
       <PageContainer title="products">
-        {this.props.loggedInAs === "representative" ? (
+        {this.props.loggedInAs.role === "representative" ? (
           <Link to="/products/create">
             <Button>Create Product</Button>
           </Link>
@@ -60,7 +64,7 @@ const mapStateToProps = state => ({
   products: state.products.products,
   hasError: state.products.productsHasError,
   isLoading: state.products.productsIsLoading,
-  loggedInAs: state.session.loggedInAs.role
+  loggedInAs: state.session.loggedInAs,
 });
 
 const mapDispatchToProps = dispatch => ({

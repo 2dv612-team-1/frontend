@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import PageContainer from "../components/PageContainer";
 import CategoryForm from "../containers/CategoryForm";
 import Text from "../elements/Text";
-import { categoriesFetchData } from "../../state/categories/actions";
+import { categoriesFetchData, categoriesClear } from "../../state/categories/actions";
 
 const defaultProps = {
   loggedInAs: [],
@@ -18,18 +18,29 @@ const propTypes = {
   errorMessage: PropTypes.string,
   successMessage: PropTypes.string,
   categories: PropTypes.arrayOf(PropTypes.shape({})),
-  fetchData: PropTypes.func.isRequired
+  fetchData: PropTypes.func.isRequired,
+  clear: PropTypes.func.isRequired
 };
 
 class CreateCategoryPage extends Component {
+  componentWillMount() {
+    this.props.clear();
+    console.log("clear category");
+  }
+
   componentDidMount() {
     this.props.fetchData("https://nanotu.be/categories");
+  }
+
+  componentWillUnmount() {
+    this.props.clear();
+    console.log("destroy cats");
   }
 
   render() {
     const parents = this.props.categories.map(parent => parent.category);
     parents.splice(0, 0, "Choose parent category");
-    console.log(parents);
+    // console.log(parents);
     return (
       <PageContainer title="new category">
         <CategoryForm auth={this.props.loggedInAs} parents={parents} />
@@ -40,16 +51,6 @@ class CreateCategoryPage extends Component {
   }
 }
 
-/*
-const CreateCategoryPage = ({ role, errorMessage, successMessage, categories }) => (
-  <PageContainer title="new category">
-    <CategoryForm role={role} parents={categories} />
-    {errorMessage ? <Text error>{errorMessage}</Text> : null}
-    {successMessage ? <Text success>{successMessage}</Text> : null}
-  </PageContainer>
-);
-*/
-
 const mapStateToProps = state => ({
   loggedInAs: state.session.loggedInAs,
   errorMessage: state.register.registerHasError.errorMessage,
@@ -59,7 +60,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchData: url => dispatch(categoriesFetchData(url))
+  fetchData: url => dispatch(categoriesFetchData(url)),
+  clear: () => dispatch(categoriesClear())
 });
 
 CreateCategoryPage.defaultProps = defaultProps;

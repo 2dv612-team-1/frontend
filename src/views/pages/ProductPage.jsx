@@ -8,6 +8,7 @@ import RatingWidget from "../components/Rating";
 import NotesIcon from "../components/NotesIcon";
 import Note from "../components/Note";
 import { ratingPostRate } from "../../state/ratings/actions";
+import FileLink from "../components/FileLink";
 
 const propTypes = {
   id: PropTypes.string.isRequired,
@@ -17,7 +18,8 @@ const propTypes = {
 class ProductPage extends Component {
   state = {
     product: {},
-    showNote: false
+    showNote: false,
+    noteContent: ""
   };
   componentDidMount() {
     // Temp fix för hårdkodad produkt med fejk filer i state
@@ -42,25 +44,41 @@ class ProductPage extends Component {
   product.files.push("testprodukt 1");
   product.files.push("testprodukt 2");*/
 
-<<<<<<< HEAD
   handleChange(rate, event) {
     const fileName = event.target.materialName; // Denna funkar inte, ska hamta filnamn fr rating widget
 
     console.log(fileName);
-=======
-  handleNoteClick = (event) => {
-    this.setState({ currentNote: event.target.name, showNote: true });
   }
 
-  handleChange = (rate, event) => {
-    console.log("yesbox");
-    const fileName = event.target; // Denna funkar inte, ska hamta filnamn fr rating widget
->>>>>>> notes
+  handleNoteClick = event => {
+    event.stopPropagation();
+    let noteContent = this.state.product.files.filter(
+      file => file.material_id === event.target.getAttribute("name")
+    );
+
+    noteContent = noteContent[0];
+    noteContent = noteContent.note;
+
+    this.setState({
+      showNote: true,
+      noteContent
+    });
+  };
+
+  handleNoteChange = event => {
+    this.setState({ noteContent: event.target.value });
+  };
+
+  handleNoteCloseClick = () => {
+    this.setState({ showNote: false });
+  };
+
+  handleChange = (rate, event, name) => {
     const url = `https://nanotu.be/products/${this.props.location.slice(
       -24
-    )}/materials/${fileName}/rate`;
-    this.props.postRate(url, event);
-  }
+    )}/materials/${name}/rate`;
+    this.props.postRate(url, rate);
+  };
   render() {
     return (
       <PageContainer title={this.state.product.name}>
@@ -71,26 +89,18 @@ class ProductPage extends Component {
         <p>Producer: {this.state.product.producer}</p>
         <p>Files:</p>
         <div>
-<<<<<<< HEAD
-          {this.state.product.files.map(file => (
-            <div>
-              <a href={`${API_HOST}/${file}`}>{file}</a>
-              <RatingWidget
-                ratingFor={file}
-                onClick={name => onClick(name)}
-                currentRating={file.rating}
-              />
-            </div>
-          ))}
-=======
           {this.state.product.files
             ? this.state.product.files.map(file => (
-                <div>
-                  <a href={`${API_HOST}/${file.name}`}>{file.name}</a>
+                <div key={file.name}>
+                  <FileLink
+                    href={`${API_HOST}/${file.name}`}
+                    name={file.name}
+                  />
                   <RatingWidget
-                    ratingFor={file.name}
-                    onChange={this.handleChange}
+                    ratingFor={file.material_id}
+                    onClick={this.handleChange}
                     currentRating={file.average}
+                    name={file.name}
                   />
                   <NotesIcon
                     id={file.material_id}
@@ -99,9 +109,15 @@ class ProductPage extends Component {
                 </div>
               ))
             : null}
->>>>>>> notes
         </div>
-        {this.state.showNote ? <Note /> : null}
+        {this.state.showNote ? (
+          <Note
+            onChange={this.handleNoteChange}
+            onClick={this.handleNoteCloseClick}
+          >
+            {this.state.noteContent}
+          </Note>
+        ) : null}
       </PageContainer>
     );
   }
@@ -113,7 +129,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  postRate: url => dispatch(ratingPostRate(url))
+  postRate: (url, rate) => dispatch(ratingPostRate(url, rate))
 });
 
 ProductPage.propTypes = propTypes;

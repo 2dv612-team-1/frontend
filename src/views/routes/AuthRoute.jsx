@@ -4,6 +4,7 @@ import { Redirect } from "react-router-dom";
 import PropTypes from "prop-types";
 
 const propTypes = {
+  // children: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   children: PropTypes.element.isRequired,
   access: PropTypes.string.isRequired,
   role: PropTypes.string.isRequired

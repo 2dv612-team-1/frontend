@@ -22,7 +22,8 @@ class CreateProductPage extends Component {
   };
 
   render() {
-    const cat = this.props.categories.map(cat => cat.category)
+    const cat = this.props.categories.map(cat => cat.category);
+    cat.splice(0, 0, "choose");
     return (
       <PageContainer title="create product">
         <form onSubmit={this.props.handleSubmit(this.onSubmit)}>

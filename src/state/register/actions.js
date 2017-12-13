@@ -18,6 +18,12 @@ export const registerPostDataSuccess = (bool, message) => ({
   successMessage: message
 });
 
+export const clearForm = () => dispatch => {
+  dispatch(registerHasError(false, ""));
+  dispatch(registerIsLoading(false));
+  dispatch(registerPostDataSuccess(false, ""));
+};
+
 export const registerPostData = (url, fields) => dispatch => {
   dispatch(registerIsLoading(true));
   console.log(url);
@@ -40,5 +46,6 @@ export default {
   registerIsLoading,
   registerHasError,
   registerPostDataSuccess,
-  registerPostData
+  registerPostData,
+  clearForm
 };

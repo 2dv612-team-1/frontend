@@ -36,6 +36,11 @@ export const categoriesFetchData = url => dispatch => {
     });
 };
 
+export const categoriesClear = () => dispatch => {
+  dispatch(categoriesHasError(false));
+  dispatch(categoriesIsLoading(false));
+};
+
 export const categoriesPostData = (url, fields) => dispatch => {
   dispatch(categoriesIsLoading(true));
   console.log(url);
@@ -45,9 +50,10 @@ export const categoriesPostData = (url, fields) => dispatch => {
       if (data.status !== 201) {
         dispatch(categoriesHasError(true, data.message));
       }
-      dispatch(categoriesIsLoading(false));
+      // dispatch(categoriesIsLoading(false));
       dispatch(categoriesPostDataSuccess(true, data.message));
-      dispatch(categoriesHasError(false, null));
+      // dispatch(categoriesHasError(false));
+      dispatch(categoriesClear());
     })
     .catch(err => {
       dispatch(categoriesHasError(true, err.message));
@@ -60,5 +66,6 @@ export default {
   categoriesFetchDataSuccess,
   categoriesPostDataSuccess,
   categoriesFetchData,
-  categoriesPostData
+  categoriesPostData,
+  categoriesClear
 };

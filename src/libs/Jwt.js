@@ -11,6 +11,10 @@ class Jwt {
   static getRole(token) {
     return this.decode(token).role;
   }
+  static getOwner(token) {
+    const info = this.decode(token).data;
+    return info.owner;
+  }
 }
 
 export default Jwt;

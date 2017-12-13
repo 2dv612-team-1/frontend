@@ -1,9 +1,10 @@
-import React from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import PageContainer from "../components/PageContainer";
 import RegisterForm from "../containers/RegisterForm";
 import Text from "../elements/Text";
+import { clearForm } from "../../state/register/actions";
 
 const defaultProps = {
   role: "",
@@ -17,13 +18,27 @@ const propTypes = {
   successMessage: PropTypes.string
 };
 
-const RegisterPage = ({ role, errorMessage, successMessage }) => (
-  <PageContainer title="register">
-    <RegisterForm role={role} />
-    {errorMessage ? <Text error>{errorMessage}</Text> : null}
-    {successMessage ? <Text success>{successMessage}</Text> : null}
-  </PageContainer>
-);
+class RegisterPage extends Component {
+  componentWillMount() {
+    this.props.clear();
+    console.log("clear register");
+  }
+
+  componentWillUnmount() {
+    this.props.clear();
+    console.log("destroy register");
+  }
+
+  render() {
+    return (
+      <PageContainer title="register">
+        <RegisterForm role={this.props.role} />
+        {this.props.errorMessage ? <Text error>{this.props.errorMessage}</Text> : null}
+        {this.props.successMessage ? <Text success>{this.props.successMessage}</Text> : null}
+      </PageContainer>
+    );
+  }
+}
 
 const mapStateToProps = state => ({
   role: state.session.loggedInAs.role,
@@ -32,6 +47,10 @@ const mapStateToProps = state => ({
   isLoading: state.register.registerIsLoading
 });
 
+const mapDispatchToProps = dispatch => ({
+  clear: () => dispatch(clearForm())
+});
+
 RegisterPage.defaultProps = defaultProps;
 RegisterPage.propTypes = propTypes;
-export default connect(mapStateToProps)(RegisterPage);
+export default connect(mapStateToProps, mapDispatchToProps)(RegisterPage);
