@@ -7,6 +7,7 @@ import { registerPostData } from "../../state/register/actions";
 import Button from "../components/Button";
 import Form from "../elements/Form";
 import Field from "../components/Field";
+import RenderField from "../components/RenderField";
 
 const propTypes = {
   handleSubmit: PropTypes.func.isRequired,
@@ -15,10 +16,15 @@ const propTypes = {
   loggedInAs: PropTypes.string.isRequired,
 };
 
+const validate = values => {
+  const errors = {};
+  !values.username ? errors.username = "Required" : null;
+  !values.password ? errors.password = "Required" : null;
+  return errors;
+};
+
 let RegisterForm = ({ loggedInAs, handleSubmit, register, role }) => {
   const onSubmit = values => {
-    console.log("role");
-    console.log(role);
     let json = values;
     loggedInAs.jwt !== undefined ? (json.jwt = loggedInAs.jwt) : null;
     let url = `${API_HOST}/consumers`;
@@ -41,15 +47,10 @@ let RegisterForm = ({ loggedInAs, handleSubmit, register, role }) => {
     register(url, json);
   };
 
-  return role === "category" ? (
+  return (
     <Form onSubmit={handleSubmit(onSubmit)}>
-      <Field label="name" name="name" component="input" type="text" />
-      <Button form>Create</Button>
-    </Form>
-  ) : (
-    <Form onSubmit={handleSubmit(onSubmit)}>
-      <Field label="username" name="username" component="input" type="text" />
-      <Field label="password" name="password" component="input" type="text" />
+      <Field label="username" name="username" component={RenderField} type="text" />
+      <Field label="password" name="password" component={RenderField} type="text" />
       <Button form>Register</Button>
     </Form>
   );
@@ -62,7 +63,8 @@ const mapStateToProps = state => ({
 RegisterForm.propTypes = propTypes;
 
 RegisterForm = reduxForm({
-  form: "register"
+  form: "register",
+  validate
 })(RegisterForm);
 
 const mapDispatchToProps = dispatch => ({
@@ -70,3 +72,12 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(RegisterForm);
+
+/*
+ role === "category" ? (
+ <Form onSubmit={handleSubmit(onSubmit)}>
+ <Field label="name" name="name" component={RenderField} type="text" />
+ <Button form>Create</Button>
+ </Form>
+ ) :
+ */
