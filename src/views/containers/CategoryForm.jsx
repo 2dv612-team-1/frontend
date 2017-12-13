@@ -8,6 +8,7 @@ import Button from "../components/Button";
 import Form from "../elements/Form";
 import Field from "../components/Field";
 import SelectField from "../components/SelectField";
+import RenderField from "../components/RenderField";
 
 const defaultProps = {
   parents: []
@@ -18,6 +19,12 @@ const propTypes = {
   register: PropTypes.func.isRequired,
   loggedInAs: PropTypes.shape({}).isRequired,
   parents: PropTypes.arrayOf(PropTypes.string)
+};
+
+const validate = values => {
+  const errors = {};
+  !values.category ? errors.category = "Required" : null;
+  return errors;
 };
 
 let CategoryForm = ({ loggedInAs, handleSubmit, register, parents }) => {
@@ -35,7 +42,7 @@ let CategoryForm = ({ loggedInAs, handleSubmit, register, parents }) => {
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
       <SelectField label="parent" name="parent" type="text" options={parents} />
-      <Field label="name" name="category" component="input" type="text" />
+      <Field label="name" name="category" component={RenderField} type="text" />
       <Button form>Create</Button>
     </Form>
   );
@@ -49,7 +56,8 @@ CategoryForm.propTypes = propTypes;
 CategoryForm.defaultProps = defaultProps;
 
 CategoryForm = reduxForm({
-  form: "category"
+  form: "category",
+  validate
 })(CategoryForm);
 
 const mapDispatchToProps = dispatch => ({
