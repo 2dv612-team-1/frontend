@@ -7,11 +7,19 @@ import { performLogin } from "../../state/session/actions";
 import Button from "../components/Button";
 import Form from "../elements/Form";
 import Field from "../components/Field";
+import RenderField from "../components/RenderField";
 
 const propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   login: PropTypes.func.isRequired,
   admin: PropTypes.string.isRequired
+};
+
+const validate = values => {
+  const errors = {};
+  !values.username ? errors.username = "Required" : null;
+  !values.password ? errors.password = "Required" : null;
+  return errors;
 };
 
 let LoginForm = ({ handleSubmit, login, admin }) => {
@@ -25,11 +33,11 @@ let LoginForm = ({ handleSubmit, login, admin }) => {
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
-      <Field label="username" name="username" component="input" type="text" />
+      <Field label="username" name="username" component={RenderField} type="text" />
       <Field
         label="password"
         name="password"
-        component="input"
+        component={RenderField}
         type="password"
       />
       <Button form>Login</Button>
@@ -40,7 +48,8 @@ let LoginForm = ({ handleSubmit, login, admin }) => {
 LoginForm.propTypes = propTypes;
 
 LoginForm = reduxForm({
-  form: "login"
+  form: "login",
+  validate
 })(LoginForm);
 
 const mapDispatchToProps = dispatch => ({

@@ -29,7 +29,6 @@ let CategoryForm = ({ loggedInAs, handleSubmit, register, parents }) => {
     } else {
       register(`${API_HOST}/categories/${data.parent}/subcategories`, data);
     }
-    // register(`${API_HOST}/categories`, data);
     console.log(data);
   };
 
@@ -44,7 +43,6 @@ let CategoryForm = ({ loggedInAs, handleSubmit, register, parents }) => {
 
 const mapStateToProps = state => ({
   loggedInAs: state.session.loggedInAs
-  // categories: state.categories.categories
 });
 
 CategoryForm.propTypes = propTypes;

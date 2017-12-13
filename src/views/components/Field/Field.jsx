@@ -12,7 +12,7 @@ const ReduxField = styled(Field)`
   letter-spacing: 0.1em;
   font-size: 1em;
   margin-top: 5px;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
 `;
 
 export default ReduxField;
