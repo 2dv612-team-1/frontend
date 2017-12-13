@@ -29,9 +29,15 @@ export const companiesFetchData = url => dispatch => {
     });
 };
 
+export const companiesClear = () => dispatch => {
+  dispatch(companiesIsLoading(false));
+  dispatch(companiesHasError(false));
+};
+
 export default {
   companiesHasError,
   companiesIsLoading,
   companiesFetchDataSucces,
-  companiesFetchData
+  companiesFetchData,
+  companiesClear
 };

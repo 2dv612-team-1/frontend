@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { API_HOST } from "../../libs/API_CONFIG";
-import { companiesFetchData } from "../../state/companies/actions";
+import { companiesFetchData, companiesClear } from "../../state/companies/actions";
 import Text from "../elements/Text";
 import List from "../components/List";
 import ErrorMessage from "../components/ErrorMessage";
@@ -20,6 +20,9 @@ const propTypes = {
 class CompaniesPage extends Component {
   componentDidMount() {
     this.props.fetchData(`${API_HOST}/companies`);
+  }
+  componentWillUnmount() {
+    this.props.clear();
   }
 
   render() {
@@ -47,7 +50,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchData: url => dispatch(companiesFetchData(url))
+  fetchData: url => dispatch(companiesFetchData(url)),
+  clear: () => dispatch(companiesClear())
 });
 
 CompaniesPage.propTypes = propTypes;
