@@ -22,6 +22,12 @@ const propTypes = {
 class ProductsPage extends Component {
   componentDidMount() {
     // firstly, it has to be fixed in Backend - rep jwt token
+    let company = "";
+    let url = `${API_HOST}/products`;
+    this.props.loggedInAs.role === "representative"
+      ? (company = Jwt.getOwner(this.props.loggedInAs.jwt), url = `${API_HOST}/companies/${this.props.loggedInAs.username}/products`)
+      : null;
+    /*
     const company =
       this.props.loggedInAs.role === "representative"
         ? Jwt.getOwner(this.props.loggedInAs.jwt)
@@ -30,6 +36,7 @@ class ProductsPage extends Component {
       this.props.loggedInAs.role === "representative"
         ? `${API_HOST}/companies/${this.props.loggedInAs.username}/products`
         : `${API_HOST}/products`;
+        */
     this.props.fetchData(url);
     console.log(url);
     console.log(this.props.loggedInAs.role);
