@@ -36,12 +36,6 @@ let RegisterForm = ({ loggedInAs, handleSubmit, register, role }) => {
       case "admin":
         url = `${API_HOST}/companies`;
         break;
-      case "customer":
-        url = `${API_HOST}/consumers`;
-        break;
-      case "category":
-        url = `${API_HOST}/categories`;
-        break;
       default:
     }
     register(url, json);
@@ -72,12 +66,3 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(RegisterForm);
-
-/*
- role === "category" ? (
- <Form onSubmit={handleSubmit(onSubmit)}>
- <Field label="name" name="name" component={RenderField} type="text" />
- <Button form>Create</Button>
- </Form>
- ) :
- */
