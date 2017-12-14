@@ -64,8 +64,8 @@ class ProductPage extends Component {
     });
   };
 
-  handleFileChange = event => {
-    const file = event.target.value;
+  handleFileChange = ({ target }) => {
+    const file = target.files[0];
     this.setState({ file });
   };
 
@@ -103,23 +103,23 @@ class ProductPage extends Component {
         <div>
           {this.state.product.files
             ? this.state.product.files.map(file => (
-                <div key={file.name}>
-                  <FileLink
-                    href={`${API_HOST}/${file.name}`}
-                    name={file.name}
-                  />
-                  <RatingWidget
-                    ratingFor={file.material_id}
-                    onClick={this.handleChange}
-                    currentRating={file.average}
-                    name={file.name}
-                  />
-                  <NotesIcon
-                    id={file.material_id}
-                    onClick={this.handleNoteClick}
-                  />
-                </div>
-              ))
+              <div key={file.name}>
+                <FileLink
+                  href={`${API_HOST}/${file.name}`}
+                  name={file.name}
+                />
+                <RatingWidget
+                  ratingFor={file.material_id}
+                  onClick={this.handleChange}
+                  currentRating={file.average}
+                  name={file.name}
+                />
+                <NotesIcon
+                  id={file.material_id}
+                  onClick={this.handleNoteClick}
+                />
+              </div>
+            ))
             : null}
         </div>
         {this.state.showNote ? (
@@ -135,9 +135,8 @@ class ProductPage extends Component {
             <Text>Upload material to this product:</Text>
             <FileInput
               onChange={this.handleFileChange}
-              value={this.state.file}
             />
-          <Button submit>Upload</Button>
+            <Button submit>Upload</Button>
           </form>
         ) : null}
       </PageContainer>
