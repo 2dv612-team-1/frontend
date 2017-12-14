@@ -64,7 +64,7 @@ export const uploadCreatedProduct = (url, obj) => async dispatch => {
 export const uploadMaterial = (url, file) => async dispatch => {
   const body = new FormData();
   body.append("jwt", Auth.getToken());
-  body.append("files", [file]);
+  body.append("files", file);
 
   await fetch(url, {
     method: "POST",
