@@ -68,7 +68,7 @@ class ProductsPage extends Component {
           <Search />
         )}
         <Text>All products:</Text>
-        {this.state.display
+        {this.state.display.length !== 0
           ? this.state.display.map(product => (
               <div>
                 <Link to={`/product/${product._id}`}>{product.name}</Link>
