@@ -7,7 +7,6 @@ import Button from "../components/Button";
 import { API_HOST } from "../../libs/API_CONFIG";
 import { productsFetchData, productsHasError } from "../../state/products/actions";
 import Text from "../elements/Text";
-import ErrorMessage from "../components/ErrorMessage";
 import PageContainer from "../components/PageContainer";
 import Jwt from "../../libs/Jwt";
 import Search from "../containers/ProductsSearch";
@@ -49,17 +48,14 @@ class ProductsPage extends Component {
     // check if search query has changed
     const now = this.props.searchText;
     const next = nextProps.searchText;
-    const err = "No matches!";
     if (now !== next) {
       const filtered = this.props.products.filter(product =>
-        product.name.includes(next)
+        product.name.toLowerCase().includes(next.toLowerCase())
       );
       console.log(filtered.length);
-      (filtered.length !== 0)
-        ? (this.setState({ display: filtered }, function() {
-            console.log("search applied");
-          }))
-        : (this.props.showError(err), console.log("NO MATCHES"));
+      filtered.length !== 0
+        ? (this.setState({ display: filtered }), this.props.showError(false, ""))
+        : this.props.showError(true, `${next} gave no matches!`);
     }
     if (next === undefined) {
       console.log("empty search comming in");
@@ -106,7 +102,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   fetchData: url => dispatch(productsFetchData(url)),
-  showError: msg => dispatch(productsHasError(true, msg))
+  showError: (bool, msg) => dispatch(productsHasError(bool, msg))
 });
 
 ProductsPage.defaultProps = defaultProps;
