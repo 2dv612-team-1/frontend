@@ -86,9 +86,7 @@ class ProductPage extends Component {
   };
 
   handleChange = (rate, event, name) => {
-    const url = `https://nanotu.be/products/${this.props.location.slice(
-      -24
-    )}/materials/${name}/rate`;
+    const url = `https://nanotu.be/products/${this.props.location.slice(-24)}/materials/${name}/rate`;
     this.props.postRate(url, rate);
   };
   render() {
@@ -112,7 +110,7 @@ class ProductPage extends Component {
                   ratingFor={file.material_id}
                   onClick={this.handleChange}
                   currentRating={file.average}
-                  name={file.name}
+                  name={file.material_id}
                 />
                 <NotesIcon
                   id={file.material_id}
