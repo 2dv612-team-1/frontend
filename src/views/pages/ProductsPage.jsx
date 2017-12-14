@@ -55,7 +55,7 @@ class ProductsPage extends Component {
       console.log(filtered.length);
       filtered.length !== 0
         ? (this.setState({ display: filtered }), this.props.showError(false, ""))
-        : this.props.showError(true, `${next} gave no matches!`);
+        : (this.props.showError(true, `${next} gave no matches!`), this.setState({ display: this.props.products}));
     }
     if (next === undefined) {
       console.log("empty search comming in");
@@ -77,8 +77,8 @@ class ProductsPage extends Component {
         ) : (
           <Search />
         )}
-        <Text>All products:</Text>
         {this.props.hasError ? <Text error>{this.props.error}</Text> : null}
+        <Text>All products:</Text>
         {this.state.display.length !== 0
           ? this.state.display.map(product => (
               <div>
