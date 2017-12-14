@@ -43,17 +43,14 @@ class ProductsPage extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    // always sync products for display to state TODO: but it doesn't!
-    this.setState({ display: this.props.products }, function () {
-      console.log("new products applied 1");
-    });
-
     // check if search query has changed
     const now = this.props.searchText;
     const next = nextProps.searchText;
     if (now !== next) {
-      const filtered = this.state.display.filter(product => product.name.includes(next));
-      this.setState({ display: filtered }, function () {
+      const filtered = this.props.products.filter(product =>
+        product.name.includes(next)
+      );
+      this.setState({ display: filtered }, function() {
         console.log("search applied");
       });
     }
@@ -71,16 +68,19 @@ class ProductsPage extends Component {
           <Search />
         )}
         <Text>All products:</Text>
-        {this.state.display ? (
-          this.state.display.map(product => (
-            <div>
-              <Link to={`/product/${product._id}`}>{product.name}</Link>
-              <br />
-            </div>
-          ))
-        ) : (
-          <Text>Loading...</Text>
-        )}
+        {this.state.display
+          ? this.state.display.map(product => (
+              <div>
+                <Link to={`/product/${product._id}`}>{product.name}</Link>
+                <br />
+              </div>
+            ))
+          : this.props.products.map(product => (
+              <div>
+                <Link to={`/product/${product._id}`}>{product.name}</Link>
+                <br />
+              </div>
+            ))}
         <ErrorMessage>{this.props.hasError}</ErrorMessage>
       </PageContainer>
     );
@@ -90,7 +90,7 @@ const mapStateToProps = state => ({
   products: state.products.products,
   hasError: state.products.productsHasError,
   loggedInAs: state.session.loggedInAs,
-  searchText: state.products.search,
+  searchText: state.products.search
 });
 
 const mapDispatchToProps = dispatch => ({
