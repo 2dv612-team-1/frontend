@@ -28,6 +28,10 @@ class LoginPage extends Component {
       : console.log("route DIDNT changed");
   }
 
+  componentWillUnmount() {
+    this.props.clear();
+  }
+
   render() {
     return (
       <PageContainer title="login">
