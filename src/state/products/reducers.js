@@ -5,7 +5,10 @@ import types from "./types";
 const productsHasError = (state = false, action) => {
   switch (action.type) {
     case types.PRODUCTS_HAS_ERROR:
-      return action.hasError;
+      return {
+        hasError: action.hasError,
+        errorMessage: action.errorMessage
+      };
 
     default:
       return state;
@@ -91,6 +94,7 @@ const search = (state = false, action) => {
       return state;
   }
 };
+
 
 const productsReducer = combineReducers({
   productsHasError,

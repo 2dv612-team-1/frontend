@@ -2,9 +2,10 @@ import types from "./types";
 import Client from "../../libs/Client";
 import Auth from "../../libs/Auth";
 
-export const productsHasError = bool => ({
+export const productsHasError = (bool, err) => ({
   type: types.PRODUCTS_HAS_ERROR,
-  hasError: bool
+  hasError: bool,
+  errorMessage: err
 });
 
 export const productsIsLoading = bool => ({
@@ -31,9 +32,9 @@ export const productsFetchData = url => dispatch => {
       dispatch(productsIsLoading(false));
     })
     .catch(err => {
-      console.log(err);
+      // console.log(err);
       dispatch(productsIsLoading(false));
-      dispatch(productsHasError(true));
+      dispatch(productsHasError(true, err));
     });
 };
 
