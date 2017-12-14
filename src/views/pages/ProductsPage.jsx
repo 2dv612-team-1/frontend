@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import Button from "../components/Button";
 import { API_HOST } from "../../libs/API_CONFIG";
-import { productsFetchData, productsHasError } from "../../state/products/actions";
+import { productsFetchData, productsHasError, productsClear } from "../../state/products/actions";
 import Text from "../elements/Text";
 import PageContainer from "../components/PageContainer";
 import Jwt from "../../libs/Jwt";
@@ -63,6 +63,10 @@ class ProductsPage extends Component {
     }
   }
 
+  componentWillUnmount() {
+    this.props.clear();
+  }
+
   render() {
     return (
       <PageContainer title="products">
@@ -102,7 +106,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   fetchData: url => dispatch(productsFetchData(url)),
-  showError: (bool, msg) => dispatch(productsHasError(bool, msg))
+  showError: (bool, msg) => dispatch(productsHasError(bool, msg)),
+  clear: () => dispatch(productsClear())
 });
 
 ProductsPage.defaultProps = defaultProps;

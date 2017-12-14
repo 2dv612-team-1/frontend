@@ -24,6 +24,11 @@ export const productsPostDataSuccess = (bool, message) => ({
   successMessage: message
 });
 
+export const productsClear = () => dispatch => {
+  dispatch(productsHasError(false, ""));
+  dispatch(productsIsLoading(false));
+};
+
 export const productsFetchData = url => dispatch => {
   dispatch(productsIsLoading(true));
   Client.GET(url)
@@ -73,5 +78,6 @@ export default {
   productsFetchDataSuccess,
   productsPostDataSuccess,
   productsFetchData,
-  productsSearch
+  productsSearch,
+  productsClear
 };
