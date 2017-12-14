@@ -86,9 +86,21 @@ export const productsSearch = text => ({
   text
 });
 
+export const uploadMaterial = (url, file) => async dispatch => {
+  const body = new FormData();
+  body.append("jwt", Auth.getToken());
+  body.append("files", file);
+
+  await fetch(url, {
+    method: "POST",
+    body
+  }).then(() => dispatch(productsFetchData("https://nanotu.be/products")));
+};
+
 export default {
   productsHasError,
   productsIsLoading,
+  uploadMaterial,
   productsFetchDataSuccess,
   productsPostDataSuccess,
   productsFetchData,

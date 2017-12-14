@@ -8,8 +8,11 @@ import RatingWidget from "../components/Rating";
 import NotesIcon from "../components/NotesIcon";
 import Note from "../components/Note";
 import { ratingPostRate } from "../../state/ratings/actions";
+import { uploadMaterial } from "../../state/products/actions";
 import FileLink from "../components/FileLink";
-
+import Text from "../elements/Text";
+import FileInput from "../components/FileInput";
+import Button from "../components/Button";
 const propTypes = {
   id: PropTypes.string.isRequired,
   products: PropTypes.arrayOf(PropTypes.shape({})).isRequired
@@ -19,8 +22,10 @@ class ProductPage extends Component {
   state = {
     product: {},
     showNote: false,
-    noteContent: ""
+    noteContent: "",
+    file: ""
   };
+
   componentDidMount() {
     // Temp fix för hårdkodad produkt med fejk filer i state
     const id = this.props.location.slice(-24);
@@ -59,6 +64,19 @@ class ProductPage extends Component {
     });
   };
 
+  handleFileChange = ({ target }) => {
+    const file = target.files[0];
+    this.setState({ file });
+  };
+
+  handleFileUpload = event => {
+    event.preventDefault();
+    // Sen, köre fileuppladdning via actions i redux
+    const id = this.props.location.slice(-24);
+    const url = `https://nanotu.be/products/${id}/materials`;
+    this.props.uploadMaterial(url, this.state.file);
+  };
+
   handleNoteChange = event => {
     this.setState({ noteContent: event.target.value });
   };
@@ -85,23 +103,23 @@ class ProductPage extends Component {
         <div>
           {this.state.product.files
             ? this.state.product.files.map(file => (
-                <div key={file.name}>
-                  <FileLink
-                    href={`${API_HOST}/${file.name}`}
-                    name={file.name}
-                  />
-                  <RatingWidget
-                    ratingFor={file.material_id}
-                    onClick={this.handleChange}
-                    currentRating={file.average}
-                    name={file.name}
-                  />
-                  <NotesIcon
-                    id={file.material_id}
-                    onClick={this.handleNoteClick}
-                  />
-                </div>
-              ))
+              <div key={file.name}>
+                <FileLink
+                  href={`${API_HOST}/${file.name}`}
+                  name={file.name}
+                />
+                <RatingWidget
+                  ratingFor={file.material_id}
+                  onClick={this.handleChange}
+                  currentRating={file.average}
+                  name={file.name}
+                />
+                <NotesIcon
+                  id={file.material_id}
+                  onClick={this.handleNoteClick}
+                />
+              </div>
+            ))
             : null}
         </div>
         {this.state.showNote ? (
@@ -112,6 +130,15 @@ class ProductPage extends Component {
             {this.state.noteContent}
           </Note>
         ) : null}
+        {this.props.loggedInAs.role === "representative" ? (
+          <form onSubmit={this.handleFileUpload}>
+            <Text>Upload material to this product:</Text>
+            <FileInput
+              onChange={this.handleFileChange}
+            />
+            <Button submit>Upload</Button>
+          </form>
+        ) : null}
       </PageContainer>
     );
   }
@@ -119,11 +146,13 @@ class ProductPage extends Component {
 
 const mapStateToProps = state => ({
   products: state.products.products,
-  location: state.router.location.pathname
+  location: state.router.location.pathname,
+  loggedInAs: state.session.loggedInAs
 });
 
 const mapDispatchToProps = dispatch => ({
-  postRate: (url, rate) => dispatch(ratingPostRate(url, rate))
+  postRate: (url, rate) => dispatch(ratingPostRate(url, rate)),
+  uploadMaterial: (url, file) => dispatch(uploadMaterial(url, file))
 });
 
 ProductPage.propTypes = propTypes;
