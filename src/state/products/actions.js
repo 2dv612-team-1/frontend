@@ -61,10 +61,16 @@ export const uploadCreatedProduct = (url, obj) => async dispatch => {
     }); */
 };
 
+export const productsSearch = text => ({
+  type: types.SEARCH,
+  text
+});
+
 export default {
   productsHasError,
   productsIsLoading,
   productsFetchDataSuccess,
   productsPostDataSuccess,
-  productsFetchData
+  productsFetchData,
+  productsSearch
 };

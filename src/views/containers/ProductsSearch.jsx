@@ -5,24 +5,16 @@ import { connect } from "react-redux";
 import Button from "../components/Button";
 import Form from "../elements/Form";
 import Field from "../components/Field";
+import { productsSearch } from "../../state/products/actions";
 
-const defaultProps = {
-  searchResult: [],
-  products: [],
-};
 const propTypes = {
-  searchResult: PropTypes.arrayOf(PropTypes.shape({})),
-  products: PropTypes.arrayOf(PropTypes.shape({})),
-  handleSubmit: PropTypes.func.isRequired,
+  search: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired
 };
 
-let ProductsSearch = ({ products, searchResult, handleSubmit }) => {
+let ProductsSearch = ({ handleSubmit, search }) => {
   const onSubmit = values => {
-    const match = values.search;
-    products.forEach(product => {
-      product.name.includes(match) ? searchResult.push(product) : null;
-    });
-    console.log(searchResult);
+    search(values.search);
   };
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
@@ -37,10 +29,13 @@ const mapStateToProps = state => ({
 });
 
 ProductsSearch.propTypes = propTypes;
-ProductsSearch.defaultProps = defaultProps;
 
 ProductsSearch = reduxForm({
   form: "search"
 })(ProductsSearch);
 
-export default connect(mapStateToProps)(ProductsSearch);
+const mapDispatchToProps = dispatch => ({
+  search: text => dispatch(productsSearch(text))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductsSearch);
