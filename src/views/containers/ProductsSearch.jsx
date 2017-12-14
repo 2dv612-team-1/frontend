@@ -14,9 +14,7 @@ const propTypes = {
 
 let ProductsSearch = ({ handleSubmit, search }) => {
   const onSubmit = values => {
-    values !== undefined
-      ? search(values.search)
-      : search(null);
+    values.search !== undefined ? search(values.search) : search("");
   };
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
