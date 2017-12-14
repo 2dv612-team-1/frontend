@@ -50,7 +50,7 @@ class ProductsPage extends Component {
     const next = nextProps.searchText;
     if (now !== next) {
       const filtered = this.props.products.filter(product =>
-        product.name.toLowerCase().includes(next.toLowerCase())
+        product.name.concat(product.description).toLowerCase().includes(next.toLowerCase())
       );
       console.log(filtered.length);
       filtered.length !== 0
