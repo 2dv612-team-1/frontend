@@ -40,7 +40,7 @@ class CreateProductPage extends Component {
             type="text"
           />
           <Field
-            label="serial no."
+            label="product no."
             name="productNo"
             component="input"
             type="text"

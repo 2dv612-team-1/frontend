@@ -36,7 +36,7 @@ class ProductsPage extends Component {
     let url = `${API_HOST}/products`;
     if (this.props.loggedInAs.role === "representative") {
       company = Jwt.getOwner(this.props.loggedInAs.jwt);
-      url = `${API_HOST}/companies/${this.props.loggedInAs.username}/products`;
+      url = `${API_HOST}/companies/${company}/products`;
     }
     this.props.fetchData(url);
     console.log(url);
