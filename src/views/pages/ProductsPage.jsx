@@ -18,7 +18,6 @@ const defaultProps = {
 };
 const propTypes = {
   fetchData: PropTypes.func.isRequired,
-  isLoading: PropTypes.bool.isRequired,
   hasError: PropTypes.bool.isRequired,
   products: PropTypes.arrayOf(PropTypes.shape({})),
   loggedInAs: PropTypes.shape({}).isRequired,
@@ -44,11 +43,10 @@ class ProductsPage extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    // always sync products for display to state
+    // always sync products for display to state TODO: but it doesn't!
     this.setState({ display: this.props.products }, function () {
       console.log("new products applied 1");
     });
-    // console.log(this.state.display);
 
     // check if search query has changed
     const now = this.props.searchText;
@@ -91,7 +89,6 @@ class ProductsPage extends Component {
 const mapStateToProps = state => ({
   products: state.products.products,
   hasError: state.products.productsHasError,
-  isLoading: state.products.productsIsLoading,
   loggedInAs: state.session.loggedInAs,
   searchText: state.products.search,
 });
@@ -103,23 +100,3 @@ const mapDispatchToProps = dispatch => ({
 ProductsPage.defaultProps = defaultProps;
 ProductsPage.propTypes = propTypes;
 export default connect(mapStateToProps, mapDispatchToProps)(ProductsPage);
-
-/*
- const arraysEqual = (a, b) => {
- if (a.length !== b.length) return false;
- for (let i = 0; i < a.length; ++i) {
- if (a[i]._id !== b[i]._id) return false;
- }
- return true;
- };
-
- console.log(nextProps);
- console.log(this.props.products);
- console.log(this.state.display);
- // check if products have changed
- arraysEqual(nextProps.products, this.state.display)
- ? console.log("arr are the same")
- : this.setState({ display: this.props.products }, function () {
- console.log("new products applied");
- });
- */
