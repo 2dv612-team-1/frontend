@@ -18,8 +18,7 @@ export const representativesFetchDataSuccess = representatives => ({
 
 export const representativesClear = () => dispatch => {
   dispatch(representativesIsLoading(false));
-  dispatch(representativesHasError(false, ""));
-  dispatch(representativesFetchDataSuccess(false, ""));
+  dispatch(representativesHasError(false));
 };
 
 export const representativesFetchData = url => dispatch => {
