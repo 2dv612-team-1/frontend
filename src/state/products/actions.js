@@ -58,7 +58,21 @@ export const uploadCreatedProduct = (url, obj) => async dispatch => {
   await fetch(url, {
     method: "POST",
     body
-  }).catch(e => console.log(e));
+  })
+    .then(data => {
+      console.log(data);
+      if (data.status !== 201) {
+        dispatch(productsHasError(true, data.message));
+        dispatch(productsIsLoading(false));
+      } else {
+        dispatch(productsPostDataSuccess(true, "Product was created"));
+        dispatch(productsHasError(false));
+        dispatch(productsIsLoading(false));
+      }
+    })
+    .catch(e => {
+      dispatch(productsHasError(true, e.message));
+    });
 
   /*  Client.POST(url, toUpload)
     //  .then(data => {})

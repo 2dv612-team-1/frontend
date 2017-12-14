@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { reduxForm } from "redux-form";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import { API_HOST } from "../../libs/API_CONFIG";
 import Text from "../elements/Text";
 import Field from "../components/Field";
@@ -10,6 +11,20 @@ import PageContainer from "../components/PageContainer";
 import DropZoneField from "../components/DropZoneField";
 import { uploadCreatedProduct } from "../../state/products/actions";
 import { categoriesFetchData } from "../../state/categories/actions";
+
+const defaultProps = {
+  isLoading: false,
+  hasError: false,
+  errorMessage: "",
+  successMessage: ""
+};
+
+const propTypes = {
+  isLoading: PropTypes.bool,
+  hasError: PropTypes.bool,
+  errorMessage: PropTypes.string,
+  successMessage: PropTypes.string
+};
 
 class CreateProductPage extends Component {
   componentDidMount() {
@@ -55,7 +70,7 @@ class CreateProductPage extends Component {
           <Button submit>create</Button>
           {this.props.isLoading ? <Text>Loading...</Text> : null}
           {this.props.successMessage ? <Text success>Product was created</Text> : null}
-          {this.props.hasError ? <Text error>Could not load data</Text> : null}
+          {this.props.hasError ? <Text error>{this.props.errorMessage}</Text> : null}
         </form>
       </PageContainer>
     );
@@ -69,6 +84,7 @@ CreateProductPage = reduxForm({
 const mapStateToProps = state => ({
   categories: state.categories.categories,
   isLoading: state.products.isLoading,
+  hasError: state.products.productsHasError.hasError,
   errorMessage: state.products.productsHasError.errorMessage,
   successMessage: state.products.productsPostDataSuccess.successMessage
 });
@@ -77,4 +93,7 @@ const mapDispatchToProps = dispatch => ({
   createProduct: (url, obj) => dispatch(uploadCreatedProduct(url, obj)),
   fetchData: url => dispatch(categoriesFetchData(url))
 });
+
+CreateProductPage.defaultProps = defaultProps;
+CreateProductPage.propTypes = propTypes;
 export default connect(mapStateToProps, mapDispatchToProps)(CreateProductPage);
