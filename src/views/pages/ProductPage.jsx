@@ -129,7 +129,7 @@ class ProductPage extends Component {
             ? this.state.product.files.map(file => (
                 <div key={file.name}>
                   <FileLink
-                    href={`${API_HOST}/${file.filename}`}
+                    href={`${API_HOST}/materials/${file.material_id}`}
                     name={file.filename}
                   />
                   <RatingWidget
