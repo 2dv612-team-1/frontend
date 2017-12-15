@@ -32,10 +32,11 @@ export const registerPostData = (url, fields) => dispatch => {
       console.log(data);
       if (data.status !== 201) {
         dispatch(registerHasError(true, data.message));
+      } else {
+        dispatch(registerPostDataSuccess(true, data.message));
+        dispatch(registerHasError(false, ""));
       }
       dispatch(registerIsLoading(false));
-      dispatch(registerPostDataSuccess(true, data.message));
-      dispatch(registerHasError(false, ""));
     })
     .catch(err => {
       dispatch(registerHasError(true, err.message));
