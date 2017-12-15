@@ -51,6 +51,8 @@ class ProductPage extends Component {
 
   handleNoteClick = event => {
     event.stopPropagation();
+
+    
     let noteContent = this.state.product.files.filter(
       file => file.material_id === event.target.getAttribute("name")
     );
@@ -103,8 +105,8 @@ class ProductPage extends Component {
             ? this.state.product.files.map(file => (
               <div key={file.name}>
                 <FileLink
-                  href={`${API_HOST}/${file.name}`}
-                  name={file.name}
+                  href={`${API_HOST}/${file.filename}`}
+                  name={file.filename}
                 />
                 <RatingWidget
                   ratingFor={file.material_id}
