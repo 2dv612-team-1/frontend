@@ -132,7 +132,7 @@ class ProductPage extends Component {
                     href={`${API_HOST}/materials/${
                       this.state.product.producer
                     }/${this.props.location.slice(-24)}/${file.filename}`}
-                    name={file.filename}
+                    name={file.material_id}
                   />
                   <RatingWidget
                     ratingFor={file.material_id}
