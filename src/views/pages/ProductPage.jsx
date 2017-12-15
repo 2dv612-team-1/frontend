@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { API_HOST } from "../../libs/API_CONFIG";
 import Client from "../../libs/Client";
+import Jwt from "../../libs/Jwt";
+import Auth from "../../libs/Auth";
 import PageContainer from "../components/PageContainer";
 import RatingWidget from "../components/Rating";
 import NotesIcon from "../components/NotesIcon";
@@ -23,7 +25,8 @@ class ProductPage extends Component {
     product: {},
     showNote: false,
     noteContent: "",
-    file: ""
+    file: "",
+    currentNote: ""
   };
 
   componentDidMount() {
@@ -51,8 +54,18 @@ class ProductPage extends Component {
 
   handleNoteClick = event => {
     event.stopPropagation();
-
-    
+    this.setState({ currentNote: event.target.name });
+    const url = `https://nanotu.be/consumers/${Jwt.getUsername(
+      Auth.getToken()
+    )}/materials/${event.target.name}/annotations`;
+    Client.GET(url).then(noteContent => {
+      noteContent = noteContent.data ? "" : noteContent.data.annotations;
+      this.setState({
+        showNote: true,
+        noteContent
+      });
+    });
+    /*
     let noteContent = this.state.product.files.filter(
       file => file.material_id === event.target.getAttribute("name")
     );
@@ -64,6 +77,7 @@ class ProductPage extends Component {
       showNote: true,
       noteContent
     });
+    */
   };
 
   handleFileChange = ({ target }) => {
@@ -85,10 +99,20 @@ class ProductPage extends Component {
 
   handleNoteCloseClick = () => {
     this.setState({ showNote: false });
+    const url = `https://nanotu.be/consumers/${Jwt.getUsername(
+      Auth.getToken()
+    )}/materials/${this.state.currentNote}/annotations`;
+    const obj = {
+      annotations: this.state.noteContent,
+      jwt: Auth.getToken()
+    };
+    Client.POST(url, obj);
   };
 
   handleChange = (rate, event, name) => {
-    const url = `https://nanotu.be/products/${this.props.location.slice(-24)}/materials/${name}/rate`;
+    const url = `https://nanotu.be/products/${this.props.location.slice(
+      -24
+    )}/materials/${name}/rate`;
     this.props.postRate(url, rate);
   };
   render() {
@@ -103,23 +127,23 @@ class ProductPage extends Component {
         <div>
           {this.state.product.files
             ? this.state.product.files.map(file => (
-              <div key={file.name}>
-                <FileLink
-                  href={`${API_HOST}/${file.filename}`}
-                  name={file.filename}
-                />
-                <RatingWidget
-                  ratingFor={file.material_id}
-                  onClick={this.handleChange}
-                  currentRating={file.average}
-                  name={file.material_id}
-                />
-                <NotesIcon
-                  id={file.material_id}
-                  onClick={this.handleNoteClick}
-                />
-              </div>
-            ))
+                <div key={file.name}>
+                  <FileLink
+                    href={`${API_HOST}/${file.filename}`}
+                    name={file.filename}
+                  />
+                  <RatingWidget
+                    ratingFor={file.material_id}
+                    onClick={this.handleChange}
+                    currentRating={file.average}
+                    name={file.material_id}
+                  />
+                  <NotesIcon
+                    id={file.material_id}
+                    onClick={this.handleNoteClick}
+                  />
+                </div>
+              ))
             : null}
         </div>
         {this.state.showNote ? (
@@ -133,9 +157,7 @@ class ProductPage extends Component {
         {this.props.loggedInAs.role === "representative" ? (
           <form onSubmit={this.handleFileUpload}>
             <Text>Upload material to this product:</Text>
-            <FileInput
-              onChange={this.handleFileChange}
-            />
+            <FileInput onChange={this.handleFileChange} />
             <Button submit>Upload</Button>
           </form>
         ) : null}
