@@ -57,7 +57,7 @@ class ProductPage extends Component {
     this.setState({ currentNote: event.target.name });
     const url = `https://nanotu.be/consumers/${Jwt.getUsername(
       Auth.getToken()
-    )}/materials/${event.target.name}/annotations`;
+    )}/materials/${event.target.getAttribute("name")}/annotations`;
     Client.GET(url).then(noteContent => {
       noteContent = noteContent.data ? "" : noteContent.data.annotations;
       this.setState({
