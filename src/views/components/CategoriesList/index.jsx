@@ -6,12 +6,16 @@ import UnorderedList from "../../elements/UnorderedList";
 const CategoriesList = ({ items }) => {
   return (
     <div>
-      {items.map((item, i) => (
+      {items.map((item, index) => (
         <OrderedList styleType="none" key={i}>
           {`${i + 1}. ${item.category}`}
-          {item.sub !== null ? (
-            <SubList parent={i + 1} items={item.sub} />
-          ) : null}
+          <UnorderedList styleType="none" marginLeft={60}>
+            {item.sub !== null ? (
+              items.map((item, subIndex) => (
+                <li>{`${index + 1}.${subIndex + 1}. ${item.category}`}</li>
+              ));
+            ) : null}
+          </UnorderedList>
         </OrderedList>
       ))}
     </div>
