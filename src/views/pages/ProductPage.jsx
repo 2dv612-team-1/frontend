@@ -133,6 +133,7 @@ class ProductPage extends Component {
                       this.state.product.producer
                     }/${this.props.location.slice(-24)}/${file.filename}`}
                     name={file.filename}
+                    newWindow
                   />
                   <RatingWidget
                     ratingFor={file.material_id}
