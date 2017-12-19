@@ -3,8 +3,7 @@ import PropTypes from "prop-types";
 import MyUl from "./ul";
 import MyOl from "./ol";
 
-const CategoriesList = ({ items }) => {
-  return (
+const CategoriesList = ({ items }) => (
     <div className="catslist">
       {items.map((item, index) => {
         let i = index + 1;
@@ -26,7 +25,6 @@ const CategoriesList = ({ items }) => {
         );
       })}
     </div>
-  );
-};
+);
 
 export default CategoriesList;
