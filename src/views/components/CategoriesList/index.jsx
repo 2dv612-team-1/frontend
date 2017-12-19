@@ -4,7 +4,7 @@ import OrderedList from "../../elements/OrderedList";
 import UnorderedList from "../../elements/UnorderedList";
 
 const propTypes = {
-  items: PropTypes.arrayOf(PropTypes.shapeOf({})).isRequired
+  items: PropTypes.arrayOf(PropTypes.shape({})).isRequired
 };
 
 /*
