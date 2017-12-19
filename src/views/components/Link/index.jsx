@@ -8,7 +8,7 @@ const defaultProps = {
 };
 
 const propTypes = {
-  href: Proptypes.string,
+  href: PropTypes.string,
   name: PropTypes.string
 };
 
