@@ -4,12 +4,14 @@ import Anchor from "./Anchor";
 
 const defaultProps = {
   href: "#",
-  name: "Link"
+  name: "Link",
+  newWindow: false
 };
 
 const propTypes = {
   href: PropTypes.string,
-  name: PropTypes.string
+  name: PropTypes.string,
+  newWindow: PropTypes.bool
 };
 
 const Link = ({ href, name, newWindow }) => (
