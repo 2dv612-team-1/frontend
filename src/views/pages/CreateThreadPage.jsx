@@ -45,16 +45,17 @@ class CreateThreadPage extends Component {
   render() {
     return (
       <PageContainer title="new topic">
-        <ThreadForm auth={this.props.loggedInAs} categories={this.props.categories} />
+        <ThreadForm
+          auth={this.props.loggedInAs}
+          categories={this.props.categories}
+        />
         {this.props.errorMessage ? (
           <Text error>{this.props.errorMessage}</Text>
         ) : null}
         {this.props.successMessage ? (
           <Text success>{this.props.successMessage}</Text>
         ) : null}
-        {this.props.isLoading ? (
-          <Text>Loading...</Text>
-        ) : null}
+        {this.props.isLoading ? <Text>Loading...</Text> : null}
       </PageContainer>
     );
   }
