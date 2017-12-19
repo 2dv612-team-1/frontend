@@ -9,27 +9,8 @@ const defaultProps = {
   type: ""
 };
 
-const userShape = PropTypes.shape({
-  username: PropTypes.string
-});
-
-const categoryShape = PropTypes.shape({
-  category: PropTypes.string,
-  sub: PropTypes.arrayOf(
-    PropTypes.shape({
-      category: PropTypes.string
-    })
-  )
-});
-
-const productShape = PropTypes.shape({
-  name: PropTypes.string
-});
-
 const propTypes = {
-  list: PropTypes.arrayOf(
-    PropTypes.oneOfType([userShape, categoryShape, productShape])
-  ),
+  list: PropTypes.arrayOf(PropTypes.shape({})),
   ordered: PropTypes.bool,
   type: PropTypes.string
 };
