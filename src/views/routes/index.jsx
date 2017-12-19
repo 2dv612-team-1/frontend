@@ -45,17 +45,17 @@ const Routes = () => (
         <Route exact path="/products" component={ProductsPage} />
         <Route path="/products/create" component={CreateProductsPage} />
         <Route path="/product/:id" component={ProductPage} />
-        <Route exact path="/forum" component={ForumPage} />
-        <Route path="thread/new" component={CreateThreadPage} />
-        <Route path="thread/:id" component={ThreadPage} />
+        <Route path="/forum" component={ForumPage} />
+        <Route path="/thread/:id" component={ThreadPage} />
       </AuthRoute>
     </Switch>
     <Switch>
       <AuthRoute access="consumer">
         <Route path="/products" component={ProductsPage} />
         <Route path="/product/:id" component={ProductPage} />
-        <Route exact path="/forum" component={ForumPage} />
-        <Route path="thread/:id" component={ThreadPage} />
+        <Route path="/forum" component={ForumPage} />
+        <Route path="/thread/new" component={CreateThreadPage} />
+        <Route path="/thread/:id" component={ThreadPage} />
       </AuthRoute>
     </Switch>
   </div>
