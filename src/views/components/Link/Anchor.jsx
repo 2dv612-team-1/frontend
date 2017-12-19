@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
-const Link = styled.a`
+const Anchor = styled.a`
 	cursor: pointer;
 	float: left;
 	clear: left;
 `;
 
-export default Link;
+export default Anchor;
