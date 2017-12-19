@@ -8,14 +8,12 @@ const CategoriesList = ({ items }) => {
   return (
     <div>
       {items.map((item, i) => (
-        <div key={i}>
-          <MyOl>
-            {`${i + 1}. ${item.category}`}
-            {item.sub !== null ? (
-              <SubList parent={i + 1} items={item.sub} />
-            ) : null}
-          </MyOl>
-        </div>
+        <MyOl key={i}>
+          {`${i + 1}. ${item.category}`}
+          {item.sub !== null ? (
+            <SubList parent={i + 1} items={item.sub} />
+          ) : null}
+        </MyOl>
       ))}
     </div>
   );
