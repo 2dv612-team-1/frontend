@@ -1,6 +1,7 @@
 import React from "react";
-import Anchor from "./Anchor";
 import PropTypes from "prop-types";
+import Anchor from "./Anchor";
+
 
 const defaultProps = {
   href: "#",
