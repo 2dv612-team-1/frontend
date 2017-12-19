@@ -4,7 +4,6 @@ import MyUl from "./ul";
 import MyOl from "./ol";
 
 const CategoriesList = ({ items }) => {
-  // console.log(items);
   return (
     <div className="catslist">
       {items.map((item, index) => {
