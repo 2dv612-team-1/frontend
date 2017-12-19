@@ -3,6 +3,10 @@ import PropTypes from "prop-types";
 import OrderedList from "../../elements/OrderedList";
 import UnorderedList from "../../elements/UnorderedList";
 
+const propTypes = {
+  items: PropTypes.arrayOf(PropTypes.shapeOf({})).isRequired
+};
+
 const CategoriesList = ({ items }) => {
   return (
     <OrderedList styleType="none">
@@ -22,4 +26,5 @@ const CategoriesList = ({ items }) => {
   );
 };
 
+CategoriesList.propTypes = propTypes;
 export default CategoriesList;
