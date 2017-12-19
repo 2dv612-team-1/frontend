@@ -7,24 +7,22 @@ const propTypes = {
   items: PropTypes.arrayOf(PropTypes.shapeOf({})).isRequired
 };
 
-const CategoriesList = ({ items }) => {
-  return (
-    <OrderedList styleType="none">
-      {items.map((item, index) => (
-        <div>
-          <li>{`${index + 1}. ${item.category}`}</li>
-          <UnorderedList styleType="none" marginLeft={60}>
-            {item.sub !== null
-              ? items.map((subItem, subIndex) => (
-                  <li>{`${index + 1}.${subIndex + 1}. ${subItem.category}`}</li>
-                ))
-              : null}
-          </UnorderedList>
-        </div>
-      ))}
-    </OrderedList>
-  );
-};
+const CategoriesList = ({ items }) => (
+  <OrderedList styleType="none">
+    {items.map((item, index) => (
+      <div>
+        <li>{`${index + 1}. ${item.category}`}</li>
+        <UnorderedList styleType="none" marginLeft={60}>
+          {item.sub !== null
+            ? items.map((subItem, subIndex) => (
+                <li>{`${index + 1}.${subIndex + 1}. ${subItem.category}`}</li>
+              ))
+            : null}
+        </UnorderedList>
+      </div>
+    ))}
+  </OrderedList>
+);
 
 CategoriesList.propTypes = propTypes;
 export default CategoriesList;
