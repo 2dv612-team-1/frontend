@@ -5,14 +5,18 @@ import MyOl from "./ol";
 import SubList from "./SubList";
 
 const CategoriesList = ({ items }) => {
+  return (
   <div>
-    {items.map((item, index) => {
+    {items.map((item, i) => (
       <div key={i}>
-        <MyOl>{`${i + 1}. ${item.category}`}</MyOl>
-        {item.sub !== null ? <SubList parent={i} items={item.sub} /> : null}
-      </div>;
-    })}
-  </div>;
+        <MyOl>
+        {`${i + 1}. ${item.category}`}
+        {item.sub !== null ? <SubList parent={i + 1} items={item.sub} /> : null}
+        </MyOl>
+      </div>
+    ))}
+  </div>
+  );
 };
 
 export default CategoriesList;
