@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { API_HOST } from "../../libs/API_CONFIG";
 import { categoriesFetchData, categoriesClear } from "../../state/categories/actions";
 import Text from "../elements/Text";
-import ListCategories from "../components/ListCategories";
+import CategoriesList from "../components/CategoriesList";
 import Button from "../components/Button";
 import PageContainer from "../components/PageContainer";
 
@@ -43,7 +43,7 @@ class CategoriesPage extends Component {
           <Button>Create new Category</Button>
         </Link>
         <Text>All categories:</Text>
-        {this.props.categories ? <ListCategories items={this.props.categories} /> : null}
+        {this.props.categories ? <CategoriesList items={this.props.categories} /> : null}
         {this.props.isLoading ? <Text>Loading...</Text> : null}
         {this.props.errorMessage ? <Text error>{this.props.errorMessage}</Text> : null}
       </PageContainer>

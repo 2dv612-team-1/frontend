@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import MyUl from "./ul";
 import MyOl from "./ol";
 
-const ListCategories = ({ items }) => {
+const CategoriesList = ({ items }) => {
   // console.log(items);
   return (
     <div className="catslist">
@@ -30,4 +30,4 @@ const ListCategories = ({ items }) => {
   );
 };
 
-export default ListCategories;
+export default CategoriesList;
