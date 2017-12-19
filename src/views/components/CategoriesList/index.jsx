@@ -7,14 +7,10 @@ import SubList from "./SubList";
 const CategoriesList = ({ items }) => {
   <div>
     {items.map((item, index) => {
-      let i = index + 1;
-      const space = ". ";
       return (
         <div key={i}>
           <MyOl>
-            {i}
-            {space}
-            {item.category}
+            {`${i + 1 }. ${item.category}`}
           </MyOl>
           {item.sub !== null ? <SubList parent={i} items={item.sub} /> : null}
         </div>
