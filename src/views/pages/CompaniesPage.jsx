@@ -3,10 +3,12 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { API_HOST } from "../../libs/API_CONFIG";
-import { companiesFetchData, companiesClear } from "../../state/companies/actions";
+import {
+  companiesFetchData,
+  companiesClear
+} from "../../state/companies/actions";
 import Text from "../elements/Text";
 import List from "../components/List";
-import ErrorMessage from "../components/ErrorMessage";
 import Button from "../components/Button";
 import PageContainer from "../components/PageContainer";
 
@@ -33,11 +35,11 @@ class CompaniesPage extends Component {
           <Button>Register Company</Button>
         </Link>
         <Text>All companies:</Text>
-        {this.props.companies ? <List list={this.props.companies} ordered type="username" /> : null}
-        {this.props.isLoading ? <Text>Loading...</Text> : null}
-        {this.props.hasError ? (
-          <ErrorMessage>Could not load data</ErrorMessage>
+        {this.props.companies ? (
+          <List list={this.props.companies} ordered type="username" />
         ) : null}
+        {this.props.isLoading ? <Text>Loading...</Text> : null}
+        {this.props.hasError ? <Text error>Could not load data</Text> : null}
       </PageContainer>
     );
   }
