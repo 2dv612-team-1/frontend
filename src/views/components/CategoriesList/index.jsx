@@ -7,6 +7,9 @@ const propTypes = {
   items: PropTypes.arrayOf(PropTypes.shapeOf({})).isRequired
 };
 
+/*
+eslint-disable react/jsx-indent
+ */
 const CategoriesList = ({ items }) => (
   <OrderedList styleType="none">
     {items.map((item, index) => (
