@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import MyUl from "./ul";
 import MyOl from "./ol";
+import SubList from "./SubList"
 
 const CategoriesList = ({ items }) => (
   <div className="catslist">
@@ -16,18 +17,7 @@ const CategoriesList = ({ items }) => (
             {item.category}
           </MyOl>
           {item.sub !== null
-            ? item.sub.map((subitem, n) => {
-                let subi = `${i}.${n + 1}`;
-                return (
-                  <MyUl key={subitem.category}>
-                    <li>
-                      {subi}
-                      {space}
-                      {subitem.category}
-                    </li>
-                  </MyUl>
-                );
-              })
+            ? <SubList parent={i} items={item.sub} />
             : null}
         </div>
       );
