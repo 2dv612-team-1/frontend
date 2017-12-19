@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import fonts from "../constants/fonts";
+import colors from "../constants/colors";
 
 const defaultProps = {
   styleType: "disc",
@@ -12,17 +13,14 @@ const propTypes = {
   marginLeft: PropTypes.number
 };
 
-/*
-eslint-disable no-undef
- */
 const UnorderedList = styled.ul`
   font-size: 16px;
   text-transform: capitalize;
   font-family: ${fonts.secondary};
   list-style-position: inside;
   padding: 0;
-  list-style-type: ${styleType};
-  margin-left: ${marginLeft}px;
+  list-style-type: ${props => props.styleType};
+  margin-left: ${props => props.marginLeft}px;
   color: ${colors.gray};
 `;
 
