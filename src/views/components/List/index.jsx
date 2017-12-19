@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import UnorderedList from "./UnorderedList";
-import OrderedList from "./OrderedList";
+import UnorderedList from "../../elements/UnorderedList";
+import OrderedList from "../../elements/OrderedList";
 
 const defaultProps = {
   list: [],
@@ -9,42 +9,22 @@ const defaultProps = {
   type: ""
 };
 
-const userShape = PropTypes.shape({
-  username: PropTypes.string
-});
-
-const categoryShape = PropTypes.shape({
-  category: PropTypes.string,
-  sub: PropTypes.arrayOf(
-    PropTypes.shape({
-      category: PropTypes.string
-    })
-  )
-});
-
-const productShape = PropTypes.shape({
-  name: PropTypes.string
-});
-
 const propTypes = {
-  list: PropTypes.arrayOf(
-    PropTypes.oneOfType([userShape, categoryShape, productShape])
-  ),
+  list: PropTypes.arrayOf(PropTypes.shape({})),
   ordered: PropTypes.bool,
   type: PropTypes.string
 };
 
-const List = ({ list, ordered, type }) => {
-  return ordered ? (
+const List = ({ list, ordered, type }) =>
+  ordered ? (
     <OrderedList>
       {list.map(item => <li key={item[type]}>{item[type]}</li>)}
     </OrderedList>
   ) : (
     <UnorderedList>
-      {list.map(item => <li key={item.username}>{item.username}</li>)}
+      {list.map(item => <li key={item[type]}>{item[type]}</li>)}
     </UnorderedList>
   );
-};
 
 List.propTypes = propTypes;
 List.defaultProps = defaultProps;
