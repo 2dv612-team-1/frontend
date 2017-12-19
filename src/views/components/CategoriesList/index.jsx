@@ -5,20 +5,20 @@ import UnorderedList from "../../elements/UnorderedList";
 
 const CategoriesList = ({ items }) => {
   return (
-    <div>
+    <OrderedList styleType="none">
       {items.map((item, index) => (
-        <OrderedList styleType="none" key={i}>
-          {`${i + 1}. ${item.category}`}
+        <div>
+          <li>{`${index + 1}. ${item.category}`}</li>
           <UnorderedList styleType="none" marginLeft={60}>
-            {item.sub !== null ? (
-              items.map((item, subIndex) => (
-                <li>{`${index + 1}.${subIndex + 1}. ${item.category}`}</li>
-              ));
-            ) : null}
+            {item.sub !== null
+              ? items.map((subItem, subIndex) => (
+                  <li>{`${index + 1}.${subIndex + 1}. ${subItem.category}`}</li>
+                ))
+              : null}
           </UnorderedList>
-        </OrderedList>
+        </div>
       ))}
-    </div>
+    </OrderedList>
   );
 };
 
