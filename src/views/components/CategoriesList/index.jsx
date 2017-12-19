@@ -5,7 +5,7 @@ import MyOl from "./ol";
 import SubList from "./SubList"
 
 const CategoriesList = ({ items }) => (
-  <div className="catslist">
+  <div>
     {items.map((item, index) => {
       let i = index + 1;
       const space = ". ";
