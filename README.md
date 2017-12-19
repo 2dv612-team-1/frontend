@@ -167,3 +167,9 @@ Fullstack React With Friends - s. 450 - s. 488 (Skickad på slack)
 [Redux re-ducks](https://github.com/alexnm/re-ducks)
 
 [Re-ducks in practice](https://medium.freecodecamp.org/scaling-your-redux-app-with-ducks-6115955638be)
+
+# Johans "när det finns tid" TODO:
+1. Åtgärda felmed.
+2. Åtgärda fulhack
+3. Se över bättre lösning för redux
+4. Uppdatera tester
