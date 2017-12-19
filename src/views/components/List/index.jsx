@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import UnorderedList from "./UnorderedList";
-import OrderedList from "./OrderedList";
+import OrderedList from "../../elements/OrderedList";
 
 const defaultProps = {
   list: [],
