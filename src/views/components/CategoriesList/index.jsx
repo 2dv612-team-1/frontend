@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import OrderedList from "../../elements/OrderedList";
-import SubList from "./SubList";
+import UnorderedList from "../../elements/UnorderedList";
 
 const CategoriesList = ({ items }) => {
   return (
