@@ -1,6 +1,6 @@
 import React from "react";
 import Anchor from "./Anchor";
 
-const Link = ({ href, name }) => <a href={href}>{name}</a>;
+const Link = ({ href, name, newWindow }) => <Anchor target={newWindow ? "_blank" : "_self" }  href={href}>{name}</Anchor>;
 
 export default Link;
