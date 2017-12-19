@@ -34,7 +34,8 @@ const propTypes = {
   type: PropTypes.string
 };
 
-const List = ({ list, ordered, type }) => (ordered ? (
+const List = ({ list, ordered, type }) =>
+  ordered ? (
     <OrderedList>
       {list.map(item => <li key={item[type]}>{item[type]}</li>)}
     </OrderedList>
@@ -42,8 +43,7 @@ const List = ({ list, ordered, type }) => (ordered ? (
     <UnorderedList>
       {list.map(item => <li key={item.username}>{item.username}</li>)}
     </UnorderedList>
-  )
-);
+  );
 
 List.propTypes = propTypes;
 List.defaultProps = defaultProps;
