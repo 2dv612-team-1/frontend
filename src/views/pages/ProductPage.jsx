@@ -118,7 +118,7 @@ class ProductPage extends Component {
   render() {
     return (
       <PageContainer title={this.state.product.name}>
-        <p>Name: {this.state.product.name}</p>ratingPostRate
+        <p>Name: {this.state.product.name}</p>
         <p>Category: {this.state.product.category}</p>
         <p>Created By: {this.state.product.createdBy}</p>
         <p>Description: {this.state.product.description}</p>
