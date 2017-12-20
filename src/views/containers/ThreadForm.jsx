@@ -1,9 +1,10 @@
-import React from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { reduxForm } from "redux-form";
 import { connect } from "react-redux";
 import { API_HOST } from "../../libs/API_CONFIG";
 import { forumPostData } from "../../state/forum/actions";
+import { categoriesGetSubs } from "../../state/categories/actions";
 import Button from "../components/Button";
 import Form from "../elements/Form";
 import Field from "../components/Field";
@@ -17,34 +18,40 @@ const defaultProps = {
 const propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   register: PropTypes.func.isRequired,
-  categories: PropTypes.arrayOf(PropTypes.string)
+  categoriesGetSubs: PropTypes.func.isRequired,
+  categories: PropTypes.arrayOf(PropTypes.shape({}))
 };
 
 const validate = values => {
   const errors = {};
-  !values.category ? errors.category = "Required" : null;
+  !values.title ? errors.title = "Required" : null;
   return errors;
 };
 
-let ThreadForm = ({ loggedInAs, handleSubmit, register, categories }) => {
+let ThreadForm = ({ loggedInAs, handleSubmit, register, dispatchSubs, categories, subcategories }) => {
   const parents = categories.map(cat => cat.category);
+  console.log(parents);
 
   const getSubs = parent => {
-    const cat = this.props.categories.filter(item =>
+    const cat = categories.filter(item =>
       item.category.toLowerCase().includes(parent.toLowerCase())
     );
-    return cat.sub.map(item => item.category);
+    const subs = cat[0].sub.map(item => item.category);
+    dispatchSubs(subs);
   };
 
   const onSubmit = values => {
     const data = values;
-    data.jwt = loggedInAs.jwt;
-    if (data.parent === undefined || data.parent === "Choose parent category") {
-      register(`${API_HOST}/categories`, data);
-    } else {
-      register(`${API_HOST}/categories/${data.parent}/subcategories`, data);
-    }
     console.log(data);
+  };
+
+  const onChange = event => {
+    console.log(event);
+    const val = event.target.value;
+    console.log(val);
+    getSubs(val);
+    console.log(subcategories);
+    // this.category.onChange(val);
   };
 
   return (
@@ -54,18 +61,15 @@ let ThreadForm = ({ loggedInAs, handleSubmit, register, categories }) => {
         name="category"
         type="text"
         options={parents}
-        onChange={event => {
-          parents.onChange(event);
-          getSubs(event.target.value);
-        }}
+        onChange={onChange}
       />
       <SelectField
         label="sub category"
         name="sub"
         type="text"
-        options={parents}
+        options={subcategories}
       />
-      <Field label="name" name="category" component={RenderField} type="text" />
+      <Field label="title" name="title" component={RenderField} type="text" />
       <Button form>go</Button>
     </Form>
   );
@@ -80,11 +84,13 @@ ThreadForm = reduxForm({
 })(ThreadForm);
 
 const mapStateToProps = state => ({
-  loggedInAs: state.session.loggedInAs
+  loggedInAs: state.session.loggedInAs,
+  subcategories: state.categories.subcategories
 });
 
 const mapDispatchToProps = dispatch => ({
-  register: (url, obj) => dispatch(forumPostData(url, obj))
+  register: (url, obj) => dispatch(forumPostData(url, obj)),
+  dispatchSubs: subs => dispatch(categoriesGetSubs(subs))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ThreadForm);

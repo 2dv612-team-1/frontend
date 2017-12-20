@@ -35,6 +35,16 @@ const categories = (state = [], action) => {
   }
 };
 
+const subcategories = (state = [], action) => {
+  switch (action.type) {
+    case types.CATEGORIES_SUBS:
+      return action.subs;
+
+    default:
+      return state;
+  }
+};
+
 const categoriesPostDataSuccess = (state = false, action) => {
   switch (action.type) {
     case types.CATEGORIES_POST_DATA_SUCCESS:
@@ -57,6 +67,7 @@ const categoriesReducer = combineReducers({
   categoriesHasError,
   categoriesIsLoading,
   categories,
+  subcategories,
   categoriesPostDataSuccess
 });
 

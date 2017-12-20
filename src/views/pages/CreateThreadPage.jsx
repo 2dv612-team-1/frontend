@@ -28,10 +28,6 @@ const propTypes = {
 };
 
 class CreateThreadPage extends Component {
-  componentWillMount() {
-    console.log("mount forum");
-  }
-
   componentDidMount() {
     console.log("Hello new thread");
     // TODO: url
