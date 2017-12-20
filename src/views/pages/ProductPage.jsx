@@ -52,6 +52,12 @@ class ProductPage extends Component {
   product.files.push("testprodukt 1");
   product.files.push("testprodukt 2");*/
 
+  handleChange(rate, event) {
+    const fileName = event.target.materialName; // Denna funkar inte, ska hamta filnamn fr rating widget
+
+    console.log(fileName);
+  }
+
   handleNoteClick = event => {
     event.stopPropagation();
     this.setState({ currentNote: event.target.name });

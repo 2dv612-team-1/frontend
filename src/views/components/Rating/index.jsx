@@ -8,7 +8,8 @@ const RatingWidget = ({ ratingFor, onClick, currentRating, name }) => (
       initialRate={currentRating}
       name={name}
       fractions={2}
-      onClick={(rate, event) => onClick(rate, event, name)}
+      onClick={name => onClick(name)}
+      data-materialName={ratingFor}
     />
   </Container>
 );
