@@ -59,7 +59,7 @@ class ProductPage extends Component {
       Auth.getToken()
     )}/materials/${event.target.getAttribute("name")}/annotations`;
     Client.GET(url).then(noteContent => {
-      noteContent = noteContent.data ? "" : noteContent.data.annotations;
+      noteContent = noteContent.data ? noteContent.data.annotations : "";
       this.setState({
         showNote: true,
         noteContent
