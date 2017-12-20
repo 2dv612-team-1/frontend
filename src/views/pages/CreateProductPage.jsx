@@ -10,7 +10,7 @@ import Button from "../components/Button";
 import PageContainer from "../components/PageContainer";
 import DropZoneField from "../components/DropZoneField";
 import { uploadCreatedProduct } from "../../state/products/actions";
-import { categoriesFetchData } from "../../state/categories/actions";
+import { categoriesFetchData, categoriesGetSubs } from "../../state/categories/actions";
 
 const defaultProps = {
   isLoading: false,
@@ -36,9 +36,22 @@ class CreateProductPage extends Component {
     this.props.createProduct(url, values);
   };
 
+  onChange = event => {
+    const val = event.target.value;
+    this.getSubs(val);
+  };
+
+  getSubs = parent => {
+    const cat = this.props.categories.filter(item =>
+      item.category.toLowerCase().includes(parent.toLowerCase())
+    );
+    const subs = cat[0].sub.map(item => item.category);
+    this.props.dispatchSubs(subs);
+  };
+
   render() {
     const cat = this.props.categories.map(cat => cat.category);
-    cat.splice(0, 0, "choose");
+    // cat.splice(0, 0, "choose");
     return (
       <PageContainer title="create product">
         <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
@@ -47,6 +60,13 @@ class CreateProductPage extends Component {
             name="category"
             type="text"
             options={cat}
+            onChange={this.onChange}
+          />
+          <SelectField
+            label="sub category"
+            name="sub"
+            type="text"
+            options={this.props.subcategories}
           />
           <Field
             label="product name"
@@ -83,6 +103,7 @@ CreateProductPage = reduxForm({
 
 const mapStateToProps = state => ({
   categories: state.categories.categories,
+  subcategories: state.categories.subcategories,
   isLoading: state.products.isLoading,
   hasError: state.products.productsHasError.hasError,
   errorMessage: state.products.productsHasError.errorMessage,
@@ -91,7 +112,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   createProduct: (url, obj) => dispatch(uploadCreatedProduct(url, obj)),
-  fetchData: url => dispatch(categoriesFetchData(url))
+  fetchData: url => dispatch(categoriesFetchData(url)),
+  dispatchSubs: subs => dispatch(categoriesGetSubs(subs))
 });
 
 CreateProductPage.defaultProps = defaultProps;

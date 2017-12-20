@@ -31,7 +31,7 @@ let CategoryForm = ({ loggedInAs, handleSubmit, register, parents }) => {
   const onSubmit = values => {
     const data = values;
     data.jwt = loggedInAs.jwt;
-    if (data.parent === undefined || data.parent === "Choose parent category") {
+    if (data.parent === undefined || data.parent === "Select") {
       register(`${API_HOST}/categories`, data);
     } else {
       register(`${API_HOST}/categories/${data.parent}/subcategories`, data);

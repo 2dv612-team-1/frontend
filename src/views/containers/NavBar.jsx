@@ -38,8 +38,8 @@ const NavBar = ({ role }) => (
     {role === "representative" ? (
       <div>
         <MenuItem to="/products">Products</MenuItem>
-        <MenuItem to="/logout">Logout</MenuItem>
         <MenuItem to="/forum">Forum</MenuItem>
+        <MenuItem to="/logout">Logout</MenuItem>
       </div>
     ) : null}
     {role === "consumer" ? (
