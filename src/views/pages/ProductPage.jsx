@@ -47,10 +47,6 @@ class ProductPage extends Component {
       this.setState({ product });
     }
   }
-  /* Tillfallig losning
-  product = {files : []};
-  product.files.push("testprodukt 1");
-  product.files.push("testprodukt 2");*/
 
   handleNoteClick = event => {
     event.stopPropagation();
@@ -127,25 +123,25 @@ class ProductPage extends Component {
         <div>
           {this.state.product.files
             ? this.state.product.files.map(file => (
-                <div key={file.name}>
-                  <Link
-                    href={`${API_HOST}/materials/${
-                      this.state.product.producer
-                    }/${this.props.location.slice(-24)}/${file.filename}`}
-                    name={file.filename}
-                    newWindow
-                  />
-                  <RatingWidget
-                    ratingFor={file.material_id}
-                    onClick={this.handleChange}
-                    currentRating={file.average}
-                    name={file.material_id}
-                  />
-                  <NotesIcon
-                    id={file.material_id}
-                    onClick={this.handleNoteClick}
-                  />
-                </div>
+              <div key={file.name}>
+                <Link
+                  href={`${API_HOST}/materials/${
+                    this.state.product.producer
+                  }/${this.props.location.slice(-24)}/${file.filename}`}
+                  name={file.filename}
+                  newWindow
+                />
+                <RatingWidget
+                  ratingFor={file.material_id}
+                  onClick={this.handleChange}
+                  currentRating={file.average}
+                  name={file.material_id}
+                />
+                <NotesIcon
+                  id={file.material_id}
+                  onClick={this.handleNoteClick}
+                />
+              </div>
               ))
             : null}
         </div>
