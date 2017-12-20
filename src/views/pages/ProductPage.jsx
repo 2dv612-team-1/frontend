@@ -14,6 +14,7 @@ import { uploadMaterial } from "../../state/products/actions";
 import Link from "../components/Link";
 import Text from "../elements/Text";
 import FileInput from "../components/FileInput";
+import TableText from "../components/TableText";
 import Button from "../components/Button";
 const propTypes = {
   id: PropTypes.string.isRequired,
@@ -114,12 +115,12 @@ class ProductPage extends Component {
   render() {
     return (
       <PageContainer title={this.state.product.name}>
-        <p>Name: {this.state.product.name}</p>
-        <p>Category: {this.state.product.category}</p>
-        <p>Created By: {this.state.product.createdBy}</p>
-        <p>Description: {this.state.product.description}</p>
-        <p>Producer: {this.state.product.producer}</p>
-        <p>Files:</p>
+        <TableText>Name:</TableText><Text>{this.state.product.name}</Text>
+        <TableText>Category:</TableText><Text>{this.state.product.category}</Text>
+        <TableText>Created By:</TableText><Text>{this.state.product.createdBy}</Text>
+        <TableText>Description:</TableText><Text>{this.state.product.description}</Text>
+        <TableText>Producer:</TableText><Text>{this.state.product.producer}</Text>
+        <TableText>Files:</TableText>
         <div>
           {this.state.product.files
             ? this.state.product.files.map(file => (
