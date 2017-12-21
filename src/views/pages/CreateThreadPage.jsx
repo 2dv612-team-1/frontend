@@ -6,6 +6,7 @@ import ThreadForm from "../containers/ThreadForm";
 import Text from "../elements/Text";
 import { forumFetchData, forumClear } from "../../state/forum/actions";
 import { categoriesFetchData } from "../../state/categories/actions";
+import { API_HOST } from "../../libs/API_CONFIG";
 
 const defaultProps = {
   loggedInAs: [],
@@ -29,9 +30,7 @@ const propTypes = {
 
 class CreateThreadPage extends Component {
   componentDidMount() {
-    console.log("Hello new thread");
-    // TODO: url
-    this.props.fetchCats("https://nanotu.be/categories");
+    this.props.fetchCats(`${API_HOST}/categories`);
   }
 
   componentWillUnmount() {
