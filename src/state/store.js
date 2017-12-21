@@ -12,6 +12,7 @@ import sessionReducer from "./session";
 import categoriesReducer from "./categories";
 import ratingReducer from "./ratings";
 import forumReducer from "./forum";
+import threadReducer from "./thread";
 
 const history = createHistory();
 const Router = routerMiddleware(history);
@@ -26,6 +27,7 @@ const rootReducer = combineReducers({
   categories: categoriesReducer,
   ratings: ratingReducer,
   forum: forumReducer,
+  thread: threadReducer,
   form,
   router
 });
