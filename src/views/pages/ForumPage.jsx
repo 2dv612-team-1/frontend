@@ -1,10 +1,14 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import Button from "../components/Button";
+import PageContainer from "../components/PageContainer";
+import Text from "../elements/Text";
 
 class ForumPage extends Component {
   render() {
     return (
       <PageContainer title="Forum">
-        <Link to="/threads/new">
+        <Link to="/thread/new">
           <Button>Create new topic</Button>
         </Link>
         <Text>Forum topics:</Text>
