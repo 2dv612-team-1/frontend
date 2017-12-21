@@ -14,7 +14,11 @@ import { uploadMaterial } from "../../state/products/actions";
 import Link from "../components/Link";
 import Text from "../elements/Text";
 import FileInput from "../components/FileInput";
+import FileLink from "../components/FileLink";
 import TableText from "../components/TableText";
+import UploadContainer from "../components/UploadContainer";
+import FilesContainer from "../components/FilesContainer";
+import MaterialContainer from "../components/MaterialContainer";
 import Button from "../components/Button";
 const propTypes = {
   id: PropTypes.string.isRequired,
@@ -121,10 +125,10 @@ class ProductPage extends Component {
         <TableText>Description:</TableText><Text>{this.state.product.description}</Text>
         <TableText>Producer:</TableText><Text>{this.state.product.producer}</Text>
         <TableText>Files:</TableText>
-        <div>
+        <FilesContainer>
           {this.state.product.files
             ? this.state.product.files.map(file => (
-              <div key={file.name}>
+              <MaterialContainer key={file.name}>
                 <Link
                   href={`${API_HOST}/materials/${
                     this.state.product.producer
@@ -142,22 +146,24 @@ class ProductPage extends Component {
                   id={file.material_id}
                   onClick={this.handleNoteClick}
                 />
-              </div>
+              </MaterialContainer>
               ))
             : null}
-        </div>
-        {this.state.showNote ? (
-          <Note
-            onChange={this.handleNoteChange}
-            onClick={this.handleNoteCloseClick}
-          >
-            {this.state.noteContent}
-          </Note>
-        ) : null}
+          {this.state.showNote ? (
+            <Note
+              onChange={this.handleNoteChange}
+              onClick={this.handleNoteCloseClick}
+            >
+              {this.state.noteContent}
+            </Note>
+          ) : null}
+        </FilesContainer>
         {this.props.loggedInAs.role === "representative" ? (
           <form onSubmit={this.handleFileUpload}>
-            <Text>Upload material to this product:</Text>
-            <FileInput onChange={this.handleFileChange} />
+            <UploadContainer>
+              <Text>Upload material to this product:</Text>
+              <FileInput onChange={this.handleFileChange} />
+            </UploadContainer>
             <Button submit>Upload</Button>
           </form>
         ) : null}
