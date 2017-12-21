@@ -37,7 +37,7 @@ class ProductPage extends Component {
   componentDidMount() {
     // Temp fix för hårdkodad produkt med fejk filer i state
     const id = this.props.location.slice(-24);
-    const url = `https://nanotu.be/products/${id}`;
+    const url = `${API_HOST}/products/${id}`;
 
     if (id !== "dfGKJGhhgddddddddddddddd") {
       Client.GET(url).then(response => {
@@ -56,7 +56,7 @@ class ProductPage extends Component {
   handleNoteClick = event => {
     event.stopPropagation();
     this.setState({ currentNote: event.target.name });
-    const url = `https://nanotu.be/consumers/${Jwt.getUsername(
+    const url = `${API_HOST}/consumers/${Jwt.getUsername(
       Auth.getToken()
     )}/materials/${event.target.getAttribute("name")}/annotations`;
     Client.GET(url).then(noteContent => {
@@ -90,7 +90,7 @@ class ProductPage extends Component {
     event.preventDefault();
     // Sen, köre fileuppladdning via actions i redux
     const id = this.props.location.slice(-24);
-    const url = `https://nanotu.be/products/${id}/materials`;
+    const url = `${API_HOST}/products/${id}/materials`;
     this.props.uploadMaterial(url, this.state.file);
   };
 
@@ -100,7 +100,7 @@ class ProductPage extends Component {
 
   handleNoteCloseClick = () => {
     this.setState({ showNote: false });
-    const url = `https://nanotu.be/consumers/${Jwt.getUsername(
+    const url = `${API_HOST}/consumers/${Jwt.getUsername(
       Auth.getToken()
     )}/materials/${this.state.currentNote}/annotations`;
     const obj = {
@@ -111,7 +111,7 @@ class ProductPage extends Component {
   };
 
   handleChange = (rate, event, name) => {
-    const url = `https://nanotu.be/products/${this.props.location.slice(
+    const url = `${API_HOST}/products/${this.props.location.slice(
       -24
     )}/materials/${name}/rate`;
     this.props.postRate(url, rate);
