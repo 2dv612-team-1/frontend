@@ -38,12 +38,15 @@ const NavBar = ({ role }) => (
     {role === "representative" ? (
       <div>
         <MenuItem to="/products">Products</MenuItem>
+        <MenuItem to="/forum">Forum</MenuItem>
         <MenuItem to="/logout">Logout</MenuItem>
       </div>
     ) : null}
     {role === "consumer" ? (
       <div>
         <MenuItem to="/products">Products</MenuItem>
+        <MenuItem to="/forum">Forum</MenuItem>
+        <MenuItem to="/thread/new">New</MenuItem>
         <MenuItem to="/logout">Logout</MenuItem>
       </div>
     ) : null}

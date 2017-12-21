@@ -1,5 +1,5 @@
 export default {
   primary: "#3f51b5",
   secondary: "#e8eaf6",
-  sublist: "#566172"
+  gray: "#566172"
 };

@@ -6,14 +6,16 @@ import Select from "../../elements/Select";
 const propTypes = {
   label: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  options: PropTypes.arrayOf(PropTypes.string).isRequired
+  options: PropTypes.arrayOf(PropTypes.string).isRequired,
+  onChange: PropTypes.func
 };
 
-const SelectField = ({ label, name, options }) => (
+const SelectField = ({ label, name, options, onChange }) => (
   <div>
     <Label>{label}</Label>
     <div>
-      <Select name={name} component="select">
+      <Select name={name} onChange={onChange} component="select">
+        <option>Select</option>
         {options.map(option => <option value={option}>{option}</option>)}
       </Select>
     </div>

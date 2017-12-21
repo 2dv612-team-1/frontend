@@ -64,6 +64,11 @@ export const categoriesPostData = (url, fields) => dispatch => {
     });
 };
 
+export const categoriesGetSubs = subs => ({
+  type: types.CATEGORIES_SUBS,
+  subs
+});
+
 export default {
   categoriesHasError,
   categoriesIsLoading,
@@ -71,5 +76,6 @@ export default {
   categoriesPostDataSuccess,
   categoriesFetchData,
   categoriesPostData,
-  categoriesClear
+  categoriesClear,
+  categoriesGetSubs
 };

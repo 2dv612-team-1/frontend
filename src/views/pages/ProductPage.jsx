@@ -11,7 +11,7 @@ import NotesIcon from "../components/NotesIcon";
 import Note from "../components/Note";
 import { ratingPostRate } from "../../state/ratings/actions";
 import { uploadMaterial } from "../../state/products/actions";
-import FileLink from "../components/FileLink";
+import Link from "../components/Link";
 import Text from "../elements/Text";
 import FileInput from "../components/FileInput";
 import Button from "../components/Button";
@@ -59,7 +59,7 @@ class ProductPage extends Component {
       Auth.getToken()
     )}/materials/${event.target.getAttribute("name")}/annotations`;
     Client.GET(url).then(noteContent => {
-      noteContent = noteContent.data ? "" : noteContent.data.annotations;
+      noteContent = noteContent.data ? noteContent.data.annotations : "";
       this.setState({
         showNote: true,
         noteContent
@@ -128,11 +128,12 @@ class ProductPage extends Component {
           {this.state.product.files
             ? this.state.product.files.map(file => (
                 <div key={file.name}>
-                  <FileLink
+                  <Link
                     href={`${API_HOST}/materials/${
                       this.state.product.producer
                     }/${this.props.location.slice(-24)}/${file.filename}`}
                     name={file.filename}
+                    newWindow
                   />
                   <RatingWidget
                     ratingFor={file.material_id}
