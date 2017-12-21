@@ -1,9 +1,9 @@
 import types from "./types";
 import Client from "../../libs/Client";
 
-const threadHasError = (bool, err) => ({type: types.FORUM_HAS_ERROR, hasError: bool, errorMessage: err});
+const threadHasError = (bool, err) => ({type: types.THREAD_HAS_ERROR, hasError: bool, errorMessage: err});
 
-const threadIsLoading = bool => ({type: types.FORUM_IS_LOADING, isLoading: bool});
+const threadIsLoading = bool => ({type: types.THREAD_IS_LOADING, isLoading: bool});
 
 const threadFetchDataSuccess = thread => ({type: types.THREAD_FETCH_DATA_SUCCESS, thread});
 
