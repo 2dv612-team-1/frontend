@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { reduxForm } from "redux-form";
 import { connect } from "react-redux";
 import { API_HOST } from "../../libs/API_CONFIG";
-import { forumPostData } from "../../state/forum/actions";
+import { forumPostData, forumHasError } from "../../state/forum/actions";
 import { categoriesGetSubs } from "../../state/categories/actions";
 import Button from "../components/Button";
 import Form from "../elements/Form";
@@ -23,14 +23,17 @@ const propTypes = {
 };
 
 const validate = values => {
+  // console.log(values);
   const errors = {};
+  // !values.category || values.category === "Select" ? errors.title = "Required" : null;
+  // !values.productName ? errors.productName = "Required" : null;
   !values.title ? errors.title = "Required" : null;
+  !values.message ? errors.message = "Required" : null;
   return errors;
 };
 
-let ThreadForm = ({ loggedInAs, handleSubmit, register, dispatchSubs, categories, subcategories }) => {
+let ThreadForm = ({ loggedInAs, handleSubmit, register, dispatchSubs, showError, categories, subcategories }) => {
   const parents = categories.map(cat => cat.category);
-  console.log(parents);
 
   const getSubs = parent => {
     const cat = categories.filter(item =>
@@ -42,16 +45,20 @@ let ThreadForm = ({ loggedInAs, handleSubmit, register, dispatchSubs, categories
 
   const onSubmit = values => {
     const data = values;
+    data.jwt = loggedInAs.jwt;
     console.log(data);
+    if (values.category === "Select" || !values.category) {
+      showError(true, "You have to select a Category");
+    } else {
+      showError(false, "");
+      register(`${API_HOST}/threads`, data);
+    }
   };
 
   const onChange = event => {
-    console.log(event);
     const val = event.target.value;
-    console.log(val);
+    // console.log(val);
     getSubs(val);
-    console.log(subcategories);
-    // this.category.onChange(val);
   };
 
   return (
@@ -69,7 +76,9 @@ let ThreadForm = ({ loggedInAs, handleSubmit, register, dispatchSubs, categories
         type="text"
         options={subcategories}
       />
+      <Field label="product" name="product" component={RenderField} type="text" />
       <Field label="title" name="title" component={RenderField} type="text" />
+      <Field label="message" name="message" component={RenderField} type="text" componentClass="textarea" />
       <Button form>go</Button>
     </Form>
   );
@@ -90,7 +99,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   register: (url, obj) => dispatch(forumPostData(url, obj)),
-  dispatchSubs: subs => dispatch(categoriesGetSubs(subs))
+  dispatchSubs: subs => dispatch(categoriesGetSubs(subs)),
+  showError: (bool, msg) => dispatch(forumHasError(bool, msg))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ThreadForm);
