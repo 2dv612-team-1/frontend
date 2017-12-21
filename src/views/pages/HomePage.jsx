@@ -28,17 +28,18 @@ class HomePage extends Component {
     this.props.loggedInAs.username !== undefined
       ? this.props.fetchData(`${API_HOST}/threads`)
       : null;
-    console.log(this.props.loggedInAs.role);
-    console.log(this.props.loggedInAs.username);
   }
 
-  componentWillReceiveProps() {
-    if (this.props.forum && this.props.loggedInAs.role === "consumer") {
-      const filtered = this.props.forum.filter(
-        thread => thread.name === this.props.loggedInAs.username
-      );
-      this.setState({ myThreads: filtered });
-      console.log(filtered);
+  componentWillReceiveProps(nextProps) {
+    const now = this.props.forum;
+    const next = nextProps.forum;
+    if (now !== next) {
+      if (this.props.loggedInAs.role === "consumer") {
+        const filtered = next.filter(
+          thread => thread.name === this.props.loggedInAs.username
+        );
+        this.setState({ myThreads: filtered });
+      }
     }
   }
 
