@@ -1,10 +1,11 @@
 import React, { PropTypes } from "react";
 import Dropzone from "react-dropzone";
+import DropZoneContainer from "./DropZoneContainer";
 
 const DropZoneField = field => {
   const files = field.input.value;
   return (
-    <div>
+    <DropZoneContainer>
       <Dropzone
         name={field.name}
         onDrop={filesToUpload => field.input.onChange(filesToUpload)}
@@ -19,7 +20,7 @@ const DropZoneField = field => {
         Array.isArray(files) && (
           <ul>{files.map((file, i) => <li key={i}>{file.name}</li>)}</ul>
         )}
-    </div>
+    </DropZoneContainer>
   );
 };
 
