@@ -55,7 +55,7 @@ const Routes = () => (
         <Route path="/product/:id" component={ProductPage} />
         <Route path="/forum" component={ForumPage} />
         <Route exact path="/thread/new" component={CreateThreadPage} />
-        <Route path="/thread/:id" component={ThreadPage} />
+        <Route exact path="/thread/:id" component={ThreadPage} />
       </AuthRoute>
     </Switch>
   </div>
