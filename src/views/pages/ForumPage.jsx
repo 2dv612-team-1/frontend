@@ -26,12 +26,17 @@ const propTypes = {
 };
 
 class ForumPage extends Component {
+  state = {
+    display: []
+  };
+
   componentDidMount() {
     this.props.fetchData(`${API_HOST}/threads`);
   }
 
-  componentWillReceiveProps() {
+  componentWillReceiveProps(nextProps) {
     // console.log(this.props.forum);
+
   }
 
   componentWillUnmount() {
@@ -39,13 +44,19 @@ class ForumPage extends Component {
   }
 
   render() {
+    const columns = [
+      {key: "title", label: "Topic"},
+      "name",
+      {key: "timestamp", label: "Date"}
+    ];
+
     return (
       <PageContainer title="Forum">
         <Link to="/thread/new">
           <Button>Create new topic</Button>
         </Link>
         <Text>Forum topics:</Text>
-        <Table rows={this.props.forum} />
+        <Table rows={this.props.forum} columns={columns} />
         {this.props.isLoading ? <Text>Loading...</Text> : null}
         {this.props.errorMessage ? <Text error>{this.props.errorMessage}</Text> : null}
       </PageContainer>
