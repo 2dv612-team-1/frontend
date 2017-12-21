@@ -55,12 +55,12 @@ class ProductPage extends Component {
 
   handleNoteClick = event => {
     event.stopPropagation();
-    this.setState({ currentNote: event.target.name });
+    this.setState({ currentNote: event.target.getAttribute("name") });
     const url = `${API_HOST}/consumers/${Jwt.getUsername(
       Auth.getToken()
     )}/materials/${event.target.getAttribute("name")}/annotations`;
     Client.GET(url).then(noteContent => {
-      noteContent = noteContent.data ? noteContent.data.annotations : "";
+      noteContent = noteContent.data ? noteContent.data.annotations.annotations : "";
       this.setState({
         showNote: true,
         noteContent
