@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { reduxForm } from "redux-form";
 import { connect } from "react-redux";
-import { API_HOST } from "../../libs/API_CONFIG"
+import { API_HOST } from "../../libs/API_CONFIG";
 import { categoriesPostData } from "../../state/categories/actions";
 import Button from "../components/Button";
 import Form from "../elements/Form";

@@ -5,7 +5,7 @@ import PageContainer from "../components/PageContainer";
 import CategoryForm from "../containers/CategoryForm";
 import Text from "../elements/Text";
 import { categoriesFetchData, categoriesClear } from "../../state/categories/actions";
-import { API_HOST } from "../../libs/API_CONFIG.js";
+import { API_HOST } from "../../libs/API_CONFIG";
 
 const defaultProps = {
   loggedInAs: [],
