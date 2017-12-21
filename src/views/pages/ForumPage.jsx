@@ -45,8 +45,10 @@ class ForumPage extends Component {
 
   render() {
     const columns = [
-      {key: "title", label: "Topic"},
-      "name",
+      {key: "title", label: "Topic", cell: function( item, columnKey ){
+        return <Link to={`/threads/${item._id}`} >{ item.title }</Link>;
+      }},
+      {key: "name", label: "Name"},
       {key: "timestamp", label: "Date"}
     ];
 
