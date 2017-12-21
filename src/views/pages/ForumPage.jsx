@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import Table from "ts-react-json-table";
 import { API_HOST } from "../../libs/API_CONFIG";
 import Button from "../components/Button";
 import PageContainer from "../components/PageContainer";
@@ -44,6 +45,7 @@ class ForumPage extends Component {
           <Button>Create new topic</Button>
         </Link>
         <Text>Forum topics:</Text>
+        <Table rows={this.props.forum} />
         {this.props.isLoading ? <Text>Loading...</Text> : null}
         {this.props.errorMessage ? <Text error>{this.props.errorMessage}</Text> : null}
       </PageContainer>
