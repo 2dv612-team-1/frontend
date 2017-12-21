@@ -1,16 +1,16 @@
 import types from "./types";
 import Client from "../../libs/Client";
 
-const threadHasError = (bool, err) => ({type: types.THREAD_HAS_ERROR, hasError: bool, errorMessage: err});
+export const threadHasError = (bool, err) => ({type: types.THREAD_HAS_ERROR, hasError: bool, errorMessage: err});
 
-const threadIsLoading = bool => ({type: types.THREAD_IS_LOADING, isLoading: bool});
+export const threadIsLoading = bool => ({type: types.THREAD_IS_LOADING, isLoading: bool});
 
-const threadFetchDataSuccess = thread => ({type: types.THREAD_FETCH_DATA_SUCCESS, thread});
+export const threadFetchDataSuccess = thread => ({type: types.THREAD_FETCH_DATA_SUCCESS, thread});
 
 export const getThread = url => dispatch => {
+  console.log("hej");
   dispatch(threadIsLoading(true));
-  Client
-    .GET(url)
+  Client.GET(url)
     .then(data => {
       dispatch(threadFetchDataSuccess(data));
       dispatch(threadIsLoading(false));
@@ -21,8 +21,11 @@ export const getThread = url => dispatch => {
       dispatch(threadHasError(true));
       console.log(err);
     });
-}
+};
 
 export default {
+  threadHasError,
+  threadIsLoading,
+  threadFetchDataSuccess,
   getThread
-}
+};

@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import PageContainer from "../components/PageContainer";
 import Text from "../elements/Text";
 import { API_HOST } from "../../libs/API_CONFIG";
+import { getThread } from "../../state/thread/actions";
 
 const defaultProps = {
   loggedInAs: [],
@@ -15,16 +16,28 @@ const propTypes = {
   loggedInAs: PropTypes.shape({}),
   isLoading: PropTypes.bool,
   errorMessage: PropTypes.string,
-  forum: PropTypes.arrayOf(PropTypes.shape({})),
+  // thread: PropTypes.shape({}),
   fetchData: PropTypes.func.isRequired,
-  clear: PropTypes.func.isRequired
+  // clear: PropTypes.func.isRequired
 };
 
 class ThreadPage extends Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      threadId: null
+    };
+  }
+
+
   componentDidMount() {
-    this.props.fetchData(`${API_HOST}/threads`);
-    console.log();
+    var {thread, location, fetchData} = this.props;
+    !this.state.threadId ? this.setState({threadId: location.slice(-24)}) : null;
+    !this.props.thread.length < 1 ? this.props.fetchData(`${API_HOST}/threads/{this.state.threadId}`) : null;
+    thread.length < 1 ? console.log(thread) : null;
+    this.state.threadId ? console.log(this.state.threadId) : null;
+    console.log
   }
 
   render() {
@@ -38,16 +51,16 @@ class ThreadPage extends Component {
   }
 }
 
-
 const mapStateToProps = state => ({
   loggedInAs: state.session.loggedInAs,
-  errorMessage: state.forum.forumHasError.errorMessage,
-  isLoading: state.forum.forumIsLoading,
-  forum: state.forum.forum
+  errorMessage: state.thread.threadHasError.errorMessage,
+  isLoading: state.thread.threadIsLoading,
+  location: state.router.location.pathname,
+  thread: state.thread.thread
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchData: url => dispatch(forumFetchData(url))
+  fetchData: url => dispatch(getThread(url))
 });
 
 ThreadPage.defaultProps = defaultProps;
