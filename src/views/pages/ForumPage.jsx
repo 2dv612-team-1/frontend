@@ -33,6 +33,10 @@ class ForumPage extends Component {
     // console.log(this.props.forum);
   }
 
+  componentWillUnmount() {
+    this.props.clear();
+  }
+
   render() {
     return (
       <PageContainer title="Forum">
