@@ -54,8 +54,7 @@ class ForumPage extends Component {
 
     return (
       <PageContainer title="Forum">
-        {this.props.loggedInAs.role == "consumer"
-        ? (
+        {this.props.loggedInAs.role === "consumer" ? (
           <Link to="/thread/new">
             <Button>Create new topic</Button>
           </Link>
