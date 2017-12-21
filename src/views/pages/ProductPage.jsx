@@ -14,6 +14,11 @@ import { uploadMaterial } from "../../state/products/actions";
 import Link from "../components/Link";
 import Text from "../elements/Text";
 import FileInput from "../components/FileInput";
+import FileLink from "../components/FileLink";
+import TableText from "../components/TableText";
+import UploadContainer from "../components/UploadContainer";
+import FilesContainer from "../components/FilesContainer";
+import MaterialContainer from "../components/MaterialContainer";
 import Button from "../components/Button";
 const propTypes = {
   id: PropTypes.string.isRequired,
@@ -47,10 +52,6 @@ class ProductPage extends Component {
       this.setState({ product });
     }
   }
-  /* Tillfallig losning
-  product = {files : []};
-  product.files.push("testprodukt 1");
-  product.files.push("testprodukt 2");*/
 
   handleNoteClick = event => {
     event.stopPropagation();
@@ -118,49 +119,51 @@ class ProductPage extends Component {
   render() {
     return (
       <PageContainer title={this.state.product.name}>
-        <p>Name: {this.state.product.name}</p>ratingPostRate
-        <p>Category: {this.state.product.category}</p>
-        <p>Created By: {this.state.product.createdBy}</p>
-        <p>Description: {this.state.product.description}</p>
-        <p>Producer: {this.state.product.producer}</p>
-        <p>Files:</p>
-        <div>
+        <TableText>Name:</TableText><Text>{this.state.product.name}</Text>
+        <TableText>Category:</TableText><Text>{this.state.product.category}</Text>
+        <TableText>Created By:</TableText><Text>{this.state.product.createdBy}</Text>
+        <TableText>Description:</TableText><Text>{this.state.product.description}</Text>
+        <TableText>Producer:</TableText><Text>{this.state.product.producer}</Text>
+        <TableText>Files:</TableText>
+        <FilesContainer>
           {this.state.product.files
             ? this.state.product.files.map(file => (
-                <div key={file.name}>
-                  <Link
-                    href={`${API_HOST}/materials/${
-                      this.state.product.producer
-                    }/${this.props.location.slice(-24)}/${file.filename}`}
-                    name={file.filename}
-                    newWindow
-                  />
-                  <RatingWidget
-                    ratingFor={file.material_id}
-                    onClick={this.handleChange}
-                    currentRating={file.average}
-                    name={file.material_id}
-                  />
-                  <NotesIcon
-                    id={file.material_id}
-                    onClick={this.handleNoteClick}
-                  />
-                </div>
+              <MaterialContainer key={file.name}>
+                <Link
+                  href={`${API_HOST}/materials/${
+                    this.state.product.producer
+                  }/${this.props.location.slice(-24)}/${file.filename}`}
+                  name={file.filename}
+                  newWindow
+                />
+                <RatingWidget
+                  ratingFor={file.material_id}
+                  onClick={this.handleChange}
+                  currentRating={file.average}
+                  name={file.material_id}
+                />
+                <NotesIcon
+                  id={file.material_id}
+                  onClick={this.handleNoteClick}
+                />
+              </MaterialContainer>
               ))
             : null}
-        </div>
-        {this.state.showNote ? (
-          <Note
-            onChange={this.handleNoteChange}
-            onClick={this.handleNoteCloseClick}
-          >
-            {this.state.noteContent}
-          </Note>
-        ) : null}
+          {this.state.showNote ? (
+            <Note
+              onChange={this.handleNoteChange}
+              onClick={this.handleNoteCloseClick}
+            >
+              {this.state.noteContent}
+            </Note>
+          ) : null}
+        </FilesContainer>
         {this.props.loggedInAs.role === "representative" ? (
           <form onSubmit={this.handleFileUpload}>
-            <Text>Upload material to this product:</Text>
-            <FileInput onChange={this.handleFileChange} />
+            <UploadContainer>
+              <Text>Upload material to this product:</Text>
+              <FileInput onChange={this.handleFileChange} />
+            </UploadContainer>
             <Button submit>Upload</Button>
           </form>
         ) : null}
