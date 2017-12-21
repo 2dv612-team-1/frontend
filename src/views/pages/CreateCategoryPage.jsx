@@ -5,6 +5,7 @@ import PageContainer from "../components/PageContainer";
 import CategoryForm from "../containers/CategoryForm";
 import Text from "../elements/Text";
 import { categoriesFetchData, categoriesClear } from "../../state/categories/actions";
+import { API_HOST } from "../../libs/API_CONFIG.js";
 
 const defaultProps = {
   loggedInAs: [],
@@ -31,7 +32,7 @@ class CreateCategoryPage extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchData("https://nanotu.be/categories");
+    this.props.fetchData(`${API_HOST}/categories`);
   }
 
   componentWillUnmount() {

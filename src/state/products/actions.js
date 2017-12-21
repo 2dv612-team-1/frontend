@@ -1,6 +1,7 @@
 import types from "./types";
 import Client from "../../libs/Client";
 import Auth from "../../libs/Auth";
+import { API_HOST } from "../../libs/API_CONFIG";
 
 export const productsHasError = (bool, err) => ({
   type: types.PRODUCTS_HAS_ERROR,
@@ -94,7 +95,7 @@ export const uploadMaterial = (url, file) => async dispatch => {
   await fetch(url, {
     method: "POST",
     body
-  }).then(() => dispatch(productsFetchData("https://nanotu.be/products")));
+  }).then(() => dispatch(productsFetchData(`${API_HOST}/products`)));
 };
 
 export default {
