@@ -31,7 +31,7 @@ class ForumPage extends Component {
   };
 
   componentDidMount() {
-    this.props.fetchData(`${API_HOST}/threads`);
+    !this.props.forum ? this.props.fetchData(`${API_HOST}/threads`) : null;
   }
 
   componentWillReceiveProps(nextProps) {
@@ -54,9 +54,11 @@ class ForumPage extends Component {
 
     return (
       <PageContainer title="Forum">
-        <Link to="/thread/new">
-          <Button>Create new topic</Button>
-        </Link>
+        {this.props.loggedInAs.role === "consumer" ? (
+          <Link to="/thread/new">
+            <Button>Create new topic</Button>
+          </Link>
+        ) : null}
         <Text>Forum topics:</Text>
         <Table rows={this.props.forum} columns={columns} />
         {this.props.isLoading ? <Text>Loading...</Text> : null}
