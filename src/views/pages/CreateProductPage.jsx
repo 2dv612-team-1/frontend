@@ -11,6 +11,7 @@ import PageContainer from "../components/PageContainer";
 import DropZoneField from "../components/DropZoneField";
 import { uploadCreatedProduct } from "../../state/products/actions";
 import { categoriesFetchData, categoriesGetSubs } from "../../state/categories/actions";
+import FieldWrapper from "../components/Field/FieldWrapper";
 
 const defaultProps = {
   isLoading: false,
@@ -55,19 +56,23 @@ class CreateProductPage extends Component {
     return (
       <PageContainer title="create product">
         <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
-          <SelectField
-            label="category"
-            name="category"
-            type="text"
-            options={cat}
-            onChange={this.onChange}
-          />
-          <SelectField
-            label="sub category"
-            name="sub"
-            type="text"
-            options={this.props.subcategories}
-          />
+          <FieldWrapper>
+            <SelectField
+              label="category"
+              name="category"
+              type="text"
+              options={cat}
+              onChange={this.onChange}
+            />
+          </FieldWrapper>
+          <FieldWrapper>
+            <SelectField
+              label="sub category"
+              name="sub"
+              type="text"
+              options={this.props.subcategories}
+            />
+          </FieldWrapper>
           <Field
             label="product name"
             name="name"
@@ -87,7 +92,9 @@ class CreateProductPage extends Component {
             type="text"
           />
           <Field name="files" component={DropZoneField} />
-          <Button submit>create</Button>
+          <FieldWrapper>
+            <Button submit>create</Button>
+          </FieldWrapper>
           {this.props.isLoading ? <Text>Loading...</Text> : null}
           {this.props.successMessage ? <Text success>Product was created</Text> : null}
           {this.props.hasError ? <Text error>{this.props.errorMessage}</Text> : null}
