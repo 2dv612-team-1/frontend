@@ -8,11 +8,10 @@ export const threadIsLoading = bool => ({type: types.THREAD_IS_LOADING, isLoadin
 export const threadFetchDataSuccess = thread => ({type: types.THREAD_FETCH_DATA_SUCCESS, thread});
 
 export const getThread = url => dispatch => {
-  console.log("hej");
   dispatch(threadIsLoading(true));
   Client.GET(url)
     .then(data => {
-      dispatch(threadFetchDataSuccess(data));
+      dispatch(threadFetchDataSuccess(data.data));
       dispatch(threadIsLoading(false));
       console.log(data);
     })

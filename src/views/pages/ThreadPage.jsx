@@ -32,18 +32,20 @@ class ThreadPage extends Component {
 
 
   componentDidMount() {
-    var {thread, location, fetchData} = this.props;
+    let {thread, location, fetchData} = this.props;
+    let threadId = location.slice(-24);
+
     !this.state.threadId ? this.setState({threadId: location.slice(-24)}) : null;
-    !this.props.thread.length < 1 ? this.props.fetchData(`${API_HOST}/threads/{this.state.threadId}`) : null;
-    thread.length < 1 ? console.log(thread) : null;
+
+    this.props.thread.length < 1 ? this.props.fetchData(`${API_HOST}/threads/${threadId}`) : null;
+    !thread.length < 1 ? console.log(thread) : null;
     this.state.threadId ? console.log(this.state.threadId) : null;
-    console.log
   }
 
   render() {
     return (
       <PageContainer title="Thread">
-        <Text>This topic:</Text>
+        <Text>This topic: {this.props.thread.title}</Text>
         {this.props.isLoading ? <Text>Loading...</Text> : null}
         {this.props.hasError ? <Text error>Could not load data</Text> : null}
       </PageContainer>
