@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import Rating from "react-rating";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import Button from "../components/Button";
@@ -9,7 +8,7 @@ import { productsFetchData, productsHasError, productsClear } from "../../state/
 import Text from "../elements/Text";
 import PageContainer from "../components/PageContainer";
 import Jwt from "../../libs/Jwt";
-import Search from "../containers/ProductsSearch";
+import Search from "../containers/Search";
 
 const defaultProps = {
   searchText: "",
@@ -39,9 +38,6 @@ class ProductsPage extends Component {
       url = `${API_HOST}/companies/${company}/products`;
     }
     this.props.fetchData(url);
-    console.log(url);
-    console.log(this.props.loggedInAs.role);
-    console.log(company);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -75,7 +71,7 @@ class ProductsPage extends Component {
             <Button>Create Product</Button>
           </Link>
         ) : (
-          <Search />
+          <Search target="products" />
         )}
         {this.props.hasError ? <Text error>{this.props.error}</Text> : null}
         <Text>All products:</Text>
@@ -101,7 +97,7 @@ const mapStateToProps = state => ({
   hasError: state.products.productsHasError.hasError,
   error: state.products.productsHasError.errorMessage,
   loggedInAs: state.session.loggedInAs,
-  searchText: state.products.search
+  searchText: state.products.productsSearchText
 });
 
 const mapDispatchToProps = dispatch => ({

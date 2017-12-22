@@ -66,6 +66,11 @@ export const forumPostData = (urlPost, fields, urlFetch) => dispatch => {
     });
 };
 
+export const forumSearch = text => ({
+  type: types.FORUM_SEARCH,
+  text
+});
+
 export default {
   forumHasError,
   forumIsLoading,
@@ -73,5 +78,6 @@ export default {
   forumPostDataSuccess,
   forumFetchData,
   forumPostData,
-  forumClear
+  forumClear,
+  forumSearch
 };

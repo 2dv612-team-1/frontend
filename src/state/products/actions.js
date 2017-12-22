@@ -83,7 +83,7 @@ export const uploadCreatedProduct = (url, obj) => async dispatch => {
 };
 
 export const productsSearch = text => ({
-  type: types.SEARCH,
+  type: types.PRODUCTS_SEARCH,
   text
 });
 

@@ -86,22 +86,21 @@ const productsPostDataSuccess = (state = false, action) => {
   }
 };
 
-const search = (state = false, action) => {
+const productsSearchText = (state = false, action) => {
   switch (action.type) {
-    case types.SEARCH:
+    case types.PRODUCTS_SEARCH:
       return action.text;
     default:
       return state;
   }
 };
 
-
 const productsReducer = combineReducers({
   productsHasError,
   productsIsLoading,
   products,
   productsPostDataSuccess,
-  search
+  productsSearchText
 });
 
 export default productsReducer;

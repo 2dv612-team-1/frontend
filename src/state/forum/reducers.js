@@ -47,11 +47,21 @@ const forumPostDataSuccess = (state = false, action) => {
   }
 };
 
+const forumSearchText = (state = false, action) => {
+  switch (action.type) {
+    case types.FORUM_SEARCH:
+      return action.text;
+    default:
+      return state;
+  }
+};
+
 const forumReducer = combineReducers({
   forumHasError,
   forumIsLoading,
   forum,
-  forumPostDataSuccess
+  forumPostDataSuccess,
+  forumSearchText
 });
 
 export default forumReducer;

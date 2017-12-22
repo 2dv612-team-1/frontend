@@ -7,13 +7,16 @@ import { API_HOST } from "../../libs/API_CONFIG";
 import Button from "../components/Button";
 import PageContainer from "../components/PageContainer";
 import Text from "../elements/Text";
-import { forumFetchData, forumClear } from "../../state/forum/actions";
+import { forumFetchData, forumClear, forumHasError } from "../../state/forum/actions";
+import Search from "../containers/Search";
 
 const defaultProps = {
   loggedInAs: [],
   isLoading: false,
   errorMessage: "",
-  forum: []
+  forum: [],
+  searchText: "",
+  hasError: false
 };
 
 const propTypes = {
@@ -22,7 +25,9 @@ const propTypes = {
   errorMessage: PropTypes.string,
   forum: PropTypes.arrayOf(PropTypes.shape({})),
   fetchData: PropTypes.func.isRequired,
-  clear: PropTypes.func.isRequired
+  searchText: PropTypes.string,
+  clear: PropTypes.func.isRequired,
+  hasError: PropTypes.bool
 };
 
 class ForumPage extends Component {
@@ -32,6 +37,25 @@ class ForumPage extends Component {
 
   componentDidMount() {
     !this.props.forum ? this.props.fetchData(`${API_HOST}/threads`) : null;
+  }
+
+  componentWillReceiveProps(nextProps) {
+    // check if search query has changed
+    const now = this.props.searchText;
+    const next = nextProps.searchText;
+    if (now !== next) {
+      const filtered = this.props.forum.filter(thread =>
+        thread.title.concat(thread.message).toLowerCase().includes(next.toLowerCase())
+      );
+      console.log(filtered.length);
+      filtered.length !== 0
+        ? (this.setState({ display: filtered }), this.props.showError(false, ""))
+        : (this.props.showError(true, `${next} gave no matches!`), this.setState({ display: this.props.forum}));
+    }
+    // if search query is empty => show all threads
+    if (next === undefined) {
+      this.setState({ display: [] });
+    }
   }
 
   componentWillUnmount() {
@@ -50,14 +74,21 @@ class ForumPage extends Component {
     return (
       <PageContainer title="Forum">
         {this.props.loggedInAs.role === "consumer" ? (
-          <Link to="/thread/new">
-            <Button>Create new topic</Button>
-          </Link>
+          <div>
+            <Search target="forum" />
+            <Link to="/thread/new">
+              <Button>Create new topic</Button>
+            </Link>
+          </div>
         ) : null}
+        {this.props.hasError ? <Text error>{this.props.errorMessage}</Text> : null}
         <Text>Forum topics:</Text>
-        <Table rows={this.props.forum} columns={columns} />
+        {this.state.display.length !== 0 ? (
+          <Table rows={this.state.display} columns={columns} />
+        ) : (
+          <Table rows={this.props.forum} columns={columns} />
+        )}
         {this.props.isLoading ? <Text>Loading...</Text> : null}
-        {this.props.errorMessage ? <Text error>{this.props.errorMessage}</Text> : null}
       </PageContainer>
     );
   }
@@ -65,13 +96,16 @@ class ForumPage extends Component {
 
 const mapStateToProps = state => ({
   loggedInAs: state.session.loggedInAs,
+  hasError: state.forum.forumHasError.hasError,
   errorMessage: state.forum.forumHasError.errorMessage,
   isLoading: state.forum.forumIsLoading,
-  forum: state.forum.forum
+  forum: state.forum.forum,
+  searchText: state.forum.forumSearchText
 });
 
 const mapDispatchToProps = dispatch => ({
   fetchData: url => dispatch(forumFetchData(url)),
+  showError: (bool, msg) => dispatch(forumHasError(bool, msg)),
   clear: () => dispatch(forumClear())
 });
 
