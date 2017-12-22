@@ -45,6 +45,7 @@ class ThreadPage extends Component {
     let {location} = this.props;
     let threadId = location.slice(-24);
     this.props.postReply(`${API_HOST}/threads/${threadId}/replies`, {message:this.state.replyText, jwt: Auth.getToken()}, `${API_HOST}/threads/${threadId}`);
+    this.setState({ replyText: ""});
   }
 
   componentDidMount() {
