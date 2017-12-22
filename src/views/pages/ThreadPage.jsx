@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import PageContainer from "../components/PageContainer";
 import Text from "../elements/Text";
 import TextInput from "../components/TextInput";
+import DivBg from "../components/DivBg";
 import Auth from "../../libs/Auth";
 import { API_HOST } from "../../libs/API_CONFIG";
 import { getThread, postReply } from "../../state/thread/actions";
@@ -64,28 +65,31 @@ class ThreadPage extends Component {
 
   render() {
     const replies = this.state.threadState.replies ? this.state.threadState.replies : [];
-
-    let texties = [];
-    replies.forEach(reply => {
-      // console.log(reply);
-    });
-
-    // Username: {reply.username} Time: {reply.timestamp} Role: {reply.role} Message: {reply.message}
     return (
       <PageContainer title={this.state.threadState.title}>
         <Text>{this.state.threadState.message}</Text>
-        {replies.map(reply =>
-          <div>
-            <Text bold>
-              {reply.role}: {reply.username} wrote on: {reply.timestamp}
-            </Text>
-            <Text>{reply.message}</Text>
-          </div>
+        {replies.map(
+          reply =>
+            reply.role === "consumer" ? (
+              <DivBg>
+                <Text bold>
+                  {reply.role}: {reply.username} wrote on: {reply.timestamp}
+                </Text>
+                <Text>{reply.message}</Text>
+              </DivBg>
+            ) : (
+              <DivBg pop>
+                <Text bold>
+                  {reply.role}: {reply.username} wrote on: {reply.timestamp}
+                </Text>
+                <Text>{reply.message}</Text>
+              </DivBg>
+            )
         )}
         {this.props.isLoading ? <Text>Loading...</Text> : null}
         {this.props.hasError ? <Text error>Could not load data</Text> : null}
-        <TextInput value={this.state.replyText} onChange={this.handleReplyChange} />
-        <input onClick={this.submitReply} type="button" value="Reply"/>
+        <TextInput label="Reply" value={this.state.replyText} onChange={this.handleReplyChange} />
+        <input onClick={this.submitReply} type="button" value="Reply" />
       </PageContainer>
     );
   }
