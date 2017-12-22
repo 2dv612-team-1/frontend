@@ -29,7 +29,8 @@ class ThreadPage extends Component {
     super(props);
     this.state = {
       threadId: null,
-      replyText: ""
+      replyText: "",
+      threadState: []
     };
   }
 
@@ -48,16 +49,21 @@ class ThreadPage extends Component {
   componentDidMount() {
     let {thread, location, fetchData} = this.props;
     let threadId = location.slice(-24);
-
     !this.state.threadId ? this.setState({threadId: location.slice(-24)}) : null;
 
-    this.props.thread.length < 1 ? this.props.fetchData(`${API_HOST}/threads/${threadId}`) : null;
+    this.state.threadState.length < 1 ? this.props.fetchData(`${API_HOST}/threads/${threadId}`) : null;
     !thread.length < 1 ? console.log(thread) : null;
     this.state.threadId ? console.log(this.state.threadId) : null;
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.thread !== this.state.threadState) {
+      this.setState({ threadState: nextProps.thread });
+    }
+  }
+
   render() {
-    const replies = this.props.thread.replies ? this.props.thread.replies : [];
+    const replies = this.state.threadState.replies ? this.state.threadState.replies : [];
 
     let texties = [];
     replies.forEach(reply => {
@@ -65,8 +71,8 @@ class ThreadPage extends Component {
     });
 
     return (
-      <PageContainer title={this.props.thread.title}>
-        <Text>{this.props.thread.message}</Text>
+      <PageContainer title={this.state.threadState.title}>
+        <Text>{this.state.threadState.message}</Text>
         {replies.map(reply =>
           <Text>
             Username: {reply.username} Time: {reply.timestamp} Role: {reply.role} Message: {reply.message}
