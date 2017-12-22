@@ -15,10 +15,7 @@ const threadIsLoading = (state = false, action) => {
 const threadHasError = (state = false, action) => {
   switch (action.type) {
     case types.THREAD_HAS_ERROR:
-      return {
-        hasError: action.hasError,
-        errorMessage: action.errorMessage
-      };
+      return {hasError: action.hasError, errorMessage: action.errorMessage};
 
     default:
       return state;
@@ -35,6 +32,15 @@ const thread = (state = [], action) => {
   }
 };
 
-const threadReducer = combineReducers({threadIsLoading, threadHasError, thread});
+const threadPostDataSuccess = (state = false, action) => {
+  switch (action.type) {
+    case types.THREAD_POST_DATA_SUCCESS:
+      return {isSuccess: action.isSuccess, successMessage: action.successMessage};
+    default:
+      return state;
+  }
+};
+
+const threadReducer = combineReducers({threadIsLoading, threadHasError, thread, threadPostDataSuccess});
 
 export default threadReducer;
