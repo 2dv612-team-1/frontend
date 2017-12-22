@@ -51,7 +51,7 @@ let ThreadForm = ({ loggedInAs, handleSubmit, register, dispatchSubs, showError,
       showError(true, "You have to select a Category");
     } else {
       showError(false, "");
-      register(`${API_HOST}/threads`, data);
+      register(`${API_HOST}/threads`, data, `${API_HOST}/threads`);
     }
   };
 
@@ -98,7 +98,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  register: (url, obj) => dispatch(forumPostData(url, obj)),
+  register: (urlPost, obj, urlFetch) => dispatch(forumPostData(urlPost, obj, urlFetch)),
   dispatchSubs: subs => dispatch(categoriesGetSubs(subs)),
   showError: (bool, msg) => dispatch(forumHasError(bool, msg))
 });

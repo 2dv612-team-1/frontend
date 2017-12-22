@@ -35,19 +35,19 @@ export const forumFetchData = url => dispatch => {
     .then(data => {
       dispatch(forumFetchDataSuccess(data.data.threads));
       dispatch(forumIsLoading(false));
-      console.log(data.data.threads);
+      // console.log(data.data.threads);
     })
     .catch(err => {
-      console.log(err);
+      // console.log(err);
       dispatch(forumIsLoading(false));
       dispatch(forumHasError(true, err));
     });
 };
 
-export const forumPostData = (url, fields) => dispatch => {
+export const forumPostData = (urlPost, fields, urlFetch) => dispatch => {
   dispatch(forumIsLoading(true));
   dispatch(forumClear());
-  Client.POST(url, fields)
+  Client.POST(urlPost, fields)
     .then(data => {
       console.log(data);
       if (data.status !== 201) {
@@ -57,6 +57,7 @@ export const forumPostData = (url, fields) => dispatch => {
         dispatch(forumPostDataSuccess(true, data.message));
         dispatch(forumHasError(false));
         dispatch(forumIsLoading(false));
+        dispatch(forumFetchData(urlFetch));
       }
     })
     .catch(err => {
