@@ -46,7 +46,7 @@ const Routes = () => (
         <Route path="/products/create" component={CreateProductsPage} />
         <Route path="/product/:id" component={ProductPage} />
         <Route path="/forum" component={ForumPage} />
-        <Route path="/thread/:id" component={ThreadPage} />
+        <Route path="/threads/:id" component={ThreadPage} />
       </AuthRoute>
     </Switch>
     <Switch>
