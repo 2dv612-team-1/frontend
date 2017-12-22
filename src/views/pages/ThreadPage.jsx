@@ -42,7 +42,7 @@ class ThreadPage extends Component {
   submitReply = () => {
     let {location} = this.props;
     let threadId = location.slice(-24);
-    this.props.postReply(`${API_HOST}/threads/${threadId}/replies`, {message:this.state.replyText, jwt: Auth.getToken()});
+    this.props.postReply(`${API_HOST}/threads/${threadId}/replies`, {message:this.state.replyText, jwt: Auth.getToken()}, `${API_HOST}/threads/${threadId}`);
   }
 
   componentDidMount() {
@@ -61,7 +61,7 @@ class ThreadPage extends Component {
 
     let texties = [];
     replies.forEach(reply => {
-      console.log(reply);
+      // console.log(reply);
     });
 
     return (
@@ -91,7 +91,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   fetchData: url => dispatch(getThread(url)),
-  postReply: (url, data) => dispatch(postReply(url, data))
+  postReply: (url1, data, url2) => dispatch(postReply(url1, data, url2))
 });
 
 ThreadPage.defaultProps = defaultProps;

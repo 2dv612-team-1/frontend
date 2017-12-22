@@ -29,12 +29,15 @@ export const getThread = url => dispatch => {
     });
 };
 
-export const postReply = (url, data) => dispatch => {
+export const postReply = (url1, data, url2) => dispatch => {
   dispatch(threadIsLoading(true));
   Client
-    .POST(url, data)
+    .POST(url1, data)
     .then(data => {
-
+      if (data.status === 201) {
+        dispatch(threadIsLoading(false));
+        dispatch(getThread(url2));
+      }
     })
     .catch(err => {
       dispatch(threadHasError(true, err.message));
