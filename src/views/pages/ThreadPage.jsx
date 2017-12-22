@@ -70,13 +70,17 @@ class ThreadPage extends Component {
       // console.log(reply);
     });
 
+    // Username: {reply.username} Time: {reply.timestamp} Role: {reply.role} Message: {reply.message}
     return (
       <PageContainer title={this.state.threadState.title}>
         <Text>{this.state.threadState.message}</Text>
         {replies.map(reply =>
-          <Text>
-            Username: {reply.username} Time: {reply.timestamp} Role: {reply.role} Message: {reply.message}
-          </Text>
+          <div>
+            <Text bold>
+              {reply.role}: {reply.username} wrote on: {reply.timestamp}
+            </Text>
+            <Text>{reply.message}</Text>
+          </div>
         )}
         {this.props.isLoading ? <Text>Loading...</Text> : null}
         {this.props.hasError ? <Text error>Could not load data</Text> : null}

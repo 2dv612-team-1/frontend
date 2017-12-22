@@ -7,6 +7,7 @@ const Text = styled.p`
   text-align: ${props => (props.center ? "center" : "left")};
   font-family: ${fonts.primary};
   margin-top: 0px;
+  font-weight: ${props => (props.bold ? "bold" : "normal")};
 `;
 
 export default Text;
