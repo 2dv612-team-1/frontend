@@ -14,7 +14,6 @@ import { uploadMaterial } from "../../state/products/actions";
 import Link from "../components/Link";
 import Text from "../elements/Text";
 import FileInput from "../components/FileInput";
-import FileLink from "../components/FileLink";
 import TableText from "../components/TableText";
 import UploadContainer from "../components/UploadContainer";
 import FilesContainer from "../components/FilesContainer";
