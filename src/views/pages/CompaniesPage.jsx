@@ -29,7 +29,6 @@ class CompaniesPage extends Component {
   }
 
   render() {
-    console.log(this.props.companies);
     return (
       <PageContainer title="companies">
         <Link to="/register/company">
