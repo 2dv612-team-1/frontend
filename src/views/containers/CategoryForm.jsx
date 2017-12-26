@@ -36,7 +36,6 @@ let CategoryForm = ({ loggedInAs, handleSubmit, register, parents }) => {
     } else {
       register(`${API_HOST}/categories/${data.parent}/subcategories`, data);
     }
-    console.log(data);
   };
 
   return (
