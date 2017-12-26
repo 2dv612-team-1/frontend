@@ -10,8 +10,7 @@ import { API_HOST } from "../../libs/API_CONFIG";
 import { getThread, postReply } from "../../state/thread/actions";
 
 const defaultProps = {
-  isLoading: false,
-  errorMessage: ""
+  isLoading: false
 };
 
 const propTypes = {
