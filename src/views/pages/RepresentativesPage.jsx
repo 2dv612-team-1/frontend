@@ -17,7 +17,9 @@ const propTypes = {
   isLoading: PropTypes.bool.isRequired,
   hasError: PropTypes.bool.isRequired,
   representatives: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-  loggedInAs: PropTypes.string.isRequired,
+  loggedInAs: PropTypes.shape({
+    username: PropTypes.string
+  }).isRequired,
   clear: PropTypes.func.isRequired
 };
 
