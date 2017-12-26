@@ -5,9 +5,13 @@ import Input from "../../elements/Input";
 import Textarea from "../../elements/Textarea";
 import Text from "../../elements/Text";
 
+const defaultProps = {
+  label: ""
+};
+
 const propTypes = {
   input: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
+  label: PropTypes.string,
   type: PropTypes.string.isRequired,
   componentClass: PropTypes.element.isRequired,
   meta: PropTypes.shape({}).isRequired
@@ -38,5 +42,6 @@ const RenderField = ({
   </div>
 );
 
+RenderField.defaultProps = defaultProps;
 RenderField.propTypes = propTypes;
 export default RenderField;
