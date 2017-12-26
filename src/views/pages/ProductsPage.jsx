@@ -30,7 +30,7 @@ const propTypes = {
   }).isRequired,
   searchText: PropTypes.string,
   hasError: PropTypes.bool,
-  showError: PropTypes.bool.isRequired,
+  showError: PropTypes.func.isRequired,
   clear: PropTypes.func.isRequired
 };
 
