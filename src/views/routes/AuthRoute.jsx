@@ -9,15 +9,6 @@ const propTypes = {
   role: PropTypes.string.isRequired
 };
 
-/*
-const AuthRoute = ({ access, children, role }) => {
-  if (role === access) {
-    return children;
-  }
-  return <Redirect to="/" />;
-};
-*/
-
 const AuthRoute = ({ component: Component, access, role, ...rest }) => (
   <Route
     {...rest}
