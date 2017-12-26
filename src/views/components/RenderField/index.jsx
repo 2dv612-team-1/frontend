@@ -10,7 +10,7 @@ const defaultProps = {
 };
 
 const propTypes = {
-  input: PropTypes.string.isRequired,
+  input: PropTypes.shape({}).isRequired,
   label: PropTypes.string,
   type: PropTypes.string.isRequired,
   componentClass: PropTypes.element.isRequired,
