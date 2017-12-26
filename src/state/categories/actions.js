@@ -48,7 +48,6 @@ export const categoriesPostData = (url, fields) => dispatch => {
   dispatch(categoriesClear());
   Client.POST(url, fields)
     .then(data => {
-      console.log(data);
       if (data.status !== 201) {
         dispatch(categoriesHasError(true, data.message));
         dispatch(categoriesIsLoading(false));
