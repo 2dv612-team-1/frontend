@@ -10,7 +10,10 @@ const defaultProps = {
 
 const propTypes = {
   title: PropTypes.string,
-  children: PropTypes.arrayOf(PropTypes.element)
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.element)),
+    PropTypes.arrayOf(PropTypes.element)
+  ])
 };
 
 const PageContainer = ({ title, children }) => (
