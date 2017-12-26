@@ -29,8 +29,8 @@ class ThreadPage extends Component {
   }
 
   componentDidMount() {
-    let { thread, location, fetchData } = this.props;
-    let threadId = location.slice(-24);
+    const { thread, location } = this.props;
+    const threadId = location.slice(-24);
     !this.state.threadId
       ? this.setState({ threadId: location.slice(-24) })
       : null;
