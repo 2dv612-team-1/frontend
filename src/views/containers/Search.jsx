@@ -35,10 +35,6 @@ let Search = ({ handleSubmit, searchProducts, searchForum, target }) => {
   );
 };
 
-const mapStateToProps = state => ({
-  // products: state.products.products
-});
-
 Search.propTypes = propTypes;
 
 Search = reduxForm({
@@ -50,4 +46,4 @@ const mapDispatchToProps = dispatch => ({
   searchForum: text => dispatch(forumSearch(text))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Search);
+export default connect(null, mapDispatchToProps)(Search);
