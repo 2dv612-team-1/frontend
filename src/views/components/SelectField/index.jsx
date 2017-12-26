@@ -3,11 +3,15 @@ import PropTypes from "prop-types";
 import Label from "../../elements/Label";
 import Select from "../../elements/Select";
 
+const defaultProps = {
+  onChange: () => {}
+};
+
 const propTypes = {
   label: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   options: PropTypes.arrayOf(PropTypes.string).isRequired,
-  onChange: PropTypes.func.isRequired
+  onChange: PropTypes.func
 };
 
 const SelectField = ({ label, name, options, onChange }) => (
@@ -26,5 +30,6 @@ const SelectField = ({ label, name, options, onChange }) => (
   </div>
 );
 
+SelectField.defaultProps = defaultProps;
 SelectField.propTypes = propTypes;
 export default SelectField;
