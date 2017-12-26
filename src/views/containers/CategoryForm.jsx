@@ -23,7 +23,7 @@ const propTypes = {
 
 const validate = values => {
   const errors = {};
-  !values.category ? errors.category = "Required" : null;
+  !values.category ? (errors.category = "Required") : null;
   return errors;
 };
 
