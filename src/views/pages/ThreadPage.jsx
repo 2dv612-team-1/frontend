@@ -10,18 +10,14 @@ import { API_HOST } from "../../libs/API_CONFIG";
 import { getThread, postReply } from "../../state/thread/actions";
 
 const defaultProps = {
-  loggedInAs: [],
   isLoading: false,
   errorMessage: ""
 };
 
 const propTypes = {
-  loggedInAs: PropTypes.shape({}),
   isLoading: PropTypes.bool,
   errorMessage: PropTypes.string,
-  // thread: PropTypes.shape({}),
   fetchData: PropTypes.func.isRequired
-  // clear: PropTypes.func.isRequired
 };
 
 class ThreadPage extends Component {
