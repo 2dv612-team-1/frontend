@@ -13,7 +13,7 @@ const propTypes = {
   input: PropTypes.shape({}).isRequired,
   label: PropTypes.string,
   type: PropTypes.string.isRequired,
-  componentClass: PropTypes.element.isRequired,
+  componentClass: PropTypes.string,
   meta: PropTypes.shape({}).isRequired
 };
 
