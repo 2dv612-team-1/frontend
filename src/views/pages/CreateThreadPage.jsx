@@ -13,8 +13,7 @@ const defaultProps = {
   isLoading: false,
   errorMessage: "",
   successMessage: "",
-  categories: [],
-  forum: []
+  categories: []
 };
 
 const propTypes = {
@@ -23,8 +22,6 @@ const propTypes = {
   errorMessage: PropTypes.string,
   successMessage: PropTypes.string,
   categories: PropTypes.arrayOf(PropTypes.shape({})),
-  forum: PropTypes.arrayOf(PropTypes.shape({})),
-  fetchData: PropTypes.func.isRequired,
   clear: PropTypes.func.isRequired
 };
 
