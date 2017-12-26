@@ -17,7 +17,7 @@ const propTypes = {
   isLoading: PropTypes.bool,
   fetchData: PropTypes.func.isRequired,
   thread: PropTypes.string.isRequired,
-  location: PropTypes.location.isRequired,
+  location: PropTypes.string.isRequired,
   postReply: PropTypes.func.isRequired,
   hasError: PropTypes.bool.isRequired
 };
