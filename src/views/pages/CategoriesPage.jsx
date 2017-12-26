@@ -3,7 +3,10 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { API_HOST } from "../../libs/API_CONFIG";
-import { categoriesFetchData, categoriesClear } from "../../state/categories/actions";
+import {
+  categoriesFetchData,
+  categoriesClear
+} from "../../state/categories/actions";
 import Text from "../elements/Text";
 import CategoriesList from "../components/CategoriesList";
 import Button from "../components/Button";
@@ -43,9 +46,13 @@ class CategoriesPage extends Component {
           <Button>Create new Category</Button>
         </Link>
         <Text>All categories:</Text>
-        {this.props.categories ? <CategoriesList items={this.props.categories} /> : null}
+        {this.props.categories ? (
+          <CategoriesList items={this.props.categories} />
+        ) : null}
         {this.props.isLoading ? <Text>Loading...</Text> : null}
-        {this.props.errorMessage ? <Text error>{this.props.errorMessage}</Text> : null}
+        {this.props.errorMessage ? (
+          <Text error>{this.props.errorMessage}</Text>
+        ) : null}
       </PageContainer>
     );
   }
@@ -54,7 +61,7 @@ class CategoriesPage extends Component {
 const mapStateToProps = state => ({
   categories: state.categories.categories,
   isLoading: state.categories.categoriesIsLoading,
-  errorMessage: state.categories.categoriesHasError.errorMessage,
+  errorMessage: state.categories.categoriesHasError.errorMessage
 });
 
 const mapDispatchToProps = dispatch => ({
