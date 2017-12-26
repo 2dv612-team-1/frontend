@@ -25,7 +25,7 @@ const productsIsLoading = (state = false, action) => {
   }
 };
 
-const products = (state, action) => {
+const products = (state = [], action) => {
   switch (action.type) {
     case types.PRODUCTS_FETCH_DATA_SUCCESS:
       return action.products;
