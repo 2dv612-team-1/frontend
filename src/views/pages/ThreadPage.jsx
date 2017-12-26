@@ -16,7 +16,6 @@ const defaultProps = {
 
 const propTypes = {
   isLoading: PropTypes.bool,
-  errorMessage: PropTypes.string,
   fetchData: PropTypes.func.isRequired
 };
 
