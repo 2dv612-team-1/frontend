@@ -27,7 +27,7 @@ class LoginPage extends Component {
     const next = nextProps.admin;
     now !== next
       ? (this.props.reload(), this.props.clear())
-      : console.log("route DIDNT changed");
+      : null;
   }
 
   componentWillUnmount() {
