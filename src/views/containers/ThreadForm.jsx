@@ -18,7 +18,6 @@ const defaultProps = {
 const propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   register: PropTypes.func.isRequired,
-  categoriesGetSubs: PropTypes.func.isRequired,
   categories: PropTypes.arrayOf(PropTypes.shape({}))
 };
 
