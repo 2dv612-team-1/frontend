@@ -26,10 +26,8 @@ export const clearForm = () => dispatch => {
 
 export const registerPostData = (url, fields) => dispatch => {
   dispatch(registerIsLoading(true));
-  console.log(url);
   Client.POST(url, fields)
     .then(data => {
-      console.log(data);
       if (data.status !== 201) {
         dispatch(registerHasError(true, data.message));
       } else {
