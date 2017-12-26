@@ -57,7 +57,7 @@ class ThreadPage extends Component {
   };
 
   submitReply = () => {
-    let { location } = this.props;
+    const { location } = this.props;
     const threadId = location.slice(-24);
     this.props.postReply(
       `${API_HOST}/threads/${threadId}/replies`,
