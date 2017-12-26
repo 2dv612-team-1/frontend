@@ -14,7 +14,10 @@ const defaultProps = {
 };
 
 const propTypes = {
-  loggedInAs: PropTypes.shape({}),
+  loggedInAs: PropTypes.shape({
+    username: PropTypes.string.isRequired,
+    role: PropTypes.string.isRequired
+  }),
   forum: PropTypes.arrayOf(PropTypes.shape({})),
   fetchData: PropTypes.func.isRequired
 };
