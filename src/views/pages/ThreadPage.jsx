@@ -28,23 +28,6 @@ class ThreadPage extends Component {
     };
   }
 
-  handleReplyChange = ({ target: { value } }) => {
-    this.setState({
-      replyText: value
-    });
-  };
-
-  submitReply = () => {
-    let { location } = this.props;
-    let threadId = location.slice(-24);
-    this.props.postReply(
-      `${API_HOST}/threads/${threadId}/replies`,
-      { message: this.state.replyText, jwt: Auth.getToken() },
-      `${API_HOST}/threads/${threadId}`
-    );
-    this.setState({ replyText: "" });
-  };
-
   componentDidMount() {
     let { thread, location, fetchData } = this.props;
     let threadId = location.slice(-24);
@@ -64,6 +47,23 @@ class ThreadPage extends Component {
       this.setState({ threadState: nextProps.thread });
     }
   }
+
+  handleReplyChange = ({ target: { value } }) => {
+    this.setState({
+      replyText: value
+    });
+  };
+
+  submitReply = () => {
+    let { location } = this.props;
+    let threadId = location.slice(-24);
+    this.props.postReply(
+      `${API_HOST}/threads/${threadId}/replies`,
+      { message: this.state.replyText, jwt: Auth.getToken() },
+      `${API_HOST}/threads/${threadId}`
+    );
+    this.setState({ replyText: "" });
+  };
 
   render() {
     const replies = this.state.threadState.replies
