@@ -74,7 +74,9 @@ class ProductsPage extends Component {
   componentWillUnmount() {
     this.props.clear();
   }
-
+  /*
+  eslint-disable
+   */
   render() {
     return (
       <PageContainer title="products">
@@ -107,6 +109,9 @@ class ProductsPage extends Component {
       </PageContainer>
     );
   }
+  /*
+  eslint-enable
+   */
 }
 const mapStateToProps = state => ({
   products: state.products.products,
