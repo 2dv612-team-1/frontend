@@ -1,7 +1,18 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Container from "./Container";
 import CloseIcon from "../CloseIcon";
 import Input from "./Input";
+
+const defaultProps = {
+  children: ""
+};
+
+const propTypes = {
+  onClick: PropTypes.func.isRequired,
+  children: PropTypes.string,
+  onChange: PropTypes.func.isRequired
+};
 
 const Note = ({ onClick, children, onChange }) => (
   <Container>
@@ -10,4 +21,6 @@ const Note = ({ onClick, children, onChange }) => (
   </Container>
 );
 
+Note.defaultProps = defaultProps;
+Note.propTypes = propTypes;
 export default Note;
