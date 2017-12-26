@@ -9,14 +9,17 @@ import { API_HOST } from "../../libs/API_CONFIG";
 import Text from "../elements/Text";
 
 const defaultProps = {
-  loggedInAs: [],
+  loggedInAs: {
+    username: "",
+    role: ""
+  },
   forum: []
 };
 
 const propTypes = {
   loggedInAs: PropTypes.shape({
-    username: PropTypes.string.isRequired,
-    role: PropTypes.string.isRequired
+    username: PropTypes.string,
+    role: PropTypes.string
   }),
   forum: PropTypes.arrayOf(PropTypes.shape({})),
   fetchData: PropTypes.func.isRequired
