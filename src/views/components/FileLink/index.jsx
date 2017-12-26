@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import fonts from "../../constants/fonts";
-import colors from "../../constants/colors";
 
 const FileLink = styled.a`
   font-size: 16px;
