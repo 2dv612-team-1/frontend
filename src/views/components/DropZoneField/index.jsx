@@ -18,7 +18,7 @@ const DropZoneField = field => {
         field.meta.error && <span className="error">{field.meta.error}</span>}
       {files &&
         Array.isArray(files) && (
-          <ul>{files.map((file, i) => <li key={i}>{file.name}</li>)}</ul>
+          <ul>{files.map((file) => <li key={file.name}>{file.name}</li>)}</ul>
         )}
     </DropZoneContainer>
   );
