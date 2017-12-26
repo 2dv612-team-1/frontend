@@ -77,8 +77,8 @@ class ForumPage extends Component {
       {
         key: "title",
         label: "Topic",
-        cell: (item, columnKey) => (
-          <Link to={`/threads/${item._id}`}>{item.title}</Link>;
+        cell: item => (
+          <Link to={`/threads/${item._id}`}>{item.title}</Link>
         )
       },
       { key: "name", label: "Name" },
