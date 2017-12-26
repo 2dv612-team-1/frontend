@@ -4,7 +4,11 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import Button from "../components/Button";
 import { API_HOST } from "../../libs/API_CONFIG";
-import { productsFetchData, productsHasError, productsClear } from "../../state/products/actions";
+import {
+  productsFetchData,
+  productsHasError,
+  productsClear
+} from "../../state/products/actions";
 import Text from "../elements/Text";
 import PageContainer from "../components/PageContainer";
 import Jwt from "../../libs/Jwt";
@@ -46,12 +50,17 @@ class ProductsPage extends Component {
     const next = nextProps.searchText;
     if (now !== next) {
       const filtered = this.props.products.filter(product =>
-        product.name.concat(product.description).toLowerCase().includes(next.toLowerCase())
+        product.name
+          .concat(product.description)
+          .toLowerCase()
+          .includes(next.toLowerCase())
       );
       console.log(filtered.length);
       filtered.length !== 0
-        ? (this.setState({ display: filtered }), this.props.showError(false, ""))
-        : (this.props.showError(true, `${next} gave no matches!`), this.setState({ display: this.props.products}));
+        ? (this.setState({ display: filtered }),
+          this.props.showError(false, ""))
+        : (this.props.showError(true, `${next} gave no matches!`),
+          this.setState({ display: this.props.products }));
     }
     if (next === undefined) {
       console.log("empty search comming in");
@@ -78,13 +87,17 @@ class ProductsPage extends Component {
         {this.state.display.length !== 0
           ? this.state.display.map(product => (
               <div>
-                <Link to={`/product/${product._id}`}>{product.name.slice(0, 20)}</Link>
+                <Link to={`/product/${product._id}`}>
+                  {product.name.slice(0, 20)}
+                </Link>
                 <br />
               </div>
             ))
           : this.props.products.map(product => (
               <div>
-                <Link to={`/product/${product._id}`}>{product.name.slice(0, 20)}</Link>
+                <Link to={`/product/${product._id}`}>
+                  {product.name.slice(0, 20)}
+                </Link>
                 <br />
               </div>
             ))}
