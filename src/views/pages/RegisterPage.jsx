@@ -45,8 +45,12 @@ class RegisterPage extends Component {
     return (
       <PageContainer title={title}>
         <RegisterForm role={this.props.role} />
-        {this.props.errorMessage ? <Text error>{this.props.errorMessage}</Text> : null}
-        {this.props.successMessage ? <Text success>{this.props.successMessage}</Text> : null}
+        {this.props.errorMessage ? (
+          <Text error>{this.props.errorMessage}</Text>
+        ) : null}
+        {this.props.successMessage ? (
+          <Text success>{this.props.successMessage}</Text>
+        ) : null}
       </PageContainer>
     );
   }
