@@ -27,12 +27,20 @@ const validate = values => {
   const errors = {};
   // !values.category || values.category === "Select" ? errors.title = "Required" : null;
   // !values.productName ? errors.productName = "Required" : null;
-  !values.title ? errors.title = "Required" : null;
-  !values.message ? errors.message = "Required" : null;
+  !values.title ? (errors.title = "Required") : null;
+  !values.message ? (errors.message = "Required") : null;
   return errors;
 };
 
-let ThreadForm = ({ loggedInAs, handleSubmit, register, dispatchSubs, showError, categories, subcategories }) => {
+let ThreadForm = ({
+  loggedInAs,
+  handleSubmit,
+  register,
+  dispatchSubs,
+  showError,
+  categories,
+  subcategories
+}) => {
   const parents = categories.map(cat => cat.category);
 
   const getSubs = parent => {
@@ -76,9 +84,20 @@ let ThreadForm = ({ loggedInAs, handleSubmit, register, dispatchSubs, showError,
         type="text"
         options={subcategories}
       />
-      <Field label="product" name="product" component={RenderField} type="text" />
+      <Field
+        label="product"
+        name="product"
+        component={RenderField}
+        type="text"
+      />
       <Field label="title" name="title" component={RenderField} type="text" />
-      <Field label="message" name="message" component={RenderField} type="text" componentClass="textarea" />
+      <Field
+        label="message"
+        name="message"
+        component={RenderField}
+        type="text"
+        componentClass="textarea"
+      />
       <Button form>go</Button>
     </Form>
   );
@@ -98,7 +117,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  register: (urlPost, obj, urlFetch) => dispatch(forumPostData(urlPost, obj, urlFetch)),
+  register: (urlPost, obj, urlFetch) =>
+    dispatch(forumPostData(urlPost, obj, urlFetch)),
   dispatchSubs: subs => dispatch(categoriesGetSubs(subs)),
   showError: (bool, msg) => dispatch(forumHasError(bool, msg))
 });
