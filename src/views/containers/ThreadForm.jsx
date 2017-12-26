@@ -18,7 +18,11 @@ const defaultProps = {
 const propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   register: PropTypes.func.isRequired,
-  categories: PropTypes.arrayOf(PropTypes.shape({}))
+  categories: PropTypes.arrayOf(PropTypes.shape({})),
+  loggedInAs: PropTypes.string.isRequired,
+  dispatchSubs: PropTypes.string.isRequired,
+  showError: PropTypes.string.isRequired,
+  subcategories: PropTypes.string.isRequired
 };
 
 const validate = values => {
