@@ -25,50 +25,10 @@ const productsIsLoading = (state = false, action) => {
   }
 };
 
-const initState = [
-  {
-    _id: "dfGKJGhhgddddddddddddddd",
-    category: "Demo",
-    createdBy: "Demo",
-    description: "Demo",
-    name: "Demo",
-    producer: "Demo",
-    files: [
-      {
-        average: 5,
-        note: "Demo note",
-        material_id: "hej-15125582259389868.pdf",
-        name: "DemoFile1",
-        owner: "5a27ce917ae6da0021d97ef4",
-        path:
-          "/materials/242235471/5a27ce917ae6da0021d97ef4/hej-15125582259389868.pdf"
-      },
-      {
-        average: 3,
-        note: "Demo note2",
-        material_id: "hej-125125582259389868.pdf",
-        name: "DemoFile2",
-        owner: "5a27ce917ae6da0021d97ef4",
-        path:
-          "/materials/242235471/5a27ce917ae6da0021d97ef4/hej-15125582259389868.pdf"
-      },
-      {
-        average: 2,
-        note: "Demo note3",
-        material_id: "hej-15122225582259389868.pdf",
-        name: "DemoFile3",
-        owner: "5a27ce917ae6da0021d97ef4",
-        path:
-          "/materials/242235471/5a27ce917ae6da0021d97ef4/hej-15125582259389868.pdf"
-      }
-    ]
-  }
-];
-
-const products = (state = initState, action) => {
+const products = (state, action) => {
   switch (action.type) {
     case types.PRODUCTS_FETCH_DATA_SUCCESS:
-      return action.products.reduce((prev, curr) => [...prev, curr], initState);
+      return action.products;
     default:
       return state;
   }

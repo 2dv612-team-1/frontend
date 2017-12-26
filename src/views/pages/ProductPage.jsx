@@ -42,17 +42,10 @@ class ProductPage extends Component {
     const id = this.props.location.slice(-24);
     const url = `${API_HOST}/products/${id}`;
 
-    if (id !== "dfGKJGhhgddddddddddddddd") {
-      Client.GET(url).then(response => {
-        const product = response.data.product;
-        this.setState({ product });
-      });
-    } else {
-      let product = this.props.products.filter(p => p._id === id); // eslint-disable-line no-underscore-dangle
+    let product = this.props.products.filter(p => p._id === id); // eslint-disable-line no-underscore-dangle
 
-      product = product[0];
-      this.setState({ product });
-    }
+    product = product[0];
+    this.setState({ product });
   }
 
   handleNoteClick = event => {
