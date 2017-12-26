@@ -27,7 +27,13 @@ const propTypes = {
   isLoading: PropTypes.bool,
   hasError: PropTypes.bool,
   errorMessage: PropTypes.string,
-  successMessage: PropTypes.string
+  successMessage: PropTypes.string,
+  fetchData: PropTypes.func.isRequired,
+  createProduct: PropTypes.func.isRequired,
+  categories: PropTypes.string.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+  subcategories: PropTypes.string.isRequired,
+  dispatchSubs: PropTypes.func.isRequired
 };
 
 class CreateProductPage extends Component {
