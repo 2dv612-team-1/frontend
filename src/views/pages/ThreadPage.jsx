@@ -15,7 +15,9 @@ const defaultProps = {
 
 const propTypes = {
   isLoading: PropTypes.bool,
-  fetchData: PropTypes.func.isRequired
+  fetchData: PropTypes.func.isRequired,
+  thread: PropTypes.string.isRequired,
+  location: PropTypes.location.isRequired
 };
 
 class ThreadPage extends Component {
