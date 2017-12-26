@@ -25,7 +25,7 @@ const validate = values => {
 
 let RegisterForm = ({ loggedInAs, handleSubmit, register, role }) => {
   const onSubmit = values => {
-    let json = values;
+    const json = values;
     loggedInAs.jwt !== undefined ? (json.jwt = loggedInAs.jwt) : null;
     let url = `${API_HOST}/consumers`;
     switch (role) {
