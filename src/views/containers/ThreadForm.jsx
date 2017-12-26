@@ -57,7 +57,6 @@ let ThreadForm = ({
   const onSubmit = values => {
     const data = values;
     data.jwt = loggedInAs.jwt;
-    console.log(data);
     if (values.category === "Select" || !values.category) {
       showError(true, "You have to select a Category");
     } else {
