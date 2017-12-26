@@ -46,7 +46,7 @@ const productsPostDataSuccess = (state = false, action) => {
   }
 };
 
-const productsSearchText = (state = false, action) => {
+const productsSearchText = (state = "", action) => {
   switch (action.type) {
     case types.PRODUCTS_SEARCH:
       return action.text;
