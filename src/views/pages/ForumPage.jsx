@@ -31,7 +31,8 @@ const propTypes = {
   fetchData: PropTypes.func.isRequired,
   searchText: PropTypes.string,
   clear: PropTypes.func.isRequired,
-  hasError: PropTypes.bool
+  hasError: PropTypes.bool,
+  showError: PropTypes.bool.isRequired
 };
 
 class ForumPage extends Component {
@@ -76,9 +77,9 @@ class ForumPage extends Component {
       {
         key: "title",
         label: "Topic",
-        cell: function(item, columnKey) {
-          return <Link to={`/threads/${item._id}`}>{item.title}</Link>;
-        }
+        cell: (item, columnKey) => (
+          <Link to={`/threads/${item._id}`}>{item.title}</Link>;
+        )
       },
       { key: "name", label: "Name" },
       { key: "timestamp", label: "Date" }
