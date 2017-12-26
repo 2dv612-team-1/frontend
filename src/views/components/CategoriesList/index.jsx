@@ -16,14 +16,16 @@ const CategoriesList = ({ items }) => {
       item.sub === null
         ? []
         : item.sub.map((subItem, subIndex) => (
-            <li>{`${index + 1}.${subIndex + 1}. ${subItem.category}`}</li>
+            <li key={subItem.category}>
+              {`${index + 1}.${subIndex + 1}. ${subItem.category}`}
+            </li>
           ))
   );
 
   return (
     <OrderedList styleType="none">
       {items.map((item, index) => (
-        <div>
+        <div key={item.category}>
           <li>{`${index + 1}. ${item.category}`}</li>
           <UnorderedList styleType="none" marginLeft={60}>
             {subLists[index]}
