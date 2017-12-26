@@ -10,7 +10,10 @@ import Button from "../components/Button";
 import PageContainer from "../components/PageContainer";
 import DropZoneField from "../components/DropZoneField";
 import { uploadCreatedProduct } from "../../state/products/actions";
-import { categoriesFetchData, categoriesGetSubs } from "../../state/categories/actions";
+import {
+  categoriesFetchData,
+  categoriesGetSubs
+} from "../../state/categories/actions";
 import FieldWrapper from "../components/Field/FieldWrapper";
 
 const defaultProps = {
@@ -96,8 +99,12 @@ class CreateProductPage extends Component {
             <Button submit>create</Button>
           </FieldWrapper>
           {this.props.isLoading ? <Text>Loading...</Text> : null}
-          {this.props.successMessage ? <Text success>Product was created</Text> : null}
-          {this.props.hasError ? <Text error>{this.props.errorMessage}</Text> : null}
+          {this.props.successMessage ? (
+            <Text success>Product was created</Text>
+          ) : null}
+          {this.props.hasError ? (
+            <Text error>{this.props.errorMessage}</Text>
+          ) : null}
         </form>
       </PageContainer>
     );
