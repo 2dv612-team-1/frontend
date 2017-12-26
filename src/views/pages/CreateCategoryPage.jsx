@@ -30,7 +30,6 @@ const propTypes = {
 
 class CreateCategoryPage extends Component {
   componentWillMount() {
-    console.log("clear category");
     this.props.clear();
   }
 
@@ -39,7 +38,6 @@ class CreateCategoryPage extends Component {
   }
 
   componentWillUnmount() {
-    console.log("destroy cats");
     this.props.clear();
   }
 
