@@ -19,8 +19,8 @@ import UploadContainer from "../components/UploadContainer";
 import FilesContainer from "../components/FilesContainer";
 import MaterialContainer from "../components/MaterialContainer";
 import Button from "../components/Button";
+
 const propTypes = {
-  id: PropTypes.string.isRequired,
   products: PropTypes.arrayOf(PropTypes.shape({})).isRequired
 };
 
