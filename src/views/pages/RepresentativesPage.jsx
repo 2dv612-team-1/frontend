@@ -3,7 +3,10 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { API_HOST } from "../../libs/API_CONFIG";
-import { representativesFetchData, representativesClear } from "../../state/representatives/actions";
+import {
+  representativesFetchData,
+  representativesClear
+} from "../../state/representatives/actions";
 import Text from "../elements/Text";
 import List from "../components/List";
 import Button from "../components/Button";
