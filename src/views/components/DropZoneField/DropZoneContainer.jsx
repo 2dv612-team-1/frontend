@@ -5,7 +5,7 @@ const DropZoneContainer = styled.div`
   font-family: ${fonts.primary};
   font-size: 12pt;
   background: none;
-  display:inline-block;
+  display: inline-block;
   text-align: left;
   cursor: pointer;
 `;
