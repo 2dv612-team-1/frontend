@@ -24,10 +24,12 @@ const propTypes = {
   fetchData: PropTypes.func.isRequired,
   error: PropTypes.string,
   products: PropTypes.arrayOf(PropTypes.shape({})),
-  loggedInAs: PropTypes.shape({}).isRequired,
+  loggedInAs: PropTypes.shape({
+    role: PropTypes.string,
+    jwt: PropTypes.string
+  }).isRequired,
   searchText: PropTypes.string,
   hasError: PropTypes.bool,
-  loggedInAs: PropTypes.shape().isRequired,
   showError: PropTypes.bool.isRequired,
   clear: PropTypes.func.isRequired
 };
