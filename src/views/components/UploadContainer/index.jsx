@@ -1,6 +1,4 @@
 import styled from "styled-components";
-import fonts from "../../constants/fonts";
-import colors from "../../constants/colors";
 
 const UploadContainer = styled.div`
   clear: left;
