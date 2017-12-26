@@ -55,7 +55,6 @@ class ForumPage extends Component {
           .toLowerCase()
           .includes(next.toLowerCase())
       );
-      console.log(filtered.length);
       filtered.length !== 0
         ? (this.setState({ display: filtered }),
           this.props.showError(false, ""))
