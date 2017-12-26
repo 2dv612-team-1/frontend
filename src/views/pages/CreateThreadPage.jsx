@@ -22,7 +22,8 @@ const propTypes = {
   errorMessage: PropTypes.string,
   successMessage: PropTypes.string,
   categories: PropTypes.arrayOf(PropTypes.shape({})),
-  clear: PropTypes.func.isRequired
+  clear: PropTypes.func.isRequired,
+  fetchCats: PropTypes.func.isRequired
 };
 
 class CreateThreadPage extends Component {
