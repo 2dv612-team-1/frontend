@@ -46,7 +46,7 @@ class ProductPage extends Component {
         this.setState({ product });
       });
     } else {
-      let product = this.props.products.filter(product => product._id === id);
+      let product = this.props.products.filter(p => p._id === id);
 
       product = product[0];
       this.setState({ product });
