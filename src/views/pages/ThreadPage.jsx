@@ -42,8 +42,6 @@ class ThreadPage extends Component {
     this.state.threadState.length < 1
       ? this.props.fetchData(`${API_HOST}/threads/${threadId}`)
       : null;
-    !thread.length < 1 ? console.log(thread) : null;
-    this.state.threadId ? console.log(this.state.threadId) : null;
   }
 
   componentWillReceiveProps(nextProps) {
