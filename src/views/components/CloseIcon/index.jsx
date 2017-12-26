@@ -1,5 +1,10 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Container from "./Container";
+
+const propTypes = {
+  onClick: PropTypes.func.isRequired
+};
 
 const CloseIcon = ({ onClick }) => (
   <Container onClick={onClick}>
@@ -7,4 +12,5 @@ const CloseIcon = ({ onClick }) => (
   </Container>
 );
 
+CloseIcon.propTypes = propTypes;
 export default CloseIcon;
