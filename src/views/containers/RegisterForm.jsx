@@ -13,13 +13,13 @@ const propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   register: PropTypes.func.isRequired,
   role: PropTypes.string.isRequired,
-  loggedInAs: PropTypes.string.isRequired,
+  loggedInAs: PropTypes.string.isRequired
 };
 
 const validate = values => {
   const errors = {};
-  !values.username ? errors.username = "Required" : null;
-  !values.password ? errors.password = "Required" : null;
+  !values.username ? (errors.username = "Required") : null;
+  !values.password ? (errors.password = "Required") : null;
   return errors;
 };
 
@@ -43,8 +43,18 @@ let RegisterForm = ({ loggedInAs, handleSubmit, register, role }) => {
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
-      <Field label="username" name="username" component={RenderField} type="text" />
-      <Field label="password" name="password" component={RenderField} type="text" />
+      <Field
+        label="username"
+        name="username"
+        component={RenderField}
+        type="text"
+      />
+      <Field
+        label="password"
+        name="password"
+        component={RenderField}
+        type="text"
+      />
       <Button form>Register</Button>
     </Form>
   );
