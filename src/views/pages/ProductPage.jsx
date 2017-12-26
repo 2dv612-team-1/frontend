@@ -24,7 +24,8 @@ const propTypes = {
   products: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   location: PropTypes.string.isRequired,
   uploadMaterial: PropTypes.string.isRequired,
-  postRate: PropTypes.string.isRequired
+  postRate: PropTypes.string.isRequired,
+  loggedInAs: PropTypes.string.isRequired
 };
 
 class ProductPage extends Component {
