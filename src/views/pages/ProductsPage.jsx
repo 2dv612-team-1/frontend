@@ -26,7 +26,10 @@ const propTypes = {
   products: PropTypes.arrayOf(PropTypes.shape({})),
   loggedInAs: PropTypes.shape({}).isRequired,
   searchText: PropTypes.string,
-  hasError: PropTypes.bool
+  hasError: PropTypes.bool,
+  loggedInAs: PropTypes.shape().isRequired,
+  showError: PropTypes.bool.isRequired,
+  clear: PropTypes.func.isRequired
 };
 
 class ProductsPage extends Component {
