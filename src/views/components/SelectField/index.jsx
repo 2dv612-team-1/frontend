@@ -7,7 +7,7 @@ const propTypes = {
   label: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   options: PropTypes.arrayOf(PropTypes.string).isRequired,
-  onChange: PropTypes.func
+  onChange: PropTypes.func.isRequired
 };
 
 const SelectField = ({ label, name, options, onChange }) => (
