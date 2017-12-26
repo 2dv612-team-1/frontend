@@ -16,7 +16,9 @@ const defaultProps = {
 const propTypes = {
   admin: PropTypes.string,
   isLoggedIn: PropTypes.bool.isRequired,
-  errorMessage: PropTypes.string
+  errorMessage: PropTypes.string,
+  clear: PropTypes.func.isRequired,
+  reload: PropTypes.func.isRequired
 };
 
 class LoginPage extends Component {
