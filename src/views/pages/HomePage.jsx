@@ -45,11 +45,15 @@ class HomePage extends Component {
 
   render() {
     const columns = [
-      {key: "title", label: "Topic", cell: function( item, columnKey ){
-        return <Link to={`/threads/${item._id}`} >{ item.title }</Link>;
-      }},
-      {key: "name", label: "Name"},
-      {key: "timestamp", label: "Date"}
+      {
+        key: "title",
+        label: "Topic",
+        cell: function(item, columnKey) {
+          return <Link to={`/threads/${item._id}`}>{item.title}</Link>;
+        }
+      },
+      { key: "name", label: "Name" },
+      { key: "timestamp", label: "Date" }
     ];
 
     const greet =
@@ -76,7 +80,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchData: url => dispatch(forumFetchData(url)),
+  fetchData: url => dispatch(forumFetchData(url))
 });
 
 HomePage.defaultProps = defaultProps;
