@@ -13,7 +13,7 @@ const propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   register: PropTypes.func.isRequired,
   role: PropTypes.string.isRequired,
-  loggedInAs: PropTypes.string.isRequired
+  loggedInAs: PropTypes.shape({}).isRequired
 };
 
 const validate = values => {
