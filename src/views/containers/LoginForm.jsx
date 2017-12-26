@@ -17,8 +17,8 @@ const propTypes = {
 
 const validate = values => {
   const errors = {};
-  !values.username ? errors.username = "Required" : null;
-  !values.password ? errors.password = "Required" : null;
+  !values.username ? (errors.username = "Required") : null;
+  !values.password ? (errors.password = "Required") : null;
   return errors;
 };
 
@@ -33,7 +33,12 @@ let LoginForm = ({ handleSubmit, login, admin }) => {
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
-      <Field label="username" name="username" component={RenderField} type="text" />
+      <Field
+        label="username"
+        name="username"
+        component={RenderField}
+        type="text"
+      />
       <Field
         label="password"
         name="password"
