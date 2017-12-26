@@ -51,7 +51,7 @@ class HomePage extends Component {
       {
         key: "title",
         label: "Topic",
-        cell: (item, columnKey) => (
+        cell: item => (
           <Link to={`/threads/${item._id}`}>{item.title}</Link>
         )
       },
