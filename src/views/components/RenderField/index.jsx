@@ -6,7 +6,8 @@ import Textarea from "../../elements/Textarea";
 import Text from "../../elements/Text";
 
 const defaultProps = {
-  label: ""
+  label: "",
+  componentClass: ""
 };
 
 const propTypes = {
