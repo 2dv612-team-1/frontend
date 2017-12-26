@@ -4,7 +4,8 @@ import { Redirect, Route } from "react-router-dom";
 import PropTypes from "prop-types";
 
 const propTypes = {
-  component: PropTypes.element.isRequired,
+  component: PropTypes.oneOfType([PropTypes.element, PropTypes.func])
+    .isRequired,
   access: PropTypes.string.isRequired,
   role: PropTypes.string.isRequired
 };
