@@ -4,7 +4,10 @@ import PropTypes from "prop-types";
 import PageContainer from "../components/PageContainer";
 import CategoryForm from "../containers/CategoryForm";
 import Text from "../elements/Text";
-import { categoriesFetchData, categoriesClear } from "../../state/categories/actions";
+import {
+  categoriesFetchData,
+  categoriesClear
+} from "../../state/categories/actions";
 import { API_HOST } from "../../libs/API_CONFIG";
 
 const defaultProps = {
@@ -52,9 +55,7 @@ class CreateCategoryPage extends Component {
         {this.props.successMessage ? (
           <Text success>{this.props.successMessage}</Text>
         ) : null}
-        {this.props.isLoading ? (
-          <Text>Loading...</Text>
-        ) : null}
+        {this.props.isLoading ? <Text>Loading...</Text> : null}
       </PageContainer>
     );
   }
