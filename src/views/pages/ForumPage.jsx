@@ -24,7 +24,9 @@ const defaultProps = {
 };
 
 const propTypes = {
-  loggedInAs: PropTypes.shape({}),
+  loggedInAs: PropTypes.shape({
+    role: PropTypes.string.isRequired
+  }),
   isLoading: PropTypes.bool,
   errorMessage: PropTypes.string,
   forum: PropTypes.arrayOf(PropTypes.shape({})),
