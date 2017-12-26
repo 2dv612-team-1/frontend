@@ -7,7 +7,11 @@ import { API_HOST } from "../../libs/API_CONFIG";
 import Button from "../components/Button";
 import PageContainer from "../components/PageContainer";
 import Text from "../elements/Text";
-import { forumFetchData, forumClear, forumHasError } from "../../state/forum/actions";
+import {
+  forumFetchData,
+  forumClear,
+  forumHasError
+} from "../../state/forum/actions";
 import Search from "../containers/Search";
 
 const defaultProps = {
@@ -45,12 +49,17 @@ class ForumPage extends Component {
     const next = nextProps.searchText;
     if (now !== next) {
       const filtered = this.props.forum.filter(thread =>
-        thread.title.concat(thread.message).toLowerCase().includes(next.toLowerCase())
+        thread.title
+          .concat(thread.message)
+          .toLowerCase()
+          .includes(next.toLowerCase())
       );
       console.log(filtered.length);
       filtered.length !== 0
-        ? (this.setState({ display: filtered }), this.props.showError(false, ""))
-        : (this.props.showError(true, `${next} gave no matches!`), this.setState({ display: this.props.forum}));
+        ? (this.setState({ display: filtered }),
+          this.props.showError(false, ""))
+        : (this.props.showError(true, `${next} gave no matches!`),
+          this.setState({ display: this.props.forum }));
     }
     // if search query is empty => show all threads
     if (next === undefined) {
@@ -64,11 +73,15 @@ class ForumPage extends Component {
 
   render() {
     const columns = [
-      {key: "title", label: "Topic", cell: function( item, columnKey ){
-        return <Link to={`/threads/${item._id}`} >{ item.title }</Link>;
-      }},
-      {key: "name", label: "Name"},
-      {key: "timestamp", label: "Date"}
+      {
+        key: "title",
+        label: "Topic",
+        cell: function(item, columnKey) {
+          return <Link to={`/threads/${item._id}`}>{item.title}</Link>;
+        }
+      },
+      { key: "name", label: "Name" },
+      { key: "timestamp", label: "Date" }
     ];
 
     return (
@@ -81,7 +94,9 @@ class ForumPage extends Component {
             </Link>
           </div>
         ) : null}
-        {this.props.hasError ? <Text error>{this.props.errorMessage}</Text> : null}
+        {this.props.hasError ? (
+          <Text error>{this.props.errorMessage}</Text>
+        ) : null}
         <Text>Forum topics:</Text>
         {this.state.display.length !== 0 ? (
           <Table rows={this.state.display} columns={columns} />
