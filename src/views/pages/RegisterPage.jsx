@@ -15,7 +15,8 @@ const defaultProps = {
 const propTypes = {
   role: PropTypes.string,
   errorMessage: PropTypes.string,
-  successMessage: PropTypes.string
+  successMessage: PropTypes.string,
+  clear: PropTypes.func.isRequired
 };
 
 class RegisterPage extends Component {
