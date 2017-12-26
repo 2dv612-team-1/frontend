@@ -21,7 +21,8 @@ import MaterialContainer from "../components/MaterialContainer";
 import Button from "../components/Button";
 
 const propTypes = {
-  products: PropTypes.arrayOf(PropTypes.shape({})).isRequired
+  products: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  location: PropTypes.string.isRequired
 };
 
 class ProductPage extends Component {
