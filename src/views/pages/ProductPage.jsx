@@ -44,7 +44,7 @@ class ProductPage extends Component {
 
     if (id !== "dfGKJGhhgddddddddddddddd") {
       Client.GET(url).then(response => {
-        console.log(response);
+        
         const product = response.data.product;
         this.setState({ product });
       });
