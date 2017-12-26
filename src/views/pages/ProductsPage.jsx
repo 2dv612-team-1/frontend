@@ -60,7 +60,6 @@ class ProductsPage extends Component {
           .toLowerCase()
           .includes(next.toLowerCase())
       );
-      console.log(filtered.length);
       filtered.length !== 0
         ? (this.setState({ display: filtered }),
           this.props.showError(false, ""))
@@ -68,7 +67,6 @@ class ProductsPage extends Component {
           this.setState({ display: this.props.products }));
     }
     if (next === undefined) {
-      console.log("empty search comming in");
       this.setState({ display: [] });
     }
   }
