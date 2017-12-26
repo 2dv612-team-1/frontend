@@ -20,12 +20,11 @@ const propTypes = {
   isLoading: PropTypes.bool,
   errorMessage: PropTypes.string,
   // thread: PropTypes.shape({}),
-  fetchData: PropTypes.func.isRequired,
+  fetchData: PropTypes.func.isRequired
   // clear: PropTypes.func.isRequired
 };
 
 class ThreadPage extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -35,25 +34,33 @@ class ThreadPage extends Component {
     };
   }
 
-  handleReplyChange = ({target:{value}}) => {
+  handleReplyChange = ({ target: { value } }) => {
     this.setState({
       replyText: value
     });
-  }
+  };
 
   submitReply = () => {
-    let {location} = this.props;
+    let { location } = this.props;
     let threadId = location.slice(-24);
-    this.props.postReply(`${API_HOST}/threads/${threadId}/replies`, {message:this.state.replyText, jwt: Auth.getToken()}, `${API_HOST}/threads/${threadId}`);
-    this.setState({ replyText: ""});
-  }
+    this.props.postReply(
+      `${API_HOST}/threads/${threadId}/replies`,
+      { message: this.state.replyText, jwt: Auth.getToken() },
+      `${API_HOST}/threads/${threadId}`
+    );
+    this.setState({ replyText: "" });
+  };
 
   componentDidMount() {
-    let {thread, location, fetchData} = this.props;
+    let { thread, location, fetchData } = this.props;
     let threadId = location.slice(-24);
-    !this.state.threadId ? this.setState({threadId: location.slice(-24)}) : null;
+    !this.state.threadId
+      ? this.setState({ threadId: location.slice(-24) })
+      : null;
 
-    this.state.threadState.length < 1 ? this.props.fetchData(`${API_HOST}/threads/${threadId}`) : null;
+    this.state.threadState.length < 1
+      ? this.props.fetchData(`${API_HOST}/threads/${threadId}`)
+      : null;
     !thread.length < 1 ? console.log(thread) : null;
     this.state.threadId ? console.log(this.state.threadId) : null;
   }
@@ -65,7 +72,9 @@ class ThreadPage extends Component {
   }
 
   render() {
-    const replies = this.state.threadState.replies ? this.state.threadState.replies : [];
+    const replies = this.state.threadState.replies
+      ? this.state.threadState.replies
+      : [];
     return (
       <PageContainer title={this.state.threadState.title}>
         <Text>{this.state.threadState.message}</Text>
@@ -89,7 +98,11 @@ class ThreadPage extends Component {
         )}
         {this.props.isLoading ? <Text>Loading...</Text> : null}
         {this.props.hasError ? <Text error>Could not load data</Text> : null}
-        <TextInput label="Reply" value={this.state.replyText} onChange={this.handleReplyChange} />
+        <TextInput
+          label="Reply"
+          value={this.state.replyText}
+          onChange={this.handleReplyChange}
+        />
         <input onClick={this.submitReply} type="button" value="Reply" />
       </PageContainer>
     );
