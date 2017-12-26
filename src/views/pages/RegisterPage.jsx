@@ -22,12 +22,10 @@ const propTypes = {
 class RegisterPage extends Component {
   componentWillMount() {
     this.props.clear();
-    console.log("clear register");
   }
 
   componentWillUnmount() {
     this.props.clear();
-    console.log("destroy register");
   }
 
   render() {
