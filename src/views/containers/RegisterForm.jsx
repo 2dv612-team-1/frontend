@@ -30,8 +30,7 @@ let RegisterForm = ({ loggedInAs, handleSubmit, register, role }) => {
     let url = `${API_HOST}/consumers`;
     switch (role) {
       case "company":
-        const company = loggedInAs.username;
-        url = `${API_HOST}/companies/${company}/representatives`;
+        url = `${API_HOST}/companies/${loggedInAs.username}/representatives`;
         break;
       case "admin":
         url = `${API_HOST}/companies`;
