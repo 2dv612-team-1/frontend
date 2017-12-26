@@ -16,7 +16,8 @@ const propTypes = {
   fetchData: PropTypes.func.isRequired,
   isLoading: PropTypes.bool.isRequired,
   hasError: PropTypes.bool.isRequired,
-  companies: PropTypes.arrayOf(PropTypes.shape({})).isRequired
+  companies: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  clear: PropTypes.func.isRequired
 };
 
 class CompaniesPage extends Component {
