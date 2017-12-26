@@ -60,7 +60,9 @@ class ProductPage extends Component {
       Auth.getToken()
     )}/materials/${event.target.getAttribute("name")}/annotations`;
     Client.GET(url).then(noteContent => {
-      noteContent = noteContent.data ? noteContent.data.annotations.annotations : "";
+      noteContent = noteContent.data
+        ? noteContent.data.annotations.annotations
+        : "";
       this.setState({
         showNote: true,
         noteContent
@@ -119,34 +121,39 @@ class ProductPage extends Component {
   render() {
     return (
       <PageContainer title={this.state.product.name}>
-        <TableText>Name:</TableText><Text>{this.state.product.name}</Text>
-        <TableText>Category:</TableText><Text>{this.state.product.category}</Text>
-        <TableText>Created By:</TableText><Text>{this.state.product.createdBy}</Text>
-        <TableText>Description:</TableText><Text>{this.state.product.description}</Text>
-        <TableText>Producer:</TableText><Text>{this.state.product.producer}</Text>
+        <TableText>Name:</TableText>
+        <Text>{this.state.product.name}</Text>
+        <TableText>Category:</TableText>
+        <Text>{this.state.product.category}</Text>
+        <TableText>Created By:</TableText>
+        <Text>{this.state.product.createdBy}</Text>
+        <TableText>Description:</TableText>
+        <Text>{this.state.product.description}</Text>
+        <TableText>Producer:</TableText>
+        <Text>{this.state.product.producer}</Text>
         <TableText>Files:</TableText>
         <FilesContainer>
           {this.state.product.files
             ? this.state.product.files.map(file => (
-              <MaterialContainer key={file.name}>
-                <Link
-                  href={`${API_HOST}/materials/${
-                    this.state.product.producer
-                  }/${this.props.location.slice(-24)}/${file.filename}`}
-                  name={file.filename}
-                  newWindow
-                />
-                <RatingWidget
-                  ratingFor={file.material_id}
-                  onClick={this.handleChange}
-                  currentRating={file.average}
-                  name={file.material_id}
-                />
-                <NotesIcon
-                  id={file.material_id}
-                  onClick={this.handleNoteClick}
-                />
-              </MaterialContainer>
+                <MaterialContainer key={file.name}>
+                  <Link
+                    href={`${API_HOST}/materials/${
+                      this.state.product.producer
+                    }/${this.props.location.slice(-24)}/${file.filename}`}
+                    name={file.filename}
+                    newWindow
+                  />
+                  <RatingWidget
+                    ratingFor={file.material_id}
+                    onClick={this.handleChange}
+                    currentRating={file.average}
+                    name={file.material_id}
+                  />
+                  <NotesIcon
+                    id={file.material_id}
+                    onClick={this.handleNoteClick}
+                  />
+                </MaterialContainer>
               ))
             : null}
           {this.state.showNote ? (
