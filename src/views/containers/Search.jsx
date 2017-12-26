@@ -18,9 +18,13 @@ const propTypes = {
 let Search = ({ handleSubmit, searchProducts, searchForum, target }) => {
   const onSubmit = values => {
     if (target === "products") {
-      values.search !== undefined ? searchProducts(values.search) : searchProducts("");
+      values.search !== undefined
+        ? searchProducts(values.search)
+        : searchProducts("");
     } else if (target === "forum") {
-      values.search !== undefined ? searchForum(values.search) : searchForum("");
+      values.search !== undefined
+        ? searchForum(values.search)
+        : searchForum("");
     }
   };
   return (
