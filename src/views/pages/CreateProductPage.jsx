@@ -60,7 +60,7 @@ class CreateProductPage extends Component {
   };
 
   render() {
-    const cat = this.props.categories.map(cat => cat.category);
+    const cat = this.props.categories.map(category => category.category);
     // cat.splice(0, 0, "choose");
     return (
       <PageContainer title="create product">
