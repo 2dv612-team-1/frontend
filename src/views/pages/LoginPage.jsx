@@ -25,9 +25,7 @@ class LoginPage extends Component {
   componentWillReceiveProps(nextProps) {
     const now = this.props.admin;
     const next = nextProps.admin;
-    now !== next
-      ? (this.props.reload(), this.props.clear())
-      : null;
+    now !== next ? (this.props.reload(), this.props.clear()) : null;
   }
 
   componentWillUnmount() {
