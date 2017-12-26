@@ -4,7 +4,13 @@ import Input from "../../elements/Input";
 import Textarea from "../../elements/Textarea";
 import Text from "../../elements/Text";
 
-const RenderField = ({ input, label, type, componentClass, meta: { touched, error } }) => (
+const RenderField = ({
+  input,
+  label,
+  type,
+  componentClass,
+  meta: { touched, error }
+}) => (
   <div>
     <Label>{label}</Label>
     <div>
@@ -13,7 +19,12 @@ const RenderField = ({ input, label, type, componentClass, meta: { touched, erro
       ) : (
         <Input {...input} placeholder={label} type={type} />
       )}
-      {touched && (error && <Text error center>{error}</Text>)}
+      {touched &&
+        (error && (
+          <Text error center>
+            {error}
+          </Text>
+        ))}
     </div>
   </div>
 );
