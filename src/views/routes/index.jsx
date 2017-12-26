@@ -27,36 +27,64 @@ const Routes = () => (
         path="/adm"
         render={props => <LoginPage admin="true" {...props} />}
       />
-    </Switch>
-    <Switch>
-      <AuthRoute access="admin">
-        <Route path="/companies" component={CompaniesPage} />
-        <Route exact path="/categories" component={CategoriesPage} />
-        <Route path="/categories/new" component={CreateCategoryPage} />
-      </AuthRoute>
-    </Switch>
-    <Switch>
-      <AuthRoute access="company">
-        <Route path="/representatives" component={RepresentativesPage} />
-      </AuthRoute>
-    </Switch>
-    <Switch>
-      <AuthRoute access="representative">
-        <Route exact path="/products" component={ProductsPage} />
-        <Route path="/products/create" component={CreateProductsPage} />
-        <Route path="/product/:id" component={ProductPage} />
-        <Route path="/forum" component={ForumPage} />
-        <Route path="/threads/:id" component={ThreadPage} />
-      </AuthRoute>
-    </Switch>
-    <Switch>
-      <AuthRoute access="consumer">
-        <Route path="/products" component={ProductsPage} />
-        <Route path="/product/:id" component={ProductPage} />
-        <Route path="/forum" component={ForumPage} />
-        <Route exact path="/thread/new" component={CreateThreadPage} />
-        <Route exact path="/threads/:id" component={ThreadPage} />
-      </AuthRoute>
+      <AuthRoute access="admin" path="/companies" component={CompaniesPage} />
+      <AuthRoute
+        access="admin"
+        exact
+        path="/categories"
+        component={CategoriesPage}
+      />
+      <AuthRoute
+        access="admin"
+        path="/categories/new"
+        component={CreateCategoryPage}
+      />
+      <AuthRoute
+        access="company"
+        path="/representatives"
+        component={RepresentativesPage}
+      />
+      <AuthRoute
+        access="representative"
+        exact
+        path="/products"
+        component={ProductsPage}
+      />
+      <AuthRoute
+        access="representative"
+        path="/products/create"
+        component={CreateProductsPage}
+      />
+      <AuthRoute
+        access="representative"
+        path="/product/:id"
+        component={ProductPage}
+      />
+      <AuthRoute access="representative" path="/forum" component={ForumPage} />
+      <AuthRoute
+        access="representative"
+        path="/threads/:id"
+        component={ThreadPage}
+      />
+      <AuthRoute access="consumer" path="/products" component={ProductsPage} />
+      <AuthRoute
+        access="consumer"
+        path="/product/:id"
+        component={ProductPage}
+      />
+      <AuthRoute access="consumer" path="/forum" component={ForumPage} />
+      <AuthRoute
+        access="consumer"
+        exact
+        path="/thread/new"
+        component={CreateThreadPage}
+      />
+      <AuthRoute
+        access="consumer"
+        exact
+        path="/threads/:id"
+        component={ThreadPage}
+      />
     </Switch>
   </div>
 );
