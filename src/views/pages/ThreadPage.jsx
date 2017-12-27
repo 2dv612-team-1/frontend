@@ -16,7 +16,7 @@ const defaultProps = {
 const propTypes = {
   isLoading: PropTypes.bool,
   fetchData: PropTypes.func.isRequired,
-  thread: PropTypes.shape({}).isRequired,
+  thread: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   location: PropTypes.string.isRequired,
   postReply: PropTypes.func.isRequired,
   hasError: PropTypes.bool.isRequired
