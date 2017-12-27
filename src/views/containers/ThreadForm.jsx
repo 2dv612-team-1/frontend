@@ -19,10 +19,10 @@ const propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   register: PropTypes.func.isRequired,
   categories: PropTypes.arrayOf(PropTypes.shape({})),
-  loggedInAs: PropTypes.string.isRequired,
-  dispatchSubs: PropTypes.string.isRequired,
-  showError: PropTypes.string.isRequired,
-  subcategories: PropTypes.string.isRequired
+  loggedInAs: PropTypes.shape({}).isRequired,
+  dispatchSubs: PropTypes.func.isRequired,
+  showError: PropTypes.func.isRequired,
+  subcategories: PropTypes.arrayOf(PropTypes.string).isRequired
 };
 
 const validate = values => {
