@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 const propTypes = {
   component: PropTypes.oneOfType([PropTypes.element, PropTypes.func])
     .isRequired,
-  access: PropTypes.string.isRequired,
+  access: PropTypes.arrayOf(PropTypes.string).isRequired,
   role: PropTypes.string.isRequired
 };
 
