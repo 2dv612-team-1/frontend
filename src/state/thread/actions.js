@@ -20,12 +20,10 @@ export const getThread = url => dispatch => {
     .then(data => {
       dispatch(threadFetchDataSuccess(data.data));
       dispatch(threadIsLoading(false));
-      console.log(data);
     })
     .catch(err => {
       dispatch(threadIsLoading(false));
       dispatch(threadHasError(true));
-      console.log(err);
     });
 };
 
