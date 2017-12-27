@@ -61,7 +61,6 @@ export const uploadCreatedProduct = (url, obj) => async dispatch => {
     body
   })
     .then(data => {
-      console.log(data);
       if (data.status !== 201) {
         dispatch(productsHasError(true, data.message));
         dispatch(productsIsLoading(false));
