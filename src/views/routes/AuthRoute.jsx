@@ -14,7 +14,11 @@ const AuthRoute = ({ component: Component, access, role, ...rest }) => (
   <Route
     {...rest}
     render={props =>
-      role === access ? <Component {...props} /> : <Redirect to="/login" />
+      access.includes(role) ? (
+        <Component {...props} />
+      ) : (
+        <Redirect to="/login" />
+      )
     }
   />
 );

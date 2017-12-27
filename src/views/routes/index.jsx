@@ -29,61 +29,49 @@ const Routes = () => (
       />
       <AuthRoute access="admin" path="/companies" component={CompaniesPage} />
       <AuthRoute
-        access="admin"
+        access={["admin"]}
         exact
         path="/categories"
         component={CategoriesPage}
       />
       <AuthRoute
-        access="admin"
+        access={["admin"]}
         path="/categories/new"
         component={CreateCategoryPage}
       />
       <AuthRoute
-        access="company"
+        access={["company"]}
         path="/representatives"
         component={RepresentativesPage}
       />
       <AuthRoute
-        access="representative"
+        access={["representative", "consumer"]}
         exact
         path="/products"
         component={ProductsPage}
       />
       <AuthRoute
-        access="representative"
+        access={["representative"]}
         path="/products/create"
         component={CreateProductsPage}
       />
       <AuthRoute
-        access="representative"
+        access={["representative", "consumer"]}
         path="/product/:id"
         component={ProductPage}
       />
       <AuthRoute access="representative" path="/forum" component={ForumPage} />
       <AuthRoute
-        access="representative"
+        access={["representative", "consumer"]}
         path="/threads/:id"
         component={ThreadPage}
-      />
-      <AuthRoute access="consumer" path="/products" component={ProductsPage} />
-      <AuthRoute
-        access="consumer"
-        path="/product/:id"
-        component={ProductPage}
       />
       <AuthRoute access="consumer" path="/forum" component={ForumPage} />
       <AuthRoute
-        access="consumer"
+        access={["consumer"]}
         exact
         path="/thread/new"
         component={CreateThreadPage}
-      />
-      <AuthRoute
-        access="consumer"
-        exact
-        path="/threads/:id"
-        component={ThreadPage}
       />
     </Switch>
   </div>
