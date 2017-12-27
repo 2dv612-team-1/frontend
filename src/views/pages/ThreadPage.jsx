@@ -16,7 +16,7 @@ const defaultProps = {
 const propTypes = {
   isLoading: PropTypes.bool,
   fetchData: PropTypes.func.isRequired,
-  thread: PropTypes.string.isRequired,
+  thread: PropTypes.shape({}).isRequired,
   location: PropTypes.string.isRequired,
   postReply: PropTypes.func.isRequired,
   hasError: PropTypes.bool.isRequired
@@ -77,16 +77,16 @@ class ThreadPage extends Component {
         {replies.map(
           reply =>
             reply.role === "consumer" ? (
-              <DivBg>
+              <DivBg key={reply.username}>
                 <Text bold>
-                  {reply.role}: {reply.username} wrote on: {reply.timestamp}
+                  {reply.role}: {reply.timestamp} wrote on: {reply.timestamp}
                 </Text>
                 <Text>{reply.message}</Text>
               </DivBg>
             ) : (
-              <DivBg pop>
+              <DivBg pop key={reply.username}>
                 <Text bold>
-                  {reply.role}: {reply.username} wrote on: {reply.timestamp}
+                  {reply.role}: {eply.timestamp}} wrote on: {reply.timestamp}
                 </Text>
                 <Text>{reply.message}</Text>
               </DivBg>
