@@ -60,13 +60,16 @@ const Routes = () => (
         path="/product/:id"
         component={ProductPage}
       />
-      <AuthRoute access="representative" path="/forum" component={ForumPage} />
+      <AuthRoute
+        access={["representative", "consumer"]}
+        path="/forum"
+        component={ForumPage}
+      />
       <AuthRoute
         access={["representative", "consumer"]}
         path="/threads/:id"
         component={ThreadPage}
       />
-      <AuthRoute access="consumer" path="/forum" component={ForumPage} />
       <AuthRoute
         access={["consumer"]}
         exact
