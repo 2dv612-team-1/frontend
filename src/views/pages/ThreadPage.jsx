@@ -10,7 +10,8 @@ import { API_HOST } from "../../libs/API_CONFIG";
 import { getThread, postReply } from "../../state/thread/actions";
 
 const defaultProps = {
-  isLoading: false
+  isLoading: false,
+  hasError: false
 };
 
 const propTypes = {
@@ -19,7 +20,7 @@ const propTypes = {
   thread: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   location: PropTypes.string.isRequired,
   postReply: PropTypes.func.isRequired,
-  hasError: PropTypes.bool.isRequired
+  hasError: PropTypes.bool
 };
 
 class ThreadPage extends Component {
