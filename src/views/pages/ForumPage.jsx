@@ -33,7 +33,7 @@ const propTypes = {
   fetchData: PropTypes.func.isRequired,
   searchText: PropTypes.string,
   clear: PropTypes.func.isRequired,
-  hasError: PropTypes.bool.isRequired,
+  hasError: PropTypes.bool,
   showError: PropTypes.func.isRequired
 };
 
