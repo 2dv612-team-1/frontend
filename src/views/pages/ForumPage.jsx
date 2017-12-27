@@ -33,8 +33,8 @@ const propTypes = {
   fetchData: PropTypes.func.isRequired,
   searchText: PropTypes.string,
   clear: PropTypes.func.isRequired,
-  hasError: PropTypes.bool,
-  showError: PropTypes.bool.isRequired
+  hasError: PropTypes.bool.isRequired,
+  showError: PropTypes.func.isRequired
 };
 
 class ForumPage extends Component {
