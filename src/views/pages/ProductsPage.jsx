@@ -91,7 +91,7 @@ class ProductsPage extends Component {
         <Text>All products:</Text>
         {this.state.display.length !== 0
           ? this.state.display.map(product => (
-              <div>
+              <div key={product._id}>
                 <Link to={`/product/${product._id}`}>
                   {product.name.slice(0, 20)}
                 </Link>
@@ -99,7 +99,7 @@ class ProductsPage extends Component {
               </div>
             ))
           : this.props.products.map(product => (
-              <div>
+              <div key={product._id}>
                 <Link to={`/product/${product._id}`}>
                   {product.name.slice(0, 20)}
                 </Link>
