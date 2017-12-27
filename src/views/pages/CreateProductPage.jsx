@@ -20,7 +20,8 @@ const defaultProps = {
   isLoading: false,
   hasError: false,
   errorMessage: "",
-  successMessage: ""
+  successMessage: "",
+  handleSubmit: () => {}
 };
 
 const propTypes = {
@@ -30,9 +31,9 @@ const propTypes = {
   successMessage: PropTypes.string,
   fetchData: PropTypes.func.isRequired,
   createProduct: PropTypes.func.isRequired,
-  categories: PropTypes.string.isRequired,
-  handleSubmit: PropTypes.func.isRequired,
-  subcategories: PropTypes.string.isRequired,
+  categories: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  handleSubmit: PropTypes.func,
+  subcategories: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   dispatchSubs: PropTypes.func.isRequired
 };
 
