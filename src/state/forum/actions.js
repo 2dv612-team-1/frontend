@@ -49,7 +49,6 @@ export const forumPostData = (urlPost, fields, urlFetch) => dispatch => {
   dispatch(forumClear());
   Client.POST(urlPost, fields)
     .then(data => {
-      console.log(data);
       if (data.status !== 201) {
         dispatch(forumHasError(true, data.message));
         dispatch(forumIsLoading(false));
