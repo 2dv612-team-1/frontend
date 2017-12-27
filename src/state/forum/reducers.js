@@ -47,7 +47,7 @@ const forumPostDataSuccess = (state = false, action) => {
   }
 };
 
-const forumSearchText = (state = false, action) => {
+const forumSearchText = (state = "", action) => {
   switch (action.type) {
     case types.FORUM_SEARCH:
       return action.text;

@@ -33,7 +33,7 @@ const propTypes = {
   createProduct: PropTypes.func.isRequired,
   categories: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   handleSubmit: PropTypes.func,
-  subcategories: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  subcategories: PropTypes.arrayOf(PropTypes.string).isRequired,
   dispatchSubs: PropTypes.func.isRequired
 };
 
