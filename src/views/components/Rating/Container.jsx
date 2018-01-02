@@ -1,7 +1,9 @@
 import styled from "styled-components";
 
 const Container = styled.div`
-  text-align: center;
+  margin-top:-10px;
+  margin-bottom: 5px;
+  flex-basis: 50%;
 `;
 
 export default Container;
