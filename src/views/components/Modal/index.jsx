@@ -7,7 +7,8 @@ const Modal = styled.div`
   border-radius: 3px;
   margin: 20px auto;
   display:flex;
-  flex-direction:column;
+  flex-wrap: wrap;
+  column-count: 2;
 `;
 
 export default Modal;
