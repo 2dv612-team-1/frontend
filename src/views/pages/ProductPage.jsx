@@ -20,6 +20,7 @@ import UploadContainer from "../components/UploadContainer";
 import FilesContainer from "../components/FilesContainer";
 import MaterialContainer from "../components/MaterialContainer";
 import Button from "../components/Button";
+import Flexdiv from "../components/Flexdiv";
 const propTypes = {
   id: PropTypes.string.isRequired,
   products: PropTypes.arrayOf(PropTypes.shape({})).isRequired
@@ -136,19 +137,18 @@ class ProductPage extends Component {
                   name={file.filename}
                   newWindow
                 />
-                <Text>Rating:</Text>
-                <RatingWidget
-                  ratingFor={file.material_id}
-                  onClick={this.handleChange}
-                  currentRating={file.average}
-                  name={file.material_id}
-                  size={25}
-                />
-                <Text>My notes:</Text>
-                <NotesIcon
-                  id={file.material_id}
-                  onClick={this.handleNoteClick}
-                />
+                <Flexdiv>
+                  <RatingWidget
+                    ratingFor={file.material_id}
+                    onClick={this.handleChange}
+                    currentRating={file.average}
+                    name={file.material_id}
+                  />
+                  <NotesIcon
+                    id={file.material_id}
+                    onClick={this.handleNoteClick}
+                  />
+                </Flexdiv>
               </MaterialContainer>
               ))
             : null}
