@@ -19,11 +19,7 @@ import UploadContainer from "../components/UploadContainer";
 import FilesContainer from "../components/FilesContainer";
 import MaterialContainer from "../components/MaterialContainer";
 import Button from "../components/Button";
-<<<<<<< HEAD
-
-=======
 import Flexdiv from "../components/Flexdiv";
->>>>>>> styling
 const propTypes = {
   products: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   location: PropTypes.string.isRequired,
