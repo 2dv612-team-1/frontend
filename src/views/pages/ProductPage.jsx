@@ -136,12 +136,15 @@ class ProductPage extends Component {
                   name={file.filename}
                   newWindow
                 />
+                <Text>Rating:</Text>
                 <RatingWidget
                   ratingFor={file.material_id}
                   onClick={this.handleChange}
                   currentRating={file.average}
                   name={file.material_id}
+                  size={25}
                 />
+                <Text>My notes:</Text>
                 <NotesIcon
                   id={file.material_id}
                   onClick={this.handleNoteClick}
