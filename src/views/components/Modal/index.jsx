@@ -6,6 +6,9 @@ const Modal = styled.div`
   padding: 35px;
   border-radius: 3px;
   margin: 20px auto;
+  display:flex;
+  flex-wrap: wrap;
+  column-count: 2;
 `;
 
 export default Modal;

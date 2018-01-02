@@ -19,7 +19,11 @@ import UploadContainer from "../components/UploadContainer";
 import FilesContainer from "../components/FilesContainer";
 import MaterialContainer from "../components/MaterialContainer";
 import Button from "../components/Button";
+<<<<<<< HEAD
 
+=======
+import Flexdiv from "../components/Flexdiv";
+>>>>>>> styling
 const propTypes = {
   products: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   location: PropTypes.string.isRequired,
@@ -132,6 +136,7 @@ class ProductPage extends Component {
         <FilesContainer>
           {this.state.product.files
             ? this.state.product.files.map(file => (
+<<<<<<< HEAD
                 <MaterialContainer key={file.name}>
                   <Link
                     href={`${API_HOST}/materials/${
@@ -140,6 +145,17 @@ class ProductPage extends Component {
                     name={file.filename}
                     newWindow
                   />
+=======
+              <MaterialContainer key={file.name}>
+                <Link
+                  href={`${API_HOST}/materials/${
+                    this.state.product.producer
+                  }/${this.props.location.slice(-24)}/${file.filename}`}
+                  name={file.filename}
+                  newWindow
+                />
+                <Flexdiv>
+>>>>>>> styling
                   <RatingWidget
                     ratingFor={file.material_id}
                     onClick={this.handleChange}
@@ -150,7 +166,12 @@ class ProductPage extends Component {
                     id={file.material_id}
                     onClick={this.handleNoteClick}
                   />
+<<<<<<< HEAD
                 </MaterialContainer>
+=======
+                </Flexdiv>
+              </MaterialContainer>
+>>>>>>> styling
               ))
             : null}
           {this.state.showNote ? (

@@ -9,6 +9,7 @@ const PageTitle = styled.h1`
   font-family: ${fonts.secondary};
   text-align: ${props => (props.center ? "center" : "left")};
   text-transform: capitalize;
+  flex-basis: 100%;
 `;
 
 export default PageTitle;
