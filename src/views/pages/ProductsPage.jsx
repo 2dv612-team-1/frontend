@@ -9,6 +9,7 @@ import { productsFetchData, productsHasError, productsClear } from "../../state/
 import Text from "../elements/Text";
 import PageContainer from "../components/PageContainer";
 import HeadingText from "../components/HeadingText";
+import Div from "../components/Div";
 import Jwt from "../../libs/Jwt";
 import Search from "../containers/ProductsSearch";
 
@@ -82,16 +83,16 @@ class ProductsPage extends Component {
         <HeadingText>All products:</HeadingText>
         {this.state.display.length !== 0
           ? this.state.display.map(product => (
-              <div>
-                <Link to={`/product/${product._id}`}>{product.name.slice(0, 20)}</Link>
-                <br />
-              </div>
+            <Div>
+              <Link to={`/product/${product._id}`}>{product.name.slice(0, 20)}</Link>
+              <br />
+            </Div>
             ))
           : this.props.products.map(product => (
-              <div>
-                <Link to={`/product/${product._id}`}>{product.name.slice(0, 20)}</Link>
-                <br />
-              </div>
+            <Div>
+              <Link to={`/product/${product._id}`}>{product.name.slice(0, 20)}</Link>
+              <br />
+            </Div>
             ))}
       </PageContainer>
     );
