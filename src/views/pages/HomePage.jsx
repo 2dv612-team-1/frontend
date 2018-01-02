@@ -26,16 +26,17 @@ const propTypes = {
 };
 
 class HomePage extends Component {
-  state = {
-    myThreads: []
-  };
+  // 2state = {myThreads: []};
 
   componentDidMount() {
-    this.props.loggedInAs.username !== undefined
-      ? this.props.fetchData(`${API_HOST}/threads`)
+    console.log(this.props.loggedInAs.role);
+    // GET - /consumers/<username>/threads
+    this.props.loggedInAs.role === "consumer"
+      ? this.props.fetchData(`${API_HOST}/consumers/${this.props.loggedInAs.username}/threads`)
       : null;
   }
 
+  /*
   componentWillReceiveProps(nextProps) {
     const now = this.props.forum;
     const next = nextProps.forum;
@@ -48,8 +49,11 @@ class HomePage extends Component {
       }
     }
   }
+  */
 
   render() {
+    console.log(this.props.forum);
+
     const columns = [
       {
         key: "title",
@@ -70,7 +74,7 @@ class HomePage extends Component {
         {this.props.loggedInAs.role === "consumer" ? (
           <div>
             <Text>My threads:</Text>
-            <Table rows={this.state.myThreads} columns={columns} />
+            <Table rows={this.props.forum} columns={columns} />
           </div>
         ) : null}
       </PageContainer>
