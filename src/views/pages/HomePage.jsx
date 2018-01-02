@@ -29,7 +29,6 @@ class HomePage extends Component {
   // 2state = {myThreads: []};
 
   componentDidMount() {
-    console.log(this.props.loggedInAs.role);
     // GET - /consumers/<username>/threads
     this.props.loggedInAs.role === "consumer"
       ? this.props.fetchData(`${API_HOST}/consumers/${this.props.loggedInAs.username}/threads`)
@@ -52,8 +51,6 @@ class HomePage extends Component {
   */
 
   render() {
-    console.log(this.props.forum);
-
     const columns = [
       {
         key: "title",
