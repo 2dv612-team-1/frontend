@@ -8,6 +8,7 @@ import { API_HOST } from "../../libs/API_CONFIG";
 import { productsFetchData, productsHasError, productsClear } from "../../state/products/actions";
 import Text from "../elements/Text";
 import PageContainer from "../components/PageContainer";
+import HeadingText from "../components/HeadingText";
 import Jwt from "../../libs/Jwt";
 import Search from "../containers/ProductsSearch";
 
@@ -78,7 +79,7 @@ class ProductsPage extends Component {
           <Search />
         )}
         {this.props.hasError ? <Text error>{this.props.error}</Text> : null}
-        <Text>All products:</Text>
+        <HeadingText>All products:</HeadingText>
         {this.state.display.length !== 0
           ? this.state.display.map(product => (
               <div>
