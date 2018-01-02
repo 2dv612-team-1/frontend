@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Rating from "react-rating";
+import Rating from "react-stars";
 import Container from "./Container";
 
 const propTypes = {
@@ -12,10 +12,12 @@ const propTypes = {
 const RatingWidget = ({ onClick, currentRating, name }) => (
   <Container>
     <Rating
-      initialRate={currentRating}
+      value={currentRating}
       name={name}
       fractions={2}
       onClick={(rate, event) => onClick(rate, event, name)}
+      size={30}
+      color2={'#3f51b5'}
     />
   </Container>
 );
