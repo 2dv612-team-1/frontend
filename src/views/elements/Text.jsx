@@ -6,6 +6,7 @@ const Text = styled.p`
   color: ${props => (props.error ? "red" : props.success ? "green" : "black")};
   font-family: ${fonts.primary};
   margin-top: 0px;
+  flex-basis: 50%;
 `;
 
 export default Text;
