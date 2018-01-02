@@ -33,7 +33,7 @@ export const forumFetchData = url => dispatch => {
   dispatch(forumIsLoading(true));
   Client.GET(url)
     .then(data => {
-      // console.log(data);
+      console.log(data);
       dispatch(forumFetchDataSuccess(data.message));
       dispatch(forumIsLoading(false));
     })
