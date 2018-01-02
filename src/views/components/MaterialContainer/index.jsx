@@ -1,9 +1,7 @@
 import styled from "styled-components";
 
 const MaterialContainer = styled.div`
-  clear:left;
-  float:left;
-  width:100%;
+  text-align: center;
 `;
 
 export default MaterialContainer;
