@@ -11,6 +11,8 @@ import {
 } from "../../state/products/actions";
 import Text from "../elements/Text";
 import PageContainer from "../components/PageContainer";
+import HeadingText from "../components/HeadingText";
+import Div from "../components/Div";
 import Jwt from "../../libs/Jwt";
 import Search from "../containers/Search";
 
@@ -88,23 +90,19 @@ class ProductsPage extends Component {
           <Search target="products" />
         )}
         {this.props.hasError ? <Text error>{this.props.error}</Text> : null}
-        <Text>All products:</Text>
+        <HeadingText>All products:</HeadingText>
         {this.state.display.length !== 0
           ? this.state.display.map(product => (
-              <div key={product._id}>
-                <Link to={`/product/${product._id}`}>
-                  {product.name.slice(0, 20)}
-                </Link>
-                <br />
-              </div>
+            <Div>
+              <Link to={`/product/${product._id}`}>{product.name.slice(0, 20)}</Link>
+              <br />
+            </Div>
             ))
           : this.props.products.map(product => (
-              <div key={product._id}>
-                <Link to={`/product/${product._id}`}>
-                  {product.name.slice(0, 20)}
-                </Link>
-                <br />
-              </div>
+            <Div>
+              <Link to={`/product/${product._id}`}>{product.name.slice(0, 20)}</Link>
+              <br />
+            </Div>
             ))}
       </PageContainer>
     );
