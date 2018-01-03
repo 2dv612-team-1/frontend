@@ -26,16 +26,16 @@ const propTypes = {
 };
 
 class HomePage extends Component {
-  state = {
-    myThreads: []
-  };
+  // 2state = {myThreads: []};
 
   componentDidMount() {
-    this.props.loggedInAs.username !== undefined
-      ? this.props.fetchData(`${API_HOST}/threads`)
+    // GET - /consumers/<username>/threads
+    this.props.loggedInAs.role === "consumer"
+      ? this.props.fetchData(`${API_HOST}/consumers/${this.props.loggedInAs.username}/threads`)
       : null;
   }
 
+  /*
   componentWillReceiveProps(nextProps) {
     const now = this.props.forum;
     const next = nextProps.forum;
@@ -48,16 +48,58 @@ class HomePage extends Component {
       }
     }
   }
+  */
 
   render() {
     const columns = [
       {
         key: "title",
         label: "Topic",
-        cell: item => <Link to={`/threads/${item._id}`}>{item.title}</Link> // eslint-disable-line no-underscore-dangle
+        cell: item => (
+          <span
+            style={{
+              background: "white",
+              width: "300px",
+              display: "block",
+              padding: "10px"
+            }}
+          >
+            <Link to={`/threads/${item._id}`}>{item.title}</Link>
+          </span>
+        )
       },
-      { key: "name", label: "Name" },
-      { key: "timestamp", label: "Date" }
+      {
+        key: "name",
+        label: "Name",
+        cell: item => (
+          <span
+            style={{
+              background: "white",
+              width: "150px",
+              display: "block",
+              padding: "10px"
+            }}
+          >
+            {item.name}
+          </span>
+        )
+      },
+      {
+        key: "timestamp",
+        label: "Date",
+        cell: item => (
+          <span
+            style={{
+              background: "white",
+              width: "150px",
+              display: "block",
+              padding: "10px"
+            }}
+          >
+            {item.timestamp.substr(0, item.timestamp.indexOf(" "))}
+          </span>
+        )
+      }
     ];
 
     const greet =
@@ -70,7 +112,7 @@ class HomePage extends Component {
         {this.props.loggedInAs.role === "consumer" ? (
           <div>
             <Text>My threads:</Text>
-            <Table rows={this.state.myThreads} columns={columns} />
+            <Table rows={this.props.forum} columns={columns} />
           </div>
         ) : null}
       </PageContainer>
