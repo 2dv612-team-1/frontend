@@ -90,7 +90,7 @@ class ThreadPage extends Component {
             ) : (
               <DivBg pop key={reply.username}>
                 <Text bold>
-                  {reply.role}: {eply.timestamp}} wrote on: {reply.timestamp}
+                  {reply.role}: {reply.timestamp} wrote on: {reply.timestamp}
                 </Text>
                 <Text>{reply.message}</Text>
               </DivBg>
