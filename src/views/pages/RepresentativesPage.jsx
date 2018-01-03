@@ -41,7 +41,7 @@ class RepresentativesPage extends Component {
         </Link>
         <Text>All representatives:</Text>
         {this.props.representatives ? (
-          <List list={this.props.representatives} />
+          <List list={this.props.representatives} type="username" />
         ) : null}
         {this.props.isLoading ? <Text>Loading...</Text> : null}
         {this.props.hasError ? <Text error>Could not load data</Text> : null}
