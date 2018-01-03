@@ -26,29 +26,14 @@ const propTypes = {
 };
 
 class HomePage extends Component {
-  // 2state = {myThreads: []};
-
   componentDidMount() {
     // GET - /consumers/<username>/threads
     this.props.loggedInAs.role === "consumer"
-      ? this.props.fetchData(`${API_HOST}/consumers/${this.props.loggedInAs.username}/threads`)
+      ? this.props.fetchData(
+          `${API_HOST}/consumers/${this.props.loggedInAs.username}/threads`
+        )
       : null;
   }
-
-  /*
-  componentWillReceiveProps(nextProps) {
-    const now = this.props.forum;
-    const next = nextProps.forum;
-    if (now !== next) {
-      if (this.props.loggedInAs.role === "consumer") {
-        const filtered = next.filter(
-          thread => thread.name === this.props.loggedInAs.username
-        );
-        this.setState({ myThreads: filtered });
-      }
-    }
-  }
-  */
 
   render() {
     const columns = [
