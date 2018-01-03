@@ -34,7 +34,7 @@ export const forumFetchData = url => dispatch => {
   Client.GET(url)
     .then(data => {
       console.log(data);
-      dispatch(forumFetchDataSuccess(data.message));
+      dispatch(forumFetchDataSuccess(data.data.threads));
       dispatch(forumIsLoading(false));
     })
     .catch(err => {

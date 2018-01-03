@@ -44,7 +44,7 @@ class ForumPage extends Component {
 
   componentDidMount() {
     // !this.props.forum ? this.props.fetchData(`${API_HOST}/threads`) : null;
-    this.props.fetchData(`${API_HOST}`);
+    this.props.fetchData(`${API_HOST}/threads`);
   }
 
   componentWillReceiveProps(nextProps) {
