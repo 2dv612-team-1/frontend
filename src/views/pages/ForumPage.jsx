@@ -6,6 +6,8 @@ import Table from "ts-react-json-table";
 import { API_HOST } from "../../libs/API_CONFIG";
 import Button from "../components/Button";
 import PageContainer from "../components/PageContainer";
+import CenteredDiv from "../components/Div";
+import HeadingText from "../components/HeadingText";
 import Text from "../elements/Text";
 import { forumFetchData, forumClear } from "../../state/forum/actions";
 
@@ -54,12 +56,14 @@ class ForumPage extends Component {
 
     return (
       <PageContainer title="Forum">
-        {this.props.loggedInAs.role === "consumer" ? (
-          <Link to="/thread/new">
-            <Button>Create new topic</Button>
-          </Link>
-        ) : null}
-        <Text>Forum topics:</Text>
+        <CenteredDiv>
+          {this.props.loggedInAs.role === "consumer" ? (
+            <Link to="/thread/new">
+              <Button>Create new topic</Button>
+            </Link>
+          ) : null}
+        </CenteredDiv>
+        <HeadingText>Forum topics:</HeadingText>
         <Table rows={this.props.forum} columns={columns} />
         {this.props.isLoading ? <Text>Loading...</Text> : null}
         {this.props.errorMessage ? <Text error>{this.props.errorMessage}</Text> : null}
