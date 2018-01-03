@@ -91,13 +91,20 @@ class ForumPage extends Component {
       <PageContainer title="Forum">
         <CenteredDiv>
           {this.props.loggedInAs.role === "consumer" ? (
-            <Link to="/thread/new">
-              <Button>Create new topic</Button>
-            </Link>
+            <div>
+              <Search target="forum" />
+              <Link to="/thread/new">
+                <Button>Create new topic</Button>
+              </Link>
+            </div>
           ) : null}
         </CenteredDiv>
         <HeadingText>Forum topics:</HeadingText>
-        <Table rows={this.props.forum} columns={columns} />
+        {this.state.display.length !== 0 ? (
+          <Table rows={this.state.display} columns={columns} />
+        ) : (
+          <Table rows={this.props.forum} columns={columns} />
+        )}
         {this.props.isLoading ? <Text>Loading...</Text> : null}
       </PageContainer>
     );
