@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const Modal = styled.div`
-  width: 700px;
+  width: 800px;
   background: #e7e7e9;
   padding: 35px;
   border-radius: 3px;
