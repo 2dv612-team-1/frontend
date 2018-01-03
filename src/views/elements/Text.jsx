@@ -6,11 +6,8 @@ const Text = styled.p`
   color: ${props => (props.error ? "red" : props.success ? "green" : "black")};
   font-family: ${fonts.primary};
   margin-top: 0px;
-<<<<<<< HEAD
   font-weight: ${props => (props.bold ? "bold" : "normal")};
-=======
   flex-basis: 50%;
->>>>>>> styling
 `;
 
 export default Text;
