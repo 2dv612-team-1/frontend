@@ -12,6 +12,7 @@ const propTypes = {
 const RatingWidget = ({ onClick, currentRating, name }) => (
   <Container>
     <Rating
+      char="★"
       value={currentRating}
       name={name}
       fractions={2}
