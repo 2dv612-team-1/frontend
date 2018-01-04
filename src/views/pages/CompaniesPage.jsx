@@ -11,6 +11,7 @@ import Text from "../elements/Text";
 import List from "../components/List";
 import Button from "../components/Button";
 import PageContainer from "../components/PageContainer";
+import HeadingText from "../components/HeadingText";
 
 const propTypes = {
   fetchData: PropTypes.func.isRequired,
@@ -34,7 +35,7 @@ class CompaniesPage extends Component {
         <Link to="/register/company">
           <Button>Register Company</Button>
         </Link>
-        <Text>All companies:</Text>
+        <HeadingText>All companies:</HeadingText>
         {this.props.companies ? (
           <List list={this.props.companies} ordered type="username" />
         ) : null}
