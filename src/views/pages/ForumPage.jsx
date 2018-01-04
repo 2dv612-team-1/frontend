@@ -84,10 +84,51 @@ class ForumPage extends Component {
       {
         key: "title",
         label: "Topic",
-        cell: item => <Link to={`/threads/${item._id}`}>{item.title}</Link> // eslint-disable-line no-underscore-dangle
+        cell: item => (
+          <span
+            style={{
+              background: "white",
+              width: "300px",
+              display: "block",
+              padding: "10px"
+            }}
+          >
+            <Link to={`/threads/${item._id}`}>{item.title}</Link>
+          </span>
+        )
       },
-      { key: "name", label: "Name" },
-      { key: "timestamp", label: "Date" }
+      {
+        key: "name",
+        label: "Name",
+        cell: item => (
+          <span
+            style={{
+              background: "white",
+              width: "150px",
+              display: "block",
+              padding: "10px"
+            }}
+          >
+            {item.name}
+          </span>
+        )
+      },
+      {
+        key: "timestamp",
+        label: "Date",
+        cell: item => (
+          <span
+            style={{
+              background: "white",
+              width: "150px",
+              display: "block",
+              padding: "10px"
+            }}
+          >
+            {item.timestamp.substr(0, item.timestamp.indexOf(" "))}
+          </span>
+        )
+      }
     ];
 
     return (
