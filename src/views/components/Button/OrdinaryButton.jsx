@@ -21,6 +21,7 @@ const OrdinaryButton = styled.button`
     color: #fff;
     background: ${colors.primary};
   }
+  margin-top:10px;
 `;
 
 export default OrdinaryButton;
