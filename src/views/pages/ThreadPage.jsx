@@ -5,6 +5,7 @@ import PageContainer from "../components/PageContainer";
 import Text from "../elements/Text";
 import TextInput from "../components/TextInput";
 import DivBg from "../components/DivBg";
+import Input from "../components/Input";
 import Auth from "../../libs/Auth";
 import { API_HOST } from "../../libs/API_CONFIG";
 import { getThread, postReply, patch } from "../../state/thread/actions";
@@ -107,12 +108,14 @@ class ThreadPage extends Component {
         )}
         {this.props.isLoading ? <Text>Loading...</Text> : null}
         {this.props.hasError ? <Text error>Could not load data</Text> : null}
-        <TextInput
-          label="Reply"
-          value={this.state.replyText}
-          onChange={this.handleReplyChange}
-        />
-        <input onClick={this.submitReply} type="button" value="Reply" />
+        <div>
+          <TextInput
+            label="Reply"
+            value={this.state.replyText}
+            onChange={this.handleReplyChange}
+          />
+          <Input onClick={this.submitReply} type="button" value="Reply" />
+        </div>
       </PageContainer>
     );
   }
