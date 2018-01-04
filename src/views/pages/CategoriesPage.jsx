@@ -8,6 +8,7 @@ import {
   categoriesClear
 } from "../../state/categories/actions";
 import Text from "../elements/Text";
+import HeadingText from "../components/HeadingText";
 import CategoriesList from "../components/CategoriesList";
 import Button from "../components/Button";
 import PageContainer from "../components/PageContainer";
@@ -45,7 +46,7 @@ class CategoriesPage extends Component {
         <Link to="/categories/new">
           <Button>Create new Category</Button>
         </Link>
-        <Text>All categories:</Text>
+        <HeadingText>All categories:</HeadingText>
         {this.props.categories ? (
           <CategoriesList items={this.props.categories} />
         ) : null}
