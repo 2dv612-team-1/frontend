@@ -21,7 +21,7 @@ const SubmitButton = styled.input`
     color: #fff;
     background: ${colors.primary};
   }
-  margin-top: 25px;
+  margin-top: 10px;
 `;
 
 export default SubmitButton;
