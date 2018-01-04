@@ -8,6 +8,7 @@ import Field from "../components/Field";
 import SelectField from "../components/SelectField";
 import Button from "../components/Button";
 import PageContainer from "../components/PageContainer";
+import Form from "../components/Form";
 import DropZoneField from "../components/DropZoneField";
 import { uploadCreatedProduct } from "../../state/products/actions";
 import {
@@ -64,7 +65,7 @@ class CreateProductPage extends Component {
     // cat.splice(0, 0, "choose");
     return (
       <PageContainer title="create product">
-        <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
+        <Form onSubmit={this.props.handleSubmit(this.onSubmit)}>
           <FieldWrapper>
             <SelectField
               label="category"
@@ -111,7 +112,7 @@ class CreateProductPage extends Component {
           {this.props.hasError ? (
             <Text error>{this.props.errorMessage}</Text>
           ) : null}
-        </form>
+        </Form>
       </PageContainer>
     );
   }
