@@ -8,7 +8,6 @@ import Button from "../components/Button";
 import PageContainer from "../components/PageContainer";
 import CenteredDiv from "../components/Div";
 import HeadingText from "../components/HeadingText";
-import Line from "../components/Line";
 import Text from "../elements/Text";
 import {
   forumFetchData,
@@ -100,7 +99,6 @@ class ForumPage extends Component {
               {this.props.hasError ? (
                 <Text error>{this.props.errorMessage}</Text>
               ) : null}
-              <Line />
             </div>
           ) : null}
         </CenteredDiv>
