@@ -16,7 +16,6 @@ class Client {
   }
 
   static POST(uri, obj = {}) {
-    
     const httpHeaders = {
       "Content-Type": "application/x-www-form-urlencoded"
     };
@@ -56,6 +55,30 @@ class Client {
     const url = uri.includes("token") ? `${uri}${Auth.getToken()}` : uri;
 
     return fetch(url, options).then(response => response.json());
+  }
+
+  static PATCH(uri, obj = {}) {
+    const httpHeaders = {
+      "Content-Type": "application/x-www-form-urlencoded"
+    };
+    const headers = new Headers(httpHeaders);
+    const body = this.serialize(obj);
+    const options = {
+      method: "PATCH",
+      headers,
+      body
+    };
+
+    return fetch(uri, options).then(response =>
+      response
+        .json()
+        .then(data =>
+          Object.assign(
+            { status: response.status, message: response.message },
+            data
+          )
+        )
+    );
   }
 }
 

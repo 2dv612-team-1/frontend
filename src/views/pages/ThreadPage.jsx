@@ -7,7 +7,8 @@ import TextInput from "../components/TextInput";
 import DivBg from "../components/DivBg";
 import Auth from "../../libs/Auth";
 import { API_HOST } from "../../libs/API_CONFIG";
-import { getThread, postReply } from "../../state/thread/actions";
+import { getThread, postReply, patch } from "../../state/thread/actions";
+import Jwt from "../../libs/Jwt";
 
 const defaultProps = {
   isLoading: false,
@@ -45,6 +46,14 @@ class ThreadPage extends Component {
 
     this.state.threadState.length < 1
       ? this.props.fetchData(`${API_HOST}/threads/${threadId}`)
+      : null;
+
+    // https://nanotu.be/companies/<name>/threads/<thread_id> | PATCH
+    const token = this.props.loggedInAs.jwt;
+    const json = { jwt: token };
+    const url = `${API_HOST}/companies/${Jwt.getOwner(token)}/threads/${threadId}`;
+    this.props.loggedInAs.role === "representative"
+      ? this.props.markRead(url, json)
       : null;
   }
 
@@ -119,7 +128,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   fetchData: url => dispatch(getThread(url)),
-  postReply: (url1, data, url2) => dispatch(postReply(url1, data, url2))
+  postReply: (url1, data, url2) => dispatch(postReply(url1, data, url2)),
+  markRead: (url, jwt) => dispatch(patch(url, jwt))
 });
 
 ThreadPage.defaultProps = defaultProps;

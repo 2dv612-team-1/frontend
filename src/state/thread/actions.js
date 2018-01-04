@@ -27,8 +27,13 @@ export const getThread = url => dispatch => {
   dispatch(threadIsLoading(true));
   Client.GET(url)
     .then(data => {
-      dispatch(threadFetchDataSuccess(data.data));
-      dispatch(threadIsLoading(false));
+      if (data.status === 200) {
+        dispatch(threadFetchDataSuccess(data.data));
+        dispatch(threadIsLoading(false));
+      } else {
+        dispatch(threadFetchDataSuccess([]));
+        console.log(data);
+      }
     })
     .catch(err => {
       dispatch(threadIsLoading(false));
@@ -51,10 +56,21 @@ export const postReply = (url1, data, url2) => dispatch => {
     });
 };
 
+export const patch = (url, jwt) => dispatch => {
+  Client.PATCH(url, jwt)
+    .then(data => {
+      console.log(data);
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};
+
 export default {
   threadHasError,
   threadIsLoading,
   threadFetchDataSuccess,
   getThread,
-  postReply
+  postReply,
+  patch
 };
