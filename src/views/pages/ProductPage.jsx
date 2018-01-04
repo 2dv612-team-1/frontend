@@ -40,6 +40,10 @@ class ProductPage extends Component {
   };
 
   componentDidMount() {
+    this.getProducts();
+  }
+
+  getProducts = () => {
     const id = this.props.location.slice(-24);
     const url = `${API_HOST}/products/${id}`;
 
@@ -47,7 +51,7 @@ class ProductPage extends Component {
       const product = response.data.product;
       this.setState({ product });
     });
-  }
+  };
 
   handleNoteClick = event => {
     event.stopPropagation();
@@ -90,6 +94,7 @@ class ProductPage extends Component {
     const id = this.props.location.slice(-24);
     const url = `${API_HOST}/products/${id}/materials`;
     this.props.uploadMaterial(url, this.state.file);
+    this.getProducts();
   };
 
   handleNoteChange = event => {
