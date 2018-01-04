@@ -140,6 +140,9 @@ class ForumPage extends Component {
               {this.props.hasError ? (
                 <Text error>{this.props.errorMessage}</Text>
               ) : null}
+              <Link to="/thread/new">
+                <Button>Create new topic</Button>
+              </Link>
             </div>
           ) : null}
         </CenteredDiv>
@@ -150,9 +153,6 @@ class ForumPage extends Component {
           <Table rows={this.props.forum} columns={columns} />
         )}
         {this.props.isLoading ? <Text>Loading...</Text> : null}
-        <Link to="/thread/new">
-          <Button>Create new topic</Button>
-        </Link>
       </PageContainer>
     );
   }
