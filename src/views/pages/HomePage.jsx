@@ -7,6 +7,8 @@ import PageContainer from "../components/PageContainer";
 import { forumFetchData } from "../../state/forum/actions";
 import { API_HOST } from "../../libs/API_CONFIG";
 import Text from "../elements/Text";
+import Auth from "../../libs/Auth";
+import Jwt from "../../libs/Jwt";
 
 const defaultProps = {
   loggedInAs: {
@@ -33,6 +35,13 @@ class HomePage extends Component {
           `${API_HOST}/consumers/${this.props.loggedInAs.username}/threads`
         )
       : null;
+
+    this.props.loggedInAs.role === "representative"
+      ? this.props.fetchData(
+          `${API_HOST}/threads/${Jwt.getOwner(this.props.loggedInAs.jwt)}/unread`
+        )
+      : null;
+
   }
 
   render() {
@@ -94,7 +103,7 @@ class HomePage extends Component {
 
     return (
       <PageContainer title={`welcome ${greet}`}>
-        {this.props.loggedInAs.role === "consumer" ? (
+        {this.props.loggedInAs.role === "consumer" || this.props.loggedInAs.role === "representative" ? (
           <div>
             <Text>My threads:</Text>
             <Table rows={this.props.forum} columns={columns} />
