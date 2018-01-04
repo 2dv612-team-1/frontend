@@ -7,6 +7,8 @@ import PageContainer from "../components/PageContainer";
 import { forumFetchData } from "../../state/forum/actions";
 import { API_HOST } from "../../libs/API_CONFIG";
 import Text from "../elements/Text";
+import Auth from "../../libs/Auth";
+import Jwt from "../../libs/Jwt";
 
 const defaultProps = {
   loggedInAs: {
@@ -26,29 +28,21 @@ const propTypes = {
 };
 
 class HomePage extends Component {
-  // 2state = {myThreads: []};
-
   componentDidMount() {
     // GET - /consumers/<username>/threads
     this.props.loggedInAs.role === "consumer"
-      ? this.props.fetchData(`${API_HOST}/consumers/${this.props.loggedInAs.username}/threads`)
+      ? this.props.fetchData(
+          `${API_HOST}/consumers/${this.props.loggedInAs.username}/threads`
+        )
       : null;
-  }
 
-  /*
-  componentWillReceiveProps(nextProps) {
-    const now = this.props.forum;
-    const next = nextProps.forum;
-    if (now !== next) {
-      if (this.props.loggedInAs.role === "consumer") {
-        const filtered = next.filter(
-          thread => thread.name === this.props.loggedInAs.username
-        );
-        this.setState({ myThreads: filtered });
-      }
-    }
+    this.props.loggedInAs.role === "representative"
+      ? this.props.fetchData(
+          `${API_HOST}/threads/${Jwt.getOwner(this.props.loggedInAs.jwt)}/unread`
+        )
+      : null;
+
   }
-  */
 
   render() {
     const columns = [
@@ -109,7 +103,7 @@ class HomePage extends Component {
 
     return (
       <PageContainer title={`welcome ${greet}`}>
-        {this.props.loggedInAs.role === "consumer" ? (
+        {this.props.loggedInAs.role === "consumer" || this.props.loggedInAs.role === "representative" ? (
           <div>
             <Text>My threads:</Text>
             <Table rows={this.props.forum} columns={columns} />

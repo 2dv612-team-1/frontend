@@ -12,7 +12,8 @@ import Text from "../elements/Text";
 import {
   forumFetchData,
   forumClear,
-  forumHasError
+  forumHasError,
+  forumSearch
 } from "../../state/forum/actions";
 import Search from "../containers/Search";
 
@@ -36,7 +37,8 @@ const propTypes = {
   searchText: PropTypes.string,
   clear: PropTypes.func.isRequired,
   hasError: PropTypes.bool,
-  showError: PropTypes.func.isRequired
+  showError: PropTypes.func.isRequired,
+  search: PropTypes.func.isRequired
 };
 
 class ForumPage extends Component {
@@ -74,6 +76,7 @@ class ForumPage extends Component {
 
   componentWillUnmount() {
     this.props.clear();
+    this.props.search("");
   }
 
   render() {
@@ -91,13 +94,23 @@ class ForumPage extends Component {
       <PageContainer title="Forum">
         <CenteredDiv>
           {this.props.loggedInAs.role === "consumer" ? (
-            <Link to="/thread/new">
-              <Button>Create new topic</Button>
-            </Link>
+            <div>
+              <Search target="forum" />
+              {this.props.hasError ? (
+                <Text error>{this.props.errorMessage}</Text>
+              ) : null}
+              <Link to="/thread/new">
+                <Button>Create new topic</Button>
+              </Link>
+            </div>
           ) : null}
         </CenteredDiv>
         <HeadingText>Forum topics:</HeadingText>
-        <Table rows={this.props.forum} columns={columns} />
+        {this.state.display.length !== 0 ? (
+          <Table rows={this.state.display} columns={columns} />
+        ) : (
+          <Table rows={this.props.forum} columns={columns} />
+        )}
         {this.props.isLoading ? <Text>Loading...</Text> : null}
       </PageContainer>
     );
@@ -116,7 +129,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   fetchData: url => dispatch(forumFetchData(url)),
   showError: (bool, msg) => dispatch(forumHasError(bool, msg)),
-  clear: () => dispatch(forumClear())
+  clear: () => dispatch(forumClear()),
+  search: text => dispatch(forumSearch(text))
 });
 
 ForumPage.defaultProps = defaultProps;
