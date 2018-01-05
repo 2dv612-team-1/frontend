@@ -16,7 +16,7 @@ const RatingWidget = ({ onClick, currentRating, name }) => (
       value={currentRating}
       name={name}
       fractions={2}
-      onClick={(rate, event) => onClick(rate, event, name)}
+      onChange={(rate, event) => onClick(rate, event, name)}
       size={30}
       color2={'#3f51b5'}
     />
